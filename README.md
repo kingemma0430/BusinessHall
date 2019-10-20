@@ -1,8 +1,11 @@
 Toos:
 VS2019 community 16.2.4
 Node.js v10.16.3 (npm v6.9.0)
-Net Core 2.2
-Mysql 8.0.18
+Net Core 2.2  (
+	1. vs2017: https://dotnet.microsoft.com/download/dotnet-core/2.2#sdk-2.2.109  
+	2. vs2019: https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.402-windows-x64-installer
+Mysql 8.0.18 (https://dev.mysql.com/downloads/file/?id=490395)
+
 
 Initial:
 1. Build Project

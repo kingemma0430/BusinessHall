@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <RootNamespace>BusinessHall</RootNamespace>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,8 +22,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessHall.Core\BusinessHall.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Transactions" />
   </ItemGroup>
 </Project>

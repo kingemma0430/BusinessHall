@@ -7,12 +7,12 @@ namespace BusinessHall.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<BusinessHallDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseMySql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<BusinessHallDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            builder.UseMySql(connection);
         }
     }
 }

@@ -1,3 +1,23 @@
+Toos:
+VS2019 community 16.2.4
+Node.js v10.16.3 (npm v6.9.0)
+Net Core 2.2
+Mysql 8.0.18
+
+Initial:
+1. Build Project
+2. Tools==>NuGet Package Manager==>Package Manager Consolle, choose "BusinessHall.EntityFrameworkCore" as default project.
+3. input "update-database", enter
+4. Select "BusinessHall.EntityFrameworkCore" as startup project, start it.
+
+
+
+
+
+
+
+
+
 # Important
 
 Issues of this repository are tracked on https://github.com/aspnetboilerplate/aspnetboilerplate. Please create your issues on https://github.com/aspnetboilerplate/aspnetboilerplate/issues.

@@ -24,7 +24,7 @@
     <text name="AppName" >BusinessHall</text>
     <text name="UserNamePlaceholder" >请输入账户</text>
     <text name="PasswordPlaceholder" >请输入密码</text>
-    <text name="CopyRight" >© 2018 BusinessHall</text>
+    <text name="CopyRight" >© 2019 BusinessHall</text>
     <text name="LoginPrompt" >正在登陆，请稍候！</text>
     <text name="UserProfile" >用户资料</text>
     <text name="Users" >用户</text>
@@ -69,10 +69,10 @@
     <text name="All">全部</text>
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
-    
+
     <text name="Yes">是</text>
     <text name="No">否</text>
-    
+
     <text name="Cancel">取消</text>
     <text name="OK">确定</text>
     <text name="CreateNewRole">创建新角色</text>
@@ -96,7 +96,25 @@
     <text name="DefaultPasswordIs">默认密码为：{0}</text>
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
-    
+
+    <text name="UpdatePassword">修改密码</text>
+
+
+    <text name="BatchManager">批充管理</text>
+    <text name="SupplierManager">供应商</text>
+    <text name="ProductManager">供货商产品列表</text>
+    <text name="SupplierPay">供应商付款</text>
+    <text name="AgentManager">代理商列表</text>
+    <text name="CallOrder">话费订单</text>
+    <text name="RealtimeData">实时数据</text>
+    <text name="DailyBalance">日对账报表</text>
+    <text name="AlertSetting">预警配置</text>
+    <text name="CreditManager">信贷管理</text>
+    <text name="SupplierName">供应商名称</text>
+    <text name="IsAutoReturnMoney">自动退款</text>
+    <text name="Status">状态</text>
+    <text name="Open">开启</text>
+    <text name="Close">关闭</text>
     
   </texts>
 </localizationDictionary>

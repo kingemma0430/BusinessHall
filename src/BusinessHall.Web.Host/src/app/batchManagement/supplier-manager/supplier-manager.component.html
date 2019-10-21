@@ -1,0 +1,56 @@
+<p>供应商</p>
+<div class="ui-g">
+    <div class="ui-g-12">
+        <input type="text" placeholder="input text" pInputText [(ngModel)]="property" />
+        <button pButton type="button" label="Search"></button>
+    </div>
+    <div class="ui-g-12">
+        <!-- <p-dataView #dv [value]="datas" [paginator]="true" [rows]="10" [sortField]="sortField" [sortOrder]="sortOrder"
+            filterBy="name">
+            <p-header>
+                <input type="search" pInputText placeholder="Search by name"
+                    (keyup)="dv.filter($event.target.value, 'ontains')" />
+            </p-header>
+            <ng-template let-car pTemplate="listItem">
+                <div>
+                    {{car.id}}
+                </div>
+            </ng-template>
+            <ng-template let-car pTemplate="gridItem">
+                <div class="ui-g-12 ui-md-3">
+                    {{car.name}}
+                </div>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft" let-state>
+                {{state.first}}
+                <button type="button" pButton icon="fa-refresh"></button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <button type="button" pButton icon="fa-cloud-upload"></button>
+            </ng-template>
+        </p-dataView> -->
+        <p-table [value]="datas" [paginator]="true" [rows]="10" [first]="first" sortMode="multiple">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>{{ "Id" | localize }}</th>
+                    <th>{{ "SupplierName" | localize }}</th>
+                    <th>{{ "IsAutoReturnMoney" | localize }}</th>
+                    <th>{{ "Status" | localize }}</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car>
+                <tr>
+                    <td>{{car.id}}</td>
+                    <td>{{car.name}}</td>
+                    <td *ngIf="car.isAutoReturnMoney==1">{{"Open" | localize}}</td>
+                    <td *ngIf="car.isAutoReturnMoney==2">{{"Close" | localize}}</td>
+                    <td>
+                        <p-toggleButton [(ngModel)]="car.status"></p-toggleButton>
+                    </td>
+                    <!-- <td *ngIf="car.status">{{"Open" | localize}}</td>
+                    <td *ngIf="！car.status">{{"Close" | localize}}</td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

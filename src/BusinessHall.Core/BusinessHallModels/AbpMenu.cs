@@ -31,5 +31,7 @@ namespace BusinessHall.BusinessHallModels
 
         public bool IsActive { get; set; }
 
+        public int MenuOrder { get; set; }
+
     }
 }

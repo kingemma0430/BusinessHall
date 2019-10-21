@@ -24,6 +24,10 @@ namespace BusinessHall.BusinessHallModels
         public bool IsAutoReturnMoney { get; set; }
 
         public SupplierStatusEnum Status { get; set; }
+
+        public long CreatorUserId { get; set; }
+
+        public DateTime CretionTime { get; set; }
     }
 
     public enum SupplierStatusEnum

@@ -1,22 +1,25 @@
-﻿using Abp.Domain.Entities;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using BusinessHall.BusinessHallModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace BusinessHall.BusinessHallModels
+namespace BusinessHall.Menus.Dto
 {
-    [Table("AbpMenus")]
-    public class AbpMenu : Entity, IMayHaveTenant
+    [AutoMapFrom(typeof(AbpMenu))]
+    public class AbpMenuDto : EntityDto
     {
         public int? TenantId { get; set; }
 
         public int? ParentMenuId { get; set; }
 
+        [Required]
         [StringLength(BusinessHallConsts.MaxLength255)]
         public string Name { get; set; }
 
+        [Required]
         [StringLength(BusinessHallConsts.MaxLength255)]
         public string DisplayName { get; set; }
 
@@ -29,9 +32,10 @@ namespace BusinessHall.BusinessHallModels
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Description { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
+        [Required]
         public int MenuOrder { get; set; }
-  
     }
 }

@@ -4,9 +4,12 @@
     {
         public const string Pages_Tenants = "Pages.Tenants";
 
+
         public const string Pages_Users = "Pages.Users";
 
         public const string Pages_Roles = "Pages.Roles";
+
+        public const string Pages_Menus = "Pages.Menus";
 
         public const string Pages_SupplierManager = "Pages.SupplierManager";
         public const string Pages_ProductManager = "Pages.ProductManager";

@@ -12,5 +12,10 @@ namespace BusinessHall.Roles
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
 
         Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input);
+
+        Task<ListResultDto<AbpUserRoleDto>> GetUserRoleByUserId(long userId);
+
+        Task<ListResultDto<AbpUserRoleDto>> GetUserRoleByRoleId(int roleId);
+
     }
 }

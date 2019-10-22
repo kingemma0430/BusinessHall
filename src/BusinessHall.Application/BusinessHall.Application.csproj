@@ -11,6 +11,11 @@
     <RootNamespace>BusinessHall</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Parallel" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BusinessHall.Core\BusinessHall.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -8,9 +8,10 @@ using System.ComponentModel.DataAnnotations;
 namespace BusinessHall.BusinessHallModels
 {
     [Table("AbpUserRoleMenus")]
-    public class AbpUserRoleMenu:Entity, IMustHaveTenant
+    public class AbpUserRoleMenu:Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
+
         public int RoleId { get; set; }
 
         public int MenuId { get; set; }

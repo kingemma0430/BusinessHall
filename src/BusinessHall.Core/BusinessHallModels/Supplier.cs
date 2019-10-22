@@ -11,9 +11,9 @@ namespace BusinessHall.BusinessHallModels
     /// 供应商
     /// </summary>
     [Table("Suppliers")]
-    public class Supplier : Entity, IMustHaveTenant
+    public class Supplier : Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Name { get; set; }

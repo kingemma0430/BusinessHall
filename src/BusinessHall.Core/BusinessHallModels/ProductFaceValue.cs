@@ -11,9 +11,9 @@ namespace BusinessHall.BusinessHallModels
     /// 产品面值
     /// </summary>
     [Table("ProductFaceValues")]
-    public class ProductFaceValue : Entity, IMustHaveTenant
+    public class ProductFaceValue : Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         public int ProductId { get; set; }
 

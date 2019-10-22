@@ -8,9 +8,9 @@ using System.Text;
 namespace BusinessHall.BusinessHallModels
 {
     [Table("SupplierPays")]
-    public class SupplierPay:Entity, IMustHaveTenant
+    public class SupplierPay:Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         public int SupplierId { get; set; }
 

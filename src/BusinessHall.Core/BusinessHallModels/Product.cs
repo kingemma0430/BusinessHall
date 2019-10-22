@@ -7,9 +7,9 @@ using System.Text;
 namespace BusinessHall.BusinessHallModels
 {
     [Table("Products")]
-    public class Product : Entity, IMustHaveTenant
+    public class Product : Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         [StringLength(BusinessHallConsts.MaxLength255)]
         public string Name { get; set; }

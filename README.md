@@ -14,6 +14,31 @@ Initial:
 4. Select "BusinessHall.EntityFrameworkCore" as startup project, start it.
 
 
+menu
+menu_open
+more_horiz
+more_vert
+person
+folder
+access_alarm
+save
+save_all
+queue
+equalizer-柱状图
+work
+view_list
+assignment
+
+
+
+person_add
+group
+location_city
+notifications
+refresh
+arrow_back
+arrow_forward
+close
 
 
 

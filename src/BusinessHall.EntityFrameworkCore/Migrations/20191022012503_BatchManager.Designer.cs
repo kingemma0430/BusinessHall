@@ -3,14 +3,16 @@ using System;
 using BusinessHall.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusinessHall.Migrations
 {
     [DbContext(typeof(BusinessHallDbContext))]
-    partial class BusinessHallDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191022012503_BatchManager")]
+    partial class BatchManager
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1035,7 +1037,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("ParentMenuId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1053,7 +1055,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("RoleId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1075,7 +1077,7 @@ namespace BusinessHall.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(45);
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1098,7 +1100,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("SupplierId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1119,7 +1121,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1137,7 +1139,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1164,7 +1166,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.HasKey("Id");
 
@@ -1180,7 +1182,7 @@ namespace BusinessHall.Migrations
 
                     b.Property<int>("SupplierId");
 
-                    b.Property<int?>("TenantId");
+                    b.Property<int>("TenantId");
 
                     b.Property<decimal>("TotalValue");
 

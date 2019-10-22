@@ -9,6 +9,8 @@ namespace BusinessHall.Authorization.Users
     {
         public const string DefaultPassword = "123qwe";
 
+        public string Telephone { get; set; }
+
         public static string CreateRandomPassword()
         {
             return Guid.NewGuid().ToString("N").Truncate(16);

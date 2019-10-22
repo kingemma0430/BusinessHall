@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
@@ -23,11 +24,15 @@ namespace BusinessHall.Roles
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
 
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
+        private readonly IRepository<UserRole, long> _userRoleRepository;
+
+
+        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, IRepository<UserRole, long> userRoleRepository)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _userRoleRepository = userRoleRepository;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -142,6 +147,18 @@ namespace BusinessHall.Roles
                 Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
+        }
+
+        public async Task<ListResultDto<AbpUserRoleDto>> GetUserRoleByUserId(long userId)
+        {
+            var result = await _userRoleRepository.GetAllListAsync(x => x.UserId == userId);
+            return new ListResultDto<AbpUserRoleDto>(ObjectMapper.Map<List<AbpUserRoleDto>>(result));
+        }
+
+        public async Task<ListResultDto<AbpUserRoleDto>> GetUserRoleByRoleId(int roleId)
+        {
+            var result = await _userRoleRepository.GetAllListAsync(x => x.RoleId == roleId);
+            return new ListResultDto<AbpUserRoleDto>(ObjectMapper.Map<List<AbpUserRoleDto>>(result));
         }
     }
 }

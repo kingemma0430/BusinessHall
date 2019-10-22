@@ -11,9 +11,9 @@ namespace BusinessHall.BusinessHallModels
     /// 运营商
     /// </summary>
     [Table("Operators")]
-    public class Operator : Entity, IMustHaveTenant
+    public class Operator : Entity, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         [StringLength(BusinessHallConsts.MaxLength45)]
         public string Name { get; set; }

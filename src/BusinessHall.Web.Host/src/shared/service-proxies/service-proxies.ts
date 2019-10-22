@@ -3179,6 +3179,9 @@ export class CreateUserDto implements ICreateUserDto {
     isActive: boolean | undefined;
     roleNames: string[] | undefined;
     password: string;
+    telephone:string;
+    weChat:string;
+    qq:string;
 
     constructor(data?: ICreateUserDto) {
         if (data) {

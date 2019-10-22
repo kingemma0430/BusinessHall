@@ -86,6 +86,7 @@ export class LoginService {
     }
 
     private clear(): void {
+        localStorage.removeItem(AppConsts.localStorage_menuKey);
         this.authenticateModel = new AuthenticateModel();
         this.authenticateModel.rememberClient = false;
         this.authenticateResult = null;

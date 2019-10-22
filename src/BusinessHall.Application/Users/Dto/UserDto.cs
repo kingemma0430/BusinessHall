@@ -35,6 +35,16 @@ namespace BusinessHall.Users.Dto
 
         public DateTime CreationTime { get; set; }
 
+
+        [StringLength(BusinessHallConsts.MaxLength25)]
+        public string Telephone { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string WeChat { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string QQ { get; set; }
+
         public string[] RoleNames { get; set; }
     }
 }

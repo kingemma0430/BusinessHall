@@ -20,6 +20,8 @@ namespace BusinessHall.Authorization
             context.CreatePermission(PermissionNames.Pages_SupplierManager, L("SupplierManager"));
             context.CreatePermission(PermissionNames.Pages_SupplierPay, L("SupplierPay"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+            context.CreatePermission(PermissionNames.Pages_Menus, L("Menus"));
+
         }
 
         private static ILocalizableString L(string name)

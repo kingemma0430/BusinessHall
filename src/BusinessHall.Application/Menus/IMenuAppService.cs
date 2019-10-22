@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessHall.Menus
 {
-    public interface IMenuAppService : IApplicationService
+    public interface IMenuAppService: IApplicationService
     {
         Task<ListResultDto<Dto.AbpMenuDto>> GetAllMenus();
 

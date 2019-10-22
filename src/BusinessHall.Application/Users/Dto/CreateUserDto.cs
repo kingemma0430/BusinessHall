@@ -36,6 +36,15 @@ namespace BusinessHall.Users.Dto
         [DisableAuditing]
         public string Password { get; set; }
 
+        [StringLength(BusinessHallConsts.MaxLength25)]
+        public string Telephone { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string WeChat { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string QQ { get; set; }
+
         public void Normalize()
         {
             if (RoleNames == null)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 
@@ -9,7 +10,15 @@ namespace BusinessHall.Authorization.Users
     {
         public const string DefaultPassword = "123qwe";
 
+        [StringLength(BusinessHallConsts.MaxLength25)]
         public string Telephone { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string WeChat { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string QQ { get; set; }
+
 
         public static string CreateRandomPassword()
         {

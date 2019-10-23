@@ -1,4 +1,4 @@
-import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, ViewEncapsulation, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { MenuItem } from '@shared/layout/menu-item';
 
@@ -15,38 +15,7 @@ import * as Enumerable from 'linq';
 export class SideBarNavComponent extends AppComponentBase {
 
     menuItems: MenuItem[] = [];
-    // menuItems: MenuItem[] = [
-    //     new MenuItem(this.l('HomePage'), '', 'home', '/app/home'),
-    //     new MenuItem(this.l('BatchManager'), '', 'menu', '', [
-    //         new MenuItem(this.l('SupplierManager'), '', 'info', '/app/SupplierManager'),
-    //         new MenuItem(this.l('ProductManager'), '', 'info', '/app/ProductManager'),
-    //         new MenuItem(this.l('SupplierPay'), '', 'info', '/app/SupplierPay'),
-    //         new MenuItem(this.l('AgentManager'), '', 'info', '/app/AgentManager'),
-    //         new MenuItem(this.l('CallOrder'), '', 'info', '/app/CallOrder'),
-    //         new MenuItem(this.l('RealtimeData'), '', 'info', '/app/RealtimeData'),
-    //         new MenuItem(this.l('DailyBalance'), '', 'info', '/app/DailyBalance'),
-    //         new MenuItem(this.l('AlertSetting'), '', 'info', '/app/AlertSetting'),
-    //         new MenuItem(this.l('CreditManager'), '', 'info', '/app/CreditManager'),
-    //         // new MenuItem('ASP.NET Boilerplate', '', '', '', [
-    //         //     new MenuItem('Home', '', '', 'https://aspnetboilerplate.com/?ref=abptmpl'),
-    //         //     new MenuItem('Templates', '', '', 'https://aspnetboilerplate.com/Templates?ref=abptmpl'),
-    //         //     new MenuItem('Samples', '', '', 'https://aspnetboilerplate.com/Samples?ref=abptmpl'),
-    //         //     new MenuItem('Documents', '', '', 'https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl')
-    //         // ]),
-    //         // new MenuItem('ASP.NET Zero', '', '', '', [
-    //         //     new MenuItem('Home', '', '', 'https://aspnetzero.com?ref=abptmpl'),
-    //         //     new MenuItem('Description', '', '', 'https://aspnetzero.com/?ref=abptmpl#description'),
-    //         //     new MenuItem('Features', '', '', 'https://aspnetzero.com/?ref=abptmpl#features'),
-    //         //     new MenuItem('Pricing', '', '', 'https://aspnetzero.com/?ref=abptmpl#pricing'),
-    //         //     new MenuItem('Faq', '', '', 'https://aspnetzero.com/Faq?ref=abptmpl'),
-    //         //     new MenuItem('Documents', '', '', 'https://aspnetzero.com/Documents?ref=abptmpl')
-    //         // ])
-    //     ]),
-    //     new MenuItem(this.l('Tenants'), 'Pages.Tenants', 'business', '/app/tenants'),
-    //     new MenuItem(this.l('Users'), 'Pages.Users', 'people', '/app/users'),
-    //     new MenuItem(this.l('Roles'), 'Pages.Roles', 'local_offer', '/app/roles'),
-    //     new MenuItem(this.l('About'), '', 'info', '/app/about')
-    // ];
+
 
     constructor(
         injector: Injector,
@@ -56,27 +25,22 @@ export class SideBarNavComponent extends AppComponentBase {
         this.getUserMenus();
     }
 
-    showMenuItem(menuItem): boolean {
-        if (menuItem.permissionName) {
-            return this.permission.isGranted(menuItem.permissionName);
-        }
-
-        return true;
+    getDefaultMenus() {
+        let tmpmenuItems: MenuItem[] = [
+            new MenuItem(this.l('HomePage'), '', 'home', '/app/home'),
+            new MenuItem(this.l('About'), '', 'info', '/app/about')
+        ];
+        return tmpmenuItems;
     }
 
     getUserMenus() {
-        let menus = [];
-        let tmpMenus: AbpMenuDto[] = [];
         let menuJson: string = localStorage.getItem(AppConsts.localStorage_menuKey);
         if (menuJson) {
-            tmpMenus = JSON.parse(menuJson);
+            this.menuItems = JSON.parse(menuJson);
         }
-        if (tmpMenus && tmpMenus.length > 0) {
-            this.loadMenus(tmpMenus);
-        } else {
+        else {
             localStorage.removeItem(AppConsts.localStorage_menuKey);
             this._menuServiceService.GetMenusForCurreuntUser().subscribe(data => {
-                console.log("menus==========", data);
                 if (data) {
                     let newTmpMenus: AbpMenuDto[] = data["items"];
                     this.loadMenus(newTmpMenus);
@@ -94,13 +58,17 @@ export class SideBarNavComponent extends AppComponentBase {
             inputMenus = Enumerable.from(inputMenus).orderBy(x => x.menuOrder).toArray();
             let parentTmpMenus: AbpMenuDto[] = Enumerable.from(inputMenus).where(x => !x.parentMenuId).orderBy(x => x.menuOrder).toArray();
             parentTmpMenus.forEach(elementParent => {
-                let item: MenuItem = new MenuItem(this.l(elementParent.name), elementParent.permissionName, elementParent.icon, elementParent.menuUrlRoute);
-                this.loadBelowLevelMenu(item, elementParent, inputMenus);
-                menus.push(item);
+                let itemRoot: MenuItem = new MenuItem(this.l(elementParent.name), elementParent.permissionName, elementParent.icon, elementParent.menuUrlRoute);
+                itemRoot.items = [];
+                this.loadBelowLevelMenu(itemRoot, elementParent, inputMenus);
+                menus.push(itemRoot);
             });
         }
+        else {
+            menus = this.getDefaultMenus();
+        }
         this.menuItems = menus;
-        localStorage.setItem(AppConsts.localStorage_menuKey, JSON.stringify(inputMenus));
+        localStorage.setItem(AppConsts.localStorage_menuKey, JSON.stringify(this.menuItems));
     }
 
 

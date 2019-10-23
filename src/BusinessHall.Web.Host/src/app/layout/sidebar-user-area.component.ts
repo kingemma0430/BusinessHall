@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { AppAuthService } from '@shared/auth/app-auth.service';
+import { AppConsts } from '@shared/AppConsts';
 
 @Component({
     templateUrl: './sidebar-user-area.component.html',
@@ -23,6 +24,7 @@ export class SideBarUserAreaComponent extends AppComponentBase implements OnInit
     }
 
     logout(): void {
+        localStorage.removeItem(AppConsts.localStorage_menuKey);
         this._authService.logout();
     }
 }

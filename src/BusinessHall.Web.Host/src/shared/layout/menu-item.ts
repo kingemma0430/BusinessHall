@@ -2,14 +2,16 @@ export class MenuItem {
     name = '';
     permissionName = '';
     icon = '';
-    route = '';
-    items: MenuItem[];
+    routerLink = '';
+    url = '';
+    items: MenuItem[] = [];
 
-    constructor(name: string, permissionName: string, icon: string, route: string, childItems: MenuItem[] = null) {
+    constructor(name: string, permissionName: string, icon: string, routerLink: string, url: string = null, childItems: MenuItem[] = null) {
         this.name = name;
         this.permissionName = permissionName;
         this.icon = icon;
-        this.route = route;
+        this.routerLink = routerLink;
+        this.url = url;
 
         if (childItems) {
             this.items = childItems;

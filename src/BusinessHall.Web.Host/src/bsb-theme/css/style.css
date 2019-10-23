@@ -10446,6 +10446,7 @@ fieldset[disabled] .form-control {
 .sidebar .menu .list {
     list-style: none;
     padding-left: 0;
+    text-align: left;
 }
 
 .sidebar .menu .list li.active> :first-child span {
@@ -10456,7 +10457,7 @@ fieldset[disabled] .form-control {
     background: #eee;
     font-size: 12px;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 8px;
 }
 
 .sidebar .menu .list i.material-icons {
@@ -10520,7 +10521,7 @@ fieldset[disabled] .form-control {
     display: inline-flex;
     vertical-align: middle;
     width: 100%;
-    padding: 10px 13px;
+    padding: 5px;
 }
 
 .sidebar .menu .list a:hover,
@@ -10556,9 +10557,9 @@ fieldset[disabled] .form-control {
 }
 
 .sidebar .menu .list .ml-menu li a {
-    padding-left: 55px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-left: 35px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle) {

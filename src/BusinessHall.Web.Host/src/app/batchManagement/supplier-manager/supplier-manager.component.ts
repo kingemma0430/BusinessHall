@@ -1,10 +1,12 @@
 import { Component, Injector, AfterViewInit, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-
+import { MatDialog } from '@angular/material';
+import { finalize } from 'rxjs/operators';
 
 import { SelectItem } from 'primeng/primeng';
-import { Supplier, SupplierStatusEnum } from '@shared/models/supplier';
+import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';
+import { CreateSupplierComponent } from './create-supplier/create-supplier.component';
 
 @Component({
   selector: 'app-supplier-manager',
@@ -15,7 +17,7 @@ import { Supplier, SupplierStatusEnum } from '@shared/models/supplier';
 export class SupplierManagerComponent extends AppComponentBase implements OnInit {
 
 
-  datas: Supplier[];
+  datas: SupplierDto[];
 
   sortOptions: SelectItem[];
 
@@ -28,8 +30,12 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
   cols: any[];
   columns: any[];
   exportColumns: any[];
-  selectedItems: Supplier[] = [];
-  constructor(injector: Injector) { super(injector); }
+  selectedItems: SupplierDto[] = [];
+  constructor(
+    injector: Injector,
+    private _dialog: MatDialog) {
+    super(injector);
+  }
 
   ngOnInit() {
     this.sortOptions = [
@@ -53,13 +59,13 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
   }
 
   loadTestData() {
-    let tmpArray: Supplier[] = [];
+    let tmpArray: SupplierDto[] = [];
     for (let index = 0; index < 50; index++) {
-      let model: Supplier = new Supplier();
+      let model: SupplierDto = new SupplierDto();
       model.id = index + 1;
       model.name = "Supplier" + model.id.toString();
       model.cretionTime = new Date();
-      model.isAutoReturnMoney = (index % 2 == 0 ? true : false);
+      model.isAutoReturnMoney = index % 2 == 0 ? true : false;
       model.status = SupplierStatusEnum.Close;
       if (model.isAutoReturnMoney) {
         model.status = SupplierStatusEnum.Open;
@@ -86,25 +92,13 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
     this.first = 0;
   }
 
-  exportPdf() {
-    import("jspdf").then(jsPDF => {
-      import("jspdf-autotable").then(x => {
-        const doc = new jsPDF.default(0, 0);
-        doc.autoTable(this.columns, this.datas);
-        let date: Date = new Date();
-        let pdfFilename: string = date.toLocaleDateString() + ".pdf";
-        doc.save(pdfFilename);
-      })
-    })
-  }
-
   exportExcel() {
     import("xlsx").then(xlsx => {
       const worksheet = xlsx.utils.json_to_sheet(this.datas);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       let date: Date = new Date();
-      let excelFilename: string = date.toLocaleDateString() ;
+      let excelFilename: string = date.toLocaleDateString();
       this.saveAsExcelFile(excelBuffer, excelFilename);
     });
   }
@@ -119,6 +113,51 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
       FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     });
   }
+  handleChange($event, rowData: SupplierDto) {
+    console.log(rowData);
+  }
 
+  refresh() {
+
+  }
+
+  create(): void {
+    this.showCreateOrEditUserDialog();
+  }
+
+  edit(item: SupplierDto): void {
+    this.showCreateOrEditUserDialog(item.id);
+  }
+
+  delete(item: SupplierDto) {
+    abp.message.confirm(
+      this.l('UserDeleteWarningMessage', item.name),
+      (result: boolean) => {
+        if (result) {
+          // this._userService.delete(user.id).subscribe(() => {
+          //     abp.notify.success(this.l('SuccessfullyDeleted'));
+          //     this.refresh();
+          // });
+        }
+      }
+    );
+  }
+
+  private showCreateOrEditUserDialog(id?: number): void {
+    let createOrEditUserDialog;
+    if (id === undefined || id <= 0) {
+      createOrEditUserDialog = this._dialog.open(CreateSupplierComponent);
+    } else {
+      createOrEditUserDialog = this._dialog.open(CreateSupplierComponent, {
+        data: id
+      });
+    }
+
+    createOrEditUserDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.refresh();
+      }
+    });
+  }
 
 }

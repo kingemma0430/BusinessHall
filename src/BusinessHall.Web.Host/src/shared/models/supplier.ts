@@ -1,4 +1,4 @@
-export class Supplier {
+export class SupplierDto {
     id: number;
     name: string;
     tenantId: number;

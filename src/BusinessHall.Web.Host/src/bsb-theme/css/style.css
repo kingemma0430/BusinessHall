@@ -11124,3 +11124,26 @@ html.ie11 .dropdown-menu ul.menu li a {
 html.ie11 .bs-searchbox .form-control {
     width: 90%;
 }
+
+.floatRight {
+    float: right;
+}
+
+.marginRight05em {
+    margin-right: 0.5em;
+}
+
+body .ui-table .ui-table-summary {
+    border-top: 0 none;
+    font-weight: 700;
+    margin-top: -35px;
+    text-align: left !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-checkbox {
+    padding-bottom: 5px;
+}

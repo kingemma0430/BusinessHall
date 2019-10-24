@@ -112,7 +112,9 @@
     <text name="Status">Status</text>
     <text name="Open">Open</text>
     <text name="Close">Close</text>
- 
+    <text name="TotalRecords">Total Records: </text>
+    <text name="CreateSupplier">Create Supplier</text>
+    <text name="EditSupplier">Edit Supplier</text>
 
   </texts>
 </localizationDictionary>

@@ -1,0 +1,29 @@
+<form autocomplete="off" #createSupplierModal="ngForm" (ngSubmit)="save()">
+    <h1 mat-dialog-title *ngIf="!_id">{{ "CreateSupplier" | localize }}</h1>
+    <h1 mat-dialog-title *ngIf="_id">{{ "EditSupplier" | localize }}</h1>
+    <mat-dialog-content style="width:600px;height:200px;">
+        <div class="ui-g-12">
+            <span class="ui-md-3">{{'SupplierName' | localize}}: </span>
+            <input class="ui-md-9" type="text" pInputText [(ngModel)]="newItem.SupplierName" name="SupplierName" [placeholder]="'SupplierName' | localize" />
+        </div>
+        <div class="ui-g-12">
+            <span class="ui-md-3">{{'Status' | localize}}: </span>
+            <div class="ui-md-9">
+                <p-checkbox name="status" [(ngModel)]="newItem.status" binary="true"></p-checkbox>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <span class="ui-md-3">{{'IsAutoReturnMoney' | localize}}: </span>
+            <p-toggleButton class="ui-md-9" name="isAutoReturnMoney" [onLabel]="l('Open')" [offLabel]="l('Close')" (onChange)="handleChange($event,rowData)" [(ngModel)]="newItem.isAutoReturnMoney">
+            </p-toggleButton>
+        </div>
+    </mat-dialog-content>
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+            {{ "Cancel" | localize }}
+        </button>
+        <button mat-flat-button type="submit" flex="15" color="primary" [disabled]="!createSupplierModal.form.valid || saving">
+            {{ "Save" | localize }}
+        </button>
+    </div>
+</form>

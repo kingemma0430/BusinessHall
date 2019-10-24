@@ -41,8 +41,11 @@ export class AppComponent extends AppComponentBase
   }
 
   ngAfterViewInit(): void {
-    $.AdminBSB.activateAll();
-    $.AdminBSB.activateDemo();
+    if ($.AdminBSB) {
+      $.AdminBSB.activateAll();
+      $.AdminBSB.activateDemo();
+    }
+  
   }
 
   onResize(event) {

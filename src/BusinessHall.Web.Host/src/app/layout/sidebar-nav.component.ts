@@ -85,10 +85,4 @@ export class SideBarNavComponent extends AppComponentBase {
             });
         }
     }
-
-    showChildren(menuItem: MenuItem) {
-        if (menuItem && menuItem.items && menuItem.items.length > 0) {
-            
-        }
-    }
 }

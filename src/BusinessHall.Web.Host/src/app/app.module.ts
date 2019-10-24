@@ -91,6 +91,7 @@ import { DailyBalanceComponent } from './batchManagement/daily-balance/daily-bal
 import { AlertSettingComponent } from './batchManagement/alert-setting/alert-setting.component';
 import { CreditManagerComponent } from './batchManagement/credit-manager/credit-manager.component';
 import { CallOrderComponent } from './batchManagement/call-order/call-order.component';
+import { CreateSupplierComponent } from './batchManagement/supplier-manager/create-supplier/create-supplier.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { CallOrderComponent } from './batchManagement/call-order/call-order.comp
     DailyBalanceComponent,
     AlertSettingComponent,
     CreditManagerComponent,
-    CallOrderComponent
+    CallOrderComponent,
+    CreateSupplierComponent
   ],
   imports: [
     CommonModule,
@@ -159,7 +161,8 @@ import { CallOrderComponent } from './batchManagement/call-order/call-order.comp
     // users
     CreateUserDialogComponent,
     EditUserDialogComponent,
-    ResetPasswordDialogComponent
+    ResetPasswordDialogComponent,
+    CreateSupplierComponent
   ]
 })
 export class AppModule { }

@@ -98,7 +98,7 @@
     <text name="EditTenant">编辑租户</text>
 
     <text name="UpdatePassword">修改密码</text>
-
+    <text name="Refresh">刷新</text>
 
     <text name="BatchManager">批充管理</text>
     <text name="SupplierManager">供应商</text>
@@ -115,7 +115,9 @@
     <text name="Status">状态</text>
     <text name="Open">开启</text>
     <text name="Close">关闭</text>
-    
+    <text name="TotalRecords">共计: </text>
+    <text name="CreateSupplier">创建新供应商</text>
+    <text name="EditSupplier">编辑供应商</text>
   </texts>
 </localizationDictionary>
 

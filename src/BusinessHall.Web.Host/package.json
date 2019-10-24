@@ -47,6 +47,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^3.2.1",
     "famfamfam-flags": "^1.0.0",
+    "file-saver": "^2.0.2",
     "flot": "^0.8.0-alpha",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
@@ -56,6 +57,8 @@
     "jquery-slimscroll": "^1.3.8",
     "jquery-sparkline": "^2.4.0",
     "js-cookie": "^2.1.4",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.2.9",
     "linq": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
@@ -75,6 +78,7 @@
     "toastr": "^2.1.2",
     "ts-helpers": "^1.1.2",
     "web-animations-js": "^2.3.2",
+    "xlsx": "^0.15.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

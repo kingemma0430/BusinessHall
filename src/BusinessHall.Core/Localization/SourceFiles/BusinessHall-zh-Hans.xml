@@ -65,7 +65,7 @@
     <text name="DisplayName">显示名</text>
     <text name="Description">描述</text>
     <text name="IsStatic">是否内置</text>
-
+    <text name="Save">保存</text>
     <text name="All">全部</text>
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
@@ -118,6 +118,9 @@
     <text name="TotalRecords">共计: </text>
     <text name="CreateSupplier">创建新供应商</text>
     <text name="EditSupplier">编辑供应商</text>
+    <text name="UserDeleteWarningMessage">你确定要删除 {0} 吗?</text>
+    <text name="UserDeleteWarningMessageDirectly">你确定要删除它吗?</text>
+
   </texts>
 </localizationDictionary>
 

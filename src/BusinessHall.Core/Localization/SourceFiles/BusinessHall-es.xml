@@ -115,6 +115,7 @@
     <text name="TotalRecords">Total Records: </text>
     <text name="CreateSupplier">Create Supplier</text>
     <text name="EditSupplier">Edit Supplier</text>
-
+    <text name="UserDeleteWarningMessage">Are you sure to delete {0}?</text>
+    <text name="UserDeleteWarningMessageDirectly">Are you sure to delete it?</text>
   </texts>
 </localizationDictionary>

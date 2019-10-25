@@ -15,9 +15,9 @@ namespace BusinessHall.BasicDatas
 
         List<ProvinceDto> GetProvinceListCache();
 
-        List<CityDto> GetCityList(string provinceId);
+        List<CityDto> GetCityList();
 
-        List<CityDto> GetCityListCache(string provinceId);
+        List<CityDto> GetCityListCache();
 
         List<AreaDto> GetAreaList(string cityId);
 
@@ -27,6 +27,6 @@ namespace BusinessHall.BasicDatas
 
         List<EthnicGroupDto> GetEthnicGroupListCache();
 
-        List<TenantDto> GetAllTenantDto();
+        List<TenantDto> GetAllTenantList();
     }
 }

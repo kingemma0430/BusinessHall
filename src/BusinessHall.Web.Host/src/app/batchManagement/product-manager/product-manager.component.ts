@@ -3,10 +3,17 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { MatDialog } from '@angular/material';
 import { finalize } from 'rxjs/operators';
+import * as Enumerable from 'linq';
 
 import { SelectItem } from 'primeng/primeng';
 import { ProductDto, ProductStatusEnum } from '@shared/models/product';
 import { CreateProductComponent } from './create-product/create-product.component';
+
+import {
+  BasicDataService,
+  ProvinceDto, CityDto, AreaDto, EthnicGroupDto, TenantDto
+} from '@shared/basicDataServices/basic-data-service.service';
+
 
 @Component({
   selector: 'app-product-manager',
@@ -20,12 +27,23 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   records: ProductDto[];
 
 
-  supplierList: any[] = [];
+  supplierList: SelectItem[] = [];
   provinceList: any[] = [];
-  cityList: any[] = [];
-  businesseList: any[] = [];
-  faceValueList: any[] = [];
-  statusList: any[] = [];
+
+  selectedSupplierList: any[] = [];
+  selectedProvinceList: ProvinceDto[] = [];
+  selectedCityList: CityDto[] = [];
+
+  selectedBusinessList: any[] = [];
+  selectedFaceValueList: any[] = [];
+  selectedStatus: any[] = [];
+
+
+  cityList: SelectItem[] = [];
+  cityListAll: CityDto[] = [];
+  businesseList: SelectItem[] = [];
+  faceValueList: SelectItem[] = [];
+  statusList: SelectItem[] = [];
 
 
   sortOptions: SelectItem[];
@@ -42,7 +60,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   selectedItems: ProductDto[] = [];
   constructor(
     injector: Injector,
-    private _dialog: MatDialog) {
+    private _dialog: MatDialog,
+    private _basicDataService: BasicDataService) {
     super(injector);
   }
 
@@ -53,6 +72,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     ];
     this.initialColumns();
     this.loadTestData();
+    this.loadProvinceList();
+    this.loadCityList();
   }
 
 
@@ -69,6 +90,44 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
     this.exportColumns = this.cols.map(col => ({ title: col.header, dataKey: col.field }));
   }
+
+  loadProvinceList() {
+    this._basicDataService.GetProvinceListCache().subscribe(data => {
+      console.log(data);
+      let tmpDatas: ProvinceDto[] = data as ProvinceDto[];
+      let tmpProvinceList: any[] = [];
+      if (tmpDatas) {
+        tmpDatas.forEach(element => {
+          tmpProvinceList.push({ value: element, label: element.name });
+        });
+      }
+      this.provinceList = tmpProvinceList;
+    })
+  }
+
+  loadCityList(provinceId: string = '') {
+    this._basicDataService.GetCityListCache().subscribe(data => {
+      let tmpDatas: CityDto[] = data as CityDto[];
+      this.cityListAll = tmpDatas;
+    })
+  }
+
+
+  getCityByProviceIds(inputSelectedProvinceList: ProvinceDto[]) {
+    let tmpDatas: CityDto[] = this.cityListAll;
+    if (inputSelectedProvinceList && inputSelectedProvinceList.length) {
+      let pIds: string[] = Enumerable.from(inputSelectedProvinceList).select(x => x.provinceId).toArray();
+      tmpDatas = Enumerable.from(this.cityListAll).where(x => pIds.indexOf(x.provinceId) >= 0).toArray();
+    }
+    let tmpCityList: SelectItem[] = [];
+    if (tmpDatas) {
+      tmpDatas.forEach(element => {
+        tmpCityList.push({ value: element.cityId, label: element.name });
+      });
+    }
+    this.cityList = tmpCityList;
+  }
+
 
   loadTestData() {
     let tmpArray: ProductDto[] = [];
@@ -168,9 +227,12 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
 
-  supplierListonPanelHide(event)
-  {
-    
+  supplierListonPanelHide(event) {
+
+  }
+
+  provinceListonPanelHide(event) {
+    this.getCityByProviceIds(this.selectedProvinceList);
   }
 
   search() {

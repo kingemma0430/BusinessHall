@@ -3,6 +3,8 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { MatDialog } from '@angular/material';
 import { finalize } from 'rxjs/operators';
+import * as Enumerable from 'linq';
+
 
 import { SelectItem } from 'primeng/primeng';
 import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';

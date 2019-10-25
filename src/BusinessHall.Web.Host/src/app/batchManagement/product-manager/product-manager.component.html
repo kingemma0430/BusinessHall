@@ -38,15 +38,15 @@
                 </div>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                 </div>
-                <p-multiSelect class="ui-g-12 ui-md-2 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="supplierList" [(ngModel)]="selectedSupplierList" [filter]="true" filterBy="label,value.name"
-                    (onPanelHide)="supplierListonPanelHide($event)"></p-multiSelect>
-                <p-multiSelect class="ui-g-12 ui-md-2 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="provinceList" [(ngModel)]="selectedProvinceList" [filter]="true" filterBy="label,value.name"
-                    [virtualScroll]="true" itemSize="50"></p-multiSelect>
-                <p-multiSelect class="ui-g-12 ui-md-2 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="cityList" [(ngModel)]="selectedCityList" [filter]="true" filterBy="label,value.name"
-                    [virtualScroll]="true" itemSize="50"></p-multiSelect>
-                <p-multiSelect class="ui-g-12 ui-md-2 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="businesseList" [(ngModel)]="selectedBusinessList" [filter]="true" filterBy="label,value.name"></p-multiSelect>
-                <p-multiSelect class="ui-g-12 ui-md-2 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="faceValueList" [(ngModel)]="selectedFaceValueList"></p-multiSelect>
-                <p-multiSelect class="ui-g-12 ui-md-1 fieldDivPadding" [optionLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}" [options]="statusList" [(ngModel)]="selectedStatus"></p-multiSelect>
+                <p-multiSelect [options]="supplierList" [(ngModel)]="selectedSupplierList" [filter]="true" filterBy="label" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
+                    [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="provinceList" [(ngModel)]="selectedProvinceList" [filter]="true" filterBy="label" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
+                    [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="cityList" [(ngModel)]="selectedCityList" [filter]="true" filterBy="label" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
+                    [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="businesseList" [(ngModel)]="selectedBusinessList" [filter]="true" filterBy="label" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="faceValueList" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="statusList" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-1 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                     <button type="button" pButton [label]="l('Search')" (click)="search()" class="ui-button-warning"></button>
                 </div>

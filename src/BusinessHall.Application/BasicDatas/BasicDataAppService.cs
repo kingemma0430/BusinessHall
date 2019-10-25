@@ -37,7 +37,8 @@ namespace BusinessHall.BasicDatas
 
         public List<ProvinceDto> GetProvinceList()
         {
-            return ObjectMapper.Map<List<ProvinceDto>>(_provinceRepository.GetAllList());
+            var result = _provinceRepository.GetAllList();
+            return ObjectMapper.Map<List<ProvinceDto>>(result);
         }
 
         public List<ProvinceDto> GetProvinceListCache()
@@ -48,17 +49,18 @@ namespace BusinessHall.BasicDatas
                     .Get("ProvinceCache", () => GetProvinceList()) as List<ProvinceDto>;
         }
 
-        public List<CityDto> GetCityList(string provinceId)
+        public List<CityDto> GetCityList()
         {
-            return ObjectMapper.Map<List<CityDto>>(_cityRepository.GetAllList(x => x.ProvinceId == provinceId));
+            var result = _cityRepository.GetAllList();
+            return ObjectMapper.Map<List<CityDto>>(result);
         }
 
-        public List<CityDto> GetCityListCache(string provinceId)
+        public List<CityDto> GetCityListCache()
         {
             //Try to get from cache
             return _cacheManager
                     .GetCache("CityCache")
-                    .Get(provinceId, () => GetCityList(provinceId)) as List<CityDto>;
+                    .Get("CityCache", () => GetCityList()) as List<CityDto>;
         }
 
         public List<AreaDto> GetAreaList(string cityId)
@@ -84,7 +86,7 @@ namespace BusinessHall.BasicDatas
                      .Get("EthnicGroupCache", () => GetEthnicGroupList()) as List<EthnicGroupDto>;
         }
 
-        public List<TenantDto> GetAllTenantDto()
+        public List<TenantDto> GetAllTenantList()
         {
             var values = _tenantrepository.GetAllList().OrderBy(x => x.Id);
             List<TenantDto> list = ObjectMapper.Map<List<TenantDto>>(values);

@@ -6,12 +6,15 @@
 *********************************************************************************/
 
 using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using BusinessHall.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BusinessHall.BasicDatas.Dto
 {
+    [AutoMapFrom(typeof(City))]
     public class CityDto : EntityDto
     {
         public string CityId { get; set; }

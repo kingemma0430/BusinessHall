@@ -6,6 +6,8 @@ import * as ApiServiceProxies from './service-proxies';
 
 import { ServiceHelperService } from '../serviceHelpers/service-helper.service';
 import { MenuServiceService } from '../menuServices/menu-service.service';
+
+import { BasicDataService } from '../basicDataServices/basic-data-service.service';
 ;
 @NgModule({
     providers: [
@@ -16,7 +18,9 @@ import { MenuServiceService } from '../menuServices/menu-service.service';
         ApiServiceProxies.TokenAuthServiceProxy,
         ApiServiceProxies.AccountServiceProxy,
         ApiServiceProxies.ConfigurationServiceProxy,
-        ServiceHelperService, MenuServiceService,
+        ServiceHelperService,
+        MenuServiceService,
+        BasicDataService,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

@@ -6,6 +6,8 @@
 *********************************************************************************/
 
 using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using BusinessHall.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +17,7 @@ namespace BusinessHall.BasicDatas.Dto
     /// <summary>
     /// 种族
     /// </summary>
+    [AutoMapFrom(typeof(EthnicGroup))]
     public class EthnicGroupDto : EntityDto
     {
         public string Name { get; set; }

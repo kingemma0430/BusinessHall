@@ -117,5 +117,22 @@
     <text name="EditSupplier">Edit Supplier</text>
     <text name="UserDeleteWarningMessage">Are you sure to delete {0}?</text>
     <text name="UserDeleteWarningMessageDirectly">Are you sure to delete it?</text>
+
+    <text name="ProductList">Produc List</text>
+    <text name="Supplier">Supplier</text>
+    <text name="Province">Province</text>
+    <text name="City">City</text>
+    <text name="Business">Business</text>
+    <text name="FaceValue">Face Value</text>
+    <text name="Discount">Discount(%)</text>
+    <text name="PresentValue">Present Value</text>
+    <text name="OnShelf">On Shelf</text>
+    <text name="OutShelf">Out Shelf</text>
+    <text name="CreateProduct">Create Product</text>
+    <text name="EditProduct">Edit Product</text>
+    <text name="GlobalFilter">Global Filter</text>
+    <text name="ExportEXCEL">Export EXCEL</text>
+    <text name="Search">Search</text>
+
   </texts>
 </localizationDictionary>

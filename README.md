@@ -3,6 +3,11 @@ Author：       Zhen (Evan) Wang , 王振,    Tel：18901599114， QQ：27350923
 Date：         10/18/2019 4:14:48 PM
 Description：  Personal Project to spend my free time on weekends and nights.   
 *********************************************************************************/
+#========================================Important========================
+
+When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.
+
+#========================================Important========================
 
 #****************************************Tools************************************************************#
 	1. VS2019 community 16.2.4
@@ -59,6 +64,9 @@ Make sure all models in BusinessHallModels folder for code rules.
 #********************Components of Primeng************************************************************#
 https://www.primefaces.org/primeng/#/
 
+
+icons of primeng
+https://www.primefaces.org/primereact/#/icons/
 	
 	
 #******************** Material icons************************************************************# 

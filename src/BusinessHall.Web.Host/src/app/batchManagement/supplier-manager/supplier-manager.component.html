@@ -20,13 +20,17 @@
             <div class="body table-responsive">
                 <p-table #dt [columns]="cols" [value]="datas" selectionMode="multiple" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedItems">
                     <ng-template pTemplate="caption">
-                        <div class="ui-helper-clearfix" style="text-align: left">
-                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                            <input type="text" pInputText size="50" [placeholder]="'Global Filter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-                            <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="Add" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning floatRight"></button>
-                            <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="margin-right: 0.5em;" class="ui-button-warning floatRight"></button>
-                            <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success floatRight"></button>
-                            <button type="button" pButton icon="pi pi-file" iconPos="left" label="CSV - Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right;margin-right: 0.5em;"></button>
+                        <div class="ui-helper-clearfix">
+                            <div class="ui-g-12 ui-md-6 align-left">
+                                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                                <input type="text" pInputText size="50" [placeholder]="'GlobalFilter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                            </div>
+                            <div class="ui-g-12 ui-md-6 align-right">
+                                <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('Add')" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning"></button>
+                                <button type="button" pButton icon="pi pi-file-excel" iconPos="left" [label]="l('ExportEXCEL')" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+                                <!-- <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="margin-right: 0.5em;" class="ui-button-warning"></button> -->
+                                <!-- <button type="button" pButton icon="pi pi-file" iconPos="left" label="CSV - Selection Only" (click)="dt.exportCSV({selectionOnly:true})"></button> -->
+                            </div>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header" let-columns>

@@ -121,6 +121,22 @@
     <text name="UserDeleteWarningMessage">你确定要删除 {0} 吗?</text>
     <text name="UserDeleteWarningMessageDirectly">你确定要删除它吗?</text>
 
+    <text name="ProductList">供货商产品列表</text>
+    <text name="Supplier">供货商</text>
+    <text name="Province">省份</text>
+    <text name="City">城市</text>
+    <text name="Business">运营商</text>
+    <text name="FaceValue">面值</text>
+    <text name="Discount">折扣(成本)%</text>
+    <text name="PresentValue">成本</text>
+    <text name="OnShelf">上架</text>
+    <text name="OutShelf">下架</text>
+    <text name="CreateProduct">创建新产品</text>
+    <text name="EditProduct">编辑产品</text>
+    <text name="GlobalFilter">全局检索</text>
+    <text name="ExportEXCEL">导出EXCEL</text>
+    <text name="Search">查询</text>
+
   </texts>
 </localizationDictionary>
 

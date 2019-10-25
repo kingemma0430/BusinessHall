@@ -6,8 +6,8 @@ export class SupplierDto {
     status: SupplierStatusEnum;
     creatorUserId: number;
     cretionTime: Date;
-
 }
+
 
 export enum SupplierStatusEnum {
     Open = 1,

@@ -13,5 +13,6 @@
         public const int MaxLength45 = 45;
         public const int MaxLength255 = 255;
         public const int MaxLength500 = 500;
+        public const int MaxCodeLength = 6;
     }
 }

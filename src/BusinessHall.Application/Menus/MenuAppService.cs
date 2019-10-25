@@ -19,7 +19,6 @@ namespace BusinessHall.Menus
     [AbpAuthorize(PermissionNames.Pages_Menus)]
     public class MenuAppService : BusinessHallAppServiceBase, IMenuAppService
     {
-
         private readonly IRepository<AbpMenu> _menuRepository;
         private readonly IRepository<AbpUserRoleMenu> _userRoleMenuRepository;
         private readonly IAbpSession _abpSession;

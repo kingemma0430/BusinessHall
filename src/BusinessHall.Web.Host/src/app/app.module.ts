@@ -92,6 +92,7 @@ import { AlertSettingComponent } from './batchManagement/alert-setting/alert-set
 import { CreditManagerComponent } from './batchManagement/credit-manager/credit-manager.component';
 import { CallOrderComponent } from './batchManagement/call-order/call-order.component';
 import { CreateSupplierComponent } from './batchManagement/supplier-manager/create-supplier/create-supplier.component';
+import { CreateProductComponent } from './batchManagement/product-manager/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { CreateSupplierComponent } from './batchManagement/supplier-manager/crea
     AlertSettingComponent,
     CreditManagerComponent,
     CallOrderComponent,
-    CreateSupplierComponent
+    CreateSupplierComponent,
+    CreateProductComponent
   ],
   imports: [
     CommonModule,
@@ -162,7 +164,8 @@ import { CreateSupplierComponent } from './batchManagement/supplier-manager/crea
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
-    CreateSupplierComponent
+    CreateSupplierComponent,
+    CreateProductComponent
   ]
 })
 export class AppModule { }

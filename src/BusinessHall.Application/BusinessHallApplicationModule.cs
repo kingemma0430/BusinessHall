@@ -2,6 +2,7 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BusinessHall.Authorization;
+using System;
 
 namespace BusinessHall
 {
@@ -12,6 +13,37 @@ namespace BusinessHall
     {
         public override void PreInitialize()
         {
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                ////=========================Here need to add MapTo list=========================
+                //config.CreateMap<UserDetails.Dto.UserDetailDto, UserDetail>()
+                //      .ForMember(u => u.Department, options => options.Ignore());
+                //config.CreateMap<UserDetail, UserDetailDto>();
+                //config.CreateMap<Department, DepartmentDto>();
+                //config.CreateMap<DepartmentDto, Department>();
+                //config.CreateMap<RoleMenuDto, RoleMenu>();
+                //config.CreateMap<RoleMenu, RoleMenuDto>();
+            });
+
+            //Configuration for a specific cache
+            Configuration.Caching.Configure("ProvinceCache", cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(8);
+            });
+            Configuration.Caching.Configure("CityCache", cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(8);
+            });
+            Configuration.Caching.Configure("AreaCache", cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(8);
+            });
+            Configuration.Caching.Configure("EthnicGroupCache", cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(8);
+            });
+
             Configuration.Authorization.Providers.Add<BusinessHallAuthorizationProvider>();
         }
 

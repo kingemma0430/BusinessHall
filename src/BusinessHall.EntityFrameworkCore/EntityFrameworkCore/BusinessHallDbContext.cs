@@ -19,6 +19,10 @@ namespace BusinessHall.EntityFrameworkCore
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<SupplierPay> SupplierPays { get; set; }
 
+        public DbSet<Entities.Province> Provinces { get; set; }
+        public DbSet<Entities.City> Cities { get; set; }
+        public DbSet<Entities.Area> Areas { get; set; }
+        public DbSet<Entities.EthnicGroup> EthnicGroups { get; set; }
 
         public BusinessHallDbContext(DbContextOptions<BusinessHallDbContext> options)
             : base(options)

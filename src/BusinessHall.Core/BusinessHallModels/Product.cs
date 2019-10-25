@@ -34,6 +34,11 @@ namespace BusinessHall.BusinessHallModels
         public ProductStatusEnum Status { get; set; }
 
         public virtual Supplier Supplier { get; set; }
+
+        public virtual IEnumerable<ProductFaceValue> ProductFaceValues { get; set; }
+
+        public virtual IEnumerable<ProductOperator> ProductOperators { get; set; }
+
     }
 
     public enum ProductStatusEnum

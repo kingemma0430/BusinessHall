@@ -11147,3 +11147,18 @@ mat-form-field {
 mat-checkbox {
     padding-bottom: 5px;
 }
+
+.spanField {
+    width: 100px;
+    text-align: right;
+}
+
+.fieldDivPadding {
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+.primengMultilSelect {
+    vertical-align: middle;
+}

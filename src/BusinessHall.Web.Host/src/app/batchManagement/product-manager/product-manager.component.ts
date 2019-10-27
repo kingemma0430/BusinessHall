@@ -28,7 +28,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
 
   supplierList: SelectItem[] = [];
-  provinceList: any[] = [];
+  provinceList: ProvinceDto[] = [];
 
   selectedSupplierList: any[] = [];
   selectedProvinceList: ProvinceDto[] = [];
@@ -39,7 +39,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   selectedStatus: any[] = [];
 
 
-  cityList: SelectItem[] = [];
+  cityList: CityDto[] = [];
   cityListAll: CityDto[] = [];
   businesseList: SelectItem[] = [];
   faceValueList: SelectItem[] = [];
@@ -95,13 +95,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     this._basicDataService.GetProvinceListCache().subscribe(data => {
       console.log(data);
       let tmpDatas: ProvinceDto[] = data as ProvinceDto[];
-      let tmpProvinceList: any[] = [];
-      if (tmpDatas) {
-        tmpDatas.forEach(element => {
-          tmpProvinceList.push({ value: element, label: element.name });
-        });
-      }
-      this.provinceList = tmpProvinceList;
+      this.provinceList = tmpDatas;
     })
   }
 
@@ -119,13 +113,13 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       let pIds: string[] = Enumerable.from(inputSelectedProvinceList).select(x => x.provinceId).toArray();
       tmpDatas = Enumerable.from(this.cityListAll).where(x => pIds.indexOf(x.provinceId) >= 0).toArray();
     }
-    let tmpCityList: SelectItem[] = [];
-    if (tmpDatas) {
-      tmpDatas.forEach(element => {
-        tmpCityList.push({ value: element.cityId, label: element.name });
-      });
-    }
-    this.cityList = tmpCityList;
+    // let tmpCityList: SelectItem[] = [];
+    // if (tmpDatas) {
+    //   tmpDatas.forEach(element => {
+    //     tmpCityList.push({ value: element.cityId, label: element.name });
+    //   });
+    // }
+    this.cityList = tmpDatas;
   }
 
 

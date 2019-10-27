@@ -136,6 +136,7 @@
     <text name="GlobalFilter">全局检索</text>
     <text name="ExportEXCEL">导出EXCEL</text>
     <text name="Search">查询</text>
+    <text name="emptyFilterMessage">无数据</text>
 
   </texts>
 </localizationDictionary>

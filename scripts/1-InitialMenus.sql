@@ -1,7 +1,7 @@
 
-select * from abpauditlogs  order by id desc
+select * from abpauditlogs  order by id desc;
 
-Delete from EthnicGroups;
+delete from EthnicGroups;
 delete from areas;
 delete from cities;
 delete from provinces;

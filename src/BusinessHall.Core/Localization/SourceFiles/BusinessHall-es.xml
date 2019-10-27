@@ -133,6 +133,6 @@
     <text name="GlobalFilter">Global Filter</text>
     <text name="ExportEXCEL">Export EXCEL</text>
     <text name="Search">Search</text>
-
+    <text name="emptyFilterMessage">No results found</text>
   </texts>
 </localizationDictionary>

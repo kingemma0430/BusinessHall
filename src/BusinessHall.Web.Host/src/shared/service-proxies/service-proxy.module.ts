@@ -8,7 +8,8 @@ import { ServiceHelperService } from '../serviceHelpers/service-helper.service';
 import { MenuServiceService } from '../menuServices/menu-service.service';
 
 import { BasicDataService } from '../basicDataServices/basic-data-service.service';
-;
+import { SupplierManagerService } from '../supplierServices/supplier-manager.service';
+
 @NgModule({
     providers: [
         ApiServiceProxies.RoleServiceProxy,
@@ -21,6 +22,7 @@ import { BasicDataService } from '../basicDataServices/basic-data-service.servic
         ServiceHelperService,
         MenuServiceService,
         BasicDataService,
+        SupplierManagerService,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

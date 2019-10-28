@@ -13,6 +13,7 @@ namespace BusinessHall.SupplierManagers.Dto
     {
         public int? TenantId { get; set; }
 
+        [Required]
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Name { get; set; }
 

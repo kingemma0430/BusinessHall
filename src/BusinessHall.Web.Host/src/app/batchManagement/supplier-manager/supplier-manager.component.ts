@@ -9,6 +9,8 @@ import * as Enumerable from 'linq';
 import { SelectItem } from 'primeng/primeng';
 import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';
 import { CreateSupplierComponent } from './create-supplier/create-supplier.component';
+import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
+
 
 @Component({
   selector: 'app-supplier-manager',
@@ -19,7 +21,7 @@ import { CreateSupplierComponent } from './create-supplier/create-supplier.compo
 export class SupplierManagerComponent extends AppComponentBase implements OnInit {
 
 
-  datas: SupplierDto[];
+  records: SupplierDto[];
 
   sortOptions: SelectItem[];
 
@@ -35,7 +37,8 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
   selectedItems: SupplierDto[] = [];
   constructor(
     injector: Injector,
-    private _dialog: MatDialog) {
+    private _dialog: MatDialog,
+    private _supplierManagerService: SupplierManagerService) {
     super(injector);
   }
 
@@ -45,7 +48,7 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
       { label: 'Oldest First', value: 'cretionTime' }
     ];
     this.initialColumns();
-    this.loadTestData();
+    this.loadDatas();
   }
 
 
@@ -60,26 +63,16 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
     this.exportColumns = this.cols.map(col => ({ title: col.header, dataKey: col.field }));
   }
 
-  loadTestData() {
-    let tmpArray: SupplierDto[] = [];
-    for (let index = 0; index < 50; index++) {
-      let model: SupplierDto = new SupplierDto();
-      model.id = index + 1;
-      model.name = "Supplier" + model.id.toString();
-      model.cretionTime = new Date();
-      model.isAutoReturnMoney = index % 2 == 0 ? true : false;
-      model.status = SupplierStatusEnum.Close;
-      if (model.isAutoReturnMoney) {
-        model.status = SupplierStatusEnum.Open;
+  loadDatas() {
+    this._supplierManagerService.GetAll().subscribe(result => {
+      if (result) {
+        this.records = result["items"];
       }
-      tmpArray.push(model);
-    }
-    this.datas = tmpArray;
+    });
   }
 
   onSortChange(event) {
     let value = event.value;
-
     if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
@@ -95,32 +88,33 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
   }
 
   exportExcel() {
-    import("xlsx").then(xlsx => {
-      const worksheet = xlsx.utils.json_to_sheet(this.datas);
-      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
-      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      let date: Date = new Date();
-      let excelFilename: string = date.toLocaleDateString();
-      this.saveAsExcelFile(excelBuffer, excelFilename);
-    });
+    if (this.records) {
+      import("xlsx").then(xlsx => {
+        const worksheet = xlsx.utils.json_to_sheet(this.records);
+        const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+        let date: Date = new Date();
+        let excelFilename: string = date.toLocaleDateString();
+        this.saveAsExcelFile(excelBuffer, excelFilename);
+      });
+    }
   }
 
   saveAsExcelFile(buffer: any, fileName: string): void {
-    import("file-saver").then(FileSaver => {
-      let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-      let EXCEL_EXTENSION = '.xlsx';
-      const data: Blob = new Blob([buffer], {
-        type: EXCEL_TYPE
+    if (this.records) {
+      import("file-saver").then(FileSaver => {
+        let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        let EXCEL_EXTENSION = '.xlsx';
+        const data: Blob = new Blob([buffer], {
+          type: EXCEL_TYPE
+        });
+        FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
       });
-      FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
-    });
-  }
-  handleChange($event, rowData: SupplierDto) {
-    console.log(rowData);
+    }
   }
 
   refresh() {
-
+    this.loadDatas();
   }
 
   create(): void {
@@ -136,10 +130,10 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
       this.l('UserDeleteWarningMessage', item.name),
       (result: boolean) => {
         if (result) {
-          // this._userService.delete(user.id).subscribe(() => {
-          //     abp.notify.success(this.l('SuccessfullyDeleted'));
-          //     this.refresh();
-          // });
+          this._supplierManagerService.Delete(item.id).subscribe(() => {
+            abp.notify.success(this.l('SuccessfullyDeleted'));
+            this.refresh();
+          });
         }
       }
     );
@@ -156,6 +150,7 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
     }
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
+      console.log("result", result);
       if (result) {
         this.refresh();
       }

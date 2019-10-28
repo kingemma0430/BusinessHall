@@ -2,12 +2,14 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BusinessHall.Authorization;
+using BusinessHall.BusinessHallModels;
+using BusinessHall.SupplierManagers.Dto;
 using System;
 
 namespace BusinessHall
 {
     [DependsOn(
-        typeof(BusinessHallCoreModule), 
+        typeof(BusinessHallCoreModule),
         typeof(AbpAutoMapperModule))]
     public class BusinessHallApplicationModule : AbpModule
     {
@@ -23,7 +25,7 @@ namespace BusinessHall
                 //config.CreateMap<Department, DepartmentDto>();
                 //config.CreateMap<DepartmentDto, Department>();
                 //config.CreateMap<RoleMenuDto, RoleMenu>();
-                //config.CreateMap<RoleMenu, RoleMenuDto>();
+                config.CreateMap<SupplierDto, Supplier>();
             });
 
             //Configuration for a specific cache

@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div class="body table-responsive">
-                <p-table #dt [columns]="cols" [value]="datas" selectionMode="multiple" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedItems">
+                <p-table #dt [columns]="cols" [value]="records" selectionMode="multiple" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedItems">
                     <ng-template pTemplate="caption">
                         <div class="ui-helper-clearfix">
                             <div class="ui-g-12 ui-md-6 align-left">
@@ -28,8 +28,6 @@
                             <div class="ui-g-12 ui-md-6 align-right">
                                 <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('Add')" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning"></button>
                                 <button type="button" pButton icon="pi pi-file-excel" iconPos="left" [label]="l('ExportEXCEL')" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
-                                <!-- <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="margin-right: 0.5em;" class="ui-button-warning"></button> -->
-                                <!-- <button type="button" pButton icon="pi pi-file" iconPos="left" label="CSV - Selection Only" (click)="dt.exportCSV({selectionOnly:true})"></button> -->
                             </div>
                         </div>
                     </ng-template>
@@ -75,7 +73,7 @@
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="summary">
-                        {{'TotalRecords' | localize}} {{datas?.length}}
+                        {{'TotalRecords' | localize}} {{records?.length}}
                     </ng-template>
                 </p-table>
             </div>

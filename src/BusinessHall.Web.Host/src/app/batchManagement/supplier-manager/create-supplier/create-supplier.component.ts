@@ -12,6 +12,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 
 
 import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';
+import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
 
 @Component({
   selector: 'app-create-supplier',
@@ -26,39 +27,59 @@ export class CreateSupplierComponent extends AppComponentBase implements OnInit 
   constructor(
     injector: Injector,
     private _dialogRef: MatDialogRef<CreateSupplierComponent>,
+    private _supplierManagerService: SupplierManagerService,
     @Optional() @Inject(MAT_DIALOG_DATA) private _id: number
   ) {
     super(injector);
   }
 
   ngOnInit(): void {
-    // this._userService.get(this._id).subscribe(result => {
-    //   this.user = result;
-
-    //   this._userService.getRoles().subscribe(result2 => {
-    //     this.roles = result2.items;
-    //     this.setInitialRolesStatus();
-    //   });
-    // });
+    if (this._id > 0) {
+      this._supplierManagerService.GetById(this._id).subscribe(data => {
+        this.newItem = data;
+      });
+    }
   }
 
   save(): void {
     this.saving = true;
-    // this._userService
-    //   .create(this.user)
-    //   .pipe(
-    //     finalize(() => {
-    //       this.saving = false;
-    //     })
-    //   )
-    //   .subscribe(() => {
-    //     this.notify.info(this.l('SavedSuccessfully'));
-    //     this.close(true);
-    //   });
+    if (this.newItem.id > 0) {
+      this.update();
+    }
+    else {
+      this.create();
+    }
+  }
+
+  create() {
+    this._supplierManagerService
+      .Create(this.newItem)
+      .pipe(
+        finalize(() => {
+          this.saving = false;
+        })
+      )
+      .subscribe(data => {
+        this.notify.info(this.l('SavedSuccessfully'));
+        this.close(data);
+      });
+  }
+
+  update() {
+    this._supplierManagerService
+      .Update(this.newItem)
+      .pipe(
+        finalize(() => {
+          this.saving = false;
+        })
+      )
+      .subscribe(data => {
+        this.notify.info(this.l('SavedSuccessfully'));
+        this.close(data);
+      });
   }
 
   close(result: any): void {
     this._dialogRef.close(result);
   }
-
 }

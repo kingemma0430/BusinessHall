@@ -55,8 +55,8 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
-
+import { MenuModule } from 'primeng/menu';
+import { PanelMenuModule } from 'primeng/panelmenu';
 
 
 import { HomeComponent } from '@app/home/home.component';
@@ -145,6 +145,7 @@ import { CreateProductComponent } from './batchManagement/product-manager/create
     TreeModule, AccordionModule, CardModule, PanelModule, TabViewModule, ConfirmDialogModule, DialogModule,
     DynamicDialogModule, TooltipModule, FileUploadModule, ChartModule, MessagesModule, MessageModule,
     ToastModule, BlockUIModule, ProgressSpinnerModule,
+    MenuModule, PanelMenuModule,
     ModalModule.forRoot(),
     AbpModule,
     AppRoutingModule,

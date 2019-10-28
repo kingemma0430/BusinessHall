@@ -33,20 +33,6 @@
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name}}</span>
                             </a>
-                            <ul class="ml-menu" *ngIf="subMenuItem.items.length">
-                                <ng-template ngFor let-subSubMenuItem [ngForOf]="subMenuItem.items">
-                                    <li routerLinkActive="active">
-                                        <a [routerLink]="[subSubMenuItem.routerLink]" *ngIf="subSubMenuItem.routerLink">
-                                            <i *ngIf="subSubMenuItem.icon" class="material-icons">{{subSubMenuItem.icon}}</i>
-                                            <span>{{subSubMenuItem.name}}</span>
-                                        </a>
-                                        <a href="{{subSubMenuItem.url}}" target="_blank" *ngIf="subSubMenuItem.url">
-                                            <i *ngIf="subSubMenuItem.icon" class="material-icons">{{subSubMenuItem.icon}}</i>
-                                            <span>{{subSubMenuItem.name}}</span>
-                                        </a>
-                                    </li>
-                                </ng-template>
-                            </ul>
                         </li>
                     </ng-template>
                 </ul>

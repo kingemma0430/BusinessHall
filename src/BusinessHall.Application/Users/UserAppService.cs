@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -219,6 +221,18 @@ namespace BusinessHall.Users
             return true;
         }
 
+        public List<string> GetBusinessHallModelClasses()
+        {
+            List<string> classlist = ExtendsionHelper.GetBusinessHallModelClasses();
+            return classlist;
+        }
+
+
+        public List<string> GetEntitiesClasses()
+        {
+            List<string> classlist = ExtendsionHelper.GetEntitiesClasses();
+            return classlist;
+        }
     }
 }
 

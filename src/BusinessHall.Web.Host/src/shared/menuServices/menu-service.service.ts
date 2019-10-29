@@ -14,70 +14,26 @@ export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 @Injectable()
 export class MenuServiceService {
   private http: HttpClient;
-  private baseUrl: string;
+  private apiUrl: string = "/api/services/app/Menu/";
+
+
   protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
   constructor(
     @Inject(HttpClient) http: HttpClient,
-    private _serviceHelperService: ServiceHelperService,
-    @Optional() @Inject(API_BASE_URL) baseUrl?: string
+    private _serviceHelperService: ServiceHelperService
   ) {
     this.http = http;
-    this.baseUrl = baseUrl ? baseUrl : "";
-    this.baseUrl = AppConsts.remoteServiceBaseUrl;
-    console.log("URL",  AppConsts.remoteServiceBaseUrl);
   }
 
   GetAllMenus(): Observable<any> {
-    let url_ = this.baseUrl + "/api/services/app/Menu/GetAllMenus";
-    // if (permission !== undefined)
-    //     url_ += "Permission=" + encodeURIComponent("" + permission) + "&"; 
-    url_ = url_.replace(/[?&]$/, "");
-    let options_: any = {
-      observe: "response",
-      responseType: "blob",
-      headers: new HttpHeaders({
-        "Accept": "application/json"
-      })
-    };
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this._serviceHelperService.processGetDatas(response_);
-    })).pipe(_observableCatch((response_: any) => {
-      if (response_ instanceof HttpResponseBase) {
-        try {
-          return this._serviceHelperService.processGetDatas(<any>response_);
-        } catch (e) {
-          return <Observable<any>><any>_observableThrow(e);
-        }
-      } else
-        return <Observable<any>><any>_observableThrow(response_);
-    }));
+    let url_ = this.apiUrl + "GetAllMenus";
+    return this._serviceHelperService.get(url_);
   }
 
   GetMenusForCurreuntUser(): Observable<any> {
-    let url_ = this.baseUrl + "/api/services/app/Menu/GetMenusForCurreuntUser";
-    // if (permission !== undefined)
-    //     url_ += "Permission=" + encodeURIComponent("" + permission) + "&"; 
-    url_ = url_.replace(/[?&]$/, "");
-    let options_: any = {
-      observe: "response",
-      responseType: "blob",
-      headers: new HttpHeaders({
-        "Accept": "application/json"
-      })
-    };
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this._serviceHelperService.processGetDatas(response_);
-    })).pipe(_observableCatch((response_: any) => {
-      if (response_ instanceof HttpResponseBase) {
-        try {
-          return this._serviceHelperService.processGetDatas(<any>response_);
-        } catch (e) {
-          return <Observable<any>><any>_observableThrow(e);
-        }
-      } else
-        return <Observable<any>><any>_observableThrow(response_);
-    }));
+    let url_ = this.apiUrl + "GetMenusForCurreuntUser";
+    return this._serviceHelperService.get(url_);
   }
 
 }

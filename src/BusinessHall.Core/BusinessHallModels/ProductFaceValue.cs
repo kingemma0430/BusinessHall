@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using BusinessHall.Authorization.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,13 @@ namespace BusinessHall.BusinessHallModels
         public string Name { get; set; }
 
         public decimal FaceValue { get; set; }
+
+
+        public long CreatorUserId { get; set; }
+
+        public DateTime CretionTime { get; set; }
+
+        public User User { get; set; }
 
         public virtual Product Product { get; set; }
     }

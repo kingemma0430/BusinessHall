@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using BusinessHall.Authorization;
+using BusinessHall.@ModelManagers.Dto;
+using BusinessHall.BusinessHallModels;
+using Abp.Domain.Repositories;
+using Abp.AutoMapper;
+using System.Linq;
+
+
+namespace BusinessHall.@ModelManagers
+{
+    [AbpAuthorize(PermissionNames.Pages_@ModelManager)]
+    public class @ModelManagerAppService : BusinessHallAppServiceBase, I@ModelManagerAppService
+    {
+        private readonly IRepository<@Model> _@ModelClassRepository;
+
+        public @ModelManagerAppService(IRepository<@Model> @ModelClassRepository)
+        {
+            _@ModelClassRepository = @ModelClassRepository;
+        }
+
+        public async Task<ListResultDto<@ModelDto>> GetAll()
+        {
+            var result = await _@ModelClassRepository.GetAllListAsync();
+            return new ListResultDto<@ModelDto>(ObjectMapper.Map<List<@ModelDto>>(result));
+        }
+
+        public async Task<@ModelDto> GetById(int id)
+        {
+            @Model result = await _@ModelClassRepository.GetAsync(id);
+            @ModelDto dto = ObjectMapper.Map<@ModelDto>(result);
+            return dto;
+        }
+
+        public Task<@ModelDto> Create(@ModelDto @ModelClassDto)
+        {
+            @ModelClassDto.CreatorUserId = AbpSession.UserId.Value;
+            @ModelClassDto.CretionTime = DateTime.Now;
+            @Model @ModelClass = ObjectMapper.Map<@Model>(@ModelClassDto);
+            @ModelClassDto.Id = _@ModelClassRepository.InsertAndGetId(@ModelClass);
+            return Task.FromResult<@ModelDto>(@ModelClassDto);
+        }
+
+        public Task<@ModelDto> Update(@ModelDto @ModelClassDto)
+        {
+            @Model @ModelClass = ObjectMapper.Map<@Model>(@ModelClassDto);
+            @ModelClass = _@ModelClassRepository.Update(@ModelClass);
+            return Task.FromResult<@ModelDto>(@ModelClassDto);
+        }
+
+        public async Task Delete(int id)
+        {
+            await _@ModelClassRepository.DeleteAsync(id);
+        }
+
+        public async Task DeleteForMultiple(List<int> idList)
+        {
+            await _@ModelClassRepository.DeleteAsync(x => idList.Contains(x.Id));
+        }
+    }
+}

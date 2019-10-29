@@ -1,8 +1,8 @@
-/********************************************************************************
+#========================================
 Author：       Zhen (Evan) Wang , 王振,    Tel：18901599114， QQ：273509239， WeChat：18901599114
 Date：         10/18/2019 4:14:48 PM
 Description：  Personal Project to spend my free time on weekends and nights.   
-*********************************************************************************/
+#========================================
 #========================================Important========================
 
 When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.

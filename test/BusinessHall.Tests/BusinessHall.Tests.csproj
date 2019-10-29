@@ -11,6 +11,18 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="TemplateFiles\ITemplateAPIs.txt" />
+    <None Remove="TemplateFiles\TemplateAPIs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TemplateFiles\ITemplateAPIs.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TemplateFiles\TemplateAPIs.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessHall.Application\BusinessHall.Application.csproj" />
     <ProjectReference Include="..\..\src\BusinessHall.EntityFrameworkCore\BusinessHall.EntityFrameworkCore.csproj" />
   </ItemGroup>

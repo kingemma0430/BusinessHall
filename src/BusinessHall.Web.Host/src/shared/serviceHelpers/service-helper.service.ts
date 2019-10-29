@@ -10,6 +10,9 @@ export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 import { AppConsts } from '../AppConsts';
 
+import { LoaderService, MissionKeyEnum, MissionParameter } from './MissionService';
+
+
 export class SwaggerException extends Error {
   message: string;
   status: number;
@@ -41,6 +44,7 @@ export class ServiceHelperService {
   private baseUrl: string;
   constructor(
     @Inject(HttpClient) http: HttpClient,
+    private _loaderService:LoaderService,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
     this.http = http;
     this.baseUrl = baseUrl ? baseUrl : "";
@@ -55,6 +59,7 @@ export class ServiceHelperService {
         "Accept": "application/json"
       })
     };
+    this._loaderService.display(true);
     return this.http.request("get", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
       return this.processGetDatas(response_);
     })).pipe(_observableCatch((response_: any) => {
@@ -163,9 +168,9 @@ export class ServiceHelperService {
     }));
   }
 
-
   public processGetDatas(response: HttpResponseBase): Observable<any> {
     const status = response.status;
+    this._loaderService.display(false);
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (<any>response).error instanceof Blob ? (<any>response).error : undefined;
@@ -188,6 +193,7 @@ export class ServiceHelperService {
 
   public processDelete(response: HttpResponseBase): Observable<void> {
     const status = response.status;
+    this._loaderService.display(false);
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (<any>response).error instanceof Blob ? (<any>response).error : undefined;
@@ -206,6 +212,7 @@ export class ServiceHelperService {
   }
 
   public throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): Observable<any> {
+    this._loaderService.display(false);
     if (result !== null && result !== undefined)
       return _observableThrow(result);
     else

@@ -1,18 +1,14 @@
-﻿using Abp.Domain.Entities;
+﻿using Abp.Application.Services.Dto;
 using BusinessHall.Authorization.Users;
+using BusinessHall.BusinessHallModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace BusinessHall.BusinessHallModels
+namespace BusinessHall.ProductFaceValues.Dto
 {
-    /// <summary>
-    /// 产品面值
-    /// </summary>
-    [Table("ProductFaceValues")]
-    public class ProductFaceValue : Entity, IMayHaveTenant
+    public class ProductFaceValueDto : EntityDto
     {
         public int? TenantId { get; set; }
 
@@ -23,13 +19,12 @@ namespace BusinessHall.BusinessHallModels
 
         public decimal FaceValue { get; set; }
 
-
         public long CreatorUserId { get; set; }
 
         public DateTime CretionTime { get; set; }
 
-        public User User { get; set; }
+        public string CreateUserName { get; set; }
 
-        public virtual Product Product { get; set; }
+        public string ProductName { get; set; }
     }
 }

@@ -11162,3 +11162,108 @@ mat-checkbox {
 .primengMultilSelect {
     vertical-align: middle;
 }
+
+@keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.rp-nopaddingTopAndBottom {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.generalLoading .ng-busy,
+.ng-busy {
+    z-index: 9999;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    left: 50%;
+    margin-left: -50px;
+    background-color: transparent;
+}
+
+.generalLoading .ng-busy-default-wrapper {
+    background: transparent;
+}
+
+.generalLoading .ng-busy-default-text,
+.ng-busy-default-text {
+    display: none;
+    background: transparent;
+}
+
+.generalLoading .ng-busy-default-sign,
+.ng-busy-default-sign {
+    background: transparent;
+    border: 0px solid transparent;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.generalLoading .ng-busy-default-spinner,
+.ng-busy-default-spinner {
+    background: transparent;
+}
+
+@keyframes globalLoading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.generalLoading .ng-busy-default-sign {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    left: 50%;
+    margin-left: -50px;
+    background-image: url(../../assets/images/ad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-animation: globalLoading 1500ms infinite linear;
+    -o-animation: globalLoading 1500ms infinite linear;
+    animation: globalLoading 1500ms infinite linear;
+}
+
+.generalLoadingFixed {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99999;
+    & .ng-busy-default-signBar {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        left: 50%;
+        margin-left: -50px;
+        background-image: url(assets/images/ad.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-animation: globalLoading 1500ms infinite linear;
+        -o-animation: globalLoading 1500ms infinite linear;
+        animation: globalLoading 1500ms infinite linear;
+    }
+}

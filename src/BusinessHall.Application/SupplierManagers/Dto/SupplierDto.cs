@@ -27,5 +27,7 @@ namespace BusinessHall.SupplierManagers.Dto
         public long CreatorUserId { get; set; }
 
         public DateTime CretionTime { get; set; }
+
+        public string CreateUserName { get; set; }
     }
 }

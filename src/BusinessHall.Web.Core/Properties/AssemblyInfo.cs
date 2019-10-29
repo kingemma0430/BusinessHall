@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BusinessHall.Web.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("BusinessHall.Core")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BusinessHall.Web.Core")]

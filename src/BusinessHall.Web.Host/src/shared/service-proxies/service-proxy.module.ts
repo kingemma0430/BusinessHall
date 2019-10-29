@@ -4,6 +4,8 @@ import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
 
 import * as ApiServiceProxies from './service-proxies';
 
+import { MissionService, LoaderService } from '../serviceHelpers/MissionService';
+
 import { ServiceHelperService } from '../serviceHelpers/service-helper.service';
 import { MenuServiceService } from '../menuServices/menu-service.service';
 
@@ -19,6 +21,7 @@ import { SupplierManagerService } from '../supplierServices/supplier-manager.ser
         ApiServiceProxies.TokenAuthServiceProxy,
         ApiServiceProxies.AccountServiceProxy,
         ApiServiceProxies.ConfigurationServiceProxy,
+        MissionService, LoaderService,
         ServiceHelperService,
         MenuServiceService,
         BasicDataService,

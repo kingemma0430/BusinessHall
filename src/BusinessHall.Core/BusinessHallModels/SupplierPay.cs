@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using BusinessHall.Authorization.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,9 +17,11 @@ namespace BusinessHall.BusinessHallModels
 
         public decimal TotalValue { get; set; }
 
-        public long UserId { get; set; }
+        public long CreatorUserId { get; set; }
 
-        public DateTime CreationTime { get; set; }
+        public DateTime CretionTime { get; set; }
+
+        public User User { get; set; }
 
         public virtual Supplier Supplier { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using BusinessHall.Authorization.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,6 +31,13 @@ namespace BusinessHall.BusinessHallModels
         /// 折扣
         /// </summary>
         public decimal Discount { get; set; }
+
+
+        public long CreatorUserId { get; set; }
+
+        public DateTime CretionTime { get; set; }
+
+        public User User { get; set; }
 
         public ProductStatusEnum Status { get; set; }
 

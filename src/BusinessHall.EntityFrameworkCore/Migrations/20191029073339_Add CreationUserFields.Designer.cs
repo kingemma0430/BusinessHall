@@ -3,14 +3,16 @@ using System;
 using BusinessHall.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusinessHall.Migrations
 {
     [DbContext(typeof(BusinessHallDbContext))]
-    partial class BusinessHallDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191029073339_Add CreationUserFields")]
+    partial class AddCreationUserFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

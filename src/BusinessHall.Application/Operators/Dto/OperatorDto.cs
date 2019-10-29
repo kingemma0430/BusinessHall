@@ -1,18 +1,12 @@
-﻿using Abp.Domain.Entities;
-using BusinessHall.Authorization.Users;
+﻿using Abp.Application.Services.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace BusinessHall.BusinessHallModels
+namespace BusinessHall.Operators.Dto
 {
-    /// <summary>
-    /// 运营商
-    /// </summary>
-    [Table("Operators")]
-    public class Operator : Entity, IMayHaveTenant
+    public class OperatorDto : EntityDto
     {
         public int? TenantId { get; set; }
 
@@ -22,11 +16,11 @@ namespace BusinessHall.BusinessHallModels
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Description { get; set; }
 
-
         public long CreatorUserId { get; set; }
 
         public DateTime CretionTime { get; set; }
 
-        public User User { get; set; }
+        public string CreateUserName { get; set; }
+
     }
 }

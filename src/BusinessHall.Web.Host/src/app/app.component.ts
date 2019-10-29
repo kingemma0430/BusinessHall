@@ -10,6 +10,9 @@ import { AppComponentBase } from "@shared/app-component-base";
 
 import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
 
+import { LoaderService, MissionParameter, MissionKeyEnum } from "@shared/serviceHelpers/MissionService";
+
+
 @Component({
   templateUrl: "./app.component.html"
 })
@@ -17,7 +20,11 @@ export class AppComponent extends AppComponentBase
   implements OnInit, AfterViewInit {
   private viewContainerRef: ViewContainerRef;
 
-  constructor(injector: Injector) {
+
+  isShowGlobalLoading: boolean = false;
+
+  constructor(injector: Injector,
+    private _loaderService: LoaderService) {
     super(injector);
   }
 
@@ -32,12 +39,13 @@ export class AppComponent extends AppComponentBase
         body: userNotification.notification.data.message,
         icon: abp.appPath + "assets/app-logo-small.png",
         timeout: 6000,
-        onClick: function() {
+        onClick: function () {
           window.focus();
           this.close();
         }
       });
     });
+    //this.globalMessageListner();
   }
 
   ngAfterViewInit(): void {
@@ -45,7 +53,7 @@ export class AppComponent extends AppComponentBase
       $.AdminBSB.activateAll();
       $.AdminBSB.activateDemo();
     }
-  
+
   }
 
   onResize(event) {
@@ -56,5 +64,22 @@ export class AppComponent extends AppComponentBase
     // exported from $.AdminBSB.activateDemo
     $.AdminBSB.demo.setSkinListHeightAndScroll();
     $.AdminBSB.demo.setSettingListHeightAndScroll();
+  }
+
+  globalMessageListner() {
+    this._loaderService.status.subscribe((data: any) => {
+      if (data) {
+        let missionParametr: MissionParameter = data;
+        if (missionParametr) {
+          if (missionParametr.key == MissionKeyEnum.ShowErrorMessage) {
+            // this.msgsError = missionParametr.value;
+            this.isShowGlobalLoading = missionParametr.valueBool;
+          }
+          else {
+            this.isShowGlobalLoading = missionParametr.value;
+          }
+        }
+      }
+    });
   }
 }

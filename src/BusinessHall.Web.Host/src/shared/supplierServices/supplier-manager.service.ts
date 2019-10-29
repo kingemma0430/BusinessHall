@@ -16,15 +16,13 @@ export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 @Injectable()
 export class SupplierManagerService {
   private http: HttpClient;
-  private baseUrl: string;
   private apiUrl: string = "/api/services/app/SupplierManager/";
 
   protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
   constructor(
     @Inject(HttpClient) http: HttpClient,
-    private _serviceHelperService: ServiceHelperService,
-    @Optional() @Inject(API_BASE_URL) baseUrl?: string
+    private _serviceHelperService: ServiceHelperService
   ) {
     this.http = http;
   }

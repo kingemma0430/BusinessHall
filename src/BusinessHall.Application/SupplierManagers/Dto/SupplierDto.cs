@@ -8,7 +8,6 @@ using Abp.AutoMapper;
 
 namespace BusinessHall.SupplierManagers.Dto
 {
-    [AutoMapFrom(typeof(Supplier))]
     public class SupplierDto : EntityDto
     {
         public int? TenantId { get; set; }

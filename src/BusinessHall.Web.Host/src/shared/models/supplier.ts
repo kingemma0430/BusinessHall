@@ -6,6 +6,7 @@ export class SupplierDto {
     status: SupplierStatusEnum;
     creatorUserId: number;
     cretionTime: Date;
+    createUserName: string;
 }
 
 

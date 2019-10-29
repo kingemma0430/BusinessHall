@@ -11,6 +11,10 @@ import { MenuServiceService } from '../menuServices/menu-service.service';
 
 import { BasicDataService } from '../basicDataServices/basic-data-service.service';
 import { SupplierManagerService } from '../supplierServices/supplier-manager.service';
+import { ProductService } from '../productServices/product.service';
+import { OperatorService } from '../operatorServices/operator.service';
+
+
 
 @NgModule({
     providers: [
@@ -26,6 +30,8 @@ import { SupplierManagerService } from '../supplierServices/supplier-manager.ser
         MenuServiceService,
         BasicDataService,
         SupplierManagerService,
+        ProductService,
+        OperatorService,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

@@ -7,6 +7,12 @@ export class ProductDto {
     province: string;
     discount: number;
     status: ProductStatusEnum;
+
+    creatorUserId: number;
+    cretionTime: Date;
+    presentValue: number;
+
+    createUserName: string;
     suppliername: string;
     supplier: SupplierDto;
 
@@ -22,13 +28,20 @@ export class ProductFaceValueDto {
     tenantId: number;
     productId: number;
     faceValue: number;
+    creatorUserId: number;
+    cretionTime: Date;
+    createUserName: string;
+    productName: string;
 }
 
 export class ProductOperatorDto {
     id: number;
     tenantId: number;
     productId: number;
-    OperatorId: number;
+    operatorId: number;
+    creatorUserId: number;
+    cretionTime: Date;
+    createUserName: string;
 }
 
 export class OperatorDto {
@@ -36,6 +49,9 @@ export class OperatorDto {
     name: string;
     tenantId: number;
     description: string;
+    creatorUserId: number;
+    cretionTime: Date;
+    createUserName: string;
 }
 
 export enum ProductStatusEnum {

@@ -9,10 +9,14 @@ import { SelectItem } from 'primeng/primeng';
 import { ProductDto, ProductStatusEnum } from '@shared/models/product';
 import { CreateProductComponent } from './create-product/create-product.component';
 
+import { ProductService } from '@shared/productServices/product.service';
+import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
+
 import {
   BasicDataService,
   ProvinceDto, CityDto, AreaDto, EthnicGroupDto, TenantDto
 } from '@shared/basicDataServices/basic-data-service.service';
+import { SupplierDto } from '@shared/models/supplier';
 
 
 @Component({
@@ -27,7 +31,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   records: ProductDto[];
 
 
-  supplierList: SelectItem[] = [];
+  supplierList: SupplierDto[] = [];
   provinceList: ProvinceDto[] = [];
 
   selectedSupplierList: any[] = [];
@@ -61,7 +65,9 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   constructor(
     injector: Injector,
     private _dialog: MatDialog,
-    private _basicDataService: BasicDataService) {
+    private _basicDataService: BasicDataService,
+    private _productService: ProductService
+  ) {
     super(injector);
   }
 
@@ -71,7 +77,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       { label: 'Oldest First', value: 'cretionTime' }
     ];
     this.initialColumns();
-    this.loadTestData();
+    this.loadProductDatas();
     this.loadProvinceList();
     this.loadCityList();
   }
@@ -82,13 +88,23 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       { field: 'province', header: this.l('Province') },
       { field: 'business', header: this.l('Business') },
       { field: 'faceValue', header: this.l('FaceValue') },
-      { field: 'name', header: this.l('Supplier') },
-      { field: 'name', header: this.l('Discount') },
+      { field: 'supplierName', header: this.l('Supplier') },
+      { field: 'discount', header: this.l('Discount') },
       { field: 'name', header: this.l('PresentValue') },
       { field: 'status', header: this.l('Status') }
     ];
 
     this.exportColumns = this.cols.map(col => ({ title: col.header, dataKey: col.field }));
+  }
+
+
+  loadProductDatas() {
+    this._productService.GetAll().subscribe(data => {
+      let result: ListResultDto = data as ListResultDto;
+      if (result) {
+        this.records = result.items as ProductDto[];
+      }
+    });
   }
 
   loadProvinceList() {
@@ -104,22 +120,6 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       let tmpDatas: CityDto[] = data as CityDto[];
       this.cityListAll = tmpDatas;
     })
-  }
-
-
-  getCityByProviceIds(inputSelectedProvinceList: ProvinceDto[]) {
-    let tmpDatas: CityDto[] = this.cityListAll;
-    if (inputSelectedProvinceList && inputSelectedProvinceList.length) {
-      let pIds: string[] = Enumerable.from(inputSelectedProvinceList).select(x => x.provinceId).toArray();
-      tmpDatas = Enumerable.from(this.cityListAll).where(x => pIds.indexOf(x.provinceId) >= 0).toArray();
-    }
-    // let tmpCityList: SelectItem[] = [];
-    // if (tmpDatas) {
-    //   tmpDatas.forEach(element => {
-    //     tmpCityList.push({ value: element.cityId, label: element.name });
-    //   });
-    // }
-    this.cityList = tmpDatas;
   }
 
 
@@ -227,6 +227,21 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
   provinceListonPanelHide(event) {
     this.getCityByProviceIds(this.selectedProvinceList);
+  }
+
+  getCityByProviceIds(inputSelectedProvinceList: ProvinceDto[]) {
+    let tmpDatas: CityDto[] = this.cityListAll;
+    if (inputSelectedProvinceList && inputSelectedProvinceList.length) {
+      let pIds: string[] = Enumerable.from(inputSelectedProvinceList).select(x => x.provinceId).toArray();
+      tmpDatas = Enumerable.from(this.cityListAll).where(x => pIds.indexOf(x.provinceId) >= 0).toArray();
+    }
+    // let tmpCityList: SelectItem[] = [];
+    // if (tmpDatas) {
+    //   tmpDatas.forEach(element => {
+    //     tmpCityList.push({ value: element.cityId, label: element.name });
+    //   });
+    // }
+    this.cityList = tmpDatas;
   }
 
   search() {

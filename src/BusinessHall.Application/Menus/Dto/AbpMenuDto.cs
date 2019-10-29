@@ -8,7 +8,6 @@ using System.Text;
 
 namespace BusinessHall.Menus.Dto
 {
-    [AutoMapFrom(typeof(AbpMenu))]
     public class AbpMenuDto : EntityDto
     {
         public int? TenantId { get; set; }

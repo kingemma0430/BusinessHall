@@ -14,10 +14,9 @@ import * as moment from 'moment';
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 @Injectable()
-export class SupplierManagerService {
+export class OperatorService {
   private http: HttpClient;
-  private apiUrl: string = "/api/services/app/SupplierManager/";
-  private apiUrlSupplierPayManager: string = "/api/services/app/SupplierPayManager/";
+  private apiUrl: string = "/api/services/app/OperatorManager/";
 
   protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
@@ -77,61 +76,31 @@ export class SupplierManagerService {
     let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(ids);
-    return this._serviceHelperService.deleteByCondition(url_, content_);
-  }
-
-  GetAllSupplierPay(): Observable<any> {
-    let url_ = this.apiUrlSupplierPayManager + "GetAll";
-    url_ = url_.replace(/[?&]$/, "");
-    return this._serviceHelperService.get(url_);
-  }
-
-  GetByIdSupplierPay(id: number): Observable<any> {
-    let url_ = this.apiUrlSupplierPayManager + "GetById?id=" + id;
-    url_ = url_.replace(/[?&]$/, "");
-    return this._serviceHelperService.get(url_);
-  }
-
-  /**
-   * @param input (optional) 
-   * @return Success
-   */
-  CreateSupplierPay(input: SupplierDto | null | undefined): Observable<SupplierDto> {
-    let url_ = this.apiUrlSupplierPayManager + "Create";
-    url_ = url_.replace(/[?&]$/, "");
-
-    const content_ = JSON.stringify(input);
-    return this._serviceHelperService.create(url_, content_);
-  }
-
-  /**
- * @param input (optional) 
- * @return Success
- */
-  UpdateSupplierPay(input: SupplierDto | null | undefined): Observable<SupplierDto> {
-    let url_ = this.apiUrlSupplierPayManager + "Update";
-    url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(input);
-    return this._serviceHelperService.update(url_, content_);
-
-  }
-
-  DeleteSupplierPay(id: number): Observable<any> {
-    let url_ = this.apiUrlSupplierPayManager + "Delete?";
-    if (id !== undefined)
-      url_ += "Id=" + encodeURIComponent("" + id) + "&";
-    url_ = url_.replace(/[?&]$/, "");
-
-    return this._serviceHelperService.delete(url_);
-  }
-
-  DeleteForMultipleSupplierPay(ids: number[]): Observable<any> {
-    let url_ = this.apiUrlSupplierPayManager + "DeleteForMultiple";
-    url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
-    return this._serviceHelperService.deleteByCondition(url_, content_);
+    let options_: any = {
+      body: content_,
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      })
+    };
+    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
+      return this._serviceHelperService.processGetDatas(response_);
+    })).pipe(_observableCatch((response_: any) => {
+      if (response_ instanceof HttpResponseBase) {
+        try {
+          return this._serviceHelperService.processGetDatas(<any>response_);
+        } catch (e) {
+          return <Observable<any>><any>_observableThrow(e);
+        }
+      } else
+        return <Observable<any>><any>_observableThrow(response_);
+    }));
   }
 
 }
+
+
 
 

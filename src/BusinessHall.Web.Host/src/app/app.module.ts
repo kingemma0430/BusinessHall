@@ -57,9 +57,6 @@ import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { PanelMenuModule } from 'primeng/panelmenu';
-
-
 
 import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';

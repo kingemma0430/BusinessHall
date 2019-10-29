@@ -38,7 +38,7 @@
                 </div>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                 </div>
-                <p-multiSelect [options]="supplierList" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
+                <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
                     [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
                 <p-multiSelect [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding"
                     [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>

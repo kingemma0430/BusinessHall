@@ -3,7 +3,13 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BusinessHall.Authorization;
 using BusinessHall.BusinessHallModels;
+using BusinessHall.Menus.Dto;
+using BusinessHall.Operators.Dto;
+using BusinessHall.ProductFaceValues.Dto;
+using BusinessHall.ProductOperators.Dto;
+using BusinessHall.Products.Dto;
 using BusinessHall.SupplierManagers.Dto;
+using BusinessHall.SupplierPays.Dto;
 using System;
 
 namespace BusinessHall
@@ -23,9 +29,20 @@ namespace BusinessHall
                 //      .ForMember(u => u.Department, options => options.Ignore());
                 //config.CreateMap<UserDetail, UserDetailDto>();
                 //config.CreateMap<Department, DepartmentDto>();
-                //config.CreateMap<DepartmentDto, Department>();
-                //config.CreateMap<RoleMenuDto, RoleMenu>();
+                config.CreateMap<AbpMenuDto, AbpMenu>();
+                config.CreateMap<AbpMenu, AbpMenuDto>();
                 config.CreateMap<SupplierDto, Supplier>();
+                config.CreateMap<Supplier, SupplierDto>();
+                config.CreateMap<OperatorDto, Operator>();
+                config.CreateMap<Operator, OperatorDto>();
+                config.CreateMap<ProductFaceValueDto, ProductFaceValue>();
+                config.CreateMap<ProductFaceValue, ProductFaceValueDto>();
+                config.CreateMap<ProductOperatorDto, ProductOperator>();
+                config.CreateMap<ProductOperator, ProductOperatorDto>();
+                config.CreateMap<ProductDto, Product>();
+                config.CreateMap<Product, ProductDto>();
+                config.CreateMap<SupplierPayDto, SupplierPay>();
+                config.CreateMap<SupplierPay, SupplierPayDto>();
             });
 
             //Configuration for a specific cache

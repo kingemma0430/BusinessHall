@@ -3,9 +3,11 @@ using BusinessHall.Authorization.Users;
 using BusinessHall.BusinessHallModels;
 using BusinessHall.ProductFaceValues.Dto;
 using BusinessHall.ProductOperators.Dto;
+using BusinessHall.SupplierManagers.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace BusinessHall.Products.Dto
@@ -29,6 +31,11 @@ namespace BusinessHall.Products.Dto
         /// </summary>
         public decimal Discount { get; set; }
 
+        /// <summary>
+        ///  现值
+        /// </summary>
+        public decimal PresentValue { get; set; }
+
         public long CreatorUserId { get; set; }
 
         public DateTime CretionTime { get; set; }
@@ -40,6 +47,19 @@ namespace BusinessHall.Products.Dto
         public string SupplierName { get; set; }
 
         public IEnumerable<ProductFaceValueDto> ProductFaceValues { get; set; }
+
+        public string FaceValue
+        {
+            get
+            {
+                string faceValue = "";
+                if (ProductFaceValues != null && ProductFaceValues.Count() > 0)
+                {
+                    faceValue = string.Join(',', ProductFaceValues.Select(x => x.Name));
+                }
+                return faceValue;
+            }
+        }
 
         public IEnumerable<ProductOperatorDto> ProductOperators { get; set; }
     }

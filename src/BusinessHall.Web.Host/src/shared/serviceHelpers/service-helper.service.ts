@@ -44,7 +44,7 @@ export class ServiceHelperService {
   private baseUrl: string;
   constructor(
     @Inject(HttpClient) http: HttpClient,
-    private _loaderService:LoaderService,
+    private _loaderService: LoaderService,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
     this.http = http;
     this.baseUrl = baseUrl ? baseUrl : "";
@@ -168,6 +168,28 @@ export class ServiceHelperService {
     }));
   }
 
+  public deleteByCondition(apiUrl, inputJson) {
+    let options_: any = {
+      body: inputJson,
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.request("delete", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
+      return this.processDelete(response_);
+    })).pipe(_observableCatch((response_: any) => {
+      if (response_ instanceof HttpResponseBase) {
+        try {
+          return this.processDelete(<any>response_);
+        } catch (e) {
+          return <Observable<any>><any>_observableThrow(e);
+        }
+      } else
+        return <Observable<any>><any>_observableThrow(response_);
+    }));
+  }
+
   public processGetDatas(response: HttpResponseBase): Observable<any> {
     const status = response.status;
     this._loaderService.display(false);
@@ -234,4 +256,9 @@ export class ServiceHelperService {
       }
     });
   }
+}
+
+
+export class ListResultDto {
+  items: any[];
 }

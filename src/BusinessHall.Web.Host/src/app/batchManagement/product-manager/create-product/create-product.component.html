@@ -3,12 +3,12 @@
     <h1 mat-dialog-title *ngIf="_id">{{ "EditProduct" | localize }}</h1>
     <mat-dialog-content style="width:1000px;height:700px;">
         <div class="ui-g-12">
-            <span class="ui-md-3">{{'Name' | localize}}: </span>
-            <input class="ui-md-9" type="text" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
+            <span class="ui-g-12 ui-md-3">{{'Name' | localize}}: </span>
+            <input class="ui-g-12 ui-md-9" type="text" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
         </div>
         <div class="ui-g-12">
-            <span class="ui-md-3">{{'Supplier' | localize}}: </span>
-            <p-multiSelect name="cityList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-md-9 fieldDivPadding"
+            <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
+            <p-multiSelect name="cityList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-9 fieldDivPadding"
                 [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
         </div>
         <div class="ui-g-12">
@@ -16,23 +16,24 @@
             <p-multiSelect name="ProvinceList" [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)"
                 class="ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
             <span class="ui-md-3">{{'City' | localize}}: </span>
-            <p-multiSelect name="cityList" [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')"
+            <p-multiSelect name="cityList" [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')"
                 [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
         </div>
 
         <div class="ui-g-12">
-            <span class="ui-md-3">{{'Supplier' | localize}}: </span>
-            <p-multiSelect name="FaceValueList" [options]="faceValueList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="i-md-9 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+            <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
+            <p-multiSelect name="FaceValueList" [options]="faceValueList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-9 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
                 [style]="{'width':'100%'}"></p-multiSelect>
         </div>
 
         <div class="ui-g-12">
-            <span class="ui-md-3">{{'Supplier' | localize}}: </span>
-            <p-multiSelect [options]="businesseList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedBusinessList" [filter]="true" class="ui-md-9 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+            <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
+            <p-multiSelect [options]="businesseList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedBusinessList" [filter]="true" class="ui-g-12 ui-md-9 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
+                [style]="{'width':'100%'}"></p-multiSelect>
         </div>
         <div class="ui-g-12">
-            <span class="ui-md-3">{{'Status' | localize}}: </span>
-            <p-toggleButton class="ui-md-9" name="isAutoReturnMoney" [onLabel]="l('OnShelf')" [offLabel]="l('OutShelf')" [(ngModel)]="newItem.status">
+            <span class="ui-g-12 ui-md-3">{{'Status' | localize}}: </span>
+            <p-toggleButton class="ui-g-12 ui-md-9" name="isAutoReturnMoney" [onLabel]="l('OnShelf')" [offLabel]="l('OutShelf')" [(ngModel)]="newItem.status">
             </p-toggleButton>
         </div>
     </mat-dialog-content>

@@ -1,26 +1,27 @@
 <form autocomplete="off" #createProductModal="ngForm" (ngSubmit)="save()">
     <h1 mat-dialog-title *ngIf="!_id">{{ "CreateProduct" | localize }}</h1>
     <h1 mat-dialog-title *ngIf="_id">{{ "EditProduct" | localize }}</h1>
-    <mat-dialog-content style="width:1000px;height:400px;">
+    <mat-dialog-content style="width:550px;height:300px;">
         <span class="ui-g-12 ui-md-3">{{'Name' | localize}}: </span>
-        <input class="ui-g-12 ui-md-9" type="text" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="47" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
+        </div>
         <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
         <p-multiSelect name="cityList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')"
             [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}">
         </p-multiSelect>
         <span class="ui-g-12 ui-md-3">{{'Province' | localize}}: </span>
         <p-multiSelect name="ProvinceList" [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)"
-            class="ui-g-12 ui-md-3 " [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-        <span class="ui-g-12 ui-md-3">{{'City' | localize}}: </span>
+            class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+        <!-- <span class="ui-g-12 ui-md-3">{{'City' | localize}}: </span>
         <p-multiSelect name="cityList" [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-3 " [defaultLabel]="l('Choose')"
-            [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-
-        <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
+            [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect> -->
+        <span class="ui-g-12 ui-md-3">{{'Discount' | localize}}: </span>
         <p-multiSelect name="FaceValueList" [options]="faceValueList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-
-        <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
-        <p-multiSelect [options]="businesseList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedBusinessList" [filter]="true" class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}">
-        </p-multiSelect>
+        <span class="ui-g-12 ui-md-3">{{'PresentValue' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="47" pInputText [(ngModel)]="newItem.presentValue" name="PresentValue" [placeholder]="'PresentValue' | localize" />
+        </div>
         <span class="ui-g-12 ui-md-3">{{'Status' | localize}}: </span>
         <p-toggleButton class="ui-g-12 ui-md-9" name="isAutoReturnMoney" [onLabel]="l('OnShelf')" [offLabel]="l('OutShelf')" [(ngModel)]="newItem.status">
         </p-toggleButton>

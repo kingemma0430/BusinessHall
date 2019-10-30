@@ -92,6 +92,7 @@ import { CreditManagerComponent } from './batchManagement/credit-manager/credit-
 import { CallOrderComponent } from './batchManagement/call-order/call-order.component';
 import { CreateSupplierComponent } from './batchManagement/supplier-manager/create-supplier/create-supplier.component';
 import { CreateProductComponent } from './batchManagement/product-manager/create-product/create-product.component';
+import { CreateAgentComponent } from './batchManagement/agent-manager/create-agent/create-agent.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { CreateProductComponent } from './batchManagement/product-manager/create
     CreditManagerComponent,
     CallOrderComponent,
     CreateSupplierComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CreateAgentComponent
   ],
   imports: [
     CommonModule,

@@ -131,7 +131,7 @@
     <text name="CreateProduct">Create Product</text>
     <text name="EditProduct">Edit Product</text>
     <text name="GlobalFilter">Global Filter</text>
-    <text name="ExportEXCEL">Export EXCEL</text>
+    <text name="ExportEXCEL">Export</text>
     <text name="Search">Search</text>
     <text name="emptyFilterMessage">No results found</text>
   </texts>

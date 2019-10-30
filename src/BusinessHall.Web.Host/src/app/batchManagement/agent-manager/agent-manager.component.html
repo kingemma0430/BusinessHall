@@ -1,1 +1,76 @@
-<p>agent-manager works!</p>
+<div class="ui-g" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>{{ "AgentManager" | localize }}</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li>
+                        <button mat-icon-button [matMenuTriggerFor]="headerMenu" class="header-dropdown-mat-icon-button">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                        <mat-menu #headerMenu="matMenu">
+                            <button mat-menu-item (click)="refresh()">
+                                        <mat-icon>refresh</mat-icon>
+                                        <span>{{ "Refresh" | localize }}</span>
+                                    </button>
+                        </mat-menu>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+                <p-table class="ui-g-12" #dt [columns]="cols" [value]="records" [paginator]="true" [rows]="10" [first]="first">
+                    <ng-template pTemplate="caption">
+                        <div class="ui-helper-clearfix">
+                            <div class="ui-g-12 ui-md-5 align-left">
+                                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                                <input type="text" pInputText size="40" [placeholder]="'GlobalFilter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                            </div>
+                            <div class="ui-g-12 ui-md-7 align-right">
+                                <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('Add')" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning"></button>
+                                <button type="button" pButton icon="pi pi-file-excel" iconPos="left" [label]="l('ExportEXCEL')" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                {{col.header}}
+                                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                            </th>
+                            <th>{{ "Actions" | localize }}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr [pSelectableRow]="rowData">
+                            <td *ngFor="let col of columns">
+                                <span *ngIf="col.field!='status'">{{rowData[col.field]}}</span>
+                                <span *ngIf="col.field=='status'">
+                                    <span *ngIf="rowData[col.field]">{{'Open'|localize}}</span>
+                                <span *ngIf="rowData[col.field]">{{'Close'|localize}}</span>
+                                </span>
+                            </td>
+                            <td>
+                                <button class="action-button" mat-icon-button [matMenuTriggerFor]="actionsMenu">
+                                            <mat-icon>menu</mat-icon>
+                                        </button>
+                                <mat-menu #actionsMenu="matMenu">
+                                    <button mat-menu-item (click)="edit(rowData)">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>{{ "Edit" | localize }}</span>
+                                            </button>
+                                    <button mat-menu-item (click)="delete(rowData)">
+                                                <mat-icon>delete</mat-icon>
+                                                <span>{{ "Delete" | localize }}</span>
+                                            </button>
+                                </mat-menu>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        {{'TotalRecords' | localize}} {{records?.length}}
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

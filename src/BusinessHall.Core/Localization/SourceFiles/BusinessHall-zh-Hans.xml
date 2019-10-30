@@ -134,9 +134,19 @@
     <text name="CreateProduct">创建新产品</text>
     <text name="EditProduct">编辑产品</text>
     <text name="GlobalFilter">全局检索</text>
-    <text name="ExportEXCEL">导出EXCEL</text>
+    <text name="ExportEXCEL">导出</text>
     <text name="Search">查询</text>
     <text name="emptyFilterMessage">无数据</text>
+
+
+    <text name="AgentCode">账号</text>
+    <text name="AgentNickName">昵称</text>
+    <text name="AgentAvailableAmount">可用余额</text>
+    <text name="AgentUsedAmount">已用金额</text>
+    <text name="AgentChargedAmount">充值金额</text>
+    <text name="AgentWithDrawAmount">提现金额</text>
+    <text name="AgentPercentAmount">信贷(已用、总额)</text>
+
 
   </texts>
 </localizationDictionary>

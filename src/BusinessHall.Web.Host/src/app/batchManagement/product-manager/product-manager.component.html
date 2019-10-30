@@ -18,56 +18,61 @@
                 </ul>
             </div>
             <div class="body table-responsive">
-                <div class="ui-g-12 ui-md-2 fieldDivPadding">
+                <div class="ui-g-12 ui-md-3 fieldDivPadding">
                     <span class="spanField">{{'Supplier'|localize}}</span>
                 </div>
                 <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'Province'|localize}}</span>
                 </div>
-                <div class="ui-g-12 ui-md-2 fieldDivPadding">
+                <!-- <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'City'|localize}}</span>
-                </div>
+                </div> -->
                 <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'Business'|localize}}</span>
                 </div>
                 <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'FaceValue'|localize}}</span>
                 </div>
-                <div class="ui-g-12 ui-md-1 fieldDivPadding">
+                <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'Status'|localize}}</span>
                 </div>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                 </div>
-                <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
+                <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')"
                     [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
                 <p-multiSelect [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding"
                     [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
-                    [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <!-- <p-multiSelect [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
+                    [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect> -->
                 <p-multiSelect [options]="businesseList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedBusinessList" [filter]="true" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
                 <p-multiSelect [options]="faceValueList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="statusList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-1 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="statusList" optionLabel="label" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+                    [style]="{'width':'100%'}"></p-multiSelect>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                     <button type="button" pButton [label]="l('Search')" (click)="search()" class="ui-button-warning"></button>
                 </div>
-                <p-table class="ui-g-12" #dt [columns]="cols" [value]="records" [paginator]="true" [rows]="10" [first]="first">
+                <p-table class="ui-g-12" #dt [columns]="cols" [value]="records" [(selection)]="selectedRecords" [paginator]="true" [rows]="10" [first]="first">
                     <ng-template pTemplate="caption">
                         <div class="ui-helper-clearfix">
-                            <div class="ui-g-12 ui-md-6 align-left">
+                            <div class="ui-g-12 ui-md-5 align-left">
                                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                                <input type="text" pInputText size="50" [placeholder]="'GlobalFilter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                <input type="text" pInputText size="40" [placeholder]="'GlobalFilter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                             </div>
-                            <div class="ui-g-12 ui-md-6 align-right">
+                            <div class="ui-g-12 ui-md-7 align-right">
+                                <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('OnShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="update()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+                                <button type="button" pButton icon="pi pi-minus" iconPos="left" [label]="l('OutShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="update()" style="margin-right: 0.5em;" class="ui-button-danger"></button>
+                                <button type="button" pButton icon="pi pi-trash" iconPos="left" [label]="l('Delete')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="deleteMultiple()" style="margin-right: 0.5em;" class="ui-button-info"></button>
                                 <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('Add')" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning"></button>
                                 <button type="button" pButton icon="pi pi-file-excel" iconPos="left" [label]="l('ExportEXCEL')" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
-                                <!-- <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="margin-right: 0.5em;" class="ui-button-warning"></button> -->
-                                <!-- <button type="button" pButton icon="pi pi-file" iconPos="left" label="CSV - Selection Only" (click)="dt.exportCSV({selectionOnly:true})"></button> -->
                             </div>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header" let-columns>
                         <tr>
+                            <th style="width: 3em">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
                             <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                                 {{col.header}}
                                 <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
@@ -77,6 +82,9 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData let-columns="columns">
                         <tr [pSelectableRow]="rowData">
+                            <td>
+                                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                            </td>
                             <td *ngFor="let col of columns">
                                 <span *ngIf="col.field!='isAutoReturnMoney' && col.field!='status'">
                                         {{rowData[col.field]}}</span>
@@ -85,10 +93,9 @@
                                 <span *ngIf="col.field=='isAutoReturnMoney' && !rowData[col.field]">
                                         {{"No" | localize}}</span>
                                 <span *ngIf="col.field=='status'">
-                                        <p-toggleButton [onLabel]="l('Open')" [offLabel]="l('Close')"
-                                            (onChange)="handleChange($event,rowData)" [(ngModel)]=" rowData[col.field]">
-                                        </p-toggleButton>
-                                    </span>
+                                    <span *ngIf="rowData[col.field]">{{'OnShelf'|localize}}</span>
+                                <span *ngIf="rowData[col.field]">{{'OutShelf'|localize}}</span>
+                                </span>
                             </td>
                             <td>
                                 <button class="action-button" mat-icon-button [matMenuTriggerFor]="actionsMenu">

@@ -10,6 +10,7 @@ import { ProductDto, ProductStatusEnum } from '@shared/models/product';
 import { CreateProductComponent } from './create-product/create-product.component';
 
 import { ProductService } from '@shared/productServices/product.service';
+import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
 import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
 
 import {
@@ -26,15 +27,24 @@ import { SupplierDto } from '@shared/models/supplier';
   animations: [appModuleAnimation()]
 })
 export class ProductManagerComponent extends AppComponentBase implements OnInit {
+  constructor(
+    injector: Injector,
+    private _dialog: MatDialog,
+    private _basicDataService: BasicDataService,
+    private _productService: ProductService,
+    private _supplierManagerService: SupplierManagerService
+  ) {
+    super(injector);
+  }
 
 
   records: ProductDto[];
-
+  selectedRecords: ProductDto[];
 
   supplierList: SupplierDto[] = [];
   provinceList: ProvinceDto[] = [];
 
-  selectedSupplierList: any[] = [];
+  selectedSupplierList: SupplierDto[] = [];
   selectedProvinceList: ProvinceDto[] = [];
   selectedCityList: CityDto[] = [];
 
@@ -62,14 +72,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   columns: any[];
   exportColumns: any[];
   selectedItems: ProductDto[] = [];
-  constructor(
-    injector: Injector,
-    private _dialog: MatDialog,
-    private _basicDataService: BasicDataService,
-    private _productService: ProductService
-  ) {
-    super(injector);
-  }
+
 
   ngOnInit() {
     this.sortOptions = [
@@ -80,6 +83,17 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     this.loadProductDatas();
     this.loadProvinceList();
     this.loadCityList();
+    this.loadSupplierDatas();
+    this.loadStatusData();
+  }
+
+
+  loadSupplierDatas() {
+    this._supplierManagerService.GetAll().subscribe(result => {
+      if (result) {
+        this.supplierList = result["items"];
+      }
+    });
   }
 
 
@@ -90,7 +104,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       { field: 'faceValue', header: this.l('FaceValue') },
       { field: 'supplierName', header: this.l('Supplier') },
       { field: 'discount', header: this.l('Discount') },
-      { field: 'name', header: this.l('PresentValue') },
+      { field: 'presentValue', header: this.l('PresentValue') },
       { field: 'status', header: this.l('Status') }
     ];
 
@@ -122,6 +136,13 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     })
   }
 
+
+  loadStatusData() {
+    let items: SelectItem[] = [];
+    items.push({ label: this.l("OnShelf"), value: ProductStatusEnum.Active });
+    items.push({ label: this.l("OutShelf"), value: ProductStatusEnum.Inactive });
+    this.statusList = items;
+  }
 
   loadTestData() {
     let tmpArray: ProductDto[] = [];
@@ -203,6 +224,20 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     );
   }
 
+  deleteMultiple() {
+    abp.message.confirm(
+      this.l('UserDeleteWarningMessage', ""),
+      (result: boolean) => {
+        if (result) {
+          // this._userService.delete(user.id).subscribe(() => {
+          //     abp.notify.success(this.l('SuccessfullyDeleted'));
+          //     this.refresh();
+          // });
+        }
+      }
+    );
+  }
+
   private showCreateOrEditUserDialog(id?: number): void {
     let createOrEditUserDialog;
     if (id === undefined || id <= 0) {
@@ -245,6 +280,17 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
   search() {
+
+  }
+
+  onOrOutShelf(type: number) {
+    if (type == 1) {
+      //on
+    }
+    else {
+      //out off
+
+    }
 
   }
 

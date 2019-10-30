@@ -134,5 +134,13 @@
     <text name="ExportEXCEL">Export</text>
     <text name="Search">Search</text>
     <text name="emptyFilterMessage">No results found</text>
+
+    <text name="AgentCode">Code</text>
+    <text name="AgentNickName">Nick Name</text>
+    <text name="AgentAvailableAmount">Available Amount</text>
+    <text name="AgentUsedAmount">Used Amount</text>
+    <text name="AgentChargedAmount">Charged Amount</text>
+    <text name="AgentWithDrawAmount">WithDraw Amount</text>
+    <text name="AgentPercentAmount">Percent</text>
   </texts>
 </localizationDictionary>

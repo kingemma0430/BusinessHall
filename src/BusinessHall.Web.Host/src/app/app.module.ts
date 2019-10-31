@@ -167,7 +167,8 @@ import { CreateAgentComponent } from './batchManagement/agent-manager/create-age
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
     CreateSupplierComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CreateAgentComponent
   ]
 })
 export class AppModule { }

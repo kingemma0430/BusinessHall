@@ -44,17 +44,17 @@
     }
 
     /* Left Sidebar - Function =================================================================================================
-    *  You can manage the left sidebar menu options
-    *  
-    */
+     *  You can manage the left sidebar menu options
+     *  
+     */
     $.AdminBSB.leftSideBar = {
-        activate: function () {
+        activate: function() {
             var _this = this;
             var $body = $('body');
             var $overlay = $('.overlay');
 
             //Close sidebar
-            $(window).click(function (e) {
+            $(window).click(function(e) {
                 var $target = $(e.target);
                 if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
 
@@ -64,12 +64,12 @@
                 }
             });
 
-            $.each($('.menu-toggle.toggled'), function (i, val) {
+            $.each($('.menu-toggle.toggled'), function(i, val) {
                 $(val).next().slideToggle(0);
             });
 
             //When page load
-            $.each($('.menu .list li.active'), function (i, val) {
+            $.each($('.menu .list li.active'), function(i, val) {
                 var $activeAnchors = $(val).find('a:eq(0)');
 
                 $activeAnchors.addClass('toggled');
@@ -77,14 +77,14 @@
             });
 
             //Collapse or Expand Menu
-            $('.menu-toggle').on('click', function (e) {
+            $('.menu-toggle').on('click', function(e) {
                 var $this = $(this);
                 var $content = $this.next();
 
                 if ($($this.parents('ul')[0]).hasClass('list')) {
                     var $not = $(e.target).hasClass('menu-toggle') ? e.target : $(e.target).parents('.menu-toggle');
 
-                    $.each($('.menu-toggle.toggled').not($not).next(), function (i, val) {
+                    $.each($('.menu-toggle.toggled').not($not).next(), function(i, val) {
                         if ($(val).is(':visible')) {
                             $(val).prev().toggleClass('toggled');
                             $(val).slideUp();
@@ -108,7 +108,7 @@
             Waves.attach('.menu .list a', ['waves-block']);
             Waves.init();
         },
-        setMenuHeight: function (isFirstTime) {
+        setMenuHeight: function(isFirstTime) {
             if (typeof $.fn.slimScroll != 'undefined') {
                 var configs = $.AdminBSB.options.leftSideBar;
                 var height = ($(window).height() - ($('.legal').outerHeight() + $('.user-info').outerHeight() + $('.navbar').innerHeight()));
@@ -133,13 +133,13 @@
                 }
             }
         },
-        checkStatuForResize: function (firstTime) {
+        checkStatuForResize: function(firstTime) {
             var $body = $('body');
             var $openCloseBar = $('.navbar .navbar-header .bars');
             var width = $body.width();
 
             if (firstTime) {
-                $body.find('.content, .sidebar').addClass('no-animate').delay(1000).queue(function () {
+                $body.find('.content, .sidebar').addClass('no-animate').delay(1000).queue(function() {
                     $(this).removeClass('no-animate').dequeue();
                 });
             }
@@ -147,112 +147,110 @@
             if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
                 $body.addClass('ls-closed');
                 $openCloseBar.fadeIn();
-            }
-            else {
+            } else {
                 $body.removeClass('ls-closed');
                 $openCloseBar.fadeOut();
             }
         },
-        isOpen: function () {
+        isOpen: function() {
             return $('body').hasClass('overlay-open');
         }
     };
     //==========================================================================================================================
 
     /* Right Sidebar - Function ================================================================================================
-    *  You can manage the right sidebar menu options
-    *  
-    */
+     *  You can manage the right sidebar menu options
+     *  
+     */
     $.AdminBSB.rightSideBar = {
-        activate: function () {
-            var _this = this;
-            var $sidebar = $('#rightsidebar');
-            var $overlay = $('.overlay');
+            activate: function() {
+                var _this = this;
+                var $sidebar = $('#rightsidebar');
+                var $overlay = $('.overlay');
 
-            //Close sidebar
-            $(window).click(function (e) {
-                var $target = $(e.target);
-                if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
+                //Close sidebar
+                $(window).click(function(e) {
+                    var $target = $(e.target);
+                    if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
 
-                if (!$target.hasClass('js-right-sidebar') && _this.isOpen() && $target.parents('#rightsidebar').length === 0) {
-                    if (!$target.hasClass('bars')) $overlay.fadeOut();
-                    $sidebar.removeClass('open');
-                }
-            });
+                    if (!$target.hasClass('js-right-sidebar') && _this.isOpen() && $target.parents('#rightsidebar').length === 0) {
+                        if (!$target.hasClass('bars')) $overlay.fadeOut();
+                        $sidebar.removeClass('open');
+                    }
+                });
 
-            $('.js-right-sidebar').on('click', function () {
-                $sidebar.toggleClass('open');
-                if (_this.isOpen()) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
-            });
-        },
-        isOpen: function () {
-            return $('.right-sidebar').hasClass('open');
+                $('.js-right-sidebar').on('click', function() {
+                    $sidebar.toggleClass('open');
+                    if (_this.isOpen()) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
+                });
+            },
+            isOpen: function() {
+                return $('.right-sidebar').hasClass('open');
+            }
         }
-    }
-    //==========================================================================================================================
+        //==========================================================================================================================
 
     /* Searchbar - Function ================================================================================================
-    *  You can manage the search bar
-    *  
-    */
+     *  You can manage the search bar
+     *  
+     */
     $.AdminBSB.search = {
-        activate: function () {
-            var _this = this;
-            var $searchBar = $('.search-bar');
+            activate: function() {
+                var _this = this;
+                var $searchBar = $('.search-bar');
 
-            //Search button click event
-            $('.js-search').on('click', function () {
-                _this.showSearchBar();
-            });
+                //Search button click event
+                $('.js-search').on('click', function() {
+                    _this.showSearchBar();
+                });
 
-            //Close search click event
-            $searchBar.find('.close-search').on('click', function () {
-                _this.hideSearchBar();
-            });
-
-            //ESC key on pressed
-            $searchBar.find('input[type="text"]').on('keyup', function (e) {
-                if (e.keyCode == 27) {
+                //Close search click event
+                $searchBar.find('.close-search').on('click', function() {
                     _this.hideSearchBar();
-                }
-            });
-        },
-        showSearchBar: function () {
-            var $searchBar = $('.search-bar');
-            $searchBar.addClass('open');
-            $searchBar.find('input[type="text"]').focus();
-            console.log($searchBar);
-        },
-        hideSearchBar: function () {
-            var $searchBar = $('.search-bar');
-            $searchBar.removeClass('open');
-            $searchBar.find('input[type="text"]').val('');
+                });
+
+                //ESC key on pressed
+                $searchBar.find('input[type="text"]').on('keyup', function(e) {
+                    if (e.keyCode == 27) {
+                        _this.hideSearchBar();
+                    }
+                });
+            },
+            showSearchBar: function() {
+                var $searchBar = $('.search-bar');
+                $searchBar.addClass('open');
+                $searchBar.find('input[type="text"]').focus();
+            },
+            hideSearchBar: function() {
+                var $searchBar = $('.search-bar');
+                $searchBar.removeClass('open');
+                $searchBar.find('input[type="text"]').val('');
+            }
         }
-    }
-    //==========================================================================================================================
+        //==========================================================================================================================
 
     /* Navbar - Function =======================================================================================================
-    *  You can manage the navbar
-    *  
-    */
+     *  You can manage the navbar
+     *  
+     */
     $.AdminBSB.navbar = {
-        activate: function () {
+        activate: function() {
             var $body = $('body');
             var $overlay = $('.overlay');
 
             //Open left sidebar panel
-            $('.bars').on('click', function () {
+            $('.bars').on('click', function() {
                 $body.toggleClass('overlay-open');
                 if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
             });
 
             //Close collapse bar on click event
-            $('.nav [data-close="true"]').on('click', function () {
+            $('.nav [data-close="true"]').on('click', function() {
                 var isVisible = $('.navbar-toggle').is(':visible');
                 var $navbarCollapse = $('.navbar-collapse');
 
                 if (isVisible) {
-                    $navbarCollapse.slideUp(function () {
+                    $navbarCollapse.slideUp(function() {
                         $navbarCollapse.removeClass('in').removeAttr('style');
                     });
                 }
@@ -263,9 +261,9 @@
     //==========================================================================================================================
 
     /* Browser - Function ======================================================================================================
-    *  You can manage browser
-    *  
-    */
+     *  You can manage browser
+     *  
+     */
     var edge = 'Microsoft Edge';
     var ie10 = 'Internet Explorer 10';
     var ie11 = 'Internet Explorer 11';
@@ -275,58 +273,58 @@
     var safari = 'Safari';
 
     $.AdminBSB.browser = {
-        activate: function () {
-            var _this = this;
-            var className = _this.getClassName();
+            activate: function() {
+                var _this = this;
+                var className = _this.getClassName();
 
-            if (className !== '') $('html').addClass(_this.getClassName());
-        },
-        getBrowser: function () {
-            var userAgent = navigator.userAgent.toLowerCase();
+                if (className !== '') $('html').addClass(_this.getClassName());
+            },
+            getBrowser: function() {
+                var userAgent = navigator.userAgent.toLowerCase();
 
-            if (/edge/i.test(userAgent)) {
-                return edge;
-            } else if (/rv:11/i.test(userAgent)) {
-                return ie11;
-            } else if (/msie 10/i.test(userAgent)) {
-                return ie10;
-            } else if (/opr/i.test(userAgent)) {
-                return opera;
-            } else if (/chrome/i.test(userAgent)) {
-                return chrome;
-            } else if (/firefox/i.test(userAgent)) {
-                return firefox;
-            } else if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
-                return safari;
-            }
+                if (/edge/i.test(userAgent)) {
+                    return edge;
+                } else if (/rv:11/i.test(userAgent)) {
+                    return ie11;
+                } else if (/msie 10/i.test(userAgent)) {
+                    return ie10;
+                } else if (/opr/i.test(userAgent)) {
+                    return opera;
+                } else if (/chrome/i.test(userAgent)) {
+                    return chrome;
+                } else if (/firefox/i.test(userAgent)) {
+                    return firefox;
+                } else if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
+                    return safari;
+                }
 
-            return undefined;
-        },
-        getClassName: function () {
-            var browser = this.getBrowser();
+                return undefined;
+            },
+            getClassName: function() {
+                var browser = this.getBrowser();
 
-            if (browser === edge) {
-                return 'edge';
-            } else if (browser === ie11) {
-                return 'ie11';
-            } else if (browser === ie10) {
-                return 'ie10';
-            } else if (browser === opera) {
-                return 'opera';
-            } else if (browser === chrome) {
-                return 'chrome';
-            } else if (browser === firefox) {
-                return 'firefox';
-            } else if (browser === safari) {
-                return 'safari';
-            } else {
-                return '';
+                if (browser === edge) {
+                    return 'edge';
+                } else if (browser === ie11) {
+                    return 'ie11';
+                } else if (browser === ie10) {
+                    return 'ie10';
+                } else if (browser === opera) {
+                    return 'opera';
+                } else if (browser === chrome) {
+                    return 'chrome';
+                } else if (browser === firefox) {
+                    return 'firefox';
+                } else if (browser === safari) {
+                    return 'safari';
+                } else {
+                    return '';
+                }
             }
         }
-    }
-    //==========================================================================================================================
+        //==========================================================================================================================
 
-    $.AdminBSB.activateAll = function () {
+    $.AdminBSB.activateAll = function() {
         $.AdminBSB.browser.activate();
         $.AdminBSB.leftSideBar.activate();
         $.AdminBSB.rightSideBar.activate();

@@ -40,7 +40,7 @@ namespace BusinessHall.ProductFaceValueManagers
         public Task<ProductFaceValueDto> Create(ProductFaceValueDto productFaceValueDto)
         {
             productFaceValueDto.CreatorUserId = AbpSession.UserId.Value;
-            productFaceValueDto.CretionTime = DateTime.Now;
+            productFaceValueDto.CreationTime = DateTime.Now;
             ProductFaceValue productFaceValue = ObjectMapper.Map<ProductFaceValue>(productFaceValueDto);
             productFaceValueDto.Id = _productFaceValueRepository.InsertAndGetId(productFaceValue);
             return Task.FromResult<ProductFaceValueDto>(productFaceValueDto);

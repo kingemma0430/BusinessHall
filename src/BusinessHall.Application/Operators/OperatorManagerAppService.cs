@@ -40,7 +40,7 @@ namespace BusinessHall.OperatorManagers
         public Task<OperatorDto> Create(OperatorDto operatorDto)
         {
             operatorDto.CreatorUserId = AbpSession.UserId.Value;
-            operatorDto.CretionTime = DateTime.Now;
+            operatorDto.CreationTime = DateTime.Now;
             Operator operatorModel = ObjectMapper.Map<Operator>(operatorDto);
             operatorDto.Id = _operatorRepository.InsertAndGetId(operatorModel);
             return Task.FromResult<OperatorDto>(operatorDto);

@@ -3,7 +3,7 @@ import { Observable, throwError as _observableThrow, of as _observableOf } from 
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
 
-import { SupplierDto } from '../models/supplier';
+import { SupplierDto, SupplierPayDto, SupplierAccountDto } from '../models/supplier';
 
 import { AppConsts } from '../AppConsts';
 
@@ -12,12 +12,17 @@ import { ServiceHelperService } from '../serviceHelpers/service-helper.service';
 import * as moment from 'moment';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
-
+/**
+ * SupplierManager
+ * SupplierPayManager
+ * SupplierAcountManager
+ */
 @Injectable()
 export class SupplierManagerService {
   private http: HttpClient;
   private apiUrl: string = "/api/services/app/SupplierManager/";
   private apiUrlSupplierPayManager: string = "/api/services/app/SupplierPayManager/";
+  private apiUrlSupplierAcountManager: string = "/api/services/app/SupplierAcountManager/";
 
   protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
@@ -42,7 +47,7 @@ export class SupplierManagerService {
 
   /**
    * @param input (optional) 
-   * @return Success
+   * @return SupplierDto
    */
   Create(input: SupplierDto | null | undefined): Observable<SupplierDto> {
     let url_ = this.apiUrl + "Create";
@@ -54,7 +59,7 @@ export class SupplierManagerService {
 
   /**
  * @param input (optional) 
- * @return Success
+ * @return SupplierDto
  */
   Update(input: SupplierDto | null | undefined): Observable<SupplierDto> {
     let url_ = this.apiUrl + "Update";
@@ -80,13 +85,13 @@ export class SupplierManagerService {
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
-  GetAllSupplierPay(): Observable<any> {
+  GetAllSupplierPays(): Observable<any> {
     let url_ = this.apiUrlSupplierPayManager + "GetAll";
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
   }
 
-  GetByIdSupplierPay(id: number): Observable<any> {
+  GetSupplierPayById(id: number): Observable<any> {
     let url_ = this.apiUrlSupplierPayManager + "GetById?id=" + id;
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
@@ -94,9 +99,9 @@ export class SupplierManagerService {
 
   /**
    * @param input (optional) 
-   * @return Success
+   * @return SupplierPayDto
    */
-  CreateSupplierPay(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  CreateSupplierPay(input: SupplierPayDto | null | undefined): Observable<SupplierPayDto> {
     let url_ = this.apiUrlSupplierPayManager + "Create";
     url_ = url_.replace(/[?&]$/, "");
 
@@ -106,9 +111,9 @@ export class SupplierManagerService {
 
   /**
  * @param input (optional) 
- * @return Success
+ * @return SupplierPayDto
  */
-  UpdateSupplierPay(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  UpdateSupplierPay(input: SupplierPayDto | null | undefined): Observable<SupplierPayDto> {
     let url_ = this.apiUrlSupplierPayManager + "Update";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(input);
@@ -127,6 +132,59 @@ export class SupplierManagerService {
 
   DeleteForMultipleSupplierPay(ids: number[]): Observable<any> {
     let url_ = this.apiUrlSupplierPayManager + "DeleteForMultiple";
+    url_ = url_.replace(/[?&]$/, "");
+    const content_ = JSON.stringify(ids);
+    return this._serviceHelperService.deleteByCondition(url_, content_);
+  }
+
+
+  GetAllSupplierAcounts(): Observable<any> {
+    let url_ = this.apiUrlSupplierAcountManager + "GetAll";
+    url_ = url_.replace(/[?&]$/, "");
+    return this._serviceHelperService.get(url_);
+  }
+
+  GetSupplierAcountById(id: number): Observable<any> {
+    let url_ = this.apiUrlSupplierAcountManager + "GetById?id=" + id;
+    url_ = url_.replace(/[?&]$/, "");
+    return this._serviceHelperService.get(url_);
+  }
+
+  /**
+   * @param input (optional) 
+   * @return SupplierAcountDto
+   */
+  CreateSupplierAcount(input: SupplierAccountDto | null | undefined): Observable<SupplierAccountDto> {
+    let url_ = this.apiUrlSupplierAcountManager + "Create";
+    url_ = url_.replace(/[?&]$/, "");
+
+    const content_ = JSON.stringify(input);
+    return this._serviceHelperService.create(url_, content_);
+  }
+
+  /**
+ * @param input (optional) 
+ * @return SupplierAcountDto
+ */
+  UpdateSupplierAcount(input: SupplierAccountDto | null | undefined): Observable<SupplierAccountDto> {
+    let url_ = this.apiUrlSupplierAcountManager + "Update";
+    url_ = url_.replace(/[?&]$/, "");
+    const content_ = JSON.stringify(input);
+    return this._serviceHelperService.update(url_, content_);
+
+  }
+
+  DeleteSupplierAcount(id: number): Observable<any> {
+    let url_ = this.apiUrl + "Delete?";
+    if (id !== undefined)
+      url_ += "Id=" + encodeURIComponent("" + id) + "&";
+    url_ = url_.replace(/[?&]$/, "");
+
+    return this._serviceHelperService.delete(url_);
+  }
+
+  DeleteForMultipleSupplierAcounts(ids: number[]): Observable<any> {
+    let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);

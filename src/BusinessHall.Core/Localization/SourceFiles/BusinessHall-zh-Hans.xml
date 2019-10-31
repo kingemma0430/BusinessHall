@@ -146,6 +146,7 @@
     <text name="AgentChargedAmount">充值金额</text>
     <text name="AgentWithDrawAmount">提现金额</text>
     <text name="AgentPercentAmount">信贷(已用、总额)</text>
+    <text name="Operator">运营商</text>
 
 
   </texts>

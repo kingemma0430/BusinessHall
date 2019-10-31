@@ -6,18 +6,25 @@ import { finalize } from 'rxjs/operators';
 import * as Enumerable from 'linq';
 
 import { SelectItem } from 'primeng/primeng';
-import { ProductDto, ProductStatusEnum } from '@shared/models/product';
 import { CreateProductComponent } from './create-product/create-product.component';
 
-import { ProductService } from '@shared/productServices/product.service';
-import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
 import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
 
 import {
   BasicDataService,
   ProvinceDto, CityDto, AreaDto, EthnicGroupDto, TenantDto
 } from '@shared/basicDataServices/basic-data-service.service';
-import { SupplierDto } from '@shared/models/supplier';
+
+import { ProductService } from '@shared/productServices/product.service';
+import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
+import { OperatorService } from '@shared/operatorServices/operator.service';
+
+
+
+import { SupplierDto, SupplierAccountDto, SupplierPayDto, SupplierStatusEnum } from '@shared/models/supplier';
+import { AgentDto, AgentAccountDto } from '@shared/models/agent';
+import { ProductDto, ProductFaceValueDto, ProductOperatorDto, FaceValueDto, OperatorDto, ProductStatusEnum } from '@shared/models/product';
+
 
 
 @Component({
@@ -32,7 +39,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     private _dialog: MatDialog,
     private _basicDataService: BasicDataService,
     private _productService: ProductService,
-    private _supplierManagerService: SupplierManagerService
+    private _supplierManagerService: SupplierManagerService,
+    private _operatorService: OperatorService
   ) {
     super(injector);
   }
@@ -48,15 +56,15 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   selectedProvinceList: ProvinceDto[] = [];
   selectedCityList: CityDto[] = [];
 
-  selectedBusinessList: any[] = [];
-  selectedFaceValueList: any[] = [];
+  selectedOperatorList: OperatorDto[] = [];
+  selectedFaceValueList: FaceValueDto[] = [];
   selectedStatus: any[] = [];
 
 
   cityList: CityDto[] = [];
   cityListAll: CityDto[] = [];
-  businesseList: SelectItem[] = [];
-  faceValueList: SelectItem[] = [];
+  operatorList: OperatorDto[] = [];
+  faceValueList: FaceValueDto[] = [];
   statusList: SelectItem[] = [];
 
 
@@ -76,8 +84,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
   ngOnInit() {
     this.sortOptions = [
-      { label: 'Newest First', value: '!cretionTime' },
-      { label: 'Oldest First', value: 'cretionTime' }
+      { label: 'Newest First', value: '!creationTime' },
+      { label: 'Oldest First', value: 'creationTime' }
     ];
     this.initialColumns();
     this.loadProductDatas();
@@ -85,6 +93,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     this.loadCityList();
     this.loadSupplierDatas();
     this.loadStatusData();
+    this.loadOperatorDatas();
+    this.loadFaceValueDatas();
   }
 
 
@@ -92,6 +102,22 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     this._supplierManagerService.GetAll().subscribe(result => {
       if (result) {
         this.supplierList = result["items"];
+      }
+    });
+  }
+
+  loadOperatorDatas() {
+    this._operatorService.GetAllOperators().subscribe(result => {
+      if (result) {
+        this.operatorList = result["items"];
+      }
+    });
+  }
+
+  loadFaceValueDatas() {
+    this._productService.GetAllFaceValues().subscribe(result => {
+      if (result) {
+        this.faceValueList = result["items"];
       }
     });
   }
@@ -113,7 +139,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
 
   loadProductDatas() {
-    this._productService.GetAll().subscribe(data => {
+    this._productService.GetAllProducts().subscribe(data => {
       let result: ListResultDto = data as ListResultDto;
       if (result) {
         this.records = result.items as ProductDto[];
@@ -123,7 +149,6 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
   loadProvinceList() {
     this._basicDataService.GetProvinceListCache().subscribe(data => {
-      console.log(data);
       let tmpDatas: ProvinceDto[] = data as ProvinceDto[];
       this.provinceList = tmpDatas;
     })

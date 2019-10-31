@@ -1073,14 +1073,14 @@ namespace BusinessHall.Migrations
                     b.ToTable("AbpUserRoleMenus");
                 });
 
-            modelBuilder.Entity("BusinessHall.BusinessHallModels.Operator", b =>
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.Agent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500);
@@ -1090,11 +1090,85 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("TenantId");
 
-                    b.Property<long?>("UserId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.ToTable("Agents");
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.AgentAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AgentId");
+
+                    b.Property<decimal>("AvaliableAmount");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long>("CreatorUserId");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<decimal>("TotalAmount");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.ToTable("AgentAccounts");
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.FaceValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("ActualValue");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long>("CreatorUserId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(45);
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.ToTable("FaceValues");
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.Operator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long>("CreatorUserId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(45);
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
 
                     b.ToTable("Operators");
                 });
@@ -1104,9 +1178,9 @@ namespace BusinessHall.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<decimal>("Discount");
 
@@ -1121,13 +1195,11 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("TenantId");
 
-                    b.Property<long?>("UserId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("CreatorUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
                 });
@@ -1137,9 +1209,9 @@ namespace BusinessHall.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<decimal>("FaceValue");
 
@@ -1150,13 +1222,11 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("TenantId");
 
-                    b.Property<long?>("UserId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("CreatorUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductFaceValues");
                 });
@@ -1166,9 +1236,9 @@ namespace BusinessHall.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<int>("OperatorId");
 
@@ -1176,15 +1246,13 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("TenantId");
 
-                    b.Property<long?>("UserId");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
 
                     b.HasIndex("OperatorId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ProductOperators");
                 });
@@ -1194,9 +1262,9 @@ namespace BusinessHall.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<bool>("IsAutoReturnMoney");
 
@@ -1207,13 +1275,37 @@ namespace BusinessHall.Migrations
 
                     b.Property<int?>("TenantId");
 
-                    b.Property<long?>("UserId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorUserId");
+
+                    b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.SupplierAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("AvaliableAmount");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long>("CreatorUserId");
+
+                    b.Property<int>("SupplierId");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<decimal>("TotalAmount");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CreatorUserId");
 
-                    b.ToTable("Suppliers");
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("SupplierAccounts");
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.SupplierPay", b =>
@@ -1221,9 +1313,9 @@ namespace BusinessHall.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatorUserId");
+                    b.Property<DateTime>("CreationTime");
 
-                    b.Property<DateTime>("CretionTime");
+                    b.Property<long>("CreatorUserId");
 
                     b.Property<int>("SupplierId");
 
@@ -1231,13 +1323,11 @@ namespace BusinessHall.Migrations
 
                     b.Property<decimal>("TotalValue");
 
-                    b.Property<long?>("UserId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("CreatorUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("SupplierPays");
                 });
@@ -1537,39 +1627,76 @@ namespace BusinessHall.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.Agent", b =>
+                {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.AgentAccount", b =>
+                {
+                    b.HasOne("BusinessHall.BusinessHallModels.Agent", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.FaceValue", b =>
+                {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("BusinessHall.BusinessHallModels.Operator", b =>
                 {
                     b.HasOne("BusinessHall.Authorization.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.Product", b =>
                 {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BusinessHall.BusinessHallModels.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.ProductFaceValue", b =>
                 {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BusinessHall.BusinessHallModels.Product", "Product")
                         .WithMany("ProductFaceValues")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.ProductOperator", b =>
                 {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BusinessHall.BusinessHallModels.Operator", "Operator")
                         .WithMany()
                         .HasForeignKey("OperatorId")
@@ -1579,29 +1706,40 @@ namespace BusinessHall.Migrations
                         .WithMany("ProductOperators")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.Supplier", b =>
                 {
                     b.HasOne("BusinessHall.Authorization.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BusinessHall.BusinessHallModels.SupplierPay", b =>
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.SupplierAccount", b =>
                 {
+                    b.HasOne("BusinessHall.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BusinessHall.BusinessHallModels.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
+            modelBuilder.Entity("BusinessHall.BusinessHallModels.SupplierPay", b =>
+                {
                     b.HasOne("BusinessHall.Authorization.Users.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CreatorUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BusinessHall.BusinessHallModels.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BusinessHall.MultiTenancy.Tenant", b =>

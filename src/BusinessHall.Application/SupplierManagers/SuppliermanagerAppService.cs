@@ -39,7 +39,7 @@ namespace BusinessHall.SupplierManagers
         public Task<SupplierDto> Create(SupplierDto supplierDto)
         {
             supplierDto.CreatorUserId = AbpSession.UserId.Value;
-            supplierDto.CretionTime = DateTime.Now;
+            supplierDto.CreationTime = DateTime.Now;
             Supplier supplier = ObjectMapper.Map<Supplier>(supplierDto);
             supplierDto.Id = _supplierRepository.InsertAndGetId(supplier);
             return Task.FromResult<SupplierDto>(supplierDto);

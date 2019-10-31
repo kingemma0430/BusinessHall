@@ -9,7 +9,7 @@ export class ProductDto {
     status: ProductStatusEnum;
 
     creatorUserId: number;
-    cretionTime: Date;
+    creationTime: Date;
     presentValue: number;
 
     createUserName: string;
@@ -29,7 +29,7 @@ export class ProductFaceValueDto {
     productId: number;
     faceValue: number;
     creatorUserId: number;
-    cretionTime: Date;
+    creationTime: Date;
     createUserName: string;
     productName: string;
 }
@@ -40,17 +40,32 @@ export class ProductOperatorDto {
     productId: number;
     operatorId: number;
     creatorUserId: number;
-    cretionTime: Date;
+    creationTime: Date;
     createUserName: string;
 }
 
+/**
+ * 运营商
+ */
 export class OperatorDto {
     id: number;
     name: string;
     tenantId: number;
     description: string;
     creatorUserId: number;
-    cretionTime: Date;
+    creationTime: Date;
+    createUserName: string;
+}
+
+
+export class FaceValueDto {
+    id: number;
+    name: string;
+    tenantId: number;
+    description: string;
+    actualValue: number;
+    creatorUserId: number;
+    creationTime: Date;
     createUserName: string;
 }
 

@@ -142,5 +142,7 @@
     <text name="AgentChargedAmount">Charged Amount</text>
     <text name="AgentWithDrawAmount">WithDraw Amount</text>
     <text name="AgentPercentAmount">Percent</text>
+    <text name="Operator">Operator</text>
+
   </texts>
 </localizationDictionary>

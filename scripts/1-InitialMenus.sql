@@ -1,6 +1,19 @@
 
 select * from abpauditlogs  order by id desc;
 
+delete from operators;
+
+insert into operators(name,creationtime,CreatorUserId) values('中国电信','2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into operators(name,creationtime,CreatorUserId) values('中国移动','2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into operators(name,creationtime,CreatorUserId) values('中国联通','2019-10-31 12:12', (select Id from abpusers limit 0,1));
+
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('10',10,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('20',20,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('30',30,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('50',50,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('100',100,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+insert into facevalues(name,actualvalue,creationtime,CreatorUserId) values('200',200,'2019-10-31 12:12', (select Id from abpusers limit 0,1));
+
 delete from EthnicGroups;
 delete from areas;
 delete from cities;
@@ -1488,7 +1501,7 @@ INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`Menu
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('UserManager','UserManager','','group',1,3,null, null);
 select Id from abpmenus where Name="UserManager" limit 0,1 into @UserManagerMenuId;
-INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
+INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRproductsoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('Users','Users','/app/users','people',1,1,null, @UserManagerMenuId);
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('Roles','Roles','/app/roles','local_offer',1,2,null, @UserManagerMenuId);

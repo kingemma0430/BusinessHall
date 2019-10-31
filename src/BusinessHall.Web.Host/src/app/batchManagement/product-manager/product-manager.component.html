@@ -28,7 +28,7 @@
                     <span class="spanField">{{'City'|localize}}</span>
                 </div> -->
                 <div class="ui-g-12 ui-md-2 fieldDivPadding">
-                    <span class="spanField">{{'Business'|localize}}</span>
+                    <span class="spanField">{{'Operator'|localize}}</span>
                 </div>
                 <div class="ui-g-12 ui-md-2 fieldDivPadding">
                     <span class="spanField">{{'FaceValue'|localize}}</span>
@@ -44,9 +44,10 @@
                     [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
                 <!-- <p-multiSelect [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
                     [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect> -->
-                <p-multiSelect [options]="businesseList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedBusinessList" [filter]="true" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
+                <p-multiSelect [options]="operatorList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedOperatorList" [filter]="true" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="faceValueList" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
+                <p-multiSelect [options]="faceValueList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+                    [style]="{'width':'100%'}"></p-multiSelect>
                 <p-multiSelect [options]="statusList" optionLabel="label" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">

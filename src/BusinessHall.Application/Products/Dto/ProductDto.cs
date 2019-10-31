@@ -38,7 +38,7 @@ namespace BusinessHall.Products.Dto
 
         public long CreatorUserId { get; set; }
 
-        public DateTime CretionTime { get; set; }
+        public DateTime CreationTime { get; set; }
 
         public string CreateUserName { get; set; }
 

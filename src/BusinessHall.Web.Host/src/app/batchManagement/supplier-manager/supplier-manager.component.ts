@@ -44,8 +44,8 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
 
   ngOnInit() {
     this.sortOptions = [
-      { label: 'Newest First', value: '!cretionTime' },
-      { label: 'Oldest First', value: 'cretionTime' }
+      { label: 'Newest First', value: '!creationTime' },
+      { label: 'Oldest First', value: 'creationTime' }
     ];
     this.initialColumns();
     this.loadDatas();
@@ -150,7 +150,6 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
     }
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
-      console.log("result", result);
       if (result) {
         this.refresh();
       }

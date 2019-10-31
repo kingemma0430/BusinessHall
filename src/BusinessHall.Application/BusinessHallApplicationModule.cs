@@ -1,13 +1,17 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using BusinessHall.AgentAccounts.Dto;
+using BusinessHall.Agents.Dto;
 using BusinessHall.Authorization;
 using BusinessHall.BusinessHallModels;
+using BusinessHall.FaceValues.Dto;
 using BusinessHall.Menus.Dto;
 using BusinessHall.Operators.Dto;
 using BusinessHall.ProductFaceValues.Dto;
 using BusinessHall.ProductOperators.Dto;
 using BusinessHall.Products.Dto;
+using BusinessHall.SupplierAccounts.Dto;
 using BusinessHall.SupplierManagers.Dto;
 using BusinessHall.SupplierPays.Dto;
 using System;
@@ -43,6 +47,16 @@ namespace BusinessHall
                 config.CreateMap<Product, ProductDto>();
                 config.CreateMap<SupplierPayDto, SupplierPay>();
                 config.CreateMap<SupplierPay, SupplierPayDto>();
+             
+                config.CreateMap<Agent, AgentDto>();
+                config.CreateMap<AgentDto, Agent>();
+                config.CreateMap<FaceValue, FaceValueDto>();
+                config.CreateMap<FaceValueDto, FaceValue>();
+                config.CreateMap<SupplierAccount, SupplierAccountDto>();
+                config.CreateMap<SupplierAccountDto, SupplierAccount>();
+                config.CreateMap<AgentAccount, AgentAccountDto>();
+                config.CreateMap<AgentAccountDto, AgentAccount>();
+
             });
 
             //Configuration for a specific cache

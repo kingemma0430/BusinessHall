@@ -7,9 +7,11 @@ import * as Enumerable from 'linq';
 
 
 import { SelectItem } from 'primeng/primeng';
-import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';
+
+import { AgentDto, AgentAccountDto } from '@shared/models/agent';
+
 import { CreateAgentComponent } from './create-agent/create-agent.component';
-import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
+import { AgentService } from '@shared/agentServices/agent.service';
 
 
 @Component({
@@ -21,7 +23,7 @@ import { SupplierManagerService } from '@shared/supplierServices/supplier-manage
 export class AgentManagerComponent extends AppComponentBase implements OnInit {
 
 
-  records: SupplierDto[];
+  records: AgentDto[];
 
   sortOptions: SelectItem[];
 
@@ -34,18 +36,18 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   cols: any[];
   columns: any[];
   exportColumns: any[];
-  selectedItems: SupplierDto[] = [];
+  selectedItems: AgentDto[] = [];
   constructor(
     injector: Injector,
     private _dialog: MatDialog,
-    private _supplierManagerService: SupplierManagerService) {
+    private _agentService: AgentService) {
     super(injector);
   }
 
   ngOnInit() {
     this.sortOptions = [
-      { label: 'Newest First', value: '!cretionTime' },
-      { label: 'Oldest First', value: 'cretionTime' }
+      { label: 'Newest First', value: '!creationTime' },
+      { label: 'Oldest First', value: 'creationTime' }
     ];
     this.initialColumns();
     this.loadDatas();
@@ -69,7 +71,7 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   }
 
   loadDatas() {
-    this._supplierManagerService.GetAll().subscribe(result => {
+    this._agentService.GetAllAgents().subscribe(result => {
       if (result) {
         this.records = result["items"];
       }
@@ -126,16 +128,16 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
     this.showCreateOrEditUserDialog();
   }
 
-  edit(item: SupplierDto): void {
+  edit(item: AgentDto): void {
     this.showCreateOrEditUserDialog(item.id);
   }
 
-  delete(item: SupplierDto) {
+  delete(item: AgentDto) {
     abp.message.confirm(
       this.l('UserDeleteWarningMessage', item.name),
       (result: boolean) => {
         if (result) {
-          this._supplierManagerService.Delete(item.id).subscribe(() => {
+          this._agentService.DeleteAgent(item.id).subscribe(() => {
             abp.notify.success(this.l('SuccessfullyDeleted'));
             this.refresh();
           });
@@ -155,7 +157,6 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
     }
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
-      console.log("result", result);
       if (result) {
         this.refresh();
       }

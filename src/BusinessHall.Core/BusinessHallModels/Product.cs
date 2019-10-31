@@ -32,14 +32,14 @@ namespace BusinessHall.BusinessHallModels
         /// </summary>
         public decimal Discount { get; set; }
 
-
         public long CreatorUserId { get; set; }
 
-        public DateTime CretionTime { get; set; }
-
-        public User User { get; set; }
+        public DateTime CreationTime { get; set; }
 
         public ProductStatusEnum Status { get; set; }
+
+        [ForeignKey("CreatorUserId")]
+        public virtual User User { get; set; }
 
         public virtual Supplier Supplier { get; set; }
 

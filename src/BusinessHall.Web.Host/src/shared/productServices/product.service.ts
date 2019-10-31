@@ -4,7 +4,9 @@ import { Observable, throwError as _observableThrow, of as _observableOf } from 
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
 
-import { SupplierDto } from '../models/supplier';
+
+import { ProductDto, ProductFaceValueDto, ProductOperatorDto, FaceValueDto, OperatorDto, ProductStatusEnum } from '@shared/models/product';
+
 
 import { AppConsts } from '../AppConsts';
 
@@ -14,12 +16,19 @@ import * as moment from 'moment';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
+/**
+ * ProductManager
+ * ProductFaceValueManager
+ * ProductOperatorManager
+ * FaceValueManager
+ */
 @Injectable()
 export class ProductService {
   private http: HttpClient;
   private apiUrl: string = "/api/services/app/ProductManager/";
   private apiUrlProductFaceValueManager: string = "/api/services/app/ProductFaceValueManager/";
   private apiUrlProductOperatorManager: string = "/api/services/app/ProductOperatorManager/";
+  private apiUrlFaceValueManager: string = "/api/services/app/FaceValueManager/";
 
   protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
@@ -30,13 +39,14 @@ export class ProductService {
     this.http = http;
   }
 
+
   GetAllProductFaceValue(): Observable<any> {
     let url_ = this.apiUrlProductFaceValueManager + "GetAll";
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
   }
 
-  GetByIdProductFaceValue(id: number): Observable<any> {
+  GetProductFaceValueById(id: number): Observable<any> {
     let url_ = this.apiUrlProductFaceValueManager + "GetById?id=" + id;
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
@@ -46,7 +56,7 @@ export class ProductService {
    * @param input (optional) 
    * @return Success
    */
-  CreateProductFaceValue(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  CreateProductFaceValue(input: ProductFaceValueDto | null | undefined): Observable<ProductFaceValueDto> {
     let url_ = this.apiUrlProductFaceValueManager + "Create";
     url_ = url_.replace(/[?&]$/, "");
 
@@ -58,7 +68,7 @@ export class ProductService {
  * @param input (optional) 
  * @return Success
  */
-  UpdateProductFaceValue(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  UpdateProductFaceValue(input: ProductFaceValueDto | null | undefined): Observable<ProductFaceValueDto> {
     let url_ = this.apiUrlProductFaceValueManager + "Update";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(input);
@@ -90,7 +100,7 @@ export class ProductService {
     return this._serviceHelperService.get(url_);
   }
 
-  GetByIdProductOperator(id: number): Observable<any> {
+  GetProductOperatorById(id: number): Observable<any> {
     let url_ = this.apiUrlProductOperatorManager + "GetById?id=" + id;
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
@@ -100,7 +110,7 @@ export class ProductService {
    * @param input (optional) 
    * @return Success
    */
-  CreateProductOperator(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  CreateProductOperator(input: ProductOperatorDto | null | undefined): Observable<ProductOperatorDto> {
     let url_ = this.apiUrlProductOperatorManager + "Create";
     url_ = url_.replace(/[?&]$/, "");
 
@@ -112,7 +122,7 @@ export class ProductService {
  * @param input (optional) 
  * @return Success
  */
-  UpdateProductOperator(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  UpdateProductOperator(input: ProductOperatorDto | null | undefined): Observable<ProductOperatorDto> {
     let url_ = this.apiUrlProductOperatorManager + "Update";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(input);
@@ -138,15 +148,13 @@ export class ProductService {
 
 
 
-
-
-  GetAll(): Observable<any> {
+  GetAllProducts(): Observable<any> {
     let url_ = this.apiUrl + "GetAll";
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
   }
 
-  GetById(id: number): Observable<any> {
+  GetProductById(id: number): Observable<any> {
     let url_ = this.apiUrl + "GetById?id=" + id;
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
@@ -156,7 +164,7 @@ export class ProductService {
    * @param input (optional) 
    * @return Success
    */
-  Create(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  CreateProduct(input: ProductDto | null | undefined): Observable<ProductDto> {
     let url_ = this.apiUrl + "Create";
     url_ = url_.replace(/[?&]$/, "");
 
@@ -168,7 +176,7 @@ export class ProductService {
  * @param input (optional) 
  * @return Success
  */
-  Update(input: SupplierDto | null | undefined): Observable<SupplierDto> {
+  UpdateProduct(input: ProductDto | null | undefined): Observable<ProductDto> {
     let url_ = this.apiUrl + "Update";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(input);
@@ -176,7 +184,7 @@ export class ProductService {
 
   }
 
-  Delete(id: number): Observable<any> {
+  DeleteProduct(id: number): Observable<any> {
     let url_ = this.apiUrl + "Delete?";
     if (id !== undefined)
       url_ += "Id=" + encodeURIComponent("" + id) + "&";
@@ -185,16 +193,66 @@ export class ProductService {
     return this._serviceHelperService.delete(url_);
   }
 
-  DeleteForMultiple(ids: number[]): Observable<any> {
+  DeleteForMultipleProducts(ids: number[]): Observable<any> {
     let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
     const content_ = JSON.stringify(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
+
+
+  GetAllFaceValues(): Observable<any> {
+    let url_ = this.apiUrlFaceValueManager + "GetAll";
+    url_ = url_.replace(/[?&]$/, "");
+    return this._serviceHelperService.get(url_);
+  }
+
+  GetFaceValueById(id: number): Observable<any> {
+    let url_ = this.apiUrlFaceValueManager + "GetById?id=" + id;
+    url_ = url_.replace(/[?&]$/, "");
+    return this._serviceHelperService.get(url_);
+  }
+
+  /**
+   * @param input (optional) 
+   * @return Success
+   */
+  CreateFaceValue(input: FaceValueDto | null | undefined): Observable<FaceValueDto> {
+    let url_ = this.apiUrlFaceValueManager + "Create";
+    url_ = url_.replace(/[?&]$/, "");
+
+    const content_ = JSON.stringify(input);
+    return this._serviceHelperService.create(url_, content_);
+  }
+
+  /**
+ * @param input (optional) 
+ * @return Success
+ */
+  UpdateFaceValue(input: FaceValueDto | null | undefined): Observable<FaceValueDto> {
+    let url_ = this.apiUrlFaceValueManager + "Update";
+    url_ = url_.replace(/[?&]$/, "");
+    const content_ = JSON.stringify(input);
+    return this._serviceHelperService.update(url_, content_);
+
+  }
+
+  DeleteFaceValue(id: number): Observable<any> {
+    let url_ = this.apiUrlFaceValueManager + "Delete?";
+    if (id !== undefined)
+      url_ += "Id=" + encodeURIComponent("" + id) + "&";
+    url_ = url_.replace(/[?&]$/, "");
+
+    return this._serviceHelperService.delete(url_);
+  }
+
+  DeleteForMultipleFaceValues(ids: number[]): Observable<any> {
+    let url_ = this.apiUrlFaceValueManager + "DeleteForMultiple";
+    url_ = url_.replace(/[?&]$/, "");
+    const content_ = JSON.stringify(ids);
+    return this._serviceHelperService.deleteByCondition(url_, content_);
+  }
 }
-
-
-
 
 

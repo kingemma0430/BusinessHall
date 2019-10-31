@@ -40,7 +40,7 @@ namespace BusinessHall.ProductOperatorManagers
         public Task<ProductOperatorDto> Create(ProductOperatorDto productOperatorDto)
         {
             productOperatorDto.CreatorUserId = AbpSession.UserId.Value;
-            productOperatorDto.CretionTime = DateTime.Now;
+            productOperatorDto.CreationTime = DateTime.Now;
             ProductOperator productOperator = ObjectMapper.Map<ProductOperator>(productOperatorDto);
             productOperatorDto.Id = _productOperatorRepository.InsertAndGetId(productOperator);
             return Task.FromResult<ProductOperatorDto>(productOperatorDto);

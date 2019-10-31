@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using BusinessHall.Authorization;
-using BusinessHall.@ModelManagers.Dto;
+using BusinessHall.@Models.Dto;
 using BusinessHall.BusinessHallModels;
 using Abp.Domain.Repositories;
 using Abp.AutoMapper;
@@ -40,7 +40,7 @@ namespace BusinessHall.@ModelManagers
         public Task<@ModelDto> Create(@ModelDto @ModelClassDto)
         {
             @ModelClassDto.CreatorUserId = AbpSession.UserId.Value;
-            @ModelClassDto.CretionTime = DateTime.Now;
+            @ModelClassDto.CreationTime = DateTime.Now;
             @Model @ModelClass = ObjectMapper.Map<@Model>(@ModelClassDto);
             @ModelClassDto.Id = _@ModelClassRepository.InsertAndGetId(@ModelClass);
             return Task.FromResult<@ModelDto>(@ModelClassDto);

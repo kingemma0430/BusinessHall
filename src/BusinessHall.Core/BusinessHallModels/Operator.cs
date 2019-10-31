@@ -22,11 +22,11 @@ namespace BusinessHall.BusinessHallModels
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Description { get; set; }
 
-
         public long CreatorUserId { get; set; }
 
-        public DateTime CretionTime { get; set; }
+        public DateTime CreationTime { get; set; }
 
-        public User User { get; set; }
+        [ForeignKey("CreatorUserId")]
+        public virtual User User { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace BusinessHall.SupplierPayManagers
         public Task<SupplierPayDto> Create(SupplierPayDto supplierPayDto)
         {
             supplierPayDto.CreatorUserId = AbpSession.UserId.Value;
-            supplierPayDto.CretionTime = DateTime.Now;
+            supplierPayDto.CreationTime = DateTime.Now;
             SupplierPay supplierPay = ObjectMapper.Map<SupplierPay>(supplierPayDto);
             supplierPayDto.Id = _supplierPayRepository.InsertAndGetId(supplierPay);
             return Task.FromResult<SupplierPayDto>(supplierPayDto);

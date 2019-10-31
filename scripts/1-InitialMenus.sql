@@ -1,6 +1,12 @@
 
 select * from abpauditlogs  order by id desc;
+/*
+delete from productfacevalues;
 
+delete from productoperators;
+
+delete from products;
+*/
 delete from operators;
 
 insert into operators(name,creationtime,CreatorUserId) values('中国电信','2019-10-31 12:12', (select Id from abpusers limit 0,1));

@@ -1,18 +1,32 @@
-import { Component, Injector, AfterViewInit } from '@angular/core';
+import { Component, Injector, AfterViewInit, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
+
+import { AgentService } from '@shared/agentServices/agent.service';
+import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
+
+import { AgentAccountDto } from '@shared/models/agent';
+import { SupplierAccountDto } from '@shared/models/supplier';
+
+
 
 @Component({
     templateUrl: './home.component.html',
     animations: [appModuleAnimation()]
 })
-export class HomeComponent extends AppComponentBase implements AfterViewInit {
+export class HomeComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
     constructor(
-        injector: Injector
+        injector: Injector,
+        private _agentService: AgentService,
+        private _supplierManagerService: SupplierManagerService
     ) {
         super(injector);
     }
+
+    agentAccountRecords: AgentAccountDto[] = [];
+    supplierAccountRecords: SupplierAccountDto[] = [];
+
 
     ngAfterViewInit(): void {
 
@@ -90,22 +104,22 @@ export class HomeComponent extends AppComponentBase implements AfterViewInit {
             ((window as any).Morris).Donut({
                 element: 'donut_chart',
                 data: [{
-                        label: 'Chrome',
-                        value: 37
-                    }, {
-                        label: 'Firefox',
-                        value: 30
-                    }, {
-                        label: 'Safari',
-                        value: 18
-                    }, {
-                        label: 'Opera',
-                        value: 12
-                    },
-                    {
-                        label: 'Other',
-                        value: 3
-                    }],
+                    label: 'Chrome',
+                    value: 37
+                }, {
+                    label: 'Firefox',
+                    value: 30
+                }, {
+                    label: 'Safari',
+                    value: 18
+                }, {
+                    label: 'Opera',
+                    value: 12
+                },
+                {
+                    label: 'Other',
+                    value: 3
+                }],
                 colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
                 formatter: function (y) {
                     return y + '%';
@@ -134,5 +148,26 @@ export class HomeComponent extends AppComponentBase implements AfterViewInit {
 
             return res;
         }
+    }
+
+    ngOnInit() {
+
+    }
+
+    loadAgenctAccountDatas() {
+        this._agentService.GetAllAgentAccounts().subscribe(result => {
+            if (result) {
+                this.agentAccountRecords = result["items"];
+            }
+        });
+    }
+
+    
+    loadSupplierAccountDatas() {
+        this._supplierManagerService.GetAllSupplierAcounts().subscribe(result => {
+            if (result) {
+                this.supplierAccountRecords = result["items"];
+            }
+        });
     }
 }

@@ -22,15 +22,15 @@ namespace BusinessHall.BusinessHallModels
         /// </summary>
         public string Province { get; set; }
 
-        ///// <summary>
-        ///// 运营商
-        ///// </summary>
-        //public int OperatorId { get; set; }
-
         /// <summary>
         /// 折扣
         /// </summary>
         public decimal Discount { get; set; }
+
+        /// <summary>
+        ///  现值
+        /// </summary>
+        public decimal PresentValue { get; set; }
 
         public long CreatorUserId { get; set; }
 

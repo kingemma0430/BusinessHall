@@ -21,6 +21,6 @@ namespace BusinessHall.ProductOperators.Dto
 
         public string ProductName { get; set; }
 
-        public string Operatorname { get; set; }
+        public string OperatorName { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace BusinessHall.Products.Dto
         public int SupplierId { get; set; }
 
         /// <summary>
-        /// split by ,
+        /// split by ;
         /// </summary>
         public string Province { get; set; }
 
@@ -56,6 +56,19 @@ namespace BusinessHall.Products.Dto
                 if (ProductFaceValues != null && ProductFaceValues.Count() > 0)
                 {
                     faceValue = string.Join(',', ProductFaceValues.Select(x => x.Name));
+                }
+                return faceValue;
+            }
+        }
+
+        public string OperatorName
+        {
+            get
+            {
+                string faceValue = "";
+                if (ProductOperators != null && ProductOperators.Count() > 0)
+                {
+                    faceValue = string.Join(',', ProductOperators.Select(x => x.OperatorName));
                 }
                 return faceValue;
             }

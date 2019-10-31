@@ -13,8 +13,9 @@ export class ProductDto {
     presentValue: number;
 
     createUserName: string;
-    suppliername: string;
-    supplier: SupplierDto;
+    supplierName: string;
+    operatorName:string;
+    faceValue:string;
 
     productFaceValues: ProductFaceValueDto[];
     productOperators: ProductOperatorDto[];

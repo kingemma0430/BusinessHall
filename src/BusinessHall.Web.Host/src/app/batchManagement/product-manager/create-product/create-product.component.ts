@@ -9,13 +9,14 @@ import {
   MatCheckboxChange, MatInput, MatSlideToggleModule
 } from '@angular/material';
 
+
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as Enumerable from 'linq';
 
 import { AppComponentBase } from '@shared/app-component-base';
 
-import { ProductDto, ProductStatusEnum, ProductFaceValueDto, ProductOperatorDto, OperatorDto } from '@shared/models/product';
+import { ProductDto, ProductStatusEnum, ProductFaceValueDto, ProductOperatorDto, OperatorDto, FaceValueDto } from '@shared/models/product';
 
 import { ProductService } from '@shared/productServices/product.service';
 import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
@@ -28,6 +29,15 @@ import {
 import { SupplierDto } from '@shared/models/supplier';
 
 
+
+export class DialogData {
+  supplierList: SupplierDto[];
+  provinceList: ProvinceDto[];
+  operatorList: OperatorDto[]
+  faceValueList: FaceValueDto[];
+  id: number;
+}
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -35,64 +45,112 @@ import { SupplierDto } from '@shared/models/supplier';
 })
 export class CreateProductComponent extends AppComponentBase implements OnInit {
 
-  saving = false;
-  newItem: ProductDto = new ProductDto();
-
-  @Input()
-  supplierList: SupplierDto[] = [];
-
-  @Input()
-  provinceList: ProvinceDto[] = [];
-
-  @Input()
-  cityListAll: CityDto[] = [];
-
-  @Input()
-  businesseList: OperatorDto[] = [];
-
-  @Input()
-  faceValueList: ProductFaceValueDto[] = [];
-
-  cityList: CityDto[] = [];
-
-  selectedSupplierList: any[] = [];
-  selectedProvinceList: ProvinceDto[] = [];
-  selectedCityList: CityDto[] = [];
-  selectedBusinessList: OperatorDto[] = [];
-  selectedFaceValueList: ProductFaceValueDto[] = [];
 
   constructor(
     injector: Injector,
     private _dialogRef: MatDialogRef<CreateProductComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) private _id: number
+    @Inject(MAT_DIALOG_DATA) public inputData: DialogData,
+    private _productService: ProductService,
   ) {
     super(injector);
   }
 
-  ngOnInit(): void {
-    // this._userService.get(this._id).subscribe(result => {
-    //   this.user = result;
+  saving = false;
+  newItem: ProductDto = new ProductDto();
 
-    //   this._userService.getRoles().subscribe(result2 => {
-    //     this.roles = result2.items;
-    //     this.setInitialRolesStatus();
-    //   });
-    // });
+  supplierList: SupplierDto[];
+  provinceList: ProvinceDto[];
+  operatorList: OperatorDto[]
+  faceValueList: FaceValueDto[];
+  cityListAll: CityDto[] = [];
+  cityList: CityDto[] = [];
+
+  selectedSupplier: SupplierDto = null;
+  selectedProvinceList: ProvinceDto[] = [];
+  selectedCityList: CityDto[] = [];
+  selectedOperatorList: OperatorDto[] = [];
+  selectedFaceValueList: FaceValueDto[] = [];
+
+
+  ngOnInit(): void {
+    console.log(this.inputData);
+    if (this.inputData) {
+      this.faceValueList = this.inputData.faceValueList;
+      this.operatorList = this.inputData.operatorList;
+      this.provinceList = this.inputData.provinceList;
+      this.supplierList = this.inputData.supplierList;
+
+      if (this.inputData.id) {
+        this._productService.GetProductById(this.inputData.id).subscribe(data => {
+          this.newItem = data;
+          if (this.supplierList) {
+            this.selectedSupplier = Enumerable.from(this.supplierList).firstOrDefault(x => x.id == this.newItem.supplierId);
+          }
+        })
+      }
+    }
   }
 
   save(): void {
     this.saving = true;
-    // this._userService
-    //   .create(this.user)
-    //   .pipe(
-    //     finalize(() => {
-    //       this.saving = false;
-    //     })
-    //   )
-    //   .subscribe(() => {
-    //     this.notify.info(this.l('SavedSuccessfully'));
-    //     this.close(true);
-    //   });
+    if (this.selectedSupplier) {
+      this.newItem.supplierId = this.selectedSupplier.id;
+    }
+    if (this.selectedProvinceList) {
+      let maxLength: number = this.selectedProvinceList.length - 1;
+      for (let index = 0; index < this.selectedProvinceList.length; index++) {
+        const element = this.selectedProvinceList[index];
+        this.newItem.province = element.name;
+        if (index < maxLength) {
+          this.newItem.province = this.newItem.province + ";";
+        }
+      }
+    }
+    this.newItem.productFaceValues = [];
+    if (this.selectedFaceValueList) {
+      this.selectedFaceValueList.forEach(element => {
+        let item: ProductFaceValueDto = new ProductFaceValueDto();
+        item.creatorUserId = 0;
+        item.creationTime = new Date();
+        item.faceValue = element.actualValue;
+        item.name = element.name;
+        item.productId = this.newItem.id;
+        this.newItem.productFaceValues.push(item);
+      });
+    }
+    this.newItem.productOperators = [];
+    if (this.selectedOperatorList) {
+      this.selectedOperatorList.forEach(element => {
+        let item: ProductOperatorDto = new ProductOperatorDto();
+        item.creatorUserId = 0;
+        item.creationTime = new Date();
+        item.operatorId = element.id;
+        item.productId = this.newItem.id;
+        this.newItem.productOperators.push(item);
+      });
+    }
+    if (this.newItem.id) {
+      this._productService.UpdateProduct(this.newItem).pipe(
+        finalize(() => {
+          this.saving = false;
+        })
+      ).subscribe(data => {
+        this.newItem = data;
+        this.newItem.supplierName = Enumerable.from(this.supplierList).firstOrDefault(x => x.id == this.newItem.supplierId).name;
+        this.close(data);
+      });
+    }
+    else {
+      this._productService.CreateProduct(this.newItem).pipe(
+        finalize(() => {
+          this.saving = false;
+        })
+      ).subscribe(data => {
+        this.newItem = data;
+        this.newItem.supplierName = Enumerable.from(this.supplierList).firstOrDefault(x => x.id == this.newItem.supplierId).name;
+        this.close(data);
+      });
+    }
   }
 
   close(result: any): void {

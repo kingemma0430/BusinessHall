@@ -61,8 +61,8 @@
                                 <input type="text" pInputText size="40" [placeholder]="'GlobalFilter' | localize" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                             </div>
                             <div class="ui-g-12 ui-md-7 align-right">
-                                <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('OnShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="update()" style="margin-right: 0.5em;" class="ui-button-success"></button>
-                                <button type="button" pButton icon="pi pi-minus" iconPos="left" [label]="l('OutShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="update()" style="margin-right: 0.5em;" class="ui-button-danger"></button>
+                                <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('OnShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="onOrOutShelf(1)" style="margin-right: 0.5em;" class="ui-button-success"></button>
+                                <button type="button" pButton icon="pi pi-minus" iconPos="left" [label]="l('OutShelf')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="onOrOutShelf(2)" style="margin-right: 0.5em;" class="ui-button-danger"></button>
                                 <button type="button" pButton icon="pi pi-trash" iconPos="left" [label]="l('Delete')" [disabled]="!(selectedRecords && selectedRecords.length)" (click)="deleteMultiple()" style="margin-right: 0.5em;" class="ui-button-info"></button>
                                 <button type="button" pButton icon="pi pi-plus" iconPos="left" [label]="l('Add')" (click)="create()" style="margin-right: 0.5em;" class="ui-button-warning"></button>
                                 <button type="button" pButton icon="pi pi-file-excel" iconPos="left" [label]="l('ExportEXCEL')" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
@@ -95,7 +95,7 @@
                                         {{"No" | localize}}</span>
                                 <span *ngIf="col.field=='status'">
                                     <span *ngIf="rowData[col.field]">{{'OnShelf'|localize}}</span>
-                                <span *ngIf="rowData[col.field]">{{'OutShelf'|localize}}</span>
+                                <span *ngIf="!rowData[col.field]">{{'OutShelf'|localize}}</span>
                                 </span>
                             </td>
                             <td>

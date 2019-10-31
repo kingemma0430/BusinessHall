@@ -3,14 +3,16 @@ using System;
 using BusinessHall.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusinessHall.Migrations
 {
     [DbContext(typeof(BusinessHallDbContext))]
-    partial class BusinessHallDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191031135103_RemoveOperatorId")]
+    partial class RemoveOperatorId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1187,7 +1189,7 @@ namespace BusinessHall.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(255);
 
-                    b.Property<decimal>("PresentValue");
+                    b.Property<int?>("OperatorId");
 
                     b.Property<string>("Province");
 
@@ -1201,7 +1203,7 @@ namespace BusinessHall.Migrations
 
                     b.HasIndex("CreatorUserId");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("OperatorId");
 
                     b.ToTable("Products");
                 });
@@ -1673,10 +1675,9 @@ namespace BusinessHall.Migrations
                         .HasForeignKey("CreatorUserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BusinessHall.BusinessHallModels.Supplier", "Supplier")
+                    b.HasOne("BusinessHall.BusinessHallModels.Operator", "Operator")
                         .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OperatorId");
                 });
 
             modelBuilder.Entity("BusinessHall.BusinessHallModels.ProductFaceValue", b =>

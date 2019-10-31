@@ -1501,7 +1501,7 @@ INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`Menu
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('UserManager','UserManager','','group',1,3,null, null);
 select Id from abpmenus where Name="UserManager" limit 0,1 into @UserManagerMenuId;
-INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRproductsoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
+INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('Users','Users','/app/users','people',1,1,null, @UserManagerMenuId);
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('Roles','Roles','/app/roles','local_offer',1,2,null, @UserManagerMenuId);

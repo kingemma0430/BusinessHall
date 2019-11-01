@@ -39,8 +39,11 @@ namespace BusinessHall.ProductManagers
         public async Task<ProductDto> GetById(int id)
         {
             Product result = await _productRepository.GetAsync(id);
-            ProductDto dto = ObjectMapper.Map<ProductDto>(result);
-            return dto;
+            ProductDto productDto = ObjectMapper.Map<ProductDto>(result);
+            List<ProductDto> productDtos = new List<ProductDto>();
+            productDtos.Add(productDto);
+            BuildProducOperatorName(productDtos);
+            return productDtos[0];
         }
 
         public Task<ProductDto> Create(ProductDto productDto)
@@ -128,6 +131,5 @@ namespace BusinessHall.ProductManagers
                 }
             }
         }
-
     }
 }

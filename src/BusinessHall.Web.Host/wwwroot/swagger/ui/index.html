@@ -78,7 +78,19 @@
     <script>
         window.onload = function () {
             var configObject = JSON.parse('%(ConfigObject)');
-
+            try {
+                document.getElementById('realTimeSpan').innerHTML = new Date().getFullYear();
+                console.log("你在电脑前看这段文字，");
+                console.log("写文字的人在等你的项目。");
+                console.log("N年前你来到了这个世界，");
+                console.log("N年后你想改变世界。");
+                console.log("期待你脚踏祥云，");
+                console.log("与我一起改变分享项目.");
+                console.log("谢谢。");
+                console.log("Evan, Tel：18901599114, WeChat: 18901599114, QQ: 273509239");
+            } catch (e) {
+                console.log(e);
+            }
             // Apply mandatory parameters
             configObject.dom_id = "#swagger-ui";
             configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
@@ -134,7 +146,7 @@
         }
     </script>
     <div class="bottom">
-        <span>© 2019 - Evan (Tell:+86 18901599114, WeChat: 18901599114, QQ:273509239)</span>
+        <span>© <span id="realTimeSpan"></span> - Evan (Tell:+86 18901599114, WeChat: 18901599114, QQ:273509239)</span>
     </div>
 </body>
 

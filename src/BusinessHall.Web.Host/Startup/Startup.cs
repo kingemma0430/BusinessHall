@@ -121,6 +121,8 @@ namespace BusinessHall.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
+                //Config swagger UI html pages (wwwwroot/swagger/ui/index.html)
+                options.DocumentTitle = "BusinessHall API";
                 options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "BusinessHall API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("BusinessHall.Web.Host.wwwroot.swagger.ui.index.html");

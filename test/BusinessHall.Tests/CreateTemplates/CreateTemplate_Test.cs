@@ -30,7 +30,6 @@ namespace BusinessHall.Tests.CreateTemplates
             {
                 List<string> modelNames = _userAppService.GetBusinessHallModelClasses();
                 bool isNeedToDeleteOldFile = false;//If you want to override all service, you can set it true
-                //string currentFolder = AppDomain.CurrentDomain.BaseDirectory.Replace("netcoreapp2.2\\","");
                 string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
                 if (!Directory.Exists(currentFolder))
                 {

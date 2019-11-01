@@ -1,1 +1,22 @@
-<p>create-agent works!</p>
+<form autocomplete="off" #createAgentModal="ngForm" (ngSubmit)="save()">
+    <h1 mat-dialog-title *ngIf="!_id">{{ "CreateProduct" | localize }}</h1>
+    <h1 mat-dialog-title *ngIf="_id">{{ "EditProduct" | localize }}</h1>
+    <mat-dialog-content style="width:650px;height:400px;">
+        <span class="ui-g-12 ui-md-3">{{'Name' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input required type="text" size="58" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
+        </div>
+
+        <span class="ui-g-12 ui-md-3">{{'Status' | localize}}: </span>
+        <p-toggleButton class="ui-g-12 ui-md-9" name="isAutoReturnMoney" [onLabel]="l('OnShelf')" [offLabel]="l('OutShelf')" [(ngModel)]="newItem.status">
+        </p-toggleButton>
+    </mat-dialog-content>
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+            {{ "Cancel" | localize }}
+        </button>
+        <button mat-flat-button type="submit" flex="15" color="primary" [disabled]="!createAgentModal.form.valid || saving">
+            {{ "Save" | localize }}
+        </button>
+    </div>
+</form>

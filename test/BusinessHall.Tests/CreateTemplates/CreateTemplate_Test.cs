@@ -29,7 +29,7 @@ namespace BusinessHall.Tests.CreateTemplates
             try
             {
                 List<string> modelNames = _userAppService.GetBusinessHallModelClasses();
-
+                bool isNeedToDeleteOldFile = false;//If you want to override all service, you can set it true
                 //string currentFolder = AppDomain.CurrentDomain.BaseDirectory.Replace("netcoreapp2.2\\","");
                 string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
                 if (!Directory.Exists(currentFolder))
@@ -43,7 +43,10 @@ namespace BusinessHall.Tests.CreateTemplates
                 }
                 else
                 {
-                    Directory.Delete(outputFolder, true);
+                    if (isNeedToDeleteOldFile)
+                    {
+                        Directory.Delete(outputFolder, true);
+                    }
                 }
                 string file1 = System.IO.Path.Combine(currentFolder, "TemplateFiles\\ITemplateAPIs.txt");
                 string file2 = System.IO.Path.Combine(currentFolder, "TemplateFiles\\TemplateAPIs.txt");
@@ -64,13 +67,16 @@ namespace BusinessHall.Tests.CreateTemplates
                     string modelClass = itemClassName.Substring(0, 1).ToLower() + itemClassName.Substring(1);
                     string tmptextITemplateAPI = textITemplateAPI.Replace(parameterModelClass, modelClass).Replace(parameterModel, itemClassName);
                     string tmptextTemplateAPI = textTemplateAPI.Replace(parameterModelClass, modelClass).Replace(parameterModel, itemClassName);
-                    using (StreamWriter writer = File.CreateText(outputFileNameInterface))
+                    if (!File.Exists(outputFileName))
                     {
-                        await writer.WriteLineAsync(tmptextITemplateAPI);
-                    }
-                    using (StreamWriter writer = File.CreateText(outputFileName))
-                    {
-                        await writer.WriteLineAsync(tmptextTemplateAPI);
+                        using (StreamWriter writer = File.CreateText(outputFileNameInterface))
+                        {
+                            await writer.WriteLineAsync(tmptextITemplateAPI);
+                        }
+                        using (StreamWriter writer = File.CreateText(outputFileName))
+                        {
+                            await writer.WriteLineAsync(tmptextTemplateAPI);
+                        }
                     }
                 }
             }

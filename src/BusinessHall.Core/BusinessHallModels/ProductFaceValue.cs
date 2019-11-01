@@ -23,7 +23,6 @@ namespace BusinessHall.BusinessHallModels
 
         public decimal FaceValue { get; set; }
 
-
         public long CreatorUserId { get; set; }
 
         public DateTime CreationTime { get; set; }

@@ -42,15 +42,16 @@ namespace BusinessHall
                 config.CreateMap<ProductFaceValueDto, ProductFaceValue>();
                 config.CreateMap<ProductFaceValue, ProductFaceValueDto>();
                 config.CreateMap<ProductOperatorDto, ProductOperator>();
-                config.CreateMap<ProductOperator, ProductOperatorDto>();
+                config.CreateMap<ProductOperator, ProductOperatorDto>().ForMember(dst=>dst.OperatorName,opt=>opt.MapFrom(src=>src.Operator.Name));
                 config.CreateMap<ProductDto, Product>();
-                config.CreateMap<Product, ProductDto>();
+                config.CreateMap<Product, ProductDto>().ForMember(dst => dst.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
                 config.CreateMap<SupplierPayDto, SupplierPay>();
                 config.CreateMap<SupplierPay, SupplierPayDto>();
-             
+
                 config.CreateMap<Agent, AgentDto>();
                 config.CreateMap<AgentDto, Agent>();
                 config.CreateMap<FaceValue, FaceValueDto>();
+
                 config.CreateMap<FaceValueDto, FaceValue>();
                 config.CreateMap<SupplierAccount, SupplierAccountDto>();
                 config.CreateMap<SupplierAccountDto, SupplierAccount>();

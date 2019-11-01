@@ -3,14 +3,16 @@ using System;
 using BusinessHall.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusinessHall.Migrations
 {
     [DbContext(typeof(BusinessHallDbContext))]
-    partial class BusinessHallDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191031143125_AddForeignKeyForProduct")]
+    partial class AddForeignKeyForProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1186,8 +1188,6 @@ namespace BusinessHall.Migrations
 
                     b.Property<string>("Name")
                         .HasMaxLength(255);
-
-                    b.Property<decimal>("PresentValue");
 
                     b.Property<string>("Province");
 

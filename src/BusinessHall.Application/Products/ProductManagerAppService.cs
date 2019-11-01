@@ -18,16 +18,22 @@ namespace BusinessHall.ProductManagers
     public class ProductManagerAppService : BusinessHallAppServiceBase, IProductManagerAppService
     {
         private readonly IRepository<Product> _productRepository;
+        private readonly IRepository<Operator> _operatorRepository;
 
-        public ProductManagerAppService(IRepository<Product> productRepository)
+        public ProductManagerAppService(IRepository<Product> productRepository,
+            IRepository<Operator> operatorRepository)
         {
             _productRepository = productRepository;
+            _operatorRepository = operatorRepository;
         }
 
-        public async Task<ListResultDto<ProductDto>> GetAll()
+        public Task<ListResultDto<ProductDto>> GetAll()
         {
-            var result = await _productRepository.GetAllListAsync();
-            return new ListResultDto<ProductDto>(ObjectMapper.Map<List<ProductDto>>(result));
+            var result = _productRepository.GetAllIncluding(x => x.ProductFaceValues, x => x.ProductOperators, x => x.Supplier).ToList();
+            List<ProductDto> productDtos = ObjectMapper.Map<List<ProductDto>>(result);
+            BuildProducOperatorName(productDtos);
+            var returnResult = new ListResultDto<ProductDto>(productDtos);
+            return Task.FromResult<ListResultDto<ProductDto>>(returnResult);
         }
 
         public async Task<ProductDto> GetById(int id)
@@ -39,17 +45,25 @@ namespace BusinessHall.ProductManagers
 
         public Task<ProductDto> Create(ProductDto productDto)
         {
-            productDto.CreatorUserId = AbpSession.UserId.Value;
-            productDto.CreationTime = DateTime.Now;
+            BuildProductDtoChildren(productDto);
             Product product = ObjectMapper.Map<Product>(productDto);
             productDto.Id = _productRepository.InsertAndGetId(product);
-            return Task.FromResult<ProductDto>(productDto);
+            List<ProductDto> productDtos = new List<ProductDto>();
+            productDtos.Add(productDto);
+            BuildProducOperatorName(productDtos);
+            return Task.FromResult<ProductDto>(productDtos[0]);
         }
 
         public Task<ProductDto> Update(ProductDto productDto)
         {
+            BuildProductDtoChildren(productDto);
             Product product = ObjectMapper.Map<Product>(productDto);
             product = _productRepository.Update(product);
+            productDto = ObjectMapper.Map<ProductDto>(product);
+            List<ProductDto> productDtos = new List<ProductDto>();
+            productDtos.Add(productDto);
+            BuildProducOperatorName(productDtos);
+
             return Task.FromResult<ProductDto>(productDto);
         }
 
@@ -62,5 +76,58 @@ namespace BusinessHall.ProductManagers
         {
             await _productRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
+
+        private void BuildProductDtoChildren(ProductDto productDto)
+        {
+            productDto.CreationTime = DateTime.Now;
+            productDto.CreatorUserId = AbpSession.UserId.Value;
+            if (productDto.ProductFaceValues != null)
+            {
+                foreach (var item in productDto.ProductFaceValues)
+                {
+                    item.CreationTime = DateTime.Now;
+                    item.CreatorUserId = productDto.CreatorUserId;
+                    item.ProductId = productDto.Id;
+                }
+            }
+            if (productDto.ProductOperators != null)
+            {
+                foreach (var item in productDto.ProductOperators)
+                {
+                    item.CreationTime = DateTime.Now;
+                    item.CreatorUserId = productDto.CreatorUserId;
+                    item.ProductId = productDto.Id;
+                }
+            }
+        }
+
+        private void BuildProducOperatorName(List<ProductDto> productDtos)
+        {
+            List<Operator> oprators = null;
+            if (productDtos != null && productDtos.Count > 0)
+            {
+                List<int> operatorIds = productDtos.Where(x => x.ProductOperators != null).SelectMany(x => x.ProductOperators).Select(x => x.OperatorId).Distinct().ToList();
+                if (operatorIds != null && operatorIds.Count > 0)
+                {
+                    oprators = _operatorRepository.GetAll().Where(x => operatorIds.Contains(x.Id)).ToList();
+                }
+            }
+
+            if (oprators != null && oprators.Count > 0)
+            {
+                foreach (var itemProduct in productDtos)
+                {
+                    if (itemProduct.ProductOperators != null)
+                    {
+                        foreach (var itemOperator in itemProduct.ProductOperators)
+                        {
+                            var currentOperator = oprators.FirstOrDefault(x => x.Id == itemOperator.OperatorId);
+                            itemOperator.OperatorName = currentOperator != null ? currentOperator.Name : "";
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

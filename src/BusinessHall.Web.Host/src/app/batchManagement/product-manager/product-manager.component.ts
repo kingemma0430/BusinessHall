@@ -6,7 +6,7 @@ import { finalize } from 'rxjs/operators';
 import * as Enumerable from 'linq';
 
 import { SelectItem } from 'primeng/primeng';
-import { CreateProductComponent } from './create-product/create-product.component';
+import { CreateProductComponent, DialogData } from './create-product/create-product.component';
 
 import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
 
@@ -47,25 +47,24 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
 
   records: ProductDto[];
-  selectedRecords: ProductDto[];
-
   supplierList: SupplierDto[] = [];
   provinceList: ProvinceDto[] = [];
-
-  selectedSupplierList: SupplierDto[] = [];
-  selectedProvinceList: ProvinceDto[] = [];
-  selectedCityList: CityDto[] = [];
-
-  selectedOperatorList: OperatorDto[] = [];
-  selectedFaceValueList: FaceValueDto[] = [];
-  selectedStatus: any[] = [];
+  operatorList: OperatorDto[] = [];
+  faceValueList: FaceValueDto[] = [];
+  statusList: SelectItem[] = [];
 
 
   cityList: CityDto[] = [];
   cityListAll: CityDto[] = [];
-  operatorList: OperatorDto[] = [];
-  faceValueList: FaceValueDto[] = [];
-  statusList: SelectItem[] = [];
+
+  selectedRecords: ProductDto[];
+  selectedSupplierList: SupplierDto[] = [];
+  selectedProvinceList: ProvinceDto[] = [];
+  selectedCityList: CityDto[] = [];
+  selectedOperatorList: OperatorDto[] = [];
+  selectedFaceValueList: FaceValueDto[] = [];
+  selectedStatus: any[] = [];
+
 
 
   sortOptions: SelectItem[];
@@ -126,7 +125,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   initialColumns() {
     this.cols = [
       { field: 'province', header: this.l('Province') },
-      { field: 'business', header: this.l('Business') },
+      { field: 'operatorName', header: this.l('Operator') },
       { field: 'faceValue', header: this.l('FaceValue') },
       { field: 'supplierName', header: this.l('Supplier') },
       { field: 'discount', header: this.l('Discount') },
@@ -167,18 +166,6 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     items.push({ label: this.l("OnShelf"), value: ProductStatusEnum.Active });
     items.push({ label: this.l("OutShelf"), value: ProductStatusEnum.Inactive });
     this.statusList = items;
-  }
-
-  loadTestData() {
-    let tmpArray: ProductDto[] = [];
-    for (let index = 0; index < 50; index++) {
-      let model: ProductDto = new ProductDto();
-      model.id = index + 1;
-      model.name = "Product" + model.id.toString();
-      model.status = ProductStatusEnum.Active;
-      tmpArray.push(model);
-    }
-    this.records = tmpArray;
   }
 
   onSortChange(event) {
@@ -224,6 +211,15 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
   refresh() {
+    this.loadProductDatas();
+    this.selectedCityList = [];
+    this.selectedFaceValueList = [];
+    this.selectedItems = [];
+    this.selectedOperatorList = [];
+    this.selectedProvinceList = [];
+    this.selectedRecords = [];
+    this.selectedStatus = [];
+    this.selectedSupplierList = [];
 
   }
 
@@ -240,10 +236,10 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       this.l('UserDeleteWarningMessage', item.name),
       (result: boolean) => {
         if (result) {
-          // this._userService.delete(user.id).subscribe(() => {
-          //     abp.notify.success(this.l('SuccessfullyDeleted'));
-          //     this.refresh();
-          // });
+          this._productService.DeleteProduct(item.id).subscribe(() => {
+            let index: number = Enumerable.from(this.records).indexOf(x => x.id == item.id);
+            this.records.splice(index, 1);
+          });
         }
       }
     );
@@ -265,17 +261,33 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
   private showCreateOrEditUserDialog(id?: number): void {
     let createOrEditUserDialog;
-    if (id === undefined || id <= 0) {
-      createOrEditUserDialog = this._dialog.open(CreateProductComponent);
-    } else {
-      createOrEditUserDialog = this._dialog.open(CreateProductComponent, {
-        data: id
-      });
-    }
+
+    let data: DialogData = new DialogData();
+    data.faceValueList = this.faceValueList;
+    data.operatorList = this.operatorList;
+    data.provinceList = this.provinceList;
+    data.supplierList = this.supplierList;
+    data.id = id;
+    createOrEditUserDialog = this._dialog.open(CreateProductComponent, {
+      data: data
+    });
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
+      let newArray: ProductDto[] = this.records;
       if (result) {
-        this.refresh();
+        if (id) {
+          //edit
+          let index: number = Enumerable.from(newArray).indexOf(x => x.id == id);
+          let newProducts: ProductDto[] = newArray.slice(index, 1);
+          this.records = newProducts;
+        }
+        else {
+          if (!newArray) {
+            newArray = [];
+          }
+          newArray.push(result);
+          this.records = newArray;
+        }
       }
     });
   }
@@ -286,7 +298,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
   provinceListonPanelHide(event) {
-    this.getCityByProviceIds(this.selectedProvinceList);
+    //this.getCityByProviceIds(this.selectedProvinceList);
   }
 
   getCityByProviceIds(inputSelectedProvinceList: ProvinceDto[]) {
@@ -295,17 +307,11 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       let pIds: string[] = Enumerable.from(inputSelectedProvinceList).select(x => x.provinceId).toArray();
       tmpDatas = Enumerable.from(this.cityListAll).where(x => pIds.indexOf(x.provinceId) >= 0).toArray();
     }
-    // let tmpCityList: SelectItem[] = [];
-    // if (tmpDatas) {
-    //   tmpDatas.forEach(element => {
-    //     tmpCityList.push({ value: element.cityId, label: element.name });
-    //   });
-    // }
     this.cityList = tmpDatas;
   }
 
   search() {
-
+    this.loadProductDatas();
   }
 
   onOrOutShelf(type: number) {

@@ -1,16 +1,3 @@
-#========================================
-
-Author：       Zhen (Evan) Wang , 王振,    Tel：18901599114， QQ：273509239， WeChat：18901599114
-Date：         10/18/2019 4:14:48 PM
-Description：  Personal Project to spend my free time on weekends and nights.  
-
-#========================================
-#========================================Important========================
-
-When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.
-
-#========================================Important========================
-
 #****************************************Tools************************************************************#
 	1. VS2019 community 16.2.4
 	2. Node.js v10.16.3 (npm v6.9.0)
@@ -18,14 +5,33 @@ When create service in Applications, the name is AbcAppService and IAbcAppServic
 		1. vs2017: https://dotnet.microsoft.com/download/dotnet-core/2.2#sdk-2.2.109  
 		2. vs2019: https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.402-windows-x64-installer
 	4. MySql 8.0.18 (https://dev.mysql.com/downloads/file/?id=490395)
+	5. Visual Studio Code
 
+
+	
 
 #********************Initial************************************************************#
-	1. Build Project
+BackEnd
+	1. Double click BusinessHall\BusinessHall.sln to open project, and then Build it.
 	2. Tools==>NuGet Package Manager==>Package Manager Console, choose "BusinessHall.EntityFrameworkCore" as default project.
 	3. input "update-database", enter
 	4. Open MySql and execute  scripts folder files
 	5. Select "BusinessHall.EntityFrameworkCore" as startup project, start it.
+	
+FrontEnd		
+	1. Open Visual Studio Code.
+	2. Open project folder "BusinessHall\src\BusinessHall.Web.Host",   CTRL+~    to open console, execute below two scripts
+		npm install -g @angular/cli
+		npm install
+
+	3. If your nodejs version is newer than before, you need to execute below script to upgrade the sass
+		npm rebuild node-sass
+
+	4. Start Project
+		npm start
+
+	5. Publish Project
+		npm run build:prod
 
 #********************To support IE or not************************************************************#	
 	The original source that download from aspnetboilerplate ,it didn't support IE browser. For My branch, it has been changed to support it.
@@ -61,6 +67,14 @@ Make sure all models in BusinessHallModels folder for code rules.
 	2. Open Vs2019, Tools==>NuGet Package Manager==>Package Manager Consolle, choose "BusinessHall.EntityFrameworkCore" as default project
 	3. Input Add-Migration "AddFieldsInUsers",  "AddFieldsInUsers" value you can according your style to rename it, and click "Enter" keyboard
 	4. Input "update-database", enter
+
+	
+#========================================Important=======ApplicationService naming Rules=================
+Interface：I**AppService
+Class：    **AppService
+When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.
+
+#========================================Important========================
 
 
 #********************Components of Primeng************************************************************#
@@ -139,3 +153,13 @@ Create & download your project from https://aspnetboilerplate.com/Templates
 # License
 
 [MIT](LICENSE).
+
+#Author
+
+Zhen (Evan) Wang , 王振    
+Tel:     18901599114 
+QQ：     273509239
+WeChat： 18901599114
+Email:   18901599114@163.com
+Location: Nanjing 南京
+#========================================

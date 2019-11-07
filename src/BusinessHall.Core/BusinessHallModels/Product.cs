@@ -52,13 +52,14 @@ namespace BusinessHall.BusinessHallModels
     public enum ProductStatusEnum
     {
         /// <summary>
-        /// 上架
-        /// </summary>
-        Active = 1,
-
-        /// <summary>
         /// 下架
         /// </summary>
-        Inactive = 2
+        Inactive = 0,
+
+        /// <summary>
+        /// 上架
+        /// </summary>
+        Active = 1
+      
     }
 }

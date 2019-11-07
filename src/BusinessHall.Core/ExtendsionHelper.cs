@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -47,6 +48,21 @@ namespace BusinessHall
                 }
             }
             return classlist;
+        }
+
+        public static List<int> GetIds(string ids)
+        {
+            List<int> idList = new List<int>();
+            string[] idStringList = ids.Split(',');
+            for (int i = 0; i < idStringList.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(idStringList[i]))
+                {
+                    idList.Add(Convert.ToInt32(idStringList[i]));
+                }
+            }
+            idList = idList.Distinct().ToList();
+            return idList;
         }
     }
 }

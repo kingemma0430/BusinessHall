@@ -20,6 +20,6 @@ namespace BusinessHall.@ModelManagers
 
         Task Delete(int id);
 
-        Task DeleteForMultiple(List<int> idList);
+		Task DeleteForMultiple(string ids);
     }
 }

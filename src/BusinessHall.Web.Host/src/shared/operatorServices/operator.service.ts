@@ -77,7 +77,7 @@ export class OperatorService {
   DeleteForMultipleOperators(ids: number[]): Observable<any> {
     let url_ = this.apiUrlOperatorManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 

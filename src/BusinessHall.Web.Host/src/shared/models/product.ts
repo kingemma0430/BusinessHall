@@ -1,4 +1,10 @@
 import { SupplierDto } from './supplier';
+
+export class UpdateProductStatusDto {
+    productIdList: number[];
+    productStatus: ProductStatusEnum;
+}
+
 export class ProductDto {
     id: number;
     tenantId: number;
@@ -14,8 +20,8 @@ export class ProductDto {
 
     createUserName: string;
     supplierName: string;
-    operatorName:string;
-    faceValue:string;
+    operatorName: string;
+    faceValue: string;
 
     productFaceValues: ProductFaceValueDto[];
     productOperators: ProductOperatorDto[];
@@ -71,13 +77,15 @@ export class FaceValueDto {
 }
 
 export enum ProductStatusEnum {
-    /// <summary>
-    /// 上架
-    /// </summary>
-    Active = 1,
 
+    
     /// <summary>
     /// 下架
     /// </summary>
-    Inactive = 2
+    Inactive = 0,
+
+    /// <summary>
+    /// 上架
+    /// </summary>
+    Active = 1
 }

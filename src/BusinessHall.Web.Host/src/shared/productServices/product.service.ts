@@ -81,14 +81,13 @@ export class ProductService {
     if (id !== undefined)
       url_ += "Id=" + encodeURIComponent("" + id) + "&";
     url_ = url_.replace(/[?&]$/, "");
-
     return this._serviceHelperService.delete(url_);
   }
 
   DeleteForMultipleProductFaceValue(ids: number[]): Observable<any> {
     let url_ = this.apiUrlProductFaceValueManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
@@ -142,7 +141,7 @@ export class ProductService {
   DeleteForMultipleProductOperator(ids: number[]): Observable<any> {
     let url_ = this.apiUrlProductOperatorManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
@@ -196,8 +195,15 @@ export class ProductService {
   DeleteForMultipleProducts(ids: number[]): Observable<any> {
     let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
+  }
+
+  OnOrOutShelf(updateProductStatusDto: any) {
+    let url_ = this.apiUrl + "OnOrOutShelf";
+    url_ = url_.replace(/[?&]$/, "");
+    const content_ = JSON.stringify(updateProductStatusDto);
+    return this._serviceHelperService.post(url_, content_);
   }
 
 
@@ -250,9 +256,11 @@ export class ProductService {
   DeleteForMultipleFaceValues(ids: number[]): Observable<any> {
     let url_ = this.apiUrlFaceValueManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
+
+
 }
 
 

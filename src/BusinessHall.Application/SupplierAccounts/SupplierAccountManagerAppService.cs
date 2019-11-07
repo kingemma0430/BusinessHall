@@ -11,7 +11,6 @@ using Abp.Domain.Repositories;
 using Abp.AutoMapper;
 using System.Linq;
 
-
 namespace BusinessHall.SupplierAccountManagers
 {
     [AbpAuthorize(PermissionNames.Pages_SupplierManager)]
@@ -58,8 +57,9 @@ namespace BusinessHall.SupplierAccountManagers
             await _supplierAccountRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _supplierAccountRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
     }

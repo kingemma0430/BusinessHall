@@ -3,11 +3,12 @@
     <div class="search-icon">
         <i class="material-icons">search</i>
     </div>
-    <input matInput type="text" placeholder="START TYPING...">
-    <div class="close-search">
+    <input matInput type="text" placeholder="START TYPING..." [(ngModel)]="globalSearchText">
+    <div class="close-search" (click)="closeSearch()">
         <i class="material-icons">close</i>
     </div>
-</div> <!-- #END# Search Bar -->
+</div>
+<!-- #END# Search Bar -->
 
 <nav class="navbar">
     <div class="container-fluid">

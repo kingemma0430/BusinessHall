@@ -12,6 +12,7 @@ using Abp.AutoMapper;
 using System.Linq;
 using BusinessHall.Products.Dto;
 
+
 namespace BusinessHall.ProductManagers
 {
     [AbpAuthorize(PermissionNames.Pages_ProductManager)]
@@ -36,14 +37,14 @@ namespace BusinessHall.ProductManagers
             return Task.FromResult<ListResultDto<ProductDto>>(returnResult);
         }
 
-        public async Task<ProductDto> GetById(int id)
+        public Task<ProductDto> GetById(int id)
         {
-            Product result = await _productRepository.GetAsync(id);
+            Product result = _productRepository.GetAllIncluding(x => x.ProductFaceValues, x => x.ProductOperators, x => x.Supplier).FirstOrDefault(x => x.Id == id);
             ProductDto productDto = ObjectMapper.Map<ProductDto>(result);
             List<ProductDto> productDtos = new List<ProductDto>();
             productDtos.Add(productDto);
             BuildProducOperatorName(productDtos);
-            return productDtos[0];
+            return Task.FromResult<ProductDto>(productDtos[0]);
         }
 
         public Task<ProductDto> Create(ProductDto productDto)
@@ -75,9 +76,24 @@ namespace BusinessHall.ProductManagers
             await _productRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _productRepository.DeleteAsync(x => idList.Contains(x.Id));
+        }
+
+        public Task<List<ProductDto>> OnOrOutShelf(UpdateProductStatusDto updateProductStatusDto)
+        {
+            List<Product> products = _productRepository.GetAll().Where(x => updateProductStatusDto.ProductIdList.Contains(x.Id)).ToList();
+            if (products != null && products.Count > 0)
+            {
+                foreach (var item in products)
+                {
+                    item.Status = updateProductStatusDto.ProductStatus;
+                }
+            }
+            List<ProductDto> productDtos = ObjectMapper.Map<List<ProductDto>>(products);
+            return Task.FromResult<List<ProductDto>>(productDtos);
         }
 
         private void BuildProductDtoChildren(ProductDto productDto)

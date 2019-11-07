@@ -2639,6 +2639,9 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
     userName: string | undefined;
     emailAddress: string | undefined;
     id: number | undefined;
+    telephone: string | undefined;
+    weChat: string | undefined;
+    qq: string | undefined;
 
     constructor(data?: IUserLoginInfoDto) {
         if (data) {
@@ -2656,6 +2659,10 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
             this.userName = _data["userName"];
             this.emailAddress = _data["emailAddress"];
             this.id = _data["id"];
+            this.telephone = _data["telephone"];
+            this.weChat = _data["weChat"];
+            this.qq = _data["qq"];
+
         }
     }
 
@@ -2673,6 +2680,10 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
         data["userName"] = this.userName;
         data["emailAddress"] = this.emailAddress;
         data["id"] = this.id;
+        data["telephone"] = this.telephone;
+        data["weChat"] = this.weChat;
+        data["qq"] = this.qq;
+
         return data; 
     }
 
@@ -2690,6 +2701,9 @@ export interface IUserLoginInfoDto {
     userName: string | undefined;
     emailAddress: string | undefined;
     id: number | undefined;
+    telephone: string | undefined;
+    weChat: string | undefined;
+    qq: string | undefined;
 }
 
 export class TenantLoginInfoDto implements ITenantLoginInfoDto {

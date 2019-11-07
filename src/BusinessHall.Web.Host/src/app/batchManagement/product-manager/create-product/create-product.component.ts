@@ -36,6 +36,7 @@ export class DialogData {
   operatorList: OperatorDto[]
   faceValueList: FaceValueDto[];
   id: number;
+  inputModel: any;//it will be for some models when update
 }
 
 @Component({
@@ -71,6 +72,7 @@ export class CreateProductComponent extends AppComponentBase implements OnInit {
   selectedOperatorList: OperatorDto[] = [];
   selectedFaceValueList: FaceValueDto[] = [];
 
+  _id: number = 0;
 
   ngOnInit(): void {
     console.log(this.inputData);
@@ -79,14 +81,31 @@ export class CreateProductComponent extends AppComponentBase implements OnInit {
       this.operatorList = this.inputData.operatorList;
       this.provinceList = this.inputData.provinceList;
       this.supplierList = this.inputData.supplierList;
-
+      this._id = this.inputData.id;
+      this.selectedFaceValueList = [];
+      this.selectedOperatorList = [];
+      this.selectedProvinceList = [];
       if (this.inputData.id) {
-        this._productService.GetProductById(this.inputData.id).subscribe(data => {
-          this.newItem = data;
-          if (this.supplierList) {
-            this.selectedSupplier = Enumerable.from(this.supplierList).firstOrDefault(x => x.id == this.newItem.supplierId);
+        this.newItem = this.inputData.inputModel as ProductDto;
+        if (this.newItem) {
+          if (this.newItem.productFaceValues && this.faceValueList) {
+            let faceValueNames = Enumerable.from(this.newItem.productFaceValues).select(x => x.name).toArray();
+            this.selectedFaceValueList = Enumerable.from(this.faceValueList).where(x => faceValueNames.indexOf(x.name) > -1).toArray();
           }
-        })
+          if (this.newItem.productOperators && this.operatorList) {
+            let operatorIds = Enumerable.from(this.newItem.productOperators).select(x => x.operatorId).toArray();
+            this.selectedOperatorList = Enumerable.from(this.operatorList).where(x => operatorIds.indexOf(x.id) > -1).toArray();
+          }
+          if (this.newItem.province && this.provinceList) {
+            let provinceArray: string[] = this.newItem.province.split(';');
+            if (provinceArray && provinceArray.length > 0) {
+              this.selectedProvinceList = Enumerable.from(this.provinceList).where(x => provinceArray.indexOf(x.name) > -1).toArray();
+            }
+          }
+        }
+      }
+      else {
+        this.newItem = new ProductDto();
       }
     }
   }

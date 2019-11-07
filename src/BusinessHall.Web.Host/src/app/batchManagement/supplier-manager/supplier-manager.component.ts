@@ -64,9 +64,11 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
   }
 
   loadDatas() {
+    abp.ui.setBusy();
     this._supplierManagerService.GetAll().subscribe(result => {
       if (result) {
         this.records = result["items"];
+        abp.ui.clearBusy();
       }
     });
   }
@@ -154,6 +156,20 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
         this.refresh();
       }
     });
+  }
+
+  handleChange(event, rowData: SupplierDto) {
+    console.log("handleChange", event, rowData);
+    this._supplierManagerService
+      .Update(rowData)
+      .pipe(
+        finalize(() => {
+
+        })
+      )
+      .subscribe(data => {
+        this.refresh();
+      });
   }
 
 }

@@ -81,7 +81,7 @@ export class AgentService {
   DeleteForMultipleAgents(ids: number[]): Observable<any> {
     let url_ = this.apiUrlAgentManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
@@ -135,7 +135,7 @@ export class AgentService {
   DeleteForMultipleAgentAccounts(ids: number[]): Observable<any> {
     let url_ = this.apiUrlAgentAccountManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 }

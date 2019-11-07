@@ -94,8 +94,8 @@
                                 <span *ngIf="col.field=='isAutoReturnMoney' && !rowData[col.field]">
                                         {{"No" | localize}}</span>
                                 <span *ngIf="col.field=='status'">
-                                    <span *ngIf="rowData[col.field]">{{'OnShelf'|localize}}</span>
-                                <span *ngIf="!rowData[col.field]">{{'OutShelf'|localize}}</span>
+                                    <span *ngIf="rowData[col.field]==1">{{'OnShelf'|localize}}</span>
+                                <span *ngIf="rowData[col.field]==0">{{'OutShelf'|localize}}</span>
                                 </span>
                             </td>
                             <td>

@@ -81,7 +81,7 @@ export class SupplierManagerService {
   DeleteForMultiple(ids: number[]): Observable<any> {
     let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
@@ -133,7 +133,7 @@ export class SupplierManagerService {
   DeleteForMultipleSupplierPay(ids: number[]): Observable<any> {
     let url_ = this.apiUrlSupplierPayManager + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 
@@ -186,7 +186,7 @@ export class SupplierManagerService {
   DeleteForMultipleSupplierAcounts(ids: number[]): Observable<any> {
     let url_ = this.apiUrl + "DeleteForMultiple";
     url_ = url_.replace(/[?&]$/, "");
-    const content_ = JSON.stringify(ids);
+    let content_: string = this._serviceHelperService.getMultiDeleteJsonString(ids);
     return this._serviceHelperService.deleteByCondition(url_, content_);
   }
 

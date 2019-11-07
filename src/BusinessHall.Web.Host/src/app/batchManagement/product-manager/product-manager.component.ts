@@ -23,7 +23,7 @@ import { OperatorService } from '@shared/operatorServices/operator.service';
 
 import { SupplierDto, SupplierAccountDto, SupplierPayDto, SupplierStatusEnum } from '@shared/models/supplier';
 import { AgentDto, AgentAccountDto } from '@shared/models/agent';
-import { ProductDto, ProductFaceValueDto, ProductOperatorDto, FaceValueDto, OperatorDto, ProductStatusEnum } from '@shared/models/product';
+import { ProductDto, ProductFaceValueDto, ProductOperatorDto, FaceValueDto, OperatorDto, ProductStatusEnum, UpdateProductStatusDto } from '@shared/models/product';
 
 
 
@@ -47,6 +47,8 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
 
   records: ProductDto[];
+  selectedRecords: ProductDto[];
+
   supplierList: SupplierDto[] = [];
   provinceList: ProvinceDto[] = [];
   operatorList: OperatorDto[] = [];
@@ -57,7 +59,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   cityList: CityDto[] = [];
   cityListAll: CityDto[] = [];
 
-  selectedRecords: ProductDto[];
+
   selectedSupplierList: SupplierDto[] = [];
   selectedProvinceList: ProvinceDto[] = [];
   selectedCityList: CityDto[] = [];
@@ -66,19 +68,14 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   selectedStatus: any[] = [];
 
 
-
   sortOptions: SelectItem[];
-
   sortKey: string;
-
   sortField: string;
-
   sortOrder: number;
   first: number = 0;
   cols: any[];
   columns: any[];
   exportColumns: any[];
-  selectedItems: ProductDto[] = [];
 
 
   ngOnInit() {
@@ -214,13 +211,11 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     this.loadProductDatas();
     this.selectedCityList = [];
     this.selectedFaceValueList = [];
-    this.selectedItems = [];
     this.selectedOperatorList = [];
     this.selectedProvinceList = [];
     this.selectedRecords = [];
     this.selectedStatus = [];
     this.selectedSupplierList = [];
-
   }
 
   create(): void {
@@ -228,7 +223,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
   edit(item: ProductDto): void {
-    this.showCreateOrEditUserDialog(item.id);
+    this.showCreateOrEditUserDialog(item.id, item);
   }
 
   delete(item: ProductDto) {
@@ -250,16 +245,20 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
       this.l('UserDeleteWarningMessage', ""),
       (result: boolean) => {
         if (result) {
-          // this._userService.delete(user.id).subscribe(() => {
-          //     abp.notify.success(this.l('SuccessfullyDeleted'));
-          //     this.refresh();
-          // });
+          let ids: number[] = Enumerable.from(this.selectedRecords).select(x => x.id).toArray();
+          this._productService.DeleteForMultipleProducts(ids).subscribe(() => {
+            ids.forEach(element => {
+              let index: number = Enumerable.from(this.records).indexOf(x => x.id == element);
+              this.records.splice(index, 1);
+            });
+            this.selectedRecords = [];
+          });
         }
       }
     );
   }
 
-  private showCreateOrEditUserDialog(id?: number): void {
+  private showCreateOrEditUserDialog(id?: number, item?: ProductDto): void {
     let createOrEditUserDialog;
 
     let data: DialogData = new DialogData();
@@ -268,6 +267,7 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
     data.provinceList = this.provinceList;
     data.supplierList = this.supplierList;
     data.id = id;
+    data.inputModel = item;
     createOrEditUserDialog = this._dialog.open(CreateProductComponent, {
       data: data
     });
@@ -315,13 +315,22 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
   }
 
   onOrOutShelf(type: number) {
-    if (type == 1) {
-      //on
+    if (this.selectedRecords && this.selectedRecords.length > 0) {
+      let updateModel: UpdateProductStatusDto = new UpdateProductStatusDto();
+      if (type == 1) {
+        //on
+        updateModel.productStatus = ProductStatusEnum.Active;
+      }
+      else {
+        //out off  0
+        updateModel.productStatus = ProductStatusEnum.Inactive;
+      }
+      updateModel.productIdList = Enumerable.from(this.selectedRecords).select(x => x.id).toArray();
+      this._productService.OnOrOutShelf(updateModel).subscribe(data => {
+        this.refresh();
+      });
     }
-    else {
-      //out off
 
-    }
 
   }
 

@@ -1,6 +1,7 @@
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using BusinessHall.AgentAccounts.Dto;
+using BusinessHall.Entities.GlobalParameters;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,7 @@ namespace BusinessHall.AgentAccountManagers
 
         Task Delete(int id);
 
-        Task DeleteForMultiple(List<int> idList);
+        Task DeleteForMultiple(string ids);
     }
 }
 

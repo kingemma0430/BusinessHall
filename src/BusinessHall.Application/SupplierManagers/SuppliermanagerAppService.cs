@@ -57,8 +57,9 @@ namespace BusinessHall.SupplierManagers
             await _supplierRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _supplierRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
     }

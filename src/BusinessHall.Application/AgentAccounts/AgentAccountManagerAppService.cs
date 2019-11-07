@@ -11,7 +11,6 @@ using Abp.Domain.Repositories;
 using Abp.AutoMapper;
 using System.Linq;
 
-
 namespace BusinessHall.AgentAccountManagers
 {
     [AbpAuthorize(PermissionNames.Pages_AgentManager)]
@@ -58,8 +57,9 @@ namespace BusinessHall.AgentAccountManagers
             await _agentAccountRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _agentAccountRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
     }

@@ -58,8 +58,9 @@ namespace BusinessHall.ProductFaceValueManagers
             await _productFaceValueRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _productFaceValueRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
     }

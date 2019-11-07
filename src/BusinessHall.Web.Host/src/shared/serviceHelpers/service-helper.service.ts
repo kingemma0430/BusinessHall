@@ -59,7 +59,6 @@ export class ServiceHelperService {
         "Accept": "application/json"
       })
     };
-    this._loaderService.display(true);
     return this.http.request("get", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
       return this.processGetDatas(response_);
     })).pipe(_observableCatch((response_: any) => {
@@ -69,8 +68,9 @@ export class ServiceHelperService {
         } catch (e) {
           return <Observable<any>><any>_observableThrow(e);
         }
-      } else
+      } else {
         return <Observable<any>><any>_observableThrow(response_);
+      }
     }));
   }
 
@@ -92,8 +92,9 @@ export class ServiceHelperService {
         } catch (e) {
           return <Observable<any>><any>_observableThrow(e);
         }
-      } else
+      } else {
         return <Observable<any>><any>_observableThrow(response_);
+      }
     }));
   }
 
@@ -107,7 +108,6 @@ export class ServiceHelperService {
         "Accept": "application/json"
       })
     };
-
     return this.http.request("post", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
       return this.processGetDatas(response_);
     })).pipe(_observableCatch((response_: any) => {
@@ -121,6 +121,31 @@ export class ServiceHelperService {
         return <Observable<any>><any>_observableThrow(response_);
     }));
   }
+
+  public post(apiUrl, inputJson) {
+    let options_: any = {
+      body: inputJson,
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      })
+    };
+    return this.http.request("post", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
+      return this.processGetDatas(response_);
+    })).pipe(_observableCatch((response_: any) => {
+      if (response_ instanceof HttpResponseBase) {
+        try {
+          return this.processGetDatas(<any>response_);
+        } catch (e) {
+          return <Observable<any>><any>_observableThrow(e);
+        }
+      } else
+        return <Observable<any>><any>_observableThrow(response_);
+    }));
+  }
+
 
   public update(apiUrl, inputJson) {
     let options_: any = {
@@ -168,31 +193,32 @@ export class ServiceHelperService {
     }));
   }
 
-  public deleteByCondition(apiUrl, inputJson) {
+  public deleteByCondition(apiUrl, ids) {
     let options_: any = {
-      body: inputJson,
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
       })
     };
-    return this.http.request("delete", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", this.baseUrl + apiUrl + "?ids=" + ids,options_).pipe(_observableMergeMap((response_: any) => {
       return this.processDelete(response_);
     })).pipe(_observableCatch((response_: any) => {
-      if (response_ instanceof HttpResponseBase) {
-        try {
-          return this.processDelete(<any>response_);
-        } catch (e) {
-          return <Observable<any>><any>_observableThrow(e);
+      if (response_) {
+        if (response_ instanceof HttpResponseBase) {
+          try {
+            return this.processDelete(<any>response_);
+          } catch (e) {
+            return <Observable<any>><any>_observableThrow(e);
+          }
+        } else {
+          return <Observable<any>><any>_observableThrow(response_);
         }
-      } else
-        return <Observable<any>><any>_observableThrow(response_);
+      }
     }));
   }
 
   public processGetDatas(response: HttpResponseBase): Observable<any> {
     const status = response.status;
-    this._loaderService.display(false);
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (<any>response).error instanceof Blob ? (<any>response).error : undefined;
@@ -214,31 +240,38 @@ export class ServiceHelperService {
   }
 
   public processDelete(response: HttpResponseBase): Observable<void> {
-    const status = response.status;
-    this._loaderService.display(false);
-    const responseBlob =
-      response instanceof HttpResponse ? response.body :
-        (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+    if (response) {
+      const status = response.status;
+      const responseBlob =
+        response instanceof HttpResponse ? response.body :
+          (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } };
-    if (status === 200) {
-      return this.blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-        return _observableOf<void>(<any>null);
-      }));
-    } else if (status !== 200 && status !== 204) {
-      return this.blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-        return this.throwException("An unexpected server error occurred.", status, _responseText, _headers);
-      }));
+      let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } };
+      if (status === 200) {
+        return this.blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+          return _observableOf<void>(<any>null);
+        }));
+      } else if (status !== 200 && status !== 204) {
+        return this.blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+          return this.throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }));
+      }
     }
     return _observableOf<void>(<any>null);
   }
 
   public throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): Observable<any> {
-    this._loaderService.display(false);
+    abp.ui.clearBusy();
     if (result !== null && result !== undefined)
       return _observableThrow(result);
-    else
-      return _observableThrow(new SwaggerException(message, status, response, headers, null));
+    else {
+      if (response) {
+        return _observableThrow(new SwaggerException(message, status, response, headers, null));
+      }
+      else {
+        return new Observable();
+      }
+    }
   }
 
   public blobToText(blob: any): Observable<string> {
@@ -256,9 +289,22 @@ export class ServiceHelperService {
       }
     });
   }
+
+  public getMultiDeleteJsonString(ids: number[]): string {
+    let content: string = "";
+    for (let index = 0; index < ids.length; index++) {
+      const element = ids[index];
+      content += element;
+      if (index < ids.length - 1) {
+        content += ",";
+      }
+    }
+    return content;
+  }
 }
 
 
 export class ListResultDto {
   items: any[];
 }
+

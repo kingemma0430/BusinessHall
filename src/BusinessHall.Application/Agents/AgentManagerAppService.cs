@@ -10,6 +10,7 @@ using Abp.Domain.Repositories;
 using Abp.AutoMapper;
 using System.Linq;
 using BusinessHall.Agents.Dto;
+using BusinessHall.Entities.GlobalParameters;
 
 namespace BusinessHall.AgentManagers
 {
@@ -57,8 +58,9 @@ namespace BusinessHall.AgentManagers
             await _agentRepository.DeleteAsync(id);
         }
 
-        public async Task DeleteForMultiple(List<int> idList)
+        public async Task DeleteForMultiple(string ids)
         {
+            List<int> idList = ExtendsionHelper.GetIds(ids);
             await _agentRepository.DeleteAsync(x => idList.Contains(x.Id));
         }
     }

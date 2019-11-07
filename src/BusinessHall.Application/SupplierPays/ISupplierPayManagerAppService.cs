@@ -1,5 +1,6 @@
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using BusinessHall.Entities.GlobalParameters;
 using BusinessHall.SupplierPays.Dto;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace BusinessHall.SupplierPayManagers
 
         Task Delete(int id);
 
-        Task DeleteForMultiple(List<int> idList);
+        Task DeleteForMultiple(string ids);
+
     }
 }
 

@@ -10,12 +10,9 @@ export class MissionParameter {
 }
 
 export enum MissionKeyEnum {
-    None = -1,
-    ChangeSplitSize = 0,
-    ChooseBorrowingItem = 1,
-    ChangeMessage = 2,
-    ShowErrorMessage = 3,
-    HiddedLoading = 3,
+    GlobalSearch = 1,
+    ShowErrorMessage = 2,
+    HiddedLoading = 3
 }
 
 

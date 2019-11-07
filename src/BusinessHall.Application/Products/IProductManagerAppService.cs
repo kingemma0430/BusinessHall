@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessHall.Entities.GlobalParameters;
 
 namespace BusinessHall.ProductManagers
 {
@@ -20,7 +21,9 @@ namespace BusinessHall.ProductManagers
 
         Task Delete(int id);
 
-        Task DeleteForMultiple(List<int> idList);
+        Task DeleteForMultiple(string ids);
+
+        Task<List<ProductDto>> OnOrOutShelf(UpdateProductStatusDto updateProductStatusDto);
     }
 }
 

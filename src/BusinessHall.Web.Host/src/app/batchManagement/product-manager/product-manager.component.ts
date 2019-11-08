@@ -135,7 +135,9 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
 
   loadProductDatas() {
+    abp.ui.setBusy();
     this._productService.GetAllProducts().subscribe(data => {
+      abp.ui.clearBusy();
       let result: ListResultDto = data as ListResultDto;
       if (result) {
         this.records = result.items as ProductDto[];

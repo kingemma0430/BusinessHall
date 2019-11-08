@@ -71,7 +71,9 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   }
 
   loadDatas() {
+    abp.ui.setBusy();
     this._agentService.GetAllAgents().subscribe(result => {
+      abp.ui.clearBusy();
       if (result) {
         this.records = result["items"];
       }

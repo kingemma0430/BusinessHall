@@ -111,6 +111,42 @@ arrow_forward
 close
 
 
+#********************Deployment of Angular Application************************************************************# 
+Seperated Project:
+We used the angular-cli tooling to build an Angular solution. You can use the ng build --prod command to publish your project. It publishes to the dist folder by default. You can then host this folder on IIS or any web server you like.
+
+Merged Project-----This is current project used
+If you have merged Angular UI project into ASP.NET Core project then you only need to publish your .Host project. After publish .Host project, you should copy files that are in .Host/wwwroot/dist folder to publish_folder/wwwroot. 
+For example: Move files in    .Host/wwwroot/dist to C:\inetpub\wwwroot\my-website\wwwroot
+
+
+Install Asp.NetCore 2.2 and Hosing
+
+If deployed to IIS and open it, popup 500.21, please change web.config like below:
+Original: <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+Changed:  <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified" />
+
+If you upgrade Asp.Net Core to 3.0, please accodrding below steps to change it:
+After upgrading from 2.1 to .Net Core 3.0. I had to download the Runtime & Hosting Bundle For Windows: https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-3.0.0-windows-hosting-bundle-installer. Also, I had to change my web.config modules attribute
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <handlers>
+      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+    </handlers>
+    <aspNetCore processPath="%LAUNCHER_PATH%" arguments="%LAUNCHER_ARGS%" forwardWindowsAuthToken="false" stdoutLogEnabled="false" />
+  </system.webServer>
+</configuration>
+
+
+
+Solution Details & Other Features
+Token-Based Authentication
+If you want to consume APIs/application services from a mobile application, you can use the token based authentication mechanism just like we do for the Angular client. The startup template includes the JwtBearer token authentication infrastructure.
+
+We will use Postman (a chrome extension) to demonstrate requests and responses.
+
 
 
 

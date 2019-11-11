@@ -72,7 +72,7 @@ export class CreateProductComponent extends AppComponentBase implements OnInit {
   selectedOperatorList: OperatorDto[] = [];
   selectedFaceValueList: FaceValueDto[] = [];
 
-  _id: number = 0;
+  id: number = 0;
 
   ngOnInit(): void {
     console.log(this.inputData);
@@ -81,7 +81,7 @@ export class CreateProductComponent extends AppComponentBase implements OnInit {
       this.operatorList = this.inputData.operatorList;
       this.provinceList = this.inputData.provinceList;
       this.supplierList = this.inputData.supplierList;
-      this._id = this.inputData.id;
+      this.id = this.inputData.id;
       this.selectedFaceValueList = [];
       this.selectedOperatorList = [];
       this.selectedProvinceList = [];

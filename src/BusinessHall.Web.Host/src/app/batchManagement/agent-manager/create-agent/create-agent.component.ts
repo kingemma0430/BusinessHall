@@ -23,7 +23,7 @@ export class CreateAgentComponent extends AppComponentBase implements OnInit {
 
   saving = false;
   newItem: SupplierDto = new SupplierDto();
-
+  id: number = 0;
   constructor(
     injector: Injector,
     private _dialogRef: MatDialogRef<CreateAgentComponent>,
@@ -31,6 +31,7 @@ export class CreateAgentComponent extends AppComponentBase implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) private _id: number
   ) {
     super(injector);
+    this.id = _id;
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 <form autocomplete="off" #createSupplierModal="ngForm" (ngSubmit)="save()">
-    <h1 mat-dialog-title *ngIf="!_id">{{ "CreateSupplier" | localize }}</h1>
-    <h1 mat-dialog-title *ngIf="_id">{{ "EditSupplier" | localize }}</h1>
+    <h1 mat-dialog-title *ngIf="!id">{{ "CreateSupplier" | localize }}</h1>
+    <h1 mat-dialog-title *ngIf="id">{{ "EditSupplier" | localize }}</h1>
     <mat-dialog-content style="width:600px;height:200px;">
         <div class="ui-g-12">
             <span class="ui-md-3">{{'SupplierName' | localize}}: </span>

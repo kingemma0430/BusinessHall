@@ -25,8 +25,7 @@ export class SupplierAccountDto {
     supplierName: string;
 }
 
-export class SupplierPayDto
-{
+export class SupplierPayDto {
     id: number;
     name: string;
     tenantId: number;
@@ -36,6 +35,11 @@ export class SupplierPayDto
     creationTime: Date;
     createUserName: string;
     supplierName: string;
+}
+
+export class SupplierPaySearchCondition {
+    startDate: Date;
+    endDate: Date;
 }
 
 export enum SupplierStatusEnum {

@@ -143,6 +143,14 @@
     <text name="AgentWithDrawAmount">WithDraw Amount</text>
     <text name="AgentPercentAmount">Percent</text>
     <text name="Operator">Operator</text>
-
+    
+    <text name="CreateUserName">Create UserName</text>
+    <text name="CreationTime">Creation Time</text>
+    <text name="Amount">Amount</text>
+    <text name="StartDate">Start Date</text>
+    <text name="EndDate">End Date</text>
+    <text name="CreateSupplierPay">Create Supplier Pay</text>
+    <text name="EditSupplierPay">Edit Supplier Pay</text>
+    
   </texts>
 </localizationDictionary>

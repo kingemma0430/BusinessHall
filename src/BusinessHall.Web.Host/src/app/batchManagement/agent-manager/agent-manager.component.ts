@@ -9,6 +9,7 @@ import * as Enumerable from 'linq';
 import { SelectItem } from 'primeng/primeng';
 
 import { AgentDto, AgentAccountDto } from '@shared/models/agent';
+import { DialogData } from '@shared/models/dialogInputData';
 
 import { CreateAgentComponent } from './create-agent/create-agent.component';
 import { AgentService } from '@shared/agentServices/agent.service';

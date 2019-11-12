@@ -152,8 +152,24 @@ export class SupplierManagerComponent extends AppComponentBase implements OnInit
     }
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
-      if (result) {
-        this.refresh();
+      let returnValue: SupplierDto = result as SupplierDto;
+      if (returnValue) {
+        if (id) {
+          this.records.forEach(element => {
+            if (element.id == returnValue.id) {
+              element.isAutoReturnMoney = returnValue.isAutoReturnMoney;
+              element.name = returnValue.name;
+              element.status = returnValue.status;
+              return;
+            }
+          });
+        }
+        else {
+          if (!this.records) {
+            this.records = [];
+          }
+          this.records.push(returnValue);
+        }
       }
     });
   }

@@ -24,10 +24,11 @@ namespace BusinessHall.SupplierPayManagers
             _supplierPayRepository = supplierPayRepository;
         }
 
-        public async Task<ListResultDto<SupplierPayDto>> GetAll()
+        public Task<ListResultDto<SupplierPayDto>> GetAll()
         {
-            var result = await _supplierPayRepository.GetAllListAsync();
-            return new ListResultDto<SupplierPayDto>(ObjectMapper.Map<List<SupplierPayDto>>(result));
+            var result = _supplierPayRepository.GetAllIncluding(x=>x.User,x=>x.Supplier).ToList();
+            var returnValue = new ListResultDto<SupplierPayDto>(ObjectMapper.Map<List<SupplierPayDto>>(result));
+            return Task.FromResult<ListResultDto<SupplierPayDto>>(returnValue);
         }
 
         public async Task<SupplierPayDto> GetById(int id)

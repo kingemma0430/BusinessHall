@@ -28,16 +28,9 @@ import {
 
 import { SupplierDto } from '@shared/models/supplier';
 
+import { DialogData } from '@shared/models/dialogInputData';
 
 
-export class DialogData {
-  supplierList: SupplierDto[];
-  provinceList: ProvinceDto[];
-  operatorList: OperatorDto[]
-  faceValueList: FaceValueDto[];
-  id: number;
-  inputModel: any;//it will be for some models when update
-}
 
 @Component({
   selector: 'app-create-product',

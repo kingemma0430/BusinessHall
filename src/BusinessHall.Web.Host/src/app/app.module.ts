@@ -93,6 +93,7 @@ import { CallOrderComponent } from './batchManagement/call-order/call-order.comp
 import { CreateSupplierComponent } from './batchManagement/supplier-manager/create-supplier/create-supplier.component';
 import { CreateProductComponent } from './batchManagement/product-manager/create-product/create-product.component';
 import { CreateAgentComponent } from './batchManagement/agent-manager/create-agent/create-agent.component';
+import { CreateSupplierPayComponent } from './batchManagement/supplier-pay/create-supplier-pay/create-supplier-pay.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import { CreateAgentComponent } from './batchManagement/agent-manager/create-age
     CallOrderComponent,
     CreateSupplierComponent,
     CreateProductComponent,
-    CreateAgentComponent
+    CreateAgentComponent,
+    CreateSupplierPayComponent
   ],
   imports: [
     CommonModule,
@@ -168,7 +170,8 @@ import { CreateAgentComponent } from './batchManagement/agent-manager/create-age
     ResetPasswordDialogComponent,
     CreateSupplierComponent,
     CreateProductComponent,
-    CreateAgentComponent
+    CreateAgentComponent,
+    CreateSupplierPayComponent
   ]
 })
 export class AppModule { }

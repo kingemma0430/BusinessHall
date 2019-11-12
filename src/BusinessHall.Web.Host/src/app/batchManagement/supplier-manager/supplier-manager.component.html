@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div class="body table-responsive">
-                <p-table #dt [columns]="cols" [value]="records" selectionMode="multiple" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedItems">
+                <p-table #dt [columns]="cols" [value]="records" selectionMode="single" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedItems">
                     <ng-template pTemplate="caption">
                         <div class="ui-helper-clearfix">
                             <div class="ui-g-12 ui-md-6 align-left">

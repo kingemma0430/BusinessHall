@@ -148,6 +148,16 @@
     <text name="AgentPercentAmount">信贷(已用、总额)</text>
     <text name="Operator">运营商</text>
 
+    <text name="CreateUserName">操作员</text>
+    <text name="Amount">金额</text>
+    <text name="StartDate">开始日期</text>
+    <text name="EndDate">结束日期</text>
+    <text name="CreateSupplierPay">创建供应商付款</text>
+    <text name="EditSupplierPay">编辑供应商付款</text>
+
+
+
+
 
   </texts>
 </localizationDictionary>

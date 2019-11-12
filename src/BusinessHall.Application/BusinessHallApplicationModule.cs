@@ -46,7 +46,9 @@ namespace BusinessHall
                 config.CreateMap<ProductDto, Product>();
                 config.CreateMap<Product, ProductDto>().ForMember(dst => dst.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
                 config.CreateMap<SupplierPayDto, SupplierPay>();
-                config.CreateMap<SupplierPay, SupplierPayDto>();
+                config.CreateMap<SupplierPay, SupplierPayDto>()
+                .ForMember(dst=>dst.CreateUserName,opt=>opt.MapFrom(src=>src.User.UserName))
+                .ForMember(dst => dst.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
 
                 config.CreateMap<Agent, AgentDto>();
                 config.CreateMap<AgentDto, Agent>();

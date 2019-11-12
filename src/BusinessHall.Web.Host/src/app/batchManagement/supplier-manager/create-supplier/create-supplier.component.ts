@@ -61,7 +61,7 @@ export class CreateSupplierComponent extends AppComponentBase implements OnInit 
         })
       )
       .subscribe(data => {
-        this.notify.info(this.l('SavedSuccessfully'));
+      
         this.close(data);
       });
   }
@@ -75,12 +75,12 @@ export class CreateSupplierComponent extends AppComponentBase implements OnInit 
         })
       )
       .subscribe(data => {
-        this.notify.info(this.l('SavedSuccessfully'));
         this.close(data);
       });
   }
 
   close(result: any): void {
+    this.notify.info(this.l('SavedSuccessfully'));
     this._dialogRef.close(result);
   }
 }

@@ -6,9 +6,12 @@ import { finalize } from 'rxjs/operators';
 import * as Enumerable from 'linq';
 
 import { SelectItem } from 'primeng/primeng';
-import { CreateProductComponent, DialogData } from './create-product/create-product.component';
-
+import { DialogData } from '@shared/models/dialogInputData';
 import { ListResultDto } from '@shared/serviceHelpers/service-helper.service';
+
+
+import { CreateProductComponent } from './create-product/create-product.component';
+
 
 import {
   BasicDataService,
@@ -276,12 +279,16 @@ export class ProductManagerComponent extends AppComponentBase implements OnInit 
 
     createOrEditUserDialog.afterClosed().subscribe(result => {
       let newArray: ProductDto[] = this.records;
-      if (result) {
+      let returnValue: SupplierPayDto = result as SupplierPayDto;
+      if (returnValue) {
         if (id) {
           //edit
-          let index: number = Enumerable.from(newArray).indexOf(x => x.id == id);
-          let newProducts: ProductDto[] = newArray.slice(index, 1);
-          this.records = newProducts;
+          this.records.forEach(element => {
+            if (element.id == id) {
+              element.supplierId = returnValue.supplierId;
+              element.supplierName = returnValue.supplierName;
+            }
+          });
         }
         else {
           if (!newArray) {

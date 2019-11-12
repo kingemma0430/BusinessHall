@@ -45,7 +45,6 @@ export class SupplierPayComponent extends AppComponentBase implements OnInit {
     let year: number = currentDay.getFullYear();
     let month: number = currentDay.getMonth() + 1;
     let days: number = currentDay.getDate() + 8;
-
     let currentDay7: Date = new Date(moment().add(7, 'days').toLocaleString());
     this.searchCondition.endDate = currentDay7;
   }
@@ -110,7 +109,11 @@ export class SupplierPayComponent extends AppComponentBase implements OnInit {
 
   loadSupplierPayDatas() {
     abp.ui.setBusy();
-    this._supplierManagerService.GetAllSupplierPays().subscribe(data => {
+    this.searchCondition.selectedSupplierIds = [];
+    if (this.selectedSupplierList && this.selectedSupplierList.length) {
+      this.searchCondition.selectedSupplierIds = Enumerable.from(this.selectedSupplierList).select(x => x.id).distinct().toArray();
+    }
+    this._supplierManagerService.GetAllSupplierPayByConditions(this.searchCondition).subscribe(data => {
       abp.ui.clearBusy();
       let result: ListResultDto = data as ListResultDto;
       if (result) {

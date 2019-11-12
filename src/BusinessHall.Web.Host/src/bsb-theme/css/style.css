@@ -11251,7 +11251,7 @@ mat-checkbox {
     height: 100%;
     position: absolute;
     z-index: 99999;
-    & .ng-busy-default-signBar {
+    &.ng-busy-default-signBar {
         width: 100px;
         height: 100px;
         position: absolute;

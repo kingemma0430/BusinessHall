@@ -1,9 +1,9 @@
 import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 'rxjs/operators';
 import { Observable, throwError as _observableThrow, of as _observableOf } from 'rxjs';
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase, HttpParams } from '@angular/common/http';
 
-import { SupplierDto, SupplierPayDto, SupplierAccountDto } from '../models/supplier';
+import { SupplierDto, SupplierPayDto, SupplierAccountDto, SupplierPaySearchCondition } from '../models/supplier';
 
 import { AppConsts } from '../AppConsts';
 
@@ -90,6 +90,16 @@ export class SupplierManagerService {
     url_ = url_.replace(/[?&]$/, "");
     return this._serviceHelperService.get(url_);
   }
+
+  GetAllSupplierPayByConditions(input: SupplierPaySearchCondition): Observable<any> {
+    let url_ = this.apiUrlSupplierPayManager + "PostAllByCondition";
+    url_ = url_.replace(/[?&]$/, "");
+    input.startDateString=this._serviceHelperService.convertDateTimeToString(input.startDate);
+    input.endDateString=this._serviceHelperService.convertDateTimeToString(input.endDate);
+    let inputJason: string = JSON.stringify(input);
+    return this._serviceHelperService.post(url_, inputJason);
+  }
+
 
   GetSupplierPayById(id: number): Observable<any> {
     let url_ = this.apiUrlSupplierPayManager + "GetById?id=" + id;

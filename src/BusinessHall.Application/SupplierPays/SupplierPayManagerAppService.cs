@@ -26,7 +26,7 @@ namespace BusinessHall.SupplierPayManagers
 
         public Task<ListResultDto<SupplierPayDto>> GetAll()
         {
-            var result = _supplierPayRepository.GetAllIncluding(x=>x.User,x=>x.Supplier).ToList();
+            var result = _supplierPayRepository.GetAllIncluding(x => x.User, x => x.Supplier).ToList();
             var returnValue = new ListResultDto<SupplierPayDto>(ObjectMapper.Map<List<SupplierPayDto>>(result));
             return Task.FromResult<ListResultDto<SupplierPayDto>>(returnValue);
         }
@@ -63,6 +63,30 @@ namespace BusinessHall.SupplierPayManagers
         {
             List<int> idList = ExtendsionHelper.GetIds(ids);
             await _supplierPayRepository.DeleteAsync(x => idList.Contains(x.Id));
+        }
+
+        public Task<ListResultDto<SupplierPayDto>> PostAllByCondition(SupplierPaySearchCondition supplierPaySearchCondition)
+        {
+            supplierPaySearchCondition.StartDate = Convert.ToDateTime(supplierPaySearchCondition.StartDateString + " 00:00");
+            supplierPaySearchCondition.EndDate = Convert.ToDateTime(supplierPaySearchCondition.EndDateString + " 23:59");
+            List<SupplierPay> result = null;
+            if (supplierPaySearchCondition.SelectedSupplierIds != null && supplierPaySearchCondition.SelectedSupplierIds.Count > 0)
+            {
+                result = _supplierPayRepository.GetAllIncluding(x => x.User, x => x.Supplier).Where(x => x.CreationTime >= supplierPaySearchCondition.StartDate && x.CreationTime <= supplierPaySearchCondition.EndDate && supplierPaySearchCondition.SelectedSupplierIds.Contains(x.SupplierId)).ToList();
+            }
+            else
+            {
+                result = _supplierPayRepository.GetAllIncluding(x => x.User, x => x.Supplier).Where(x => x.CreationTime >= supplierPaySearchCondition.StartDate && x.CreationTime <= supplierPaySearchCondition.EndDate).ToList();
+            }
+            if (result != null)
+            {
+                var returnValue = new ListResultDto<SupplierPayDto>(ObjectMapper.Map<List<SupplierPayDto>>(result));
+                return Task.FromResult<ListResultDto<SupplierPayDto>>(returnValue);
+            }
+            else
+            {
+                return Task.FromResult<ListResultDto<SupplierPayDto>>(new ListResultDto<SupplierPayDto>());
+            }
         }
     }
 }

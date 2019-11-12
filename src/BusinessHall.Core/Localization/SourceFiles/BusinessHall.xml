@@ -96,7 +96,7 @@
     <text name="Settings">Settings</text>
     <text name="Filter">Filter</text>
 
-    <text name="BatchManager">Batch Manager</text>
+    <text name="BatchManagement">Batch Manager</text>
     <text name="SupplierManager">Supplier Manager</text>
     <text name="ProductManager">Product Manager</text>
     <text name="SupplierPay">Supplier Pay</text>
@@ -106,6 +106,8 @@
     <text name="DailyBalance">Daily Balance</text>
     <text name="AlertSetting">Alert Settings</text>
     <text name="CreditManager">Credit Manager</text>
+    <text name="UserManager">User Manager</text>
+
 
     <text name="SupplierName">Supplier Name</text>
     <text name="IsAutoReturnMoney">Is Auto Return Money</text>

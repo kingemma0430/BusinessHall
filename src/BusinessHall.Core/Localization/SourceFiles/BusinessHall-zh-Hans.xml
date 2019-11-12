@@ -100,7 +100,7 @@
     <text name="UpdatePassword">修改密码</text>
     <text name="Refresh">刷新</text>
 
-    <text name="BatchManager">批充管理</text>
+    <text name="BatchManagement">批充管理</text>
     <text name="SupplierManager">供应商</text>
     <text name="ProductManager">供货商产品列表</text>
     <text name="SupplierPay">供应商付款</text>
@@ -110,6 +110,8 @@
     <text name="DailyBalance">日对账报表</text>
     <text name="AlertSetting">预警配置</text>
     <text name="CreditManager">信贷管理</text>
+    <text name="UserManager">用户管理</text>
+    
     <text name="SupplierName">供应商名称</text>
     <text name="IsAutoReturnMoney">自动退款</text>
     <text name="Status">状态</text>

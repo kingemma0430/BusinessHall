@@ -5,33 +5,33 @@
                 <!-- route name -->
                 <a [routerLink]="[menuItem.routerLink]" *ngIf="!menuItem.items.length && menuItem.routerLink">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
-                    <span>{{menuItem.name}}</span>
+                    <span>{{menuItem.name | localize}}</span>
                 </a>
                 <!-- Static link (starts with 'http') -->
                 <a href="{{menuItem.url}}" target="_blank" *ngIf="!menuItem.items.length && menuItem.url">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
-                    <span>{{menuItem.name}}</span>
+                    <span>{{menuItem.name | localize}}</span>
                 </a>
                 <!-- Has child menu items (so, this is a parent menu) -->
                 <a href="javascript:void(0);" [ngClass]="{'menu-toggle': menuItem.items.length}" *ngIf="menuItem.items.length">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
-                    <span>{{menuItem.name}}</span>
+                    <span>{{menuItem.name | localize}}</span>
                 </a>
                 <ul class="ml-menu" *ngIf="menuItem.items.length">
                     <ng-template ngFor let-subMenuItem [ngForOf]="menuItem.items">
                         <li routerLinkActive="active">
                             <a [routerLink]="[subMenuItem.routerLink]" class="toggled" *ngIf="!subMenuItem.items.length && subMenuItem.routerLink">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
-                                <span>{{subMenuItem.name}}</span>
+                                <span>{{subMenuItem.name | localize}}</span>
                             </a>
                             <a href="{{subMenuItem.url}}" class="toggled" target="_blank" *ngIf="!subMenuItem.items.length && subMenuItem.url">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
-                                <span>{{subMenuItem.name}}</span>
+                                <span>{{subMenuItem.name | localize}}</span>
                             </a>
                             <!-- Has child menu items (so, this is a parent menu) -->
                             <a href="javascript:void(0);" [ngClass]="{'menu-toggle': subMenuItem.items.length}" *ngIf="subMenuItem.items.length">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
-                                <span>{{subMenuItem.name}}</span>
+                                <span>{{subMenuItem.name | localize}}</span>
                             </a>
                         </li>
                     </ng-template>

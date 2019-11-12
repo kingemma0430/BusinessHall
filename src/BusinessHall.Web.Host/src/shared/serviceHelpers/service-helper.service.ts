@@ -3,6 +3,8 @@ import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 
 import { Observable, throwError as _observableThrow, of as _observableOf } from 'rxjs';
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
+import { DatePipe, Location } from '@angular/common';
+
 
 import * as moment from 'moment';
 
@@ -74,16 +76,8 @@ export class ServiceHelperService {
     }));
   }
 
-  public getByCondition(apiUrl, inputJson) {
-    let options_: any = {
-      body: inputJson,
-      observe: "response",
-      responseType: "blob",
-      headers: new HttpHeaders({
-        "Accept": "application/json"
-      })
-    };
-    return this.http.request("get", this.baseUrl + apiUrl, options_).pipe(_observableMergeMap((response_: any) => {
+  public getByCondition(apiUrl, inputParams) {
+    return this.http.request("get", this.baseUrl + apiUrl, { params: inputParams }).pipe(_observableMergeMap((response_: any) => {
       return this.processGetDatas(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -200,7 +194,7 @@ export class ServiceHelperService {
       headers: new HttpHeaders({
       })
     };
-    return this.http.request("delete", this.baseUrl + apiUrl + "?ids=" + ids,options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", this.baseUrl + apiUrl + "?ids=" + ids, options_).pipe(_observableMergeMap((response_: any) => {
       return this.processDelete(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_) {
@@ -301,6 +295,44 @@ export class ServiceHelperService {
     }
     return content;
   }
+
+      /**
+    * Convert UTC time to local time
+    * @param dateTime "2019-03-22T11:11Z" (needConvertToUTC ==false) or "2019-03-22 11:11" (needConvertToUTC ==true)
+    * @param needConvertToUTC 
+    */
+   convertUTCDateToLocalString(dateTime: any, needConvertToUTC: boolean = false) {
+    let dateFormart: string = "";
+    if (dateTime) {
+        let dateTimeString: Date = new Date(dateTime);
+        if (needConvertToUTC) {
+            let utcTime: string = moment(dateTimeString).format("YYYY-MM-DD HH:mm:ss").replace(" ", "T") + "Z";
+            return moment(utcTime).format('LLL');
+        }
+        else {
+            return moment(dateTime).format('LLL');
+        }
+    }
+    return dateFormart;
+}
+
+convertDateTimeToString(dateTime) {
+    let datePipe = new DatePipe("en-US");
+    let tmpReportDate = datePipe.transform(dateTime, 'MM/dd/yyyy');
+    return tmpReportDate;
+}
+
+convertUTCToLocal(dateString) {
+    if (dateString) {
+        let pipDate = new DatePipe("en-us");
+        let comnvertDateString = pipDate.transform(dateString, 'yyyy-MM-dd HH:mm:ss');
+        var d = new Date(comnvertDateString);
+        return d;
+    }
+    else {
+        return new Date();
+    }
+}
 }
 
 

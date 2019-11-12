@@ -20,18 +20,18 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
         private _menuServiceService: MenuServiceService
     ) {
         super(injector);
-
+        this.getUserMenus();
     }
 
 
     ngOnInit() {
-        this.getUserMenus();
+       // this.getUserMenus();
     }
 
     getDefaultMenus() {
         let tmpmenuItems: MenuItemDto[] = [
-            new MenuItemDto(this.l('HomePage'), '', 'home', '/app/home'),
-            new MenuItemDto(this.l('About'), '', 'info', '/app/about')
+            new MenuItemDto('HomePage', '', 'home', '/app/home'),
+            new MenuItemDto('About', '', 'info', '/app/about')
         ];
         return tmpmenuItems;
     }
@@ -53,7 +53,7 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
     }
 
     loadMenus(inputMenus: AbpMenuDto[]) {
-        let menus = [];
+      
         if (inputMenus) {
             inputMenus.forEach(element => {
                 element.permissionName = "Pages." + element.name;
@@ -61,16 +61,15 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
             inputMenus = Enumerable.from(inputMenus).orderBy(x => x.menuOrder).toArray();
             let parentTmpMenus: AbpMenuDto[] = Enumerable.from(inputMenus).where(x => !x.parentMenuId).orderBy(x => x.menuOrder).toArray();
             parentTmpMenus.forEach(elementParent => {
-                let itemRoot: MenuItemDto = new MenuItemDto(this.l(elementParent.name), elementParent.permissionName, elementParent.icon, elementParent.menuUrlRoute);
+                let itemRoot: MenuItemDto = new MenuItemDto(elementParent.name, elementParent.permissionName, elementParent.icon, elementParent.menuUrlRoute);
                 itemRoot.items = [];
                 this.loadBelowLevelMenu(itemRoot, elementParent, inputMenus);
-                menus.push(itemRoot);
+                this.menuItems.push(itemRoot);
             });
         }
         else {
-            menus = this.getDefaultMenus();
+            this.menuItems = this.getDefaultMenus();
         }
-        this.menuItems = menus;
         localStorage.setItem(AppConsts.localStorage_menuKey, JSON.stringify(this.menuItems));
     }
 
@@ -79,7 +78,7 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
         let children: AbpMenuDto[] = Enumerable.from(fullMenu).where(x => x.parentMenuId == parentNode.id).toArray();
         if (children && children.length > 0) {
             children.forEach(element => {
-                let item: MenuItemDto = new MenuItemDto(this.l(element.name), element.permissionName, element.icon, element.menuUrlRoute);
+                let item: MenuItemDto = new MenuItemDto(element.name, element.permissionName, element.icon, element.menuUrlRoute);
                 let childrenBelowLevel: AbpMenuDto[] = Enumerable.from(fullMenu).where(x => x.parentMenuId == element.id).toArray();
                 if (childrenBelowLevel && childrenBelowLevel.length > 0) {
                     this.loadBelowLevelMenu(item, element, fullMenu);

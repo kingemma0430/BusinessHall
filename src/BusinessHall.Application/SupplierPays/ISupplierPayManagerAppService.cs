@@ -13,6 +13,8 @@ namespace BusinessHall.SupplierPayManagers
     {
         Task<ListResultDto<SupplierPayDto>> GetAll();
 
+        Task<ListResultDto<SupplierPayDto>> PostAllByCondition(SupplierPaySearchCondition supplierPaySearchCondition);
+
         Task<SupplierPayDto> Create(SupplierPayDto supplierPayDto);
 
         Task<SupplierPayDto> GetById(int id);

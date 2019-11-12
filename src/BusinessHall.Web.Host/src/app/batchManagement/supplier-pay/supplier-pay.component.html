@@ -20,9 +20,9 @@
             <div class="body table-responsive">
                 <div class="ui-g-12 ui-md-12">
                     <span>{{'StartDate'| localize}} </span>
-                    <p-calendar appendTo="body" [(ngModel)]="searchCondition.startDate" [showIcon]="true" dataType="string"></p-calendar>
+                    <p-calendar appendTo="body" [(ngModel)]="searchCondition.startDate" [showIcon]="true"></p-calendar>
                     <span>{{'EndDate'|localize}} </span>
-                    <p-calendar appendTo="body" [(ngModel)]="searchCondition.endDate" [showIcon]="true" dataType="string" [minDate]="searchCondition.startDate"></p-calendar>
+                    <p-calendar appendTo="body" [(ngModel)]="searchCondition.endDate" [showIcon]="true" [minDate]="searchCondition.startDate"></p-calendar>
                     <span class="spanField">{{'Supplier'|localize}}</span>
                     <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="fieldDivPadding" [defaultLabel]="l('Choose')"
                         [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'250px'}"></p-multiSelect>

@@ -40,6 +40,9 @@ export class SupplierPayDto {
 export class SupplierPaySearchCondition {
     startDate: Date;
     endDate: Date;
+    startDateString: string;
+    endDateString: string;
+    selectedSupplierIds: number[];
 }
 
 export enum SupplierStatusEnum {

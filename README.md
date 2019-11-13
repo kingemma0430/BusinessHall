@@ -1,13 +1,14 @@
 #****************************************Tools************************************************************#
 	1. VS2019 community 16.2.4
-	2. Node.js v10.16.3 (npm v6.9.0)
+	2. Nodejs v10.16.3 (npm v6.9.0)
 	3. Net Core 2.2  (
 		1. vs2017: https://dotnet.microsoft.com/download/dotnet-core/2.2#sdk-2.2.109  
 		2. vs2019: https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.402-windows-x64-installer
 	4. MySql 8.0.18 (https://dev.mysql.com/downloads/file/?id=490395)
 	5. Visual Studio Code
+You can find "Angular Environment Build Steps" in Angular Environment Build Steps.md
 
-
+You can find deploy steps in "Deployment of Angular Application" in bottom.
 	
 
 #********************Initial************************************************************#
@@ -115,7 +116,7 @@ close
 Seperated Project:
 We used the angular-cli tooling to build an Angular solution. You can use the ng build --prod command to publish your project. It publishes to the dist folder by default. You can then host this folder on IIS or any web server you like.
 
-Merged Project-----This is current project used
+Merged Project-----This is current project used=========Deployment ===========Deployment ===========Deployment =====================
 If you have merged Angular UI project into ASP.NET Core project then you only need to publish your .Host project. After publish .Host project, you should copy files that are in .Host/wwwroot/dist folder to publish_folder/wwwroot. 
 For example: Move files in    .Host/wwwroot/dist to C:\inetpub\wwwroot\my-website\wwwroot
 

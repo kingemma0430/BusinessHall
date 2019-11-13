@@ -16,6 +16,14 @@ namespace BusinessHall.BusinessHallModels
         [StringLength(BusinessHallConsts.MaxLength45)]
         public string Name { get; set; }
 
+        [StringLength(BusinessHallConsts.MaxLength45)]
+        public string Code { get; set; }
+
+        [StringLength(BusinessHallConsts.MaxLength500)]
+        public string NickName { get; set; }
+
+        public AgentStatusEnum Status { get; set; }
+
         [StringLength(BusinessHallConsts.MaxLength500)]
         public string Description { get; set; }
 
@@ -25,5 +33,11 @@ namespace BusinessHall.BusinessHallModels
 
         [ForeignKey("CreatorUserId")]
         public virtual User User { get; set; }
+    }
+
+    public enum AgentStatusEnum
+    {
+        Open = 1,
+        Close = 2
     }
 }

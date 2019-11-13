@@ -42,12 +42,12 @@ namespace BusinessHall
                 config.CreateMap<ProductFaceValueDto, ProductFaceValue>();
                 config.CreateMap<ProductFaceValue, ProductFaceValueDto>();
                 config.CreateMap<ProductOperatorDto, ProductOperator>();
-                config.CreateMap<ProductOperator, ProductOperatorDto>().ForMember(dst=>dst.OperatorName,opt=>opt.MapFrom(src=>src.Operator.Name));
+                config.CreateMap<ProductOperator, ProductOperatorDto>().ForMember(dst => dst.OperatorName, opt => opt.MapFrom(src => src.Operator.Name));
                 config.CreateMap<ProductDto, Product>();
                 config.CreateMap<Product, ProductDto>().ForMember(dst => dst.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
                 config.CreateMap<SupplierPayDto, SupplierPay>();
                 config.CreateMap<SupplierPay, SupplierPayDto>()
-                .ForMember(dst=>dst.CreateUserName,opt=>opt.MapFrom(src=>src.User.UserName))
+                .ForMember(dst => dst.CreateUserName, opt => opt.MapFrom(src => src.User.UserName))
                 .ForMember(dst => dst.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
 
                 config.CreateMap<Agent, AgentDto>();
@@ -57,7 +57,11 @@ namespace BusinessHall
                 config.CreateMap<FaceValueDto, FaceValue>();
                 config.CreateMap<SupplierAccount, SupplierAccountDto>();
                 config.CreateMap<SupplierAccountDto, SupplierAccount>();
-                config.CreateMap<AgentAccount, AgentAccountDto>();
+                config.CreateMap<AgentAccount, AgentAccountDto>()
+                .ForMember(dst => dst.AgentName, opt => opt.MapFrom(src => src.Agent.Name))
+                .ForMember(dst => dst.AgentCode, opt => opt.MapFrom(src => src.Agent.Code))
+                .ForMember(dst => dst.AgentNickName, opt => opt.MapFrom(src => src.Agent.NickName))
+                .ForMember(dst => dst.AgentStatus, opt => opt.MapFrom(src => src.Agent.Status));
                 config.CreateMap<AgentAccountDto, AgentAccount>();
 
             });

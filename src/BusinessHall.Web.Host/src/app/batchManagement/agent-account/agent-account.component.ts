@@ -11,20 +11,20 @@ import { SelectItem } from 'primeng/primeng';
 import { AgentDto, AgentAccountDto } from '@shared/models/agent';
 import { DialogData } from '@shared/models/dialogInputData';
 
-import { CreateAgentComponent } from './create-agent/create-agent.component';
+import { CreateAgentAccountComponent } from './create-agent-account/create-agent-account.component';
 import { AgentService } from '@shared/agentServices/agent.service';
 
 
 @Component({
-  selector: 'app-agent-manager',
-  templateUrl: './agent-manager.component.html',
-  styleUrls: ['./agent-manager.component.css'],
+  selector: 'app-agent-account',
+  templateUrl: './agent-account.component.html',
+  styleUrls: ['./agent-account.component.css'],
   animations: [appModuleAnimation()]
 })
-export class AgentManagerComponent extends AppComponentBase implements OnInit {
+export class AgentAccountComponent extends AppComponentBase implements OnInit {
 
 
-  records: AgentDto[];
+  records: AgentAccountDto[];
 
   sortOptions: SelectItem[];
 
@@ -37,7 +37,7 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   cols: any[];
   columns: any[];
   exportColumns: any[];
-  selectedItems: AgentDto;
+  selectedItems: AgentAccountDto ;
   constructor(
     injector: Injector,
     private _dialog: MatDialog,
@@ -58,9 +58,14 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   initialColumns() {
     this.cols = [
       { field: 'id', header: 'ID', width: "10px" },
-      { field: 'name', header: this.l('Agent') },
-      { field: 'code', header: this.l('AgentCode') },
-      { field: 'nickName', header: this.l('AgentNickName') }
+      { field: 'agentCode', header: this.l('AgentCode') },
+      { field: 'agentNickName', header: this.l('AgentNickName') },
+      { field: 'avaliableAmount', header: this.l('AgentAvailableAmount') },
+      { field: 'usedAmount', header: this.l('AgentUsedAmount') },
+      { field: 'chargedAmount', header: this.l('AgentChargedAmount') },
+      { field: 'withDrawAmount', header: this.l('AgentWithDrawAmount') },
+      { field: 'creditPercentAmount', header: this.l('AgentCreditPercentAmount') },
+      { field: 'agentStatus', header: this.l('Status'), width: "50px" }
     ];
 
     this.exportColumns = this.cols.map(col => ({ title: col.header, dataKey: col.field }));
@@ -68,7 +73,7 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
 
   loadDatas() {
     abp.ui.setBusy();
-    this._agentService.GetAllAgents().subscribe(result => {
+    this._agentService.GetAllAgentAccounts().subscribe(result => {
       abp.ui.clearBusy();
       if (result) {
         this.records = result["items"];
@@ -126,13 +131,13 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
     this.showCreateOrEditUserDialog();
   }
 
-  edit(item: AgentDto): void {
+  edit(item: AgentAccountDto): void {
     this.showCreateOrEditUserDialog(item.id, item);
   }
 
-  delete(item: AgentDto) {
+  delete(item: AgentAccountDto) {
     abp.message.confirm(
-      this.l('UserDeleteWarningMessage', item.name),
+      this.l('UserDeleteWarningMessage', item.agentName),
       (result: boolean) => {
         if (result) {
           this._agentService.DeleteAgent(item.id).subscribe(() => {
@@ -144,17 +149,17 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
     );
   }
 
-  private showCreateOrEditUserDialog(id?: number, item?: AgentDto): void {
+  private showCreateOrEditUserDialog(id?: number, item?: AgentAccountDto): void {
     let createOrEditUserDialog;
     let inputDate: DialogData = new DialogData();
     inputDate.id = (id === undefined || id <= 0) ? 0 : id;
     inputDate.inputModel = item;
-    createOrEditUserDialog = this._dialog.open(CreateAgentComponent, {
+    createOrEditUserDialog = this._dialog.open(CreateAgentAccountComponent, {
       data: inputDate
     });
     createOrEditUserDialog.afterClosed().subscribe(result => {
-      let newArray: AgentDto[] = this.records;
-      let returnValue: AgentDto = result as AgentDto;
+      let newArray: AgentAccountDto[] = this.records;
+      let returnValue: AgentAccountDto = result as AgentAccountDto;
       if (returnValue) {
         if (id) {
           //edit
@@ -176,4 +181,5 @@ export class AgentManagerComponent extends AppComponentBase implements OnInit {
   }
 
 }
+
 

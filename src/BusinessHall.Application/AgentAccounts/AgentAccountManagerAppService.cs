@@ -23,10 +23,11 @@ namespace BusinessHall.AgentAccountManagers
             _agentAccountRepository = agentAccountRepository;
         }
 
-        public async Task<ListResultDto<AgentAccountDto>> GetAll()
+        public Task<ListResultDto<AgentAccountDto>> GetAll()
         {
-            var result = await _agentAccountRepository.GetAllListAsync();
-            return new ListResultDto<AgentAccountDto>(ObjectMapper.Map<List<AgentAccountDto>>(result));
+            var result = _agentAccountRepository.GetAllIncluding(x=>x.Agent).ToList();
+            var returnValue = new ListResultDto<AgentAccountDto>(ObjectMapper.Map<List<AgentAccountDto>>(result));
+            return Task.FromResult<ListResultDto<AgentAccountDto>>(returnValue);
         }
 
         public async Task<AgentAccountDto> GetById(int id)

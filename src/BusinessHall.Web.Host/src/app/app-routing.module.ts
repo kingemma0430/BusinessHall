@@ -20,6 +20,9 @@ import { DailyBalanceComponent } from "./batchManagement/daily-balance/daily-bal
 import { AlertSettingComponent } from "./batchManagement/alert-setting/alert-setting.component";
 import { CreditManagerComponent } from "./batchManagement/credit-manager/credit-manager.component";
 
+import { AgentAccountComponent } from "./batchManagement/agent-account/agent-account.component";
+
+
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -76,6 +79,12 @@ import { CreditManagerComponent } from "./batchManagement/credit-manager/credit-
             canActivate: [AppRouteGuard]
           },
           {
+            path: "AgentAccountManager",
+            component: AgentAccountComponent,
+            data: { permission: "Pages.AgentManager" },
+            canActivate: [AppRouteGuard]
+          },
+          {
             path: "CallOrder",
             component: CallOrderComponent,
             data: { permission: "Pages.CallOrder" },
@@ -115,4 +124,4 @@ import { CreditManagerComponent } from "./batchManagement/credit-manager/credit-
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,0 +1,39 @@
+<form autocomplete="off" #createAgentAccountModal="ngForm" (ngSubmit)="save()">
+    <h1 mat-dialog-title *ngIf="!id">{{ "CreateAgentAccount" | localize }}</h1>
+    <h1 mat-dialog-title *ngIf="id">{{ "EditAgentAccount" | localize }}</h1>
+    <mat-dialog-content style="width:650px;height:400px;">
+        <span class="ui-g-12 ui-md-3">{{'Agent' | localize}}: </span>
+        <p-dropdown required name="agentList" [options]="agentList" optionLabel="name" [(ngModel)]="selectedAgent" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" class="ui-g-12 ui-md-9 " [placeholder]="l('Choose')" styleClass="primengMultilSelect"
+            [style]="{'width':'100%'}"></p-dropdown>
+        <span class="ui-g-12 ui-md-3">{{'AgentAvailableAmount' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input required type="text" size="58" pInputText [(ngModel)]="newItem.avaliableAmount" name="AvaliableAmount" [placeholder]="'AgentAvailableAmount' | localize" />
+        </div>
+        <span class="ui-g-12 ui-md-3">{{'AgentUsedAmount' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="58" pInputText [(ngModel)]="newItem.usedAmount" name="UsedAmount" [placeholder]="'AgentUsedAmount' | localize" />
+        </div>
+
+        <span class="ui-g-12 ui-md-3">{{'AgentChargedAmount' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="58" pInputText [(ngModel)]="newItem.chargedAmount" name="ChargedAmount" [placeholder]="'AgentChargedAmount' | localize" />
+        </div>
+        <span class="ui-g-12 ui-md-3">{{'AgentWithDrawAmount' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="58" pInputText [(ngModel)]="newItem.withDrawAmount" name="WithDrawAmount" [placeholder]="'AgentWithDrawAmount' | localize" />
+        </div>
+        <span class="ui-g-12 ui-md-3">{{'AgentCreditPercentAmount' | localize}}: </span>
+        <div class="ui-g-12 ui-md-9">
+            <input type="text" size="58" pInputText [(ngModel)]="newItem.creditPercentAmount" name="CreditPercentAmount" [placeholder]="'AgentCreditPercentAmount' | localize" />
+        </div>
+
+    </mat-dialog-content>
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" [disabled]="saving" (click)="close(false,null)">
+            {{ "Cancel" | localize }}
+        </button>
+        <button mat-flat-button type="submit" flex="15" color="primary" [disabled]="!createAgentAccountModal.form.valid || saving">
+            {{ "Save" | localize }}
+        </button>
+    </div>
+</form>

@@ -53,7 +53,7 @@
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                     <button type="button" pButton [label]="l('Search')" (click)="search()" class="ui-button-warning"></button>
                 </div>
-                <p-table class="ui-g-12" #dt [columns]="cols" [value]="records" [(selection)]="selectedRecords" [paginator]="true" [rows]="10" [first]="first">
+                <p-table class="ui-g-12" #dt [columns]="cols" [value]="records" selectionMode="multiple" [paginator]="true" [rows]="10" [first]="first" [(selection)]="selectedRecords">
                     <ng-template pTemplate="caption">
                         <div class="ui-helper-clearfix">
                             <div class="ui-g-12 ui-md-5 align-left">

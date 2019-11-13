@@ -1497,12 +1497,16 @@ INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`Menu
 			VALUES ('SupplierPay','SupplierPay','/app/SupplierPay','business',1,3,null, @BatchManagementMenuId);
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('AgentManager','AgentManager','/app/AgentManager','ballot',1,4,null, @BatchManagementMenuId);
+            
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
-			VALUES ('CallOrder','CallOrder','/app/CallOrder','view_comfy',1,5,null, @BatchManagementMenuId);
+			VALUES ('AgentAccountManager','AgentAccountManager','/app/AgentAccountManager','ballot',1,5,null, @BatchManagementMenuId);            
+            
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
-			VALUES ('CreditManager','CreditManager','/app/CreditManager','assessment',1,6,null, @BatchManagementMenuId);
+			VALUES ('CallOrder','CallOrder','/app/CallOrder','view_comfy',1,6,null, @BatchManagementMenuId);
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
-			VALUES ('AlertSetting','AlertSetting','/app/AlertSetting','alarm_add',1,7,null, @BatchManagementMenuId);
+			VALUES ('CreditManager','CreditManager','/app/CreditManager','assessment',1,7,null, @BatchManagementMenuId);
+INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
+			VALUES ('AlertSetting','AlertSetting','/app/AlertSetting','alarm_add',1,8,null, @BatchManagementMenuId);
 
 INSERT INTO abpmenus(`Name`,`DisplayName`,`MenuUrlRoute`,`Icon`,`IsActive`,`MenuOrder`,`TenantId`,`ParentMenuId`) 
 			VALUES ('UserManager','UserManager','','group',1,3,null, null);

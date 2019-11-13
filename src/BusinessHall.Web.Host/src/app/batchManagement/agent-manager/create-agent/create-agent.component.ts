@@ -9,10 +9,13 @@ import {
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { AppComponentBase } from '@shared/app-component-base';
+import * as Enumerable from 'linq';
 
 
-import { SupplierDto, SupplierStatusEnum } from '@shared/models/supplier';
-import { SupplierManagerService } from '@shared/supplierServices/supplier-manager.service';
+import { AgentDto } from '@shared/models/agent';
+import { DialogData } from '@shared/models/dialogInputData';
+
+import { AgentService } from '@shared/agentServices/agent.service';
 
 @Component({
   selector: 'app-create-agent',
@@ -22,23 +25,23 @@ import { SupplierManagerService } from '@shared/supplierServices/supplier-manage
 export class CreateAgentComponent extends AppComponentBase implements OnInit {
 
   saving = false;
-  newItem: SupplierDto = new SupplierDto();
+  newItem: AgentDto = new AgentDto();
   id: number = 0;
   constructor(
     injector: Injector,
     private _dialogRef: MatDialogRef<CreateAgentComponent>,
-    private _supplierManagerService: SupplierManagerService,
-    @Optional() @Inject(MAT_DIALOG_DATA) private _id: number
+    @Inject(MAT_DIALOG_DATA) public inputData: DialogData,
+    private _agentService: AgentService
   ) {
     super(injector);
-    this.id = _id;
   }
 
   ngOnInit(): void {
-    if (this._id > 0) {
-      this._supplierManagerService.GetById(this._id).subscribe(data => {
-        this.newItem = data;
-      });
+    if (this.inputData) {
+      this.id = this.inputData.id;
+      if (this.id) {
+        this.newItem = this.inputData.inputModel as AgentDto;
+      }
     }
   }
 
@@ -53,34 +56,35 @@ export class CreateAgentComponent extends AppComponentBase implements OnInit {
   }
 
   create() {
-    this._supplierManagerService
-      .Create(this.newItem)
+    this._agentService
+      .CreateAgent(this.newItem)
       .pipe(
         finalize(() => {
           this.saving = false;
         })
       )
       .subscribe(data => {
-        this.notify.info(this.l('SavedSuccessfully'));
-        this.close(data);
+        this.close(true, data);
       });
   }
 
   update() {
-    this._supplierManagerService
-      .Update(this.newItem)
+    this._agentService
+      .UpdateAgent(this.newItem)
       .pipe(
         finalize(() => {
           this.saving = false;
         })
       )
       .subscribe(data => {
-        this.notify.info(this.l('SavedSuccessfully'));
-        this.close(data);
+        this.close(true, data);
       });
   }
 
-  close(result: any): void {
+  close(needRefresh: boolean, result: AgentDto): void {
+    if (needRefresh) {
+      abp.notify.success(this.l('SavedSuccessfully'));
+    }
     this._dialogRef.close(result);
   }
 }

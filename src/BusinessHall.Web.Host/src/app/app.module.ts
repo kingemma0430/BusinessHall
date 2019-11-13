@@ -94,6 +94,8 @@ import { CreateSupplierComponent } from './batchManagement/supplier-manager/crea
 import { CreateProductComponent } from './batchManagement/product-manager/create-product/create-product.component';
 import { CreateAgentComponent } from './batchManagement/agent-manager/create-agent/create-agent.component';
 import { CreateSupplierPayComponent } from './batchManagement/supplier-pay/create-supplier-pay/create-supplier-pay.component';
+import { AgentAccountComponent } from './batchManagement/agent-account/agent-account.component';
+import { CreateAgentAccountComponent } from './batchManagement/agent-account/create-agent-account/create-agent-account.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +134,9 @@ import { CreateSupplierPayComponent } from './batchManagement/supplier-pay/creat
     CreateSupplierComponent,
     CreateProductComponent,
     CreateAgentComponent,
-    CreateSupplierPayComponent
+    CreateSupplierPayComponent,
+    AgentAccountComponent,
+    CreateAgentAccountComponent
   ],
   imports: [
     CommonModule,
@@ -171,7 +175,8 @@ import { CreateSupplierPayComponent } from './batchManagement/supplier-pay/creat
     CreateSupplierComponent,
     CreateProductComponent,
     CreateAgentComponent,
-    CreateSupplierPayComponent
+    CreateSupplierPayComponent,
+    CreateAgentAccountComponent
   ]
 })
 export class AppModule { }

@@ -101,6 +101,7 @@
     <text name="ProductManager">Product Manager</text>
     <text name="SupplierPay">Supplier Pay</text>
     <text name="AgentManager">Agent Manager</text>
+    <text name="AgentAccountManager">Agent Account Manager</text>
     <text name="CallOrder">Call Order</text>
     <text name="RealtimeData">Realtime Data</text>
     <text name="DailyBalance">Daily Balance</text>
@@ -137,13 +138,17 @@
     <text name="Search">Search</text>
     <text name="emptyFilterMessage">No results found</text>
 
+    <text name="Agent">Agent</text>
+    <text name="CreateAgent">Create Agent</text>
+    <text name="EditAgent">Edit Agent</text>
+
     <text name="AgentCode">Code</text>
     <text name="AgentNickName">Nick Name</text>
     <text name="AgentAvailableAmount">Available Amount</text>
     <text name="AgentUsedAmount">Used Amount</text>
     <text name="AgentChargedAmount">Charged Amount</text>
     <text name="AgentWithDrawAmount">WithDraw Amount</text>
-    <text name="AgentPercentAmount">Percent</text>
+    <text name="AgentCreditPercentAmount">Percent</text>
     <text name="Operator">Operator</text>
     
     <text name="CreateUserName">Create UserName</text>

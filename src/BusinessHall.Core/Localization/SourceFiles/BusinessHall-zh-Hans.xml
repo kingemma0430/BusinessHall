@@ -105,6 +105,7 @@
     <text name="ProductManager">供货商产品列表</text>
     <text name="SupplierPay">供应商付款</text>
     <text name="AgentManager">代理商列表</text>
+    <text name="AgentAccountManager">代理商账户</text>
     <text name="CallOrder">话费订单</text>
     <text name="RealtimeData">实时数据</text>
     <text name="DailyBalance">日对账报表</text>
@@ -140,6 +141,11 @@
     <text name="Search">查询</text>
     <text name="emptyFilterMessage">无数据</text>
 
+    <text name="Agent">代理商</text>
+    <text name="CreateAgent">创建新代理商</text>
+    <text name="EditAgent">编辑代理商</text>
+
+
 
     <text name="AgentCode">账号</text>
     <text name="AgentNickName">昵称</text>
@@ -147,7 +153,7 @@
     <text name="AgentUsedAmount">已用金额</text>
     <text name="AgentChargedAmount">充值金额</text>
     <text name="AgentWithDrawAmount">提现金额</text>
-    <text name="AgentPercentAmount">信贷(已用、总额)</text>
+    <text name="AgentCreditPercentAmount">信贷(已用、总额)</text>
     <text name="Operator">运营商</text>
 
     <text name="CreateUserName">操作员</text>

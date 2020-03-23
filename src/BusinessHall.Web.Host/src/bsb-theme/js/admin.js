@@ -2,7 +2,6 @@
     if (typeof jQuery === "undefined") {
         throw new Error("jQuery plugins need to be before this file");
     }
-
     $.AdminBSB = {};
     $.AdminBSB.options = {
         colors: {
@@ -49,10 +48,12 @@
      */
     $.AdminBSB.leftSideBar = {
         activate: function() {
+            console.log("$.AdminBSB.leftSideBar");
             var _this = this;
             var $body = $('body');
             var $overlay = $('.overlay');
-
+            // var $leftsidebar = $('leftsidebar');
+            // leftsidebar.addClass();
             //Close sidebar
             $(window).click(function(e) {
                 var $target = $(e.target);

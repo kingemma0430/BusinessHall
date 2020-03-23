@@ -58,6 +58,11 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 
+import { MegaMenuModule } from 'primeng/megamenu';
+import { TabMenuModule } from 'primeng/tabmenu';
+
+import { MatMenuModule } from '@angular/material/menu';
+
 import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
 import { TopBarComponent } from '@app/layout/topbar.component';
@@ -151,8 +156,10 @@ import { CreateAgentAccountComponent } from './batchManagement/agent-account/cre
     SplitButtonModule, FullCalendarModule, OrganizationChartModule, VirtualScrollerModule,
     TreeModule, AccordionModule, CardModule, PanelModule, TabViewModule, ConfirmDialogModule, DialogModule,
     DynamicDialogModule, TooltipModule, FileUploadModule, ChartModule, MessagesModule, MessageModule,
-    ToastModule, BlockUIModule, ProgressSpinnerModule, PanelMenuModule,
-    MenuModule, PanelMenuModule,
+    ToastModule, BlockUIModule, ProgressSpinnerModule,
+    MegaMenuModule,
+    MenuModule, TabMenuModule,
+    MatMenuModule,
     ModalModule.forRoot(),
     AbpModule,
     AppRoutingModule,

@@ -1,4 +1,4 @@
-
+SET SQL_SAFE_UPDATES = 0;
 select * from abpauditlogs  order by id desc;
 /*
 delete from productfacevalues;

@@ -63,6 +63,10 @@ import { TabMenuModule } from 'primeng/tabmenu';
 
 import { MatMenuModule } from '@angular/material/menu';
 
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+
 import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
 import { TopBarComponent } from '@app/layout/topbar.component';
@@ -101,6 +105,7 @@ import { CreateAgentComponent } from './batchManagement/agent-manager/create-age
 import { CreateSupplierPayComponent } from './batchManagement/supplier-pay/create-supplier-pay/create-supplier-pay.component';
 import { AgentAccountComponent } from './batchManagement/agent-account/agent-account.component';
 import { CreateAgentAccountComponent } from './batchManagement/agent-account/create-agent-account/create-agent-account.component';
+import { PageMenuComponent } from './layout/page-menu/page-menu.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +146,8 @@ import { CreateAgentAccountComponent } from './batchManagement/agent-account/cre
     CreateAgentComponent,
     CreateSupplierPayComponent,
     AgentAccountComponent,
-    CreateAgentAccountComponent
+    CreateAgentAccountComponent,
+    PageMenuComponent
   ],
   imports: [
     CommonModule,
@@ -159,7 +165,7 @@ import { CreateAgentAccountComponent } from './batchManagement/agent-account/cre
     ToastModule, BlockUIModule, ProgressSpinnerModule,
     MegaMenuModule,
     MenuModule, TabMenuModule,
-    MatMenuModule,
+    MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatExpansionModule,
     ModalModule.forRoot(),
     AbpModule,
     AppRoutingModule,

@@ -48,7 +48,6 @@
      */
     $.AdminBSB.leftSideBar = {
         activate: function() {
-            console.log("$.AdminBSB.leftSideBar");
             var _this = this;
             var $body = $('body');
             var $overlay = $('.overlay');
@@ -132,6 +131,9 @@
                         if (activeItemOffsetTop > 150) $el.slimscroll({ scrollTo: activeItemOffsetTop + 'px' });
                     }
                 }
+                if (isFirstTime) {
+                    configs.width = 0;
+                }
             }
         },
         checkStatuForResize: function(firstTime) {
@@ -144,7 +146,6 @@
                     $(this).removeClass('no-animate').dequeue();
                 });
             }
-
             if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
                 $body.addClass('ls-closed');
                 $openCloseBar.fadeIn();
@@ -238,7 +239,6 @@
         activate: function() {
             var $body = $('body');
             var $overlay = $('.overlay');
-
             //Open left sidebar panel
             $('.bars').on('click', function() {
                 $body.toggleClass('overlay-open');

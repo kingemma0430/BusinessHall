@@ -1,4 +1,7 @@
-$.AdminBSB.activateDemo = function () {
+$.AdminBSB.activateDemo = function() {
+    // $('#leftsidebar').removeClass("leftSidebarWidth0");
+    // $('#leftsidebar').removeClass("leftSidebarWidth300");
+    // $('#leftsidebar').addClass("leftSidebarWidth0");
     activateNotificationAndTasksScroll();
 
     setSkinListHeightAndScroll();
@@ -7,6 +10,7 @@ $.AdminBSB.activateDemo = function () {
     //    setSkinListHeightAndScroll();
     //    setSettingListHeightAndScroll();
     //});
+
 };
 
 //Skin tab content set height and show scroll

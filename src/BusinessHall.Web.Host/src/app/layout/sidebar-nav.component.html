@@ -3,12 +3,12 @@
         <ng-template ngFor let-menuItem [ngForOf]="menuItems">
             <li routerLinkActive="active">
                 <!-- route name -->
-                <a [routerLink]="[menuItem.routerLink]" *ngIf="!menuItem.items.length && menuItem.routerLink">
+                <a [routerLink]="menuItem.routerLink" *ngIf="menuItem.routerLink">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
                     <span>{{menuItem.name | localize}}</span>
                 </a>
                 <!-- Static link (starts with 'http') -->
-                <a href="{{menuItem.url}}" target="_blank" *ngIf="!menuItem.items.length && menuItem.url">
+                <a href="menuItem.url" target="_blank" *ngIf="menuItem.url">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
                     <span>{{menuItem.name | localize}}</span>
                 </a>
@@ -20,11 +20,11 @@
                 <ul class="ml-menu" *ngIf="menuItem.items.length">
                     <ng-template ngFor let-subMenuItem [ngForOf]="menuItem.items">
                         <li routerLinkActive="active">
-                            <a [routerLink]="[subMenuItem.routerLink]" class="toggled" *ngIf="!subMenuItem.items.length && subMenuItem.routerLink">
+                            <a [routerLink]="[subMenuItem.routerLink]" class="toggled" *ngIf="subMenuItem.routerLink">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name | localize}}</span>
                             </a>
-                            <a href="{{subMenuItem.url}}" class="toggled" target="_blank" *ngIf="!subMenuItem.items.length && subMenuItem.url">
+                            <a href="{{subMenuItem.url}}" class="toggled" target="_blank" *ngIf="subMenuItem.url">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name | localize}}</span>
                             </a>

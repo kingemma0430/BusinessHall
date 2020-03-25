@@ -1,10 +1,6 @@
-<div class="user-info">
-    <!-- <div class="image">
-        <img src="assets/images/user.png" width="48" height="48" alt="User" />
-    </div> -->
-    <div class="info-container">
+<!-- <div class="user-info">
+    <div class="ui-g-12 info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{shownLoginName}}</div>
-        <!-- <div class="email">{{appSession.user.emailAddress}}</div> -->
         <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">
@@ -13,4 +9,36 @@
             </ul>
         </div>
     </div>
+</div> -->
+<div class="ui-g-12">
+    {{shownLoginName}}
 </div>
+<div class="ui-g-12">
+    <span>
+        <a [routerLink]="['/app/update-password']"><i class="fa fa-lock"></i>{{ "UpdatePassword" | localize }}</a>
+    </span>
+</div>
+<div class="ui-g-12">
+    <span>
+        <a (click)="logout()"><i class="fa fa-sign-out"></i>{{ 'Logout' | localize }}</a>
+    </span>
+</div>
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{shownLoginName}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="ui-g-12">
+            <span>
+        <a [routerLink]="['/app/update-password']"><i class="fa fa-lock"></i>{{ "UpdatePassword" | localize }}</a>
+    </span>
+        </div>
+        <div class="ui-g-12">
+            <span>
+        <a (click)="logout()"><i class="fa fa-sign-out"></i>{{ 'Logout' | localize }}</a>
+    </span>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion> -->

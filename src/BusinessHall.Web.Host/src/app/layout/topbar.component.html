@@ -13,22 +13,14 @@
 <nav class="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
             <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> BusinessHall</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <div class="horizontalMenu">
-                <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
-                <button mat-button [matMenuTriggerFor]="animals">Animal index2</button>
-                <button mat-button [matMenuTriggerFor]="animals">Animal index3</button>
-                <button mat-button [matMenuTriggerFor]="animals">Animal index4</button>
+                <app-page-menu [abpMenuItems]="abpMenuItems"></app-page-menu>
             </div>
-            <mat-menu #animals="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-                <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
-            </mat-menu>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                 <topbar-languageswitch></topbar-languageswitch>

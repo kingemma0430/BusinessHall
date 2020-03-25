@@ -1,4 +1,4 @@
-import { Component, Injector, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Injector, ViewEncapsulation, OnInit, AfterViewInit, Input } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { MenuItemDto } from '@shared/layout/menu-item';
 
@@ -14,46 +14,22 @@ import * as Enumerable from 'linq';
 })
 export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
+    @Input()
+    abpMenuItems: AbpMenuDto[] = [];
+
     menuItems: MenuItemDto[] = [];
     constructor(
         injector: Injector,
         private _menuServiceService: MenuServiceService
     ) {
         super(injector);
-        this.getUserMenus();
     }
-
 
     ngOnInit() {
-       // this.getUserMenus();
-    }
-
-    getDefaultMenus() {
-        let tmpmenuItems: MenuItemDto[] = [
-            new MenuItemDto('HomePage', '', 'home', '/app/home'),
-            new MenuItemDto('About', '', 'info', '/app/about')
-        ];
-        return tmpmenuItems;
-    }
-
-    getUserMenus() {
-        let menuJson: string = localStorage.getItem(AppConsts.localStorage_menuKey);
-        if (menuJson) {
-            this.menuItems = JSON.parse(menuJson);
-        }
-        else {
-            localStorage.removeItem(AppConsts.localStorage_menuKey);
-            this._menuServiceService.GetMenusForCurreuntUser().subscribe(data => {
-                if (data) {
-                    let newTmpMenus: AbpMenuDto[] = data["items"];
-                    this.loadMenus(newTmpMenus);
-                }
-            })
-        }
+        this.loadMenus(this.abpMenuItems);
     }
 
     loadMenus(inputMenus: AbpMenuDto[]) {
-      
         if (inputMenus) {
             inputMenus.forEach(element => {
                 element.permissionName = "Pages." + element.name;
@@ -67,10 +43,7 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
                 this.menuItems.push(itemRoot);
             });
         }
-        else {
-            this.menuItems = this.getDefaultMenus();
-        }
-        localStorage.setItem(AppConsts.localStorage_menuKey, JSON.stringify(this.menuItems));
+
     }
 
 

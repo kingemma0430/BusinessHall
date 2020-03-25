@@ -10152,6 +10152,12 @@ fieldset[disabled] .form-control {
 
 /* Dropdown Menu =============================== */
 
+.dropdown,
+.dropdown ul li {
+    list-style: none;
+    padding-left: 0;
+}
+
 .dropdown-menu {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -10910,6 +10916,45 @@ fieldset[disabled] .form-control {
 
 /* Searchbar =================================== */
 
+.search-bar-fixed {
+    position: fixed;
+    left: 0;
+    z-index: 9999999;
+    width: 100%;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+}
+
+.search-bar-fixed .close-search {
+    position: absolute;
+    cursor: pointer;
+    font-size: 30px;
+    top: 16px;
+    right: 18px;
+}
+
+.search-bar-fixed .close-search .material-icons {
+    color: #999;
+    opacity: 1;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.search-bar-fixed .close-search .material-icons:hover {
+    opacity: .5;
+}
+
+.search-bar-fixed input[type="text"] {
+    width: 100%;
+    font-size: 16px;
+    padding: 25px 60px 23px 56px;
+    border: none;
+}
+
 .search-bar {
     position: fixed;
     top: -100px;
@@ -11163,6 +11208,14 @@ mat-checkbox {
     vertical-align: middle;
 }
 
+.leftSidebarWidth0 {
+    width: 0;
+}
+
+.leftSidebarWidth300 {
+    width: 300px;
+}
+
 @keyframes loading {
     0% {
         -webkit-transform: rotate(0deg);
@@ -11217,6 +11270,10 @@ mat-checkbox {
     background: transparent;
 }
 
+.handClass {
+    cursor: pointer;
+}
+
 @keyframes globalLoading {
     0% {
         -webkit-transform: rotate(0deg);
@@ -11246,7 +11303,8 @@ mat-checkbox {
     animation: globalLoading 1500ms infinite linear;
 }
 
-.generalLoadingFixed {
+
+/* .generalLoadingFixed {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -11266,4 +11324,4 @@ mat-checkbox {
         -o-animation: globalLoading 1500ms infinite linear;
         animation: globalLoading 1500ms infinite linear;
     }
-}
+} */

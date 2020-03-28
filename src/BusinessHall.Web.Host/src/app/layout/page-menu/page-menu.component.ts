@@ -17,9 +17,26 @@ export class PageMenuComponent implements OnInit {
   @Input()
   abpMenuItems: AbpMenuDto[] = [];
 
+  @Input()
+  rootMenuItems: AbpMenuDto[] = [];
+  @Input()
+  menuItems: MenuItemDto[] = [];
+
+  subMenuItems: AbpMenuDto[] = [];
+
+  subSubMenuItems: AbpMenuDto[] = [];
+
+
   constructor(private menuServiceService: MenuServiceService) { }
 
   ngOnInit() {
   }
 
+  openSubMenu(menuItem: AbpMenuDto) {
+    this.subMenuItems = Enumerable.from(this.abpMenuItems).where(x => x.parentMenuId == menuItem.id).toArray();
+  }
+
+  openSubSubMenu(menuItem: AbpMenuDto) {
+    this.subSubMenuItems = Enumerable.from(this.abpMenuItems).where(x => x.parentMenuId == menuItem.id).toArray();
+  }
 }

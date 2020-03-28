@@ -18,38 +18,32 @@
 <!-- https://www.techiediaries.com/angular-material-navigation-toolbar-sidenav/ -->
 <mat-toolbar>
     <mat-toolbar-row class="topbarClass">
-        <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-10">
-                <mat-icon *ngIf="isLittleScreen" class="handClass" (click)="leftSideNav.toggle()">menu</mat-icon>
-                <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> Demo</a>
-                <app-page-menu *ngIf="!isLittleScreen" [abpMenuItems]="abpMenuItems"></app-page-menu>
-            </div>
-            <div class="ui-g-12 ui-md-2" *ngIf="!isLittleScreen">
-                <topbar-languageswitch></topbar-languageswitch>
-                <a (click)="openSearch()"> <i class="fa fa-search"></i></a>
+        <div class="ui-g-12" [hidden]="isShowGlobalSearchText">
+            <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> BusinessHall</a>
+            <app-page-menu class="wrapper-nav-main" *ngIf="!isLittleScreen" [abpMenuItems]="abpMenuItems"
+                [menuItems]="menuItems" [rootMenuItems]="rootMenuItems">
+            </app-page-menu>
+            <div class="navbar-right" *ngIf="!isLittleScreen">
+                <a class="marginLeft5" (click)="openSearch()"> <i class="fa fa-search"></i></a>
                 <a (click)="rightSideNav.toggle()"> <i class="fa fa-user-circle"></i></a>
+                <topbar-languageswitch></topbar-languageswitch>
+            </div>
+            <a class="minScreenMenu" *ngIf="isLittleScreen" (click)="leftSideNav.toggle()">
+                <i class="fa fa-list"></i>
+            </a>
+        </div>
+        <div *ngIf="!isLittleScreen && isShowGlobalSearchText" class="search-bar-fixed">
+            <input matInput type="text" placeholder="START TYPING..." [(ngModel)]="globalSearchText">
+            <div class="close-search handClass" (click)="closeSearch()">
+                <i class="material-icons">close</i>
             </div>
         </div>
     </mat-toolbar-row>
-    <div *ngIf="!isLittleScreen && isShowGlobalSearchText" class="search-bar-fixed">
-        <input matInput type="text" placeholder="START TYPING..." [(ngModel)]="globalSearchText">
-        <div class="close-search handClass" (click)="closeSearch()">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
+
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav #leftSideNav>
-        <mat-nav-list>
-            <mat-menu #appMenu="matMenu">
-                <button mat-menu-item>Settings</button>
-                <button mat-menu-item>Help</button>
-            </mat-menu>
-
-            <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-        </mat-nav-list>
+        <sidebar-nav [abpMenuItems]="abpMenuItems" [menuItems]="menuItems"></sidebar-nav>
     </mat-sidenav>
     <mat-sidenav #rightSideNav position="end">
         <right-sidebar></right-sidebar>
@@ -61,6 +55,4 @@
             </div>
         </div>
     </mat-sidenav-content>
-
-
 </mat-sidenav-container>

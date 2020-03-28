@@ -19,7 +19,6 @@ import { RealtimeDataComponent } from "./batchManagement/realtime-data/realtime-
 import { DailyBalanceComponent } from "./batchManagement/daily-balance/daily-balance.component";
 import { AlertSettingComponent } from "./batchManagement/alert-setting/alert-setting.component";
 import { CreditManagerComponent } from "./batchManagement/credit-manager/credit-manager.component";
-
 import { AgentAccountComponent } from "./batchManagement/agent-account/agent-account.component";
 
 
@@ -117,6 +116,11 @@ import { AgentAccountComponent } from "./batchManagement/agent-account/agent-acc
           {
             path: "update-password",
             component: ChangePasswordComponent
+          },
+          {
+            path: '**',
+            redirectTo: '/app/home',
+            pathMatch: 'full'
           }
         ]
       }

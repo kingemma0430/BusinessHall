@@ -1,27 +1,42 @@
-<!-- <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <button mat-icon-button><mat-icon (click)="sidenav.toggle()">menu</mat-icon></button>
-        <h1>SimpleCRM</h1>
-        <span class="menu-spacer"></span>
-        <div>
-            <a mat-button [routerLink]="'/accounts'"> Accounts </a>
-            <a mat-button [routerLink]="'/create-account'"> Create Account </a>
-            <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-            <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-            <a mat-button [routerLink]="'/activities'"> Activities </a>
-            <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+<ul class="menu-main">
+    <li class="rootMenu" *ngFor="let menuItem of rootMenuItems">
+        <a mat-button *ngIf="menuItem.url" href="menuItem.url" target="_blank">
+            <span>{{menuItem.name | localize}}</span>
+        </a>
+        <a mat-button *ngIf="!menuItem.url && !(menuItem.children && menuItem.children.length)"
+            [routerLink]="menuItem.menuUrlRoute">
+            <span>{{menuItem.name | localize}}</span>
+        </a>
+        <a mat-button *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [routerLink]="menuItem.menuUrlRoute"
+            [matMenuTriggerFor]="subMenu" (click)="openSubMenu(menuItem)">
+            <span>{{menuItem.name | localize}}</span>
+        </a>
+        <i *ngIf="menuItem.children && menuItem.children.length" class="fa fa-chevron-down"></i>
+    </li>
+</ul>
 
-        </div>
-    </mat-toolbar-row>
+<mat-menu #subMenu="matMenu">
+    <button mat-menu-item *ngFor="let menuItem of subMenuItems">
+        <a mat-button *ngIf="menuItem.url" href="menuItem.url" target="_blank">
+            <span>{{menuItem.name | localize}}</span></a>
+        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)" [routerLink]="menuItem.menuUrlRoute">
+            <span>{{menuItem.name | localize}}</span></a>
+        <a *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [matMenuTriggerFor]="subMenu"
+            (click)="openSubMenu(menuItem)">
+            <span>{{menuItem.name | localize}}</span></a>
+        <i *ngIf="menuItem.children && menuItem.children.length" class="fa fa-chevron-down"></i>
+    </button>
+</mat-menu>
 
-    <mat-toolbar-row>
-        <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
-    </mat-toolbar-row>
-</mat-toolbar> -->
-
-<a mat-button [routerLink]="'/accounts'"> Accounts </a>
-<a mat-button [routerLink]="'/create-account'"> Create Account </a>
-<a mat-button [routerLink]="'/contacts'"> Contacts </a>
-<a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-<a mat-button [routerLink]="'/activities'"> Activities </a>
-<a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+<mat-menu #subSubMenu="matMenu">
+    <button mat-menu-item *ngFor="let menuItem of subSubMenuItems">
+        <a mat-button *ngIf="menuItem.url" href="menuItem.url" target="_blank">
+            <span>{{menuItem.name | localize}}</span></a>
+        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)" [routerLink]="menuItem.menuUrlRoute">
+            <span>{{menuItem.name | localize}}</span></a>
+        <a *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [matMenuTriggerFor]="subSubMenu"
+            (click)="openSubSubMenu(menuItem)">
+            <span>{{menuItem.name | localize}}</span></a>
+        <i *ngIf="menuItem.children && menuItem.children.length" class="fa fa-chevron-down"></i>
+    </button>
+</mat-menu>

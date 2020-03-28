@@ -32,21 +32,22 @@
                         ],
                         "styles": [
                             "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                            "src/assets/fonts/materialIcons/material.css",
-                            "src/assets/fonts/roboto/roboto.css",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/simple-line-icons/css/simple-line-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
                             "node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.css",
                             "node_modules/toastr/build/toastr.css",
                             "node_modules/node-waves/dist/waves.css",
+                            "src/assets/fonts/materialIcons/material.css",
+                            "src/assets/fonts/roboto/roboto.css",
+                            "node_modules/primeng/resources/themes/nova-light/theme.css",
+                            "node_modules/primeng/resources/primeng.min.css",
+                            "node_modules/primeicons/primeicons.css",
                             "src/bsb-theme/css/materialize.css",
                             "src/bsb-theme/css/style.css",
                             "src/bsb-theme/css/themes/all-themes.css",
                             "src/shared/core.less",
-                            "node_modules/primeng/resources/themes/nova-light/theme.css",
-                            "node_modules/primeng/resources/primeng.min.css",
-                            "node_modules/primeicons/primeicons.css"
+                            "src/main.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",

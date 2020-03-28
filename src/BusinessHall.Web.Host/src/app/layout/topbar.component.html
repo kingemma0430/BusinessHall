@@ -12,17 +12,14 @@
 
 <nav class="navbar">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-            <a href="javascript:void(0);" class="bars"></a>
-            <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> BusinessHall</a>
-        </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <div class="horizontalMenu">
-                <app-page-menu [abpMenuItems]="abpMenuItems"></app-page-menu>
+                <app-page-menu [abpMenuItems]="abpMenuItems" [menuItems]="menuItems">
+                </app-page-menu>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                            class="material-icons">search</i></a></li>
                 <topbar-languageswitch></topbar-languageswitch>
                 <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
                             class="material-icons">more_vert</i></a></li>

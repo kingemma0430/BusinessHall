@@ -1,0 +1,28 @@
+@import './shared/mainNavFooter.scss';
+
+.paddingTop25
+{
+    padding-top: 25px;
+}
+.marginLeft5
+{
+    margin-left: 5px;
+}
+
+.paddingTop50
+{
+    padding-top: 25px;
+}
+.mat-toolbar-row,
+.mat-toolbar-row, .mat-toolbar-single-row
+{
+    display: inline-block !important;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    white-space: nowrap;
+    position: relative;
+    height: 50px;
+    padding-top: 10px;
+}

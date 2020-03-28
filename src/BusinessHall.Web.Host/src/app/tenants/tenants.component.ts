@@ -28,7 +28,7 @@ class PagedTenantsRequestDto extends PagedRequestDto {
             padding: 10px;
           }
         `
-      ]
+    ]
 })
 export class TenantsComponent extends PagedListingComponentBase<TenantDto> {
     tenants: TenantDto[] = [];

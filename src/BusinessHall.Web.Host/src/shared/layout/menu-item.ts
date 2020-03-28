@@ -4,7 +4,7 @@ export class MenuItemDto {
     name = '';
     permissionName = '';
     icon = '';
-    routerLink = '';
+    menuUrlRoute = '';
     url = '';
     items: MenuItemDto[] = [];
 
@@ -12,7 +12,7 @@ export class MenuItemDto {
         this.name = name;
         this.permissionName = permissionName;
         this.icon = icon;
-        this.routerLink = routerLink;
+        this.menuUrlRoute = routerLink;
         this.url = url;
 
         if (childItems) {
@@ -22,32 +22,3 @@ export class MenuItemDto {
         }
     }
 }
-
-export class MenuItemP implements MenuItem {
-    label?: string;
-    icon?: string;
-    url?: string;
-    routerLink?: any;
-    queryParams?: {
-        [k: string]: any;
-    };
-    items?: MenuItemP[] = [];
-    expanded?: boolean;
-    disabled?: boolean;
-    visible?: boolean;
-    target?: string;
-    constructor(label: string, permissionName: string, icon: string, routerLink: string, url: string = null, childItems: MenuItemP[] = null) {
-        this.label = label;
-        this.icon = icon;
-        this.routerLink = [routerLink];
-        this.url = url;
-
-        if (childItems) {
-            this.items = childItems;
-        } else {
-            this.items = [];
-        }
-    }
-}
-
-

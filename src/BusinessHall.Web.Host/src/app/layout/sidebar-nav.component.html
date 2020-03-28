@@ -3,7 +3,7 @@
         <ng-template ngFor let-menuItem [ngForOf]="menuItems">
             <li routerLinkActive="active">
                 <!-- route name -->
-                <a [routerLink]="menuItem.routerLink" *ngIf="menuItem.routerLink">
+                <a [routerLink]="menuItem.menuUrlRoute" *ngIf="menuItem.menuUrlRoute">
                     <i *ngIf="menuItem.icon" class="material-icons">{{menuItem.icon}}</i>
                     <span>{{menuItem.name | localize}}</span>
                 </a>
@@ -20,7 +20,7 @@
                 <ul class="ml-menu" *ngIf="menuItem.items.length">
                     <ng-template ngFor let-subMenuItem [ngForOf]="menuItem.items">
                         <li routerLinkActive="active">
-                            <a [routerLink]="[subMenuItem.routerLink]" class="toggled" *ngIf="subMenuItem.routerLink">
+                            <a [routerLink]="[subMenuItem.menuUrlRoute]" class="toggled" *ngIf="subMenuItem.menuUrlRoute">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name | localize}}</span>
                             </a>

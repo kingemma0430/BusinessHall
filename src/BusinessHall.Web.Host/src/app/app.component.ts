@@ -6,6 +6,8 @@ import {
   AfterViewInit,
   ChangeDetectorRef
 } from "@angular/core";
+import * as Enumerable from 'linq';
+
 import { AppComponentBase } from "@shared/app-component-base";
 
 import { SignalRAspNetCoreHelper } from "@shared/helpers/SignalRAspNetCoreHelper";
@@ -29,7 +31,8 @@ export class AppComponent extends AppComponentBase
   globalSearchText: string;
   isShowGlobalSearchText: boolean = false;
   abpMenuItems: AbpMenuDto[] = [];
-
+  menuItems: MenuItemDto[] = [];
+  rootMenuItems: AbpMenuDto[] = [];
   isLittleScreen: boolean = false;
   constructor(injector: Injector,
     private _missionService: MissionService,
@@ -132,9 +135,12 @@ export class AppComponent extends AppComponentBase
   }
 
   getUserMenus() {
+    this.menuItems = [];
     let menuJson: string = localStorage.getItem(AppConsts.localStorage_menuKey);
     if (menuJson) {
       this.abpMenuItems = JSON.parse(menuJson);
+      this.setRootMenus(this.abpMenuItems);
+      this.menuItems = this._menuServiceServer.setMenuChildren(this.abpMenuItems);
     }
     else {
       localStorage.removeItem(AppConsts.localStorage_menuKey);
@@ -142,41 +148,41 @@ export class AppComponent extends AppComponentBase
         if (data) {
           let inputMenus: AbpMenuDto[] = data["items"];
           this.loadMenus(inputMenus);
+          this.setRootMenus(this.abpMenuItems);
         }
       })
     }
   }
 
   loadMenus(inputMenus: AbpMenuDto[]) {
+    this.menuItems = [];
     if (inputMenus) {
       inputMenus.forEach(element => {
+        if (element.menuUrlRoute && element.menuUrlRoute.indexOf("http") > -1) {
+          element.url = element.menuUrlRoute;
+        }
         element.permissionName = "Pages." + element.name;
       });
       this.abpMenuItems = inputMenus;
     }
     else {
-      this.abpMenuItems = this.getDefaultMenus();
+      this.abpMenuItems = this._menuServiceServer.getDefaultMenus();
     }
+    this.menuItems = this._menuServiceServer.setMenuChildren(this.abpMenuItems);
     localStorage.setItem(AppConsts.localStorage_menuKey, JSON.stringify(this.abpMenuItems));
   }
 
-  getDefaultMenus() {
-    let tmpmenuItems: AbpMenuDto[] = [];
-    let homeMenu: AbpMenuDto = new AbpMenuDto();
-    homeMenu.id = 0;
-    homeMenu.icon = "home";
-    homeMenu.menuUrlRoute = "/app/home";
-    homeMenu.name = "HomePage";
-    homeMenu.permissionName = "Pages." + homeMenu.name;
-    tmpmenuItems.push(homeMenu);
 
-    let abouMenu: AbpMenuDto = new AbpMenuDto();
-    abouMenu.id = 1;
-    abouMenu.icon = "info";
-    abouMenu.menuUrlRoute = "/app/about";
-    abouMenu.name = "About";
-    abouMenu.permissionName = "Pages." + abouMenu.name;
-    tmpmenuItems.push(abouMenu);
-    return tmpmenuItems;
+  setRootMenus(inputMenus: AbpMenuDto[]) {
+    let tmpRootMenus: AbpMenuDto[] = [];
+    tmpRootMenus = Enumerable.from(this.abpMenuItems).where(x => !x.parentMenuId).toArray();
+    if (tmpRootMenus) {
+      tmpRootMenus.forEach(elementRoot => {
+        elementRoot.children = Enumerable.from(this.abpMenuItems).where(x => x.parentMenuId == elementRoot.id).toArray();
+      });
+    }
+    this.rootMenuItems = tmpRootMenus;
   }
+
+
 }

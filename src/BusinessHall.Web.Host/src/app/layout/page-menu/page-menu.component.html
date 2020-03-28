@@ -7,7 +7,7 @@
             [routerLink]="menuItem.menuUrlRoute">
             <span>{{menuItem.name | localize}}</span>
         </a>
-        <a mat-button *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [routerLink]="menuItem.menuUrlRoute"
+        <a mat-button *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" 
             [matMenuTriggerFor]="subMenu" (click)="openSubMenu(menuItem)">
             <span>{{menuItem.name | localize}}</span>
         </a>

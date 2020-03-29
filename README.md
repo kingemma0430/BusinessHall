@@ -81,15 +81,21 @@ When create service in Applications, the name is AbcAppService and IAbcAppServic
 
 
 # Resources 
+#### ABP
+This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
 
-1. Components of Primeng
+1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
+2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
+ 
+User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
+ 
+#### Components of Primeng
 https://www.primefaces.org/primeng/#/
 
-2. Icons of primeng
+#### Icons of primeng
 https://www.primefaces.org/primereact/#/icons/
-	
-	
-3. Material
+		
+#### Material
 https://material.angular.io/components
 
 You can check _screenshots\Material icons.png to find all materila icons
@@ -178,27 +184,12 @@ We will use Postman (a chrome extension) to demonstrate requests and responses.
 ![](_screenshots/T4/T4-step-2.png)
 
 
-# Introduction for aspnetboilerplate
-
-This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
-
-1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
-2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
- 
-User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
- 
-# Download for aspnetboilerplate
-
-Create & download your project from https://aspnetboilerplate.com/Templates
-# Documentation  for aspnetboilerplate
-
-* [ASP.NET Core MVC & jQuery version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core)
-* [ASP.NET Core & Angular  version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular)
-
 # License
 
 [MIT](LICENSE).
-Thanks for aspnetboilerplate to provide code structure.
+
+Thanks for ABP to provide code structure.
+
 # Author
 
 * Zhen (Evan) Wang    

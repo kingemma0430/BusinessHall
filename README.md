@@ -154,19 +154,6 @@ If you want to consume APIs/application services from a mobile application, you 
 We will use Postman (a chrome extension) to demonstrate requests and responses.
 
 
-# Introduction for aspnetboilerplate
-
-This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
-
-1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
-2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
- 
-User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
- 
-# Download for aspnetboilerplate
-
-Create & download your project from https://aspnetboilerplate.com/Templates
-
 # Screenshots
 
 #### Login Page
@@ -191,7 +178,19 @@ Create & download your project from https://aspnetboilerplate.com/Templates
 ![](_screenshots/T4/T4-step-2.png)
 
 
-# Documentation
+# Introduction for aspnetboilerplate
+
+This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
+
+1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
+2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
+ 
+User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
+ 
+# Download for aspnetboilerplate
+
+Create & download your project from https://aspnetboilerplate.com/Templates
+# Documentation  for aspnetboilerplate
 
 * [ASP.NET Core MVC & jQuery version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core)
 * [ASP.NET Core & Angular  version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular)
@@ -199,13 +198,13 @@ Create & download your project from https://aspnetboilerplate.com/Templates
 # License
 
 [MIT](LICENSE).
-
+Thanks for aspnetboilerplate to provide code structure.
 # Author
 
-Zhen (Evan) Wang , 王振    
-Tel:     18901599114 
-QQ：     273509239
-WeChat： 18901599114
-Email:   18901599114@163.com
-Location: Nanjing 南京
-#========================================
+* Zhen (Evan) Wang    
+* Tel:     	 18901599114 
+* QQ：     	 273509239
+* WeChat： 	 18901599114,273509239
+* Email:   	 18901599114@163.com
+* Location:  Nanjing 南京
+

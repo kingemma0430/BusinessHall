@@ -1,4 +1,5 @@
 #****************************************Tools************************************************************#
+# Tools
 	1. VS2019 community 16.2.4
 	2. Nodejs v10.16.3 (npm v6.9.0)
 	3. Net Core 2.2  (
@@ -11,15 +12,15 @@ You can find "Angular Environment Build Steps" in Angular Environment Build Step
 You can find deploy steps in "Deployment of Angular Application" in bottom.
 	
 
-#********************Initial************************************************************#
-BackEnd
+# Initial
+1. BackEnd
 	1. Double click BusinessHall\BusinessHall.sln to open project, and then Build it.
 	2. Tools==>NuGet Package Manager==>Package Manager Console, choose "BusinessHall.EntityFrameworkCore" as default project.
 	3. input "update-database", enter
 	4. Open MySql and execute  scripts folder files
 	5. Select "BusinessHall.EntityFrameworkCore" as startup project, start it.
 	
-FrontEnd		
+2. FrontEnd		
 	1. Open Visual Studio Code.
 	2. Open project folder "BusinessHall\src\BusinessHall.Web.Host",   CTRL+~    to open console, execute below two scripts
 		npm install -g @angular/cli
@@ -34,7 +35,10 @@ FrontEnd
 	5. Publish Project
 		npm run build:prod
 
-#********************To support IE or not************************************************************#	
+# T4 Template
+It has created T4 template to help you create your Apis. It contained GetAll,GetById,Create,Update,Delete, DeleteForMultiple functions.
+	
+# To support IE or not
 	The original source that download from aspnetboilerplate ,it didn't support IE browser. For My branch, it has been changed to support it.
 	But it will be increased the js size when publish . If your customs that not need to support IE, you can change them back.
 	
@@ -46,11 +50,11 @@ FrontEnd
 		2.1 Append "not" in the left of "IE 9-11" in BusinessHall.Web.Host\browserslist file
 		2.2 change "target" value from "es5" to “es2015” in BusinessHall.Web.Host\src\tsconfig.json file 
 	
-#********************Default user and tenant************************************************************#
+# Default user and tenant
 	1. User name: admin  password: 123qwe
 	2. Tenant name: Default
 
-#********************Add another Permission************************************************************#
+# Add another Permission
 
 	1. Add constant field in BusinessHall.Core\Authorization\PermissionNames.cs
 
@@ -59,35 +63,36 @@ FrontEnd
 	3. Build project, it will be inserted into tables to assign this permission to admin role
 	
 
-#********************Add another fields in User (AbpUsers) table ************************************************************#
+# Add another fields in User (AbpUsers) table
 Make sure all models in BusinessHallModels folder for code rules.
-	1. add fields like below code in BusinessHall.Core\Authorization\Users\User.cs
+1. add fields like below code in BusinessHall.Core\Authorization\Users\User.cs
 		
-		[StringLength(BusinessHallConsts.MaxLength25)]
-        public string Telephone { get; set; }
-	2. Open Vs2019, Tools==>NuGet Package Manager==>Package Manager Consolle, choose "BusinessHall.EntityFrameworkCore" as default project
-	3. Input Add-Migration "AddFieldsInUsers",  "AddFieldsInUsers" value you can according your style to rename it, and click "Enter" keyboard
-	4. Input "update-database", enter
+[StringLength(BusinessHallConsts.MaxLength25)]
+public string Telephone { get; set; }
+2. Open Vs2019, Tools==>NuGet Package Manager==>Package Manager Consolle, choose "BusinessHall.EntityFrameworkCore" as default project
+3. Input Add-Migration "AddFieldsInUsers",  "AddFieldsInUsers" value you can according your style to rename it, and click "Enter" keyboard
+4. Input "update-database", enter
 
 	
-#========================================Important=======ApplicationService naming Rules=================
+# Important=======ApplicationService naming Rules=================
 Interface：I**AppService
 Class：    **AppService
 When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.
 
-#========================================Important========================
 
+# Resources 
 
-#********************Components of Primeng************************************************************#
+1. Components of Primeng
 https://www.primefaces.org/primeng/#/
 
-
-icons of primeng
+2. Icons of primeng
 https://www.primefaces.org/primereact/#/icons/
 	
 	
-#******************** Material icons************************************************************# 
-#********************you can check _screenshots\Material icons.png to find all materila icons
+3. Material
+https://material.angular.io/components
+
+You can check _screenshots\Material icons.png to find all materila icons
 menu
 menu_open
 more_horiz
@@ -112,7 +117,7 @@ arrow_forward
 close
 
 
-#********************Deployment of Angular Application************************************************************# 
+# Deployment of Angular Application
 Seperated Project:
 We used the angular-cli tooling to build an Angular solution. You can use the ng build --prod command to publish your project. It publishes to the dist folder by default. You can then host this folder on IIS or any web server you like.
 
@@ -149,15 +154,7 @@ If you want to consume APIs/application services from a mobile application, you 
 We will use Postman (a chrome extension) to demonstrate requests and responses.
 
 
-
-
-#******************** aspnetboilerplate************************************************************# 
-
-# Important
-
-Issues of this repository are tracked on https://github.com/aspnetboilerplate/aspnetboilerplate. Please create your issues on https://github.com/aspnetboilerplate/aspnetboilerplate/issues.
-
-# Introduction
+# Introduction for aspnetboilerplate
 
 This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
 
@@ -166,21 +163,33 @@ This is a template to create **ASP.NET Core MVC / Angular** based startup projec
  
 User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
  
-# Download
+# Download for aspnetboilerplate
 
 Create & download your project from https://aspnetboilerplate.com/Templates
 
 # Screenshots
 
-#### Sample Dashboard Page
-![](_screenshots/module-zero-core-template-ui-home.png)
-
-#### User Creation Modal
-![](_screenshots/module-zero-core-template-ui-user-create-modal.png)
-
 #### Login Page
 
-![](_screenshots/module-zero-core-template-ui-login.png)
+![](_screenshots/ui-login.png)
+
+#### Sample Dashboard Page
+![](_screenshots/ui-home.png)
+
+#### Sample Dashboard Page in Mobile Phone
+![](_screenshots/ui-home-phone.png)
+![](_screenshots/ui-home-phone-2.png)
+
+#### User Creation Modal
+![](_screenshots/ui-user-create-modal.png)
+
+#### API
+![](_screenshots/APIs.png)
+
+#### T4 Templates
+![](_screenshots/T4/T4-step-1.png)
+![](_screenshots/T4/T4-step-2.png)
+
 
 # Documentation
 
@@ -191,7 +200,7 @@ Create & download your project from https://aspnetboilerplate.com/Templates
 
 [MIT](LICENSE).
 
-#Author
+# Author
 
 Zhen (Evan) Wang , 王振    
 Tel:     18901599114 

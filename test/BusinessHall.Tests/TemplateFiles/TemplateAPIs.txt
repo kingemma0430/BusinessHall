@@ -11,14 +11,14 @@ using Abp.Domain.Repositories;
 using Abp.AutoMapper;
 using System.Linq;
 
-namespace BusinessHall.@ModelManagers
+namespace BusinessHall.@Models
 {
-    [AbpAuthorize(PermissionNames.Pages_@ModelManager)]
-    public class @ModelManagerAppService : BusinessHallAppServiceBase, I@ModelManagerAppService
+    [AbpAuthorize(PermissionNames.Pages_@Model)]
+    public class @ModelAppService : BusinessHallAppServiceBase, I@ModelAppService
     {
         private readonly IRepository<@Model> _@ModelClassRepository;
 
-        public @ModelManagerAppService(IRepository<@Model> @ModelClassRepository)
+        public @ModelAppService(IRepository<@Model> @ModelClassRepository)
         {
             _@ModelClassRepository = @ModelClassRepository;
         }

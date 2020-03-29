@@ -13,9 +13,5 @@ namespace BusinessHall.Users
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
 
-        List<string> GetBusinessHallModelClasses();
-
-        List<string> GetEntitiesClasses();
-
     }
 }

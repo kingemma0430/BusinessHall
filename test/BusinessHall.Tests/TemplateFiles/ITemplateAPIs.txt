@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessHall.@ModelManagers
+namespace BusinessHall.@Models
 {
-    public interface I@ModelManagerAppService : IApplicationService
+    public interface I@ModelAppService : IApplicationService
     {
         Task<ListResultDto<@ModelDto>> GetAll();
 
-        Task<@ModelDto> Create(@ModelDto @ModelClassDto);
-
         Task<@ModelDto> GetById(int id);
+        
+        Task<@ModelDto> Create(@ModelDto @ModelClassDto);
 
         Task<@ModelDto> Update(@ModelDto @ModelClassDto);
 

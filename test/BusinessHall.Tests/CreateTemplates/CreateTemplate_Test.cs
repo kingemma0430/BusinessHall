@@ -10,17 +10,17 @@ using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using BusinessHall.Users;
+using BusinessHall.T4TemplateHelps;
 
 namespace BusinessHall.Tests.CreateTemplates
 {
     public class CreateTemplate_Test : BusinessHallTestBase
     {
-        private readonly IUserAppService _userAppService;
+        private readonly T4TemplateHelpAppService _t4TemplateHelpAppService;
 
         public CreateTemplate_Test()
         {
-            _userAppService = Resolve<IUserAppService>();
+            _t4TemplateHelpAppService = Resolve<T4TemplateHelpAppService>();
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace BusinessHall.Tests.CreateTemplates
         {
             try
             {
-                List<string> modelNames = _userAppService.GetBusinessHallModelClasses();
+                List<string> modelNames = _t4TemplateHelpAppService.GetBusinessHallModelClasses();
                 bool isNeedToDeleteOldFile = false;//If you want to override all service, you can set it true
                 string currentFolder = AppDomain.CurrentDomain.BaseDirectory;
                 if (!Directory.Exists(currentFolder))
@@ -60,8 +60,8 @@ namespace BusinessHall.Tests.CreateTemplates
                     {
                         Directory.CreateDirectory(subFolder);
                     }
-                    string outputFileName = Path.Combine(subFolder, itemClassName + "ManagerAppService.cs");
-                    string outputFileNameInterface = Path.Combine(subFolder, "I" + itemClassName + "ManagerAppService.cs");
+                    string outputFileName = Path.Combine(subFolder, itemClassName + "AppService.cs");
+                    string outputFileNameInterface = Path.Combine(subFolder, "I" + itemClassName + "AppService.cs");
 
                     string modelClass = itemClassName.Substring(0, 1).ToLower() + itemClassName.Substring(1);
                     string tmptextITemplateAPI = textITemplateAPI.Replace(parameterModelClass, modelClass).Replace(parameterModel, itemClassName);
@@ -78,6 +78,7 @@ namespace BusinessHall.Tests.CreateTemplates
                         }
                     }
                 }
+                System.Diagnostics.Process.Start("explorer.exe", outputFolder);
             }
             catch (Exception ex)
             {

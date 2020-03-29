@@ -221,18 +221,6 @@ namespace BusinessHall.Users
             return true;
         }
 
-        public List<string> GetBusinessHallModelClasses()
-        {
-            List<string> classlist = ExtendsionHelper.GetBusinessHallModelClasses();
-            return classlist;
-        }
-
-
-        public List<string> GetEntitiesClasses()
-        {
-            List<string> classlist = ExtendsionHelper.GetEntitiesClasses();
-            return classlist;
-        }
     }
 }
 

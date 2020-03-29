@@ -74,7 +74,7 @@ public string Telephone { get; set; }
 4. Input "update-database", enter
 
 	
-# Important=======ApplicationService naming Rules=================
+# ApplicationService Naming Rules
 Interface：I**AppService
 Class：    **AppService
 When create service in Applications, the name is AbcAppService and IAbcAppService, once created, please don't rename it, otherwise, the service will not work any more.

@@ -4,17 +4,24 @@
 
 .theme-red .topbarClass {
     background-color: #F44336;
+
 }
 
-.theme-red .horizontalMenu {
-    float: left;
-    margin-top: 15px;
+.theme-red .fa {
     color: white;
 }
+
 
 .theme-red .mat-button {
     color: white;
 }
+
+.theme-red .horizontalMenu {
+    float     : left;
+    margin-top: 15px;
+    color     : white;
+}
+
 
 .theme-red .mat-toolbar {
     background: transparent;
@@ -97,15 +104,23 @@
     background-color: #E91E63;
 }
 
-.theme-pink .horizontalMenu {
-    float: left;
-    margin-top: 15px;
+.theme-pink .fa {
     color: white;
 }
 
-.theme-red .mat-button {
+
+.theme-pink .mat-button {
     color: white;
 }
+
+
+
+.theme-pink .horizontalMenu {
+    float     : left;
+    margin-top: 15px;
+    color     : white;
+}
+
 
 .theme-pink .navbar-brand {
     color: #fff;
@@ -184,14 +199,21 @@
     background-color: #9C27B0;
 }
 
-.theme-purple .horizontalMenu {
-    float: left;
-    margin-top: 15px;
+.theme-purple .fa {
     color: white;
 }
 
+
 .theme-purple .mat-button {
     color: white;
+}
+
+
+
+.theme-purple .horizontalMenu {
+    float     : left;
+    margin-top: 15px;
+    color     : white;
 }
 
 .theme-purple .navbar-brand {
@@ -271,15 +293,20 @@
     background-color: #673AB7;
 }
 
-.theme-deep-purple .horizontalMenu {
-    float: left;
-    margin-top: 15px;
+.theme-deep-purple .fa {
     color: white;
 }
 
 .theme-deep-purple .mat-button {
     color: white;
 }
+
+.theme-deep-purple .horizontalMenu {
+    float     : left;
+    margin-top: 15px;
+    color     : white;
+}
+
 
 .theme-deep-purple .navbar-brand {
     color: #fff;
@@ -358,15 +385,21 @@
     background-color: #3F51B5;
 }
 
-.theme-indigo .horizontalMenu {
-    float: left;
-    margin-top: 15px;
+.theme-indigo .fa {
     color: white;
 }
 
 .theme-indigo .mat-button {
     color: white;
 }
+
+
+.theme-indigo .horizontalMenu {
+    float     : left;
+    margin-top: 15px;
+    color     : white;
+}
+
 
 .theme-indigo .navbar-brand {
     color: #fff;
@@ -445,6 +478,16 @@
     background-color: #2196F3;
 }
 
+.theme-blue .fa {
+    color: white;
+}
+
+.theme-blue .mat-button {
+    color: white;
+}
+
+
+
 .theme-blue .navbar-brand {
     color: #fff;
 }
@@ -521,6 +564,16 @@
 .theme-light-blue .topbarClass {
     background-color: #03A9F4;
 }
+
+.theme-light-blue .fa {
+    color: white;
+}
+
+.theme-light-blue .mat-button {
+    color: white;
+}
+
+
 
 .theme-light-blue .navbar-brand {
     color: #fff;
@@ -599,6 +652,15 @@
     background-color: #00BCD4;
 }
 
+.theme-cyan .fa {
+    color: white;
+}
+
+.theme-cyan .mat-button {
+    color: white;
+}
+
+
 .theme-cyan .navbar-brand {
     color: #fff;
 }
@@ -675,6 +737,16 @@
 .theme-teal .topbarClass {
     background-color: #009688;
 }
+
+.theme-teal .fa {
+    color: white;
+}
+
+.theme-teal .mat-button {
+    color: white;
+}
+
+
 
 .theme-teal .navbar-brand {
     color: #fff;
@@ -753,6 +825,17 @@
     background-color: #4CAF50;
 }
 
+.theme-green .fa {
+    color: white;
+}
+
+
+.theme-green .mat-button {
+    color: white;
+}
+
+
+
 .theme-green .navbar-brand {
     color: #fff;
 }
@@ -829,6 +912,17 @@
 .theme-light-green .topbarClass {
     background-color: #8BC34A;
 }
+
+.theme-light-green .fa {
+    color: white;
+}
+
+
+.theme-light-green .mat-button {
+    color: white;
+}
+
+
 
 .theme-light-green .navbar-brand {
     color: #fff;
@@ -907,20 +1001,30 @@
     background-color: #CDDC39;
 }
 
+.theme-lime .fa {
+    color: orangered;
+}
+
+.theme-lime .mat-button {
+    color: orangered;
+}
+
+
+
 .theme-lime .navbar-brand {
-    color: #fff;
+    color:orangered;
 }
 
 .theme-lime .navbar-brand:hover {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-lime .navbar-brand:active {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-lime .navbar-brand:focus {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-lime .nav>li>a {
@@ -984,24 +1088,34 @@
     background-color: #FFEB3B;
 }
 
+.theme-yellow .fa {
+    color: orangered;
+}
+
+.theme-yellow .mat-button {
+    color: orangered;
+}
+
+
+
 .theme-yellow .navbar-brand {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-yellow .navbar-brand:hover {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-yellow .navbar-brand:active {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-yellow .navbar-brand:focus {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-yellow .nav>li>a {
-    color: #fff;
+    color: orangered;
 }
 
 .theme-yellow .nav>li>a:hover {
@@ -1060,6 +1174,16 @@
 .theme-amber .topbarClass {
     background-color: #FFC107;
 }
+
+.theme-amber .fa {
+    color: white;
+}
+
+.theme-amber .mat-button {
+    color: white;
+}
+
+
 
 .theme-amber .navbar-brand {
     color: #fff;
@@ -1138,6 +1262,16 @@
     background-color: #FF9800;
 }
 
+.theme-orange .fa {
+    color: white;
+}
+
+.theme-orange .mat-button {
+    color: white;
+}
+
+
+
 .theme-orange .navbar-brand {
     color: #fff;
 }
@@ -1214,6 +1348,17 @@
 .theme-deep-orange .topbarClass {
     background-color: #FF5722;
 }
+
+.theme-deep-orange .fa {
+    color: white;
+}
+
+
+.theme-deep-orange .mat-button {
+    color: white;
+}
+
+
 
 .theme-deep-orange .navbar-brand {
     color: #fff;
@@ -1292,6 +1437,17 @@
     background-color: #795548;
 }
 
+.theme-brown .fa {
+    color: white;
+}
+
+.theme-brown .mat-button {
+    color: white;
+}
+
+
+
+
 .theme-brown .navbar-brand {
     color: #fff;
 }
@@ -1368,6 +1524,17 @@
 .theme-grey .topbarClass {
     background-color: #9E9E9E;
 }
+
+.theme-grey .fa {
+    color: white;
+}
+
+
+.theme-grey .mat-button {
+    color: white;
+}
+
+
 
 .theme-grey .navbar-brand {
     color: #fff;
@@ -1446,6 +1613,17 @@
     background-color: #607D8B;
 }
 
+.theme-blue-grey .fa {
+    color: white;
+}
+
+
+.theme-blue-grey .mat-button {
+    color: white;
+}
+
+
+
 .theme-blue-grey .navbar-brand {
     color: #fff;
 }
@@ -1522,6 +1700,17 @@
 .theme-black .topbarClass {
     background-color: #000;
 }
+
+.theme-black .fa {
+    color: white;
+}
+
+
+.theme-black .mat-button {
+    color: white;
+}
+
+
 
 .theme-black .navbar-brand {
     color: #fff;

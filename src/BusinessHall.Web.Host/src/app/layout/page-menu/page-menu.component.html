@@ -7,11 +7,11 @@
             [routerLink]="menuItem.menuUrlRoute">
             <span>{{menuItem.name | localize}}</span>
         </a>
-        <a mat-button *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" 
+        <a mat-button *ngIf="!menuItem.url && menuItem.children && menuItem.children.length"
             [matMenuTriggerFor]="subMenu" (click)="openSubMenu(menuItem)">
             <span>{{menuItem.name | localize}}</span>
+            <i class="fa fa-chevron-down"></i>
         </a>
-        <i *ngIf="menuItem.children && menuItem.children.length" class="fa fa-chevron-down"></i>
     </li>
 </ul>
 
@@ -19,7 +19,8 @@
     <button mat-menu-item *ngFor="let menuItem of subMenuItems">
         <a mat-button *ngIf="menuItem.url" href="menuItem.url" target="_blank">
             <span>{{menuItem.name | localize}}</span></a>
-        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)" [routerLink]="menuItem.menuUrlRoute">
+        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)"
+            [routerLink]="menuItem.menuUrlRoute">
             <span>{{menuItem.name | localize}}</span></a>
         <a *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [matMenuTriggerFor]="subMenu"
             (click)="openSubMenu(menuItem)">
@@ -32,7 +33,8 @@
     <button mat-menu-item *ngFor="let menuItem of subSubMenuItems">
         <a mat-button *ngIf="menuItem.url" href="menuItem.url" target="_blank">
             <span>{{menuItem.name | localize}}</span></a>
-        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)" [routerLink]="menuItem.menuUrlRoute">
+        <a *ngIf="!menuItem.url &&!(menuItem.children && menuItem.children.length)"
+            [routerLink]="menuItem.menuUrlRoute">
             <span>{{menuItem.name | localize}}</span></a>
         <a *ngIf="!menuItem.url && menuItem.children && menuItem.children.length" [matMenuTriggerFor]="subSubMenu"
             (click)="openSubSubMenu(menuItem)">

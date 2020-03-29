@@ -4,8 +4,11 @@ import {
   Injector,
   OnInit,
   AfterViewInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild, ElementRef, ContentChild
 } from "@angular/core";
+import { MatDrawer } from '@angular/material/sidenav'
+
 import * as Enumerable from 'linq';
 
 import { AppComponentBase } from "@shared/app-component-base";
@@ -34,6 +37,9 @@ export class AppComponent extends AppComponentBase
   menuItems: MenuItemDto[] = [];
   rootMenuItems: AbpMenuDto[] = [];
   isLittleScreen: boolean = false;
+
+  // DOM节点只能使用模板应用变量来找到
+  @ViewChild('leftSideNav', { static: true }) leftSideNav: any;
   constructor(injector: Injector,
     private _missionService: MissionService,
     private _menuServiceServer: MenuServiceService,
@@ -95,8 +101,12 @@ export class AppComponent extends AppComponentBase
     var $body = $('body');
     var width = $body.width();
     console.log("rsizeNew", width);
+    console.log(this.leftSideNav);
     if (width > this.breakpointWidth) {
       this.isLittleScreen = false;
+      if (this.leftSideNav) {
+        this.leftSideNav["opened"] = false;
+      }
     }
     else {
       this.isLittleScreen = true;

@@ -7,16 +7,16 @@
             <input required type="text" size="58" pInputText [(ngModel)]="newItem.name" name="ProductName" [placeholder]="'ProductName' | localize" />
         </div>
         <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
-        <p-dropdown required name="supplierList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplier" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" class="ui-g-12 ui-md-9 " [placeholder]="l('Choose')" styleClass="primengMultilSelect"
+        <p-dropdown appendTo="body" required name="supplierList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplier" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" class="ui-g-12 ui-md-9 " [placeholder]="l('Choose')" styleClass="primengMultilSelect"
             [style]="{'width':'100%'}"></p-dropdown>
         <span class="ui-g-12 ui-md-3">{{'Operator' | localize}}: </span>
-        <p-multiSelect required name="operatorList" [options]="operatorList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedOperatorList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-9" [defaultLabel]="l('Choose')"
+        <p-multiSelect appendTo="body" required name="operatorList" [options]="operatorList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedOperatorList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-9" [defaultLabel]="l('Choose')"
             styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
         <span class="ui-g-12 ui-md-3">{{'Province' | localize}}: </span>
-        <p-multiSelect required name="ProvinceList" [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)"
+        <p-multiSelect appendTo="body" required name="ProvinceList" [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)"
             class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
         <span class="ui-g-12 ui-md-3">{{'FaceValue' | localize}}: </span>
-        <p-multiSelect required name="FaceValueList" [options]="faceValueList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+        <p-multiSelect appendTo="body" required name="FaceValueList" [options]="faceValueList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-9 " [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
             [style]="{'width':'100%'}">
         </p-multiSelect>
         <span class="ui-g-12 ui-md-3">{{'Discount' | localize}}: </span>

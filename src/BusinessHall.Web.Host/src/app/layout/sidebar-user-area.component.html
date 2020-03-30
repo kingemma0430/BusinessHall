@@ -1,44 +1,30 @@
-<!-- <div class="user-info">
-    <div class="ui-g-12 info-container">
+<div class="ui-g-12" *ngIf="isLeftSidebar">
+    <!-- <div class="ui-g-12 info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{shownLoginName}}</div>
         <div class="btn-group user-helper-dropdown">
-            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">
-                <li><a [routerLink]="['/app/update-password']"><i class="material-icons">lock</i>{{ "UpdatePassword" | localize }}</a></li>
+                <li><a [routerLink]="['/app/update-password']"><i
+                            class="material-icons">lock</i>{{ "UpdatePassword" | localize }}</a></li>
                 <li><a (click)="logout()"><i class="material-icons">input</i>{{ 'Logout' | localize }}</a></li>
             </ul>
         </div>
+    </div> -->
+    <p-splitButton [label]="shownLoginName" [model]="items" styleClass="ui-button-secondary"></p-splitButton>
+</div>
+<div class="ui-g-12" *ngIf="!isLeftSidebar">
+    <div class="ui-g-12">
+        {{shownLoginName}}
     </div>
-</div> -->
-<div class="ui-g-12">
-    {{shownLoginName}}
+    <div class="ui-g-12">
+        <span>
+            <a [routerLink]="['/app/update-password']"><i class="fa fa-lock"></i>{{ "UpdatePassword" | localize }}</a>
+        </span>
+    </div>
+    <div class="ui-g-12">
+        <span>
+            <a (click)="logout()"><i class="fa fa-sign-out"></i>{{ 'Logout' | localize }}</a>
+        </span>
+    </div>
 </div>
-<div class="ui-g-12">
-    <span>
-        <a [routerLink]="['/app/update-password']"><i class="fa fa-lock"></i>{{ "UpdatePassword" | localize }}</a>
-    </span>
-</div>
-<div class="ui-g-12">
-    <span>
-        <a (click)="logout()"><i class="fa fa-sign-out"></i>{{ 'Logout' | localize }}</a>
-    </span>
-</div>
-<!-- <mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{shownLoginName}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="ui-g-12">
-            <span>
-        <a [routerLink]="['/app/update-password']"><i class="fa fa-lock"></i>{{ "UpdatePassword" | localize }}</a>
-    </span>
-        </div>
-        <div class="ui-g-12">
-            <span>
-        <a (click)="logout()"><i class="fa fa-sign-out"></i>{{ 'Logout' | localize }}</a>
-    </span>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion> -->

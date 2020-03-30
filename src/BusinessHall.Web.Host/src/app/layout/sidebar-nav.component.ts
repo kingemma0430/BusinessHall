@@ -19,6 +19,9 @@ export class SideBarNavComponent extends AppComponentBase implements OnInit {
 
     @Input()
     menuItems: MenuItemDto[] = [];
+
+    isLeftSidebar: boolean = true;
+
     constructor(
         injector: Injector,
         private _menuServiceService: MenuServiceService

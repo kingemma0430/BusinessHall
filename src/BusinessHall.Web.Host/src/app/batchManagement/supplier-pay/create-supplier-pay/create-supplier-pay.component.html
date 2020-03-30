@@ -3,7 +3,7 @@
     <h1 mat-dialog-title *ngIf="id">{{ "EditSupplierPay" | localize }}</h1>
     <mat-dialog-content style="width:650px;height:200px;">
         <span class="ui-g-12 ui-md-3">{{'Supplier' | localize}}: </span>
-        <p-dropdown required name="supplierList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplier" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" class="ui-g-12 ui-md-9 " [placeholder]="l('Choose')" styleClass="primengMultilSelect"
+        <p-dropdown appendTo="body" required name="supplierList" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplier" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" class="ui-g-12 ui-md-9 " [placeholder]="l('Choose')" styleClass="primengMultilSelect"
             [style]="{'width':'100%'}"></p-dropdown>
 
         <span class="ui-g-12 ui-md-3">{{'Amount' | localize}}: </span>

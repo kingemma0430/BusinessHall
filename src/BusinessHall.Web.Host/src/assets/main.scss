@@ -6,13 +6,17 @@ $MarginToTopbar :65px;
     margin-top: $MarginToTopbar;
 }
 
+.mat-drawer-content {
+    padding: 10px;
+}
+
 .app-navbar {
     position: fixed;
     top     : 0;
     left    : 0;
     right   : 0;
     z-index : 2;
-    height: $TopbarHeight;
+    height  : $TopbarHeight;
 }
 
 
@@ -35,7 +39,7 @@ $MarginToTopbar :65px;
 .mat-toolbar-row,
 .mat-toolbar-row,
 .mat-toolbar-single-row {
-    display    : inline-block !important;//this is used to control Menu topbar
+    display    : inline-block !important; //this is used to control Menu topbar
     box-sizing : border-box;
     width      : 100%;
     align-items: center;

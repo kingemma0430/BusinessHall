@@ -38,17 +38,17 @@
                 </div>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                 </div>
-                <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')"
+                <p-multiSelect appendTo="body" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="ui-g-12 ui-md-3 fieldDivPadding" [defaultLabel]="l('Choose')"
                     [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding"
+                <p-multiSelect appendTo="body" [options]="provinceList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedProvinceList" [filter]="true" [virtualScroll]="true" itemSize="50" (onPanelHide)="provinceListonPanelHide($event)" class="ui-g-12 ui-md-2 fieldDivPadding"
                     [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect>
                 <!-- <p-multiSelect [options]="cityList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedCityList" [filter]="true" [virtualScroll]="true" itemSize="50" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')"
                      styleClass="primengMultilSelect" [style]="{'width':'100%'}"></p-multiSelect> -->
-                <p-multiSelect [options]="operatorList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedOperatorList" [filter]="true" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
+                <p-multiSelect appendTo="body" [options]="operatorList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedOperatorList" [filter]="true" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="true" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="faceValueList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+                <p-multiSelect appendTo="body" [options]="faceValueList" optionLabel="name" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedFaceValueList" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
-                <p-multiSelect [options]="statusList" optionLabel="label" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
+                <p-multiSelect appendTo="body" [options]="statusList" optionLabel="label" [emptyFilterMessage]="l('emptyFilterMessage')" [(ngModel)]="selectedStatus" class="ui-g-12 ui-md-2 fieldDivPadding" [defaultLabel]="l('Choose')" [filter]="false" styleClass="primengMultilSelect"
                     [style]="{'width':'100%'}"></p-multiSelect>
                 <div class="ui-g-12 ui-md-1 fieldDivPadding">
                     <button type="button" pButton [label]="l('Search')" (click)="search()" class="ui-button-warning"></button>

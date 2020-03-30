@@ -24,7 +24,7 @@
                     <span>{{'EndDate'|localize}} </span>
                     <p-calendar appendTo="body" [(ngModel)]="searchCondition.endDate" [showIcon]="true" [minDate]="searchCondition.startDate"></p-calendar>
                     <span class="spanField">{{'Supplier'|localize}}</span>
-                    <p-multiSelect [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="fieldDivPadding" [defaultLabel]="l('Choose')"
+                    <p-multiSelect appendTo="body" [options]="supplierList" optionLabel="name" [(ngModel)]="selectedSupplierList" [emptyFilterMessage]="l('emptyFilterMessage')" [filter]="true" (onPanelHide)="supplierListonPanelHide($event)" class="fieldDivPadding" [defaultLabel]="l('Choose')"
                         [filter]="true" styleClass="primengMultilSelect" [style]="{'width':'250px'}"></p-multiSelect>
                     <button type="button" pButton [label]="l('Search')" (click)="search()" class="ui-button-warning"></button>
                 </div>

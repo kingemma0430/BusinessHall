@@ -38,8 +38,9 @@ export class AppComponent extends AppComponentBase
   rootMenuItems: AbpMenuDto[] = [];
   isLittleScreen: boolean = false;
 
-  // DOM节点只能使用模板应用变量来找到
   @ViewChild('leftSideNav', { static: true }) leftSideNav: any;
+  @ViewChild('rightSideNav', { static: true }) rightSideNav: any;
+
   constructor(injector: Injector,
     private _missionService: MissionService,
     private _menuServiceServer: MenuServiceService,
@@ -110,6 +111,9 @@ export class AppComponent extends AppComponentBase
     }
     else {
       this.isLittleScreen = true;
+      if (this.rightSideNav) {
+        this.rightSideNav["opened"] = false;
+      }
     }
   }
 

@@ -16,43 +16,47 @@
     </div>
 </section> -->
 <!-- https://www.techiediaries.com/angular-material-navigation-toolbar-sidenav/ -->
-<mat-toolbar>
-    <mat-toolbar-row class="topbarClass">
-        <div class="ui-g-12" [hidden]="isShowGlobalSearchText">
-            <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> BusinessHall</a>
-            <app-page-menu class="wrapper-nav-main" *ngIf="!isLittleScreen" [abpMenuItems]="abpMenuItems"
-                [menuItems]="menuItems" [rootMenuItems]="rootMenuItems">
-            </app-page-menu>
-            <div class="navbar-right" *ngIf="!isLittleScreen">
-                <a class="marginLeft5" (click)="openSearch()"> <i class="fa fa-search"></i></a>
-                <a (click)="rightSideNav.toggle()"> <i class="fa fa-user-circle"></i></a>
-                <topbar-languageswitch></topbar-languageswitch>
-            </div>
-            <a class="minScreenMenu" *ngIf="isLittleScreen" (click)="leftSideNav.toggle()">
-                <i class="fa fa-list"></i>
-            </a>
-        </div>
-        <div *ngIf="!isLittleScreen && isShowGlobalSearchText" class="search-bar-fixed">
-            <input matInput type="text" placeholder="START TYPING..." [(ngModel)]="globalSearchText">
-            <div class="close-search handClass" (click)="closeSearch()">
-                <i class="material-icons">close</i>
-            </div>
-        </div>
-    </mat-toolbar-row>
 
-</mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav #leftSideNav>
-        <sidebar-nav [abpMenuItems]="abpMenuItems" [menuItems]="menuItems"></sidebar-nav>
-    </mat-sidenav>
-    <mat-sidenav #rightSideNav position="end">
-        <right-sidebar></right-sidebar>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="ui-g-12 content">
-            <div class="container-fluid">
+<div>
+    <mat-toolbar class="app-navbar" role="heading">
+        <mat-toolbar-row class="topbarClass">
+            <div class="ui-g-12" [hidden]="isShowGlobalSearchText">
+                <a routerLink="/app/home" class="navbar-brand"><i class="fa fa-cubes"></i> BusinessHall</a>
+                <app-page-menu class="wrapper-nav-main" *ngIf="!isLittleScreen" [abpMenuItems]="abpMenuItems"
+                    [menuItems]="menuItems" [rootMenuItems]="rootMenuItems">
+                </app-page-menu>
+                <div class="navbar-right" *ngIf="!isLittleScreen">
+                    <a class="marginLeft5" (click)="openSearch()"> <i class="fa fa-search"></i></a>
+                    <a (click)="rightSideNav.toggle()"> <i class="fa fa-user-circle"></i></a>
+                    <topbar-languageswitch></topbar-languageswitch>
+                </div>
+                <a class="minScreenMenu" *ngIf="isLittleScreen" (click)="leftSideNav.toggle()">
+                    <i class="fa fa-list"></i>
+                </a>
+            </div>
+            <div *ngIf="!isLittleScreen && isShowGlobalSearchText" class="search-bar-fixed">
+                <input matInput type="text" placeholder="START TYPING..." [(ngModel)]="globalSearchText">
+                <div class="close-search handClass" (click)="closeSearch()">
+                    <i class="material-icons">close</i>
+                </div>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container class="marginToTopBar">
+        <mat-sidenav #leftSideNav>
+            <sidebar-nav [abpMenuItems]="abpMenuItems" [menuItems]="menuItems"></sidebar-nav>
+        </mat-sidenav>
+        <mat-sidenav #rightSideNav position="end">
+            <right-sidebar></right-sidebar>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div
+                style="height: calc(100% - 64px); min-height: calc(100% - 64px); min-width: 100%; width: 100%; padding: 10px;">
                 <router-outlet></router-outlet>
             </div>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+            <div class="ui-g-12 textAlignCenter">
+                <sidebar-footer></sidebar-footer>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

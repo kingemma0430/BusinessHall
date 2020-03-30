@@ -1,7 +1,310 @@
+//https://material.angular.io/components  style
+.docs-api {
+    max-width: 100%
+}
+
+.docs-api-h2 {
+    font-size: 30px
+}
+
+.docs-api-h3 {
+    font-size  : 24px;
+    font-weight: 400;
+    margin-top : 45px
+}
+
+.docs-api-h4 {
+    font-size  : 18px;
+    font-weight: 400
+}
+
+.docs-api-class-description {
+    font-size: 12px
+}
+
+.docs-api-property-name {
+    margin: 0
+}
+
+.docs-api-method-name-row,
+.docs-api-method-parameter-row,
+.docs-api-properties-name-cell {
+    font-family: Roboto Mono, monospace;
+    font-weight: 600
+}
+
+.docs-api-method-parameter-row,
+.docs-api-properties-name-cell {
+    font-size: 14px
+}
+
+.docs-api-method-parameter-type {
+    font-size: 12px
+}
+
+.docs-api-class-name,
+.docs-api-module-import {
+    display: inline
+}
+
+.docs-api-method-name-cell {
+    font-weight: 700;
+    font-size  : 18px
+}
+
+.docs-api-method-parameters-header-cell,
+.docs-api-method-returns-header-cell {
+    font-size: 14px
+}
+
+.docs-api-deprecated-marker,
+.docs-api-input-marker,
+.docs-api-output-marker {
+    font-size: 12px
+}
+
+.docs-api-deprecated-marker {
+    margin-right: 8px
+}
+
+.docs-api-class-export-name,
+.docs-api-class-selector-name,
+.docs-api-module-import {
+    font-family: Roboto Mono, monospace;
+    padding    : 3px
+}
+
+.docs-api-class-extends-type {
+    text-decoration: none;
+    border-bottom  : 1px dotted;
+    color          : inherit;
+    font-weight    : 400;
+    font-size      : 18px
+}
+
+.docs-api-async-method-marker {
+    display       : inline-block;
+    vertical-align: baseline;
+    padding       : 2px 7px;
+    margin        : 0 12px 0 0;
+    border-radius : 5px;
+    font-size     : 13px
+}
+
+.docs-api-class-deprecated-marker,
+.docs-api-deprecated-marker,
+.docs-api-interface-deprecated-marker {
+    display    : inline-block;
+    font-weight: 700
+}
+
+.docs-api-class-deprecated-marker[title],
+.docs-api-deprecated-marker[title],
+.docs-api-interface-deprecated-marker[title] {
+    border-bottom: 1px dotted grey;
+    cursor       : help
+}
+
+.docs-api-deprecated-marker+.docs-api-property-name {
+    text-decoration: line-through
+}
+
+.docs-markdown {
+    max-width: 100%
+}
+
+.docs-markdown h1 {
+    display    : inline-block;
+    font-size  : 34px;
+    font-weight: 400;
+    padding    : 5px
+}
+
+.docs-markdown h2 {
+    font-size: 24px
+}
+
+.docs-markdown h3 {
+    font-size: 20px
+}
+
+.docs-markdown h2,
+.docs-markdown h4 {
+    margin-top: 40px
+}
+
+.docs-markdown h5 {
+    font-size: 18px
+}
+
+.docs-markdown ol,
+.docs-markdown p,
+.docs-markdown ul {
+    font-size  : 16px;
+    line-height: 28px
+}
+
+.docs-markdown a {
+    text-decoration: none
+}
+
+.docs-markdown td code {
+    font-size: 14px
+}
+
+.docs-markdown pre {
+    border-radius: 5px;
+    display      : block;
+    margin       : 16px auto;
+    overflow-x   : auto;
+    padding      : 20px;
+    white-space  : pre-wrap
+}
+
+.docs-markdown pre code {
+    padding  : 0;
+    font-size: 100%
+}
+
+.docs-markdown code {
+    padding: 3px
+}
+
+.docs-header-link header-link a {
+    text-decoration: none;
+    margin-left    : -30px;
+    display        : inline-block;
+    vertical-align : middle
+}
+
+.docs-header-link .material-icons {
+    visibility: hidden
+}
+
+.docs-header-link:hover .material-icons {
+    visibility: visible
+}
+
+.docs-api table,
+.docs-markdown-table {
+    border-collapse: collapse;
+    border-radius  : 2px;
+    border-spacing : 0;
+    margin         : 0 0 32px;
+    width          : 100%;
+    box-shadow     : 0 2px 2px rgba(0, 0, 0, .24), 0 0 2px rgba(0, 0, 0, .12)
+}
+
+.docs-api th,
+.docs-markdown-th {
+    font-weight: 400;
+    max-width  : 100px;
+    padding    : 13px 16px;
+    text-align : left
+}
+
+.docs-api td,
+.docs-markdown-td {
+    font-weight: 400;
+    padding    : 8px 16px
+}
+
+@media (max-width:720px) {
+
+    .docs-api td.docs-api-method-description-cell,
+    .docs-api td.docs-api-method-parameter-cell,
+    .docs-api td.docs-api-method-returns-type-cell,
+    .docs-api td.docs-api-properties-name-cell,
+    .docs-markdown-td.docs-api-method-description-cell,
+    .docs-markdown-td.docs-api-method-parameter-cell,
+    .docs-markdown-td.docs-api-method-returns-type-cell,
+    .docs-markdown-td.docs-api-properties-name-cell {
+        min-width : 80px;
+        word-break: break-word
+    }
+}
+
+@media (max-width:959px) {
+
+    .docs-api table,
+    .docs-markdown-table {
+        margin: 0 0 32px
+    }
+
+    .docs-api th,
+    .docs-markdown-th {
+        padding: 6px 16px
+    }
+
+    .docs-api td,
+    .docs-markdown-td {
+        padding: 4px 8px
+    }
+}
+
+body {
+    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    margin     : 0
+}
+
+.docs-button[md-button],
+.docs-button[md-raised-button] {
+    text-transform: uppercase
+}
+
+h1,
+h2 {
+    font-weight: 400
+}
+
+.docs-primary-header {
+    padding-left: 20px
+}
+
+.docs-primary-header h1 {
+    font-weight: 300;
+    margin     : 0;
+    padding    : 28px 8px;
+    font-size  : 20px
+}
+
+.docs-component-category-list-card-image svg {
+    width: 100%
+}
+
+.docs-footer-angular-logo svg {
+    height: 50px
+}
+
+.docs-angular-logo svg {
+    height        : 26px;
+    margin        : 0 4px 3px 0;
+    vertical-align: middle
+}
+
+.docs-github-logo svg {
+    height        : 21px;
+    margin        : 0 7px 2px 0;
+    vertical-align: middle
+}
+
+code,
+pre {
+    font-family: Roboto Mono, monospace
+}
+
+code {
+    font-size: 90%
+}
+
+pre {
+    font-size: 14px
+}
+
 .mat-badge-content {
     font-weight: 600;
     font-size  : 12px;
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-badge-small .mat-badge-content {
@@ -15,94 +318,103 @@
 .mat-h1,
 .mat-headline,
 .mat-typography h1 {
-    font  : 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0 0 16px
+    font          : 400 24px/32px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0 0 16px
 }
 
 .mat-h2,
 .mat-title,
 .mat-typography h2 {
-    font  : 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0 0 16px
+    font          : 500 20px/32px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0 0 16px
 }
 
 .mat-h3,
 .mat-subheading-2,
 .mat-typography h3 {
-    font  : 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0 0 16px
+    font          : 400 16px/28px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0 0 16px
 }
 
 .mat-h4,
 .mat-subheading-1,
 .mat-typography h4 {
-    font  : 400 15px/24px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0 0 16px
+    font          : 400 15px/24px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0 0 16px
 }
 
 .mat-h5,
 .mat-typography h5 {
-    font  : 400 calc(14px * .83)/20px Roboto, "Helvetica Neue", sans-serif;
+    font  : 400 11.62px/20px Roboto, Helvetica Neue, sans-serif;
     margin: 0 0 12px
 }
 
 .mat-h6,
 .mat-typography h6 {
-    font  : 400 calc(14px * .67)/20px Roboto, "Helvetica Neue", sans-serif;
+    font  : 400 9.38px/20px Roboto, Helvetica Neue, sans-serif;
     margin: 0 0 12px
 }
 
 .mat-body-2,
 .mat-body-strong {
-    font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif
+    font          : 500 14px/24px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-body,
 .mat-body-1,
 .mat-typography {
-    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
+    font          : 400 14px/20px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
-.mat-body p,
 .mat-body-1 p,
+.mat-body p,
 .mat-typography p {
     margin: 0 0 12px
 }
 
 .mat-caption,
 .mat-small {
-    font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif
+    font          : 400 12px/20px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-display-4,
 .mat-typography .mat-display-4 {
-    font          : 300 112px/112px Roboto, "Helvetica Neue", sans-serif;
+    font          : 300 112px/112px Roboto, Helvetica Neue, sans-serif;
     letter-spacing: -.05em;
     margin        : 0 0 56px
 }
 
 .mat-display-3,
 .mat-typography .mat-display-3 {
-    font          : 400 56px/56px Roboto, "Helvetica Neue", sans-serif;
+    font          : 400 56px/56px Roboto, Helvetica Neue, sans-serif;
     letter-spacing: -.02em;
     margin        : 0 0 64px
 }
 
 .mat-display-2,
 .mat-typography .mat-display-2 {
-    font          : 400 45px/48px Roboto, "Helvetica Neue", sans-serif;
+    font          : 400 45px/48px Roboto, Helvetica Neue, sans-serif;
     letter-spacing: -.005em;
     margin        : 0 0 64px
 }
 
 .mat-display-1,
 .mat-typography .mat-display-1 {
-    font  : 400 34px/40px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0 0 64px
+    font          : 400 34px/40px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0 0 64px
 }
 
 .mat-bottom-sheet-container {
-    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
+    font          : 400 14px/20px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-button,
@@ -112,17 +424,14 @@
 .mat-mini-fab,
 .mat-raised-button,
 .mat-stroked-button {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 14px;
     font-weight: 500
 }
 
-.mat-button-toggle {
-    font-family: Roboto, "Helvetica Neue", sans-serif
-}
-
+.mat-button-toggle,
 .mat-card {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-card-title {
@@ -140,7 +449,7 @@
 }
 
 .mat-checkbox {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-checkbox-layout .mat-checkbox-label {
@@ -158,7 +467,7 @@
 }
 
 .mat-table {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-header-cell {
@@ -172,7 +481,7 @@
 }
 
 .mat-calendar {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-calendar-body {
@@ -191,24 +500,27 @@
 }
 
 .mat-dialog-title {
-    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif
+    font          : 500 20px/32px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-expansion-panel-header {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 15px;
     font-weight: 400
 }
 
 .mat-expansion-panel-content {
-    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
+    font          : 400 14px/20px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-form-field {
-    font-size  : inherit;
-    font-weight: 400;
-    line-height: 1.125;
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-size     : inherit;
+    font-weight   : 400;
+    line-height   : 1.125;
+    font-family   : Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-form-field-wrapper {
@@ -238,15 +550,17 @@
     border-top: .84375em solid transparent
 }
 
-.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
-.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.34375em) scale(.75);
-    width    : 133.33333%
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    -webkit-transform: translateY(-1.34375em) scale(.75);
+    transform        : translateY(-1.34375em) scale(.75);
+    width            : 133.33333333%
 }
 
 .mat-form-field-can-float .mat-input-server[label]:not(:label-shown)+.mat-form-field-label-wrapper .mat-form-field-label {
-    transform: translateY(-1.34374em) scale(.75);
-    width    : 133.33334%
+    -webkit-transform: translateY(-1.34374em) scale(.75);
+    transform        : translateY(-1.34374em) scale(.75);
+    width            : 133.33334333%
 }
 
 .mat-form-field-label-wrapper {
@@ -264,7 +578,7 @@
 
 .mat-form-field-subscript-wrapper {
     font-size : 75%;
-    margin-top: .66667em;
+    margin-top: .66666667em;
     top       : calc(100% - 1.79167em)
 }
 
@@ -276,23 +590,26 @@
     padding: .4375em 0
 }
 
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
-.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform    : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
-    -ms-transform: translateY(-1.28125em) scale(.75);
-    width        : 133.33333%
+.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    -webkit-transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
+    transform        : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
+    -ms-transform    : translateY(-1.28125em) scale(.75);
+    width            : 133.33333333%
 }
 
 .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill+.mat-form-field-label-wrapper .mat-form-field-label {
-    transform    : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00101px);
-    -ms-transform: translateY(-1.28124em) scale(.75);
-    width        : 133.33334%
+    -webkit-transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00101px);
+    transform        : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00101px);
+    -ms-transform    : translateY(-1.28124em) scale(.75);
+    width            : 133.33334333%
 }
 
 .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown)+.mat-form-field-label-wrapper .mat-form-field-label {
-    transform    : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00102px);
-    -ms-transform: translateY(-1.28123em) scale(.75);
-    width        : 133.33335%
+    -webkit-transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00102px);
+    transform        : translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.00102px);
+    -ms-transform    : translateY(-1.28123em) scale(.75);
+    width            : 133.33335333%
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
@@ -304,28 +621,31 @@
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
-    margin-top: .54167em;
+    margin-top: .54166667em;
     top       : calc(100% - 1.66667em)
 }
 
 @media print {
 
-    .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
-    .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-        transform: translateY(-1.28122em) scale(.75)
+    .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+        -webkit-transform: translateY(-1.28122em) scale(.75);
+        transform        : translateY(-1.28122em) scale(.75)
     }
 
     .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill+.mat-form-field-label-wrapper .mat-form-field-label {
-        transform: translateY(-1.28121em) scale(.75)
+        -webkit-transform: translateY(-1.28121em) scale(.75);
+        transform        : translateY(-1.28121em) scale(.75)
     }
 
     .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server[label]:not(:label-shown)+.mat-form-field-label-wrapper .mat-form-field-label {
-        transform: translateY(-1.2812em) scale(.75)
+        -webkit-transform: translateY(-1.2812em) scale(.75);
+        transform        : translateY(-1.2812em) scale(.75)
     }
 }
 
 .mat-form-field-appearance-fill .mat-form-field-infix {
-    padding: .25em 0 .75em 0
+    padding: .25em 0 .75em
 }
 
 .mat-form-field-appearance-fill .mat-form-field-label {
@@ -333,19 +653,21 @@
     margin-top: -.5em
 }
 
-.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
-.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-.59375em) scale(.75);
-    width    : 133.33333%
+.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    -webkit-transform: translateY(-.59375em) scale(.75);
+    transform        : translateY(-.59375em) scale(.75);
+    width            : 133.33333333%
 }
 
 .mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server[label]:not(:label-shown)+.mat-form-field-label-wrapper .mat-form-field-label {
-    transform: translateY(-.59374em) scale(.75);
-    width    : 133.33334%
+    -webkit-transform: translateY(-.59374em) scale(.75);
+    transform        : translateY(-.59374em) scale(.75);
+    width            : 133.33334333%
 }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 1em 0 1em 0
+    padding: 1em 0
 }
 
 .mat-form-field-appearance-outline .mat-form-field-label {
@@ -353,15 +675,17 @@
     margin-top: -.25em
 }
 
-.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
-.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.59375em) scale(.75);
-    width    : 133.33333%
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    -webkit-transform: translateY(-1.59375em) scale(.75);
+    transform        : translateY(-1.59375em) scale(.75);
+    width            : 133.33333333%
 }
 
 .mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server[label]:not(:label-shown)+.mat-form-field-label-wrapper .mat-form-field-label {
-    transform: translateY(-1.59374em) scale(.75);
-    width    : 133.33334%
+    -webkit-transform: translateY(-1.59374em) scale(.75);
+    transform        : translateY(-1.59374em) scale(.75);
+    width            : 133.33334333%
 }
 
 .mat-grid-tile-footer,
@@ -388,42 +712,39 @@ input.mat-input-element {
 }
 
 .mat-menu-item {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 14px;
     font-weight: 400
 }
 
 .mat-paginator,
 .mat-paginator-page-size .mat-select-trigger {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 12px
 }
 
-.mat-radio-button {
-    font-family: Roboto, "Helvetica Neue", sans-serif
-}
-
+.mat-radio-button,
 .mat-select {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-select-trigger {
     height: 1.125em
 }
 
-.mat-slide-toggle-content {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+.mat-slide-toggle-content,
+.mat-slider-thumb-label-text {
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-slider-thumb-label-text {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size  : 12px;
     font-weight: 500
 }
 
 .mat-stepper-horizontal,
 .mat-stepper-vertical {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-step-label {
@@ -444,13 +765,14 @@ input.mat-input-element {
     font-weight: 500
 }
 
-.mat-tab-group {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+.mat-tab-group,
+.mat-tab-label,
+.mat-tab-link {
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-tab-label,
 .mat-tab-link {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size  : 14px;
     font-weight: 500
 }
@@ -462,12 +784,13 @@ input.mat-input-element {
 .mat-toolbar h4,
 .mat-toolbar h5,
 .mat-toolbar h6 {
-    font  : 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
-    margin: 0
+    font          : 500 20px/32px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal;
+    margin        : 0
 }
 
 .mat-tooltip {
-    font-family   : Roboto, "Helvetica Neue", sans-serif;
+    font-family   : Roboto, Helvetica Neue, sans-serif;
     font-size     : 10px;
     padding-top   : 6px;
     padding-bottom: 6px
@@ -479,12 +802,9 @@ input.mat-input-element {
     padding-bottom: 8px
 }
 
-.mat-list-item {
-    font-family: Roboto, "Helvetica Neue", sans-serif
-}
-
+.mat-list-item,
 .mat-list-option {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-list-base .mat-list-item {
@@ -520,7 +840,7 @@ input.mat-input-element {
 }
 
 .mat-list-base .mat-subheader {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 14px;
     font-weight: 500
 }
@@ -537,10 +857,7 @@ input.mat-input-element {
     box-sizing   : border-box
 }
 
-.mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2) {
-    font-size: 12px
-}
-
+.mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2),
 .mat-list-base[dense] .mat-list-option {
     font-size: 12px
 }
@@ -558,22 +875,23 @@ input.mat-input-element {
 }
 
 .mat-list-base[dense] .mat-subheader {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 12px;
     font-weight: 500
 }
 
 .mat-option {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 16px
 }
 
 .mat-optgroup-label {
-    font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif
+    font          : 500 14px/24px Roboto, Helvetica Neue, sans-serif;
+    letter-spacing: normal
 }
 
 .mat-simple-snackbar {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, Helvetica Neue, sans-serif;
     font-size  : 14px
 }
 
@@ -585,7 +903,7 @@ input.mat-input-element {
 }
 
 .mat-tree {
-    font-family: Roboto, "Helvetica Neue", sans-serif
+    font-family: Roboto, Helvetica Neue, sans-serif
 }
 
 .mat-nested-tree-node,
@@ -599,22 +917,29 @@ input.mat-input-element {
     position: relative
 }
 
+.mat-ripple:not(:empty) {
+    -webkit-transform: translateZ(0);
+    transform        : translateZ(0)
+}
+
 .mat-ripple.mat-ripple-unbounded {
     overflow: visible
 }
 
 .mat-ripple-element {
-    position      : absolute;
-    border-radius : 50%;
-    pointer-events: none;
-    transition    : opacity, transform 0s cubic-bezier(0, 0, .2, 1);
-    transform     : scale(0)
+    position          : absolute;
+    border-radius     : 50%;
+    pointer-events    : none;
+    -webkit-transition: opacity, -webkit-transform 0ms cubic-bezier(0, 0, .2, 1);
+    transition        : opacity, -webkit-transform 0ms cubic-bezier(0, 0, .2, 1);
+    transition        : opacity, transform 0ms cubic-bezier(0, 0, .2, 1);
+    transition        : opacity, transform 0ms cubic-bezier(0, 0, .2, 1), -webkit-transform 0ms cubic-bezier(0, 0, .2, 1);
+    -webkit-transform : scale(0);
+    transform         : scale(0)
 }
 
-@media (-ms-high-contrast:active) {
-    .mat-ripple-element {
-        display: none
-    }
+.cdk-high-contrast-active .mat-ripple-element {
+    display: none
 }
 
 .cdk-visually-hidden {
@@ -649,18 +974,17 @@ input.mat-input-element {
     display: none
 }
 
-.cdk-global-overlay-wrapper {
+.cdk-global-overlay-wrapper,
+.cdk-overlay-pane {
+    display : -webkit-box;
     display : flex;
     position: absolute;
     z-index : 1000
 }
 
 .cdk-overlay-pane {
-    position      : absolute;
     pointer-events: auto;
     box-sizing    : border-box;
-    z-index       : 1000;
-    display       : flex;
     max-width     : 100%;
     max-height    : 100%
 }
@@ -674,6 +998,7 @@ input.mat-input-element {
     z-index                    : 1000;
     pointer-events             : auto;
     -webkit-tap-highlight-color: transparent;
+    -webkit-transition         : opacity .4s cubic-bezier(.25, .8, .25, 1);
     transition                 : opacity .4s cubic-bezier(.25, .8, .25, 1);
     opacity                    : 0
 }
@@ -698,12 +1023,15 @@ input.mat-input-element {
 }
 
 .cdk-overlay-connected-position-bounding-box {
-    position      : absolute;
-    z-index       : 1000;
-    display       : flex;
-    flex-direction: column;
-    min-width     : 1px;
-    min-height    : 1px
+    position             : absolute;
+    z-index              : 1000;
+    display              : -webkit-box;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    flex-direction       : column;
+    min-width            : 1px;
+    min-height           : 1px
 }
 
 .cdk-global-scrollblock {
@@ -712,7 +1040,15 @@ input.mat-input-element {
     overflow-y: scroll
 }
 
+@-webkit-keyframes cdk-text-field-autofill-start {
+    /*!*/
+}
+
 @keyframes cdk-text-field-autofill-start {
+    /*!*/
+}
+
+@-webkit-keyframes cdk-text-field-autofill-end {
     /*!*/
 }
 
@@ -721,11 +1057,13 @@ input.mat-input-element {
 }
 
 .cdk-text-field-autofill-monitored:-webkit-autofill {
-    animation-name: cdk-text-field-autofill-start
+    -webkit-animation: cdk-text-field-autofill-start 0s 1ms;
+    animation        : cdk-text-field-autofill-start 0s 1ms
 }
 
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
-    animation-name: cdk-text-field-autofill-end
+    -webkit-animation: cdk-text-field-autofill-end 0s 1ms;
+    animation        : cdk-text-field-autofill-end 0s 1ms
 }
 
 textarea.cdk-textarea-autosize {
@@ -747,18 +1085,15 @@ textarea.cdk-textarea-autosize-measuring {
     color: rgba(0, 0, 0, .87)
 }
 
+.mat-option.mat-active,
+.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled),
 .mat-option:focus:not(.mat-option-disabled),
 .mat-option:hover:not(.mat-option-disabled) {
     background: rgba(0, 0, 0, .04)
 }
 
-.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
-    background: rgba(0, 0, 0, .04)
-}
-
 .mat-option.mat-active {
-    background: rgba(0, 0, 0, .04);
-    color     : rgba(0, 0, 0, .87)
+    color: rgba(0, 0, 0, .87)
 }
 
 .mat-option.mat-option-disabled {
@@ -789,7 +1124,7 @@ textarea.cdk-textarea-autosize-measuring {
     color: rgba(0, 0, 0, .54)
 }
 
-.mat-pseudo-checkbox::after {
+.mat-pseudo-checkbox:after {
     color: #fafafa
 }
 
@@ -950,11 +1285,9 @@ textarea.cdk-textarea-autosize-measuring {
     background: #3f51b5
 }
 
-@media (-ms-high-contrast:active) {
-    .mat-badge-content {
-        outline      : solid 1px;
-        border-radius: 0
-    }
+.cdk-high-contrast-active .mat-badge-content {
+    outline      : 1px solid;
+    border-radius: 0
 }
 
 .mat-badge-accent .mat-badge-content {
@@ -981,25 +1314,31 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-badge-content {
-    position      : absolute;
-    text-align    : center;
-    display       : inline-block;
-    border-radius : 50%;
-    transition    : transform .2s ease-in-out;
-    transform     : scale(.6);
-    overflow      : hidden;
-    white-space   : nowrap;
-    text-overflow : ellipsis;
-    pointer-events: none
+    position          : absolute;
+    text-align        : center;
+    display           : inline-block;
+    border-radius     : 50%;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition        : -webkit-transform .2s ease-in-out;
+    transition        : transform .2s ease-in-out;
+    transition        : transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    -webkit-transform : scale(.6);
+    transform         : scale(.6);
+    overflow          : hidden;
+    white-space       : nowrap;
+    text-overflow     : ellipsis;
+    pointer-events    : none
 }
 
 .mat-badge-content._mat-animation-noopable,
 .ng-animate-disabled .mat-badge-content {
-    transition: none
+    -webkit-transition: none;
+    transition        : none
 }
 
 .mat-badge-content.mat-badge-active {
-    transform: none
+    -webkit-transform: none;
+    transform        : none
 }
 
 .mat-badge-small .mat-badge-content {
@@ -1162,7 +1501,7 @@ textarea.cdk-textarea-autosize-measuring {
 .mat-icon-button,
 .mat-stroked-button {
     color     : inherit;
-    background: 0 0
+    background: transparent
 }
 
 .mat-button.mat-primary,
@@ -1245,23 +1584,17 @@ textarea.cdk-textarea-autosize-measuring {
     background-color: #fff
 }
 
-.mat-fab.mat-primary,
-.mat-flat-button.mat-primary,
-.mat-mini-fab.mat-primary,
-.mat-raised-button.mat-primary {
-    color: #fff
-}
-
 .mat-fab.mat-accent,
-.mat-flat-button.mat-accent,
-.mat-mini-fab.mat-accent,
-.mat-raised-button.mat-accent {
-    color: #fff
-}
-
+.mat-fab.mat-primary,
 .mat-fab.mat-warn,
+.mat-flat-button.mat-accent,
+.mat-flat-button.mat-primary,
 .mat-flat-button.mat-warn,
+.mat-mini-fab.mat-accent,
+.mat-mini-fab.mat-primary,
 .mat-mini-fab.mat-warn,
+.mat-raised-button.mat-accent,
+.mat-raised-button.mat-primary,
 .mat-raised-button.mat-warn {
     color: #fff
 }
@@ -1325,25 +1658,19 @@ textarea.cdk-textarea-autosize-measuring {
     background-color: rgba(0, 0, 0, .12)
 }
 
-.mat-fab.mat-primary .mat-ripple-element,
-.mat-flat-button.mat-primary .mat-ripple-element,
-.mat-mini-fab.mat-primary .mat-ripple-element,
-.mat-raised-button.mat-primary .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .1)
-}
-
 .mat-fab.mat-accent .mat-ripple-element,
-.mat-flat-button.mat-accent .mat-ripple-element,
-.mat-mini-fab.mat-accent .mat-ripple-element,
-.mat-raised-button.mat-accent .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .1)
-}
-
+.mat-fab.mat-primary .mat-ripple-element,
 .mat-fab.mat-warn .mat-ripple-element,
+.mat-flat-button.mat-accent .mat-ripple-element,
+.mat-flat-button.mat-primary .mat-ripple-element,
 .mat-flat-button.mat-warn .mat-ripple-element,
+.mat-mini-fab.mat-accent .mat-ripple-element,
+.mat-mini-fab.mat-primary .mat-ripple-element,
 .mat-mini-fab.mat-warn .mat-ripple-element,
+.mat-raised-button.mat-accent .mat-ripple-element,
+.mat-raised-button.mat-primary .mat-ripple-element,
 .mat-raised-button.mat-warn .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .1)
+    background-color: hsla(0, 0%, 100%, .1)
 }
 
 .mat-flat-button:not([class*=mat-elevation-z]),
@@ -1406,18 +1733,18 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
-    border-left: solid 1px rgba(0, 0, 0, .12)
+    border-left: 1px solid rgba(0, 0, 0, .12)
 }
 
 [dir=rtl] .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
     border-left : none;
-    border-right: solid 1px rgba(0, 0, 0, .12)
+    border-right: 1px solid rgba(0, 0, 0, .12)
 }
 
 .mat-button-toggle-group-appearance-standard.mat-button-toggle-vertical .mat-button-toggle+.mat-button-toggle {
     border-left : none;
     border-right: none;
-    border-top  : solid 1px rgba(0, 0, 0, .12)
+    border-top  : 1px solid rgba(0, 0, 0, .12)
 }
 
 .mat-button-toggle-checked {
@@ -1444,7 +1771,7 @@ textarea.cdk-textarea-autosize-measuring {
 
 .mat-button-toggle-group-appearance-standard,
 .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
-    border: solid 1px rgba(0, 0, 0, .12)
+    border: 1px solid rgba(0, 0, 0, .12)
 }
 
 .mat-card {
@@ -1474,12 +1801,6 @@ textarea.cdk-textarea-autosize-measuring {
 
 .mat-checkbox-checkmark-path {
     stroke: #fafafa !important
-}
-
-@media (-ms-high-contrast:black-on-white) {
-    .mat-checkbox-checkmark-path {
-        stroke: #000 !important
-    }
 }
 
 .mat-checkbox-mixedmark {
@@ -1512,18 +1833,6 @@ textarea.cdk-textarea-autosize-measuring {
 
 .mat-checkbox-disabled .mat-checkbox-label {
     color: rgba(0, 0, 0, .54)
-}
-
-@media (-ms-high-contrast:active) {
-    .mat-checkbox-disabled {
-        opacity: .5
-    }
-}
-
-@media (-ms-high-contrast:active) {
-    .mat-checkbox-background {
-        background: 0 0
-    }
 }
 
 .mat-checkbox .mat-ripple-element {
@@ -1567,7 +1876,7 @@ textarea.cdk-textarea-autosize-measuring {
     opacity: .4
 }
 
-.mat-chip.mat-standard-chip::after {
+.mat-chip.mat-standard-chip:after {
     background: #000
 }
 
@@ -1582,7 +1891,7 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-ripple-element {
-    background: rgba(255, 255, 255, .1)
+    background-color: hsla(0, 0%, 100%, .1)
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn {
@@ -1596,7 +1905,7 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-ripple-element {
-    background: rgba(255, 255, 255, .1)
+    background-color: hsla(0, 0%, 100%, .1)
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent {
@@ -1610,17 +1919,17 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-ripple-element {
-    background: rgba(255, 255, 255, .1)
+    background-color: hsla(0, 0%, 100%, .1)
 }
 
 .mat-table {
     background: #fff
 }
 
+.mat-table-sticky,
 .mat-table tbody,
 .mat-table tfoot,
 .mat-table thead,
-.mat-table-sticky,
 [mat-footer-row],
 [mat-header-row],
 [mat-row],
@@ -1662,7 +1971,7 @@ th.mat-header-cell {
     color: rgba(0, 0, 0, .38)
 }
 
-.mat-calendar-table-header-divider::after {
+.mat-calendar-table-header-divider:after {
     background: rgba(0, 0, 0, .12)
 }
 
@@ -1797,7 +2106,7 @@ th.mat-header-cell {
     color: rgba(0, 0, 0, .87)
 }
 
-.mat-expansion-indicator::after,
+.mat-expansion-indicator:after,
 .mat-expansion-panel-header-description {
     color: rgba(0, 0, 0, .54)
 }
@@ -1811,10 +2120,7 @@ th.mat-header-cell {
     color: inherit
 }
 
-.mat-form-field-label {
-    color: rgba(0, 0, 0, .6)
-}
-
+.mat-form-field-label,
 .mat-hint {
     color: rgba(0, 0, 0, .6)
 }
@@ -1851,24 +2157,18 @@ th.mat-header-cell {
     background-color: #f44336
 }
 
-.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid) .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid) .mat-form-field-infix:after {
     color: #3f51b5
 }
 
-.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid).mat-accent .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid).mat-accent .mat-form-field-infix:after {
     color: #ff4081
 }
 
-.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid).mat-warn .mat-form-field-infix::after {
-    color: #f44336
-}
-
-.mat-form-field.mat-form-field-invalid .mat-form-field-label {
-    color: #f44336
-}
-
-.mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker,
-.mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent {
+.mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid).mat-warn .mat-form-field-infix:after,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
     color: #f44336
 }
 
@@ -1881,10 +2181,7 @@ th.mat-header-cell {
     color: #f44336
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-label {
-    color: rgba(0, 0, 0, .54)
-}
-
+.mat-form-field-appearance-legacy .mat-form-field-label,
 .mat-form-field-appearance-legacy .mat-hint {
     color: rgba(0, 0, 0, .54)
 }
@@ -1894,7 +2191,8 @@ th.mat-header-cell {
 }
 
 .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
-    background-image : linear-gradient(to right, rgba(0, 0, 0, .42) 0, rgba(0, 0, 0, .42) 33%, transparent 0);
+    background-image : -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .42)), color-stop(33%, rgba(0, 0, 0, .42)), color-stop(0, transparent));
+    background-image : linear-gradient(90deg, rgba(0, 0, 0, .42) 0, rgba(0, 0, 0, .42) 33%, transparent 0);
     background-size  : 4px 100%;
     background-repeat: repeat-x
 }
@@ -1904,7 +2202,8 @@ th.mat-header-cell {
 }
 
 .mat-form-field-appearance-standard.mat-form-field-disabled .mat-form-field-underline {
-    background-image : linear-gradient(to right, rgba(0, 0, 0, .42) 0, rgba(0, 0, 0, .42) 33%, transparent 0);
+    background-image : -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .42)), color-stop(33%, rgba(0, 0, 0, .42)), color-stop(0, transparent));
+    background-image : linear-gradient(90deg, rgba(0, 0, 0, .42) 0, rgba(0, 0, 0, .42) 33%, transparent 0);
     background-size  : 4px 100%;
     background-repeat: repeat-x
 }
@@ -1917,7 +2216,7 @@ th.mat-header-cell {
     background-color: rgba(0, 0, 0, .02)
 }
 
-.mat-form-field-appearance-fill .mat-form-field-underline::before {
+.mat-form-field-appearance-fill .mat-form-field-underline:before {
     background-color: rgba(0, 0, 0, .42)
 }
 
@@ -1925,7 +2224,7 @@ th.mat-header-cell {
     color: rgba(0, 0, 0, .38)
 }
 
-.mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-underline::before {
+.mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-underline:before {
     background-color: transparent
 }
 
@@ -1945,10 +2244,7 @@ th.mat-header-cell {
     color: #ff4081
 }
 
-.mat-form-field-appearance-outline.mat-focused.mat-warn .mat-form-field-outline-thick {
-    color: #f44336
-}
-
+.mat-form-field-appearance-outline.mat-focused.mat-warn .mat-form-field-outline-thick,
 .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
     color: #f44336
 }
@@ -1973,17 +2269,21 @@ th.mat-header-cell {
     color: #f44336
 }
 
-.mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select .mat-form-field-infix:after {
     color: rgba(0, 0, 0, .54)
 }
 
-.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix:after,
 .mat-input-element:disabled {
     color: rgba(0, 0, 0, .38)
 }
 
 .mat-input-element {
     caret-color: #3f51b5
+}
+
+.mat-input-element::-ms-input-placeholder {
+    color: rgba(0, 0, 0, .42)
 }
 
 .mat-input-element::placeholder {
@@ -2011,14 +2311,11 @@ th.mat-header-cell {
     caret-color: #f44336
 }
 
-.mat-form-field-type-mat-native-select.mat-form-field-invalid .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-form-field-invalid .mat-form-field-infix:after {
     color: #f44336
 }
 
-.mat-list-base .mat-list-item {
-    color: rgba(0, 0, 0, .87)
-}
-
+.mat-list-base .mat-list-item,
 .mat-list-base .mat-list-option {
     color: rgba(0, 0, 0, .87)
 }
@@ -2040,6 +2337,12 @@ th.mat-header-cell {
     background: rgba(0, 0, 0, .04)
 }
 
+.mat-list-single-selected-option,
+.mat-list-single-selected-option:focus,
+.mat-list-single-selected-option:hover {
+    background: rgba(0, 0, 0, .12)
+}
+
 .mat-menu-panel {
     background: #fff
 }
@@ -2049,17 +2352,17 @@ th.mat-header-cell {
 }
 
 .mat-menu-item {
-    background: 0 0;
+    background: transparent;
     color     : rgba(0, 0, 0, .87)
 }
 
 .mat-menu-item[disabled],
-.mat-menu-item[disabled]::after {
+.mat-menu-item[disabled]:after {
     color: rgba(0, 0, 0, .38)
 }
 
-.mat-menu-item .mat-icon-no-color,
-.mat-menu-item-submenu-trigger::after {
+.mat-menu-item-submenu-trigger:after,
+.mat-menu-item .mat-icon-no-color {
     color: rgba(0, 0, 0, .54)
 }
 
@@ -2105,7 +2408,7 @@ th.mat-header-cell {
     background-color: #c5cae9
 }
 
-.mat-progress-bar-fill::after {
+.mat-progress-bar-fill:after {
     background-color: #3f51b5
 }
 
@@ -2117,7 +2420,7 @@ th.mat-header-cell {
     background-color: #ff80ab
 }
 
-.mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
+.mat-progress-bar.mat-accent .mat-progress-bar-fill:after {
     background-color: #ff4081
 }
 
@@ -2129,7 +2432,7 @@ th.mat-header-cell {
     background-color: #ffcdd2
 }
 
-.mat-progress-bar.mat-warn .mat-progress-bar-fill::after {
+.mat-progress-bar.mat-warn .mat-progress-bar-fill:after {
     background-color: #f44336
 }
 
@@ -2156,9 +2459,9 @@ th.mat-header-cell {
     border-color: #3f51b5
 }
 
+.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-primary .mat-radio-inner-circle,
 .mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
-.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-primary:active .mat-radio-persistent-ripple {
     background-color: #3f51b5
 }
@@ -2167,9 +2470,9 @@ th.mat-header-cell {
     border-color: #ff4081
 }
 
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-accent .mat-radio-inner-circle,
 .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
     background-color: #ff4081
 }
@@ -2178,15 +2481,15 @@ th.mat-header-cell {
     border-color: #f44336
 }
 
+.mat-radio-button.mat-warn.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-warn .mat-radio-inner-circle,
 .mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
-.mat-radio-button.mat-warn.mat-radio-checked .mat-radio-persistent-ripple,
 .mat-radio-button.mat-warn:active .mat-radio-persistent-ripple {
     background-color: #f44336
 }
 
-.mat-radio-button.mat-radio-disabled .mat-radio-outer-circle,
-.mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle {
+.mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle,
+.mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
     border-color: rgba(0, 0, 0, .38)
 }
 
@@ -2239,10 +2542,7 @@ th.mat-header-cell {
     color: #ff4081
 }
 
-.mat-form-field.mat-focused.mat-warn .mat-select-arrow {
-    color: #f44336
-}
-
+.mat-form-field.mat-focused.mat-warn .mat-select-arrow,
 .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
     color: #f44336
 }
@@ -2257,10 +2557,10 @@ th.mat-header-cell {
 }
 
 .mat-drawer {
-    background-color: #fff;
-    color           : rgba(0, 0, 0, .87)
+    color: rgba(0, 0, 0, .87)
 }
 
+.mat-drawer,
 .mat-drawer.mat-drawer-push {
     background-color: #fff
 }
@@ -2270,22 +2570,18 @@ th.mat-header-cell {
 }
 
 .mat-drawer-side {
-    border-right: solid 1px rgba(0, 0, 0, .12)
+    border-right: 1px solid rgba(0, 0, 0, .12)
 }
 
-.mat-drawer-side.mat-drawer-end {
-    border-left : solid 1px rgba(0, 0, 0, .12);
-    border-right: none
-}
-
+.mat-drawer-side.mat-drawer-end,
 [dir=rtl] .mat-drawer-side {
-    border-left : solid 1px rgba(0, 0, 0, .12);
+    border-left : 1px solid rgba(0, 0, 0, .12);
     border-right: none
 }
 
 [dir=rtl] .mat-drawer-side.mat-drawer-end {
     border-left : none;
-    border-right: solid 1px rgba(0, 0, 0, .12)
+    border-right: 1px solid rgba(0, 0, 0, .12)
 }
 
 .mat-drawer-backdrop.mat-drawer-shown {
@@ -2386,10 +2682,7 @@ th.mat-header-cell {
 
 .mat-slider-disabled .mat-slider-thumb,
 .mat-slider-disabled .mat-slider-track-background,
-.mat-slider-disabled .mat-slider-track-fill {
-    background-color: rgba(0, 0, 0, .26)
-}
-
+.mat-slider-disabled .mat-slider-track-fill,
 .mat-slider-disabled:hover .mat-slider-track-background {
     background-color: rgba(0, 0, 0, .26)
 }
@@ -2423,17 +2716,17 @@ th.mat-header-cell {
     border-color: rgba(0, 0, 0, .26)
 }
 
-.mat-slider-has-ticks .mat-slider-wrapper::after {
+.mat-slider-has-ticks .mat-slider-wrapper:after {
     border-color: rgba(0, 0, 0, .7)
 }
 
 .mat-slider-horizontal .mat-slider-ticks {
-    background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7) 2px, transparent 0, transparent);
+    background-image: repeating-linear-gradient(90deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7) 2px, transparent 0, transparent);
     background-image: -moz-repeating-linear-gradient(.0001deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7) 2px, transparent 0, transparent)
 }
 
 .mat-slider-vertical .mat-slider-ticks {
-    background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7) 2px, transparent 0, transparent)
+    background-image: repeating-linear-gradient(180deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7) 2px, transparent 0, transparent)
 }
 
 .mat-step-header.cdk-keyboard-focused,
@@ -2444,7 +2737,7 @@ th.mat-header-cell {
 
 @media (hover:none) {
     .mat-step-header:hover {
-        background: 0 0
+        background: none
     }
 }
 
@@ -2483,12 +2776,12 @@ th.mat-header-cell {
     background-color: #fff
 }
 
-.mat-stepper-vertical-line::before {
+.mat-stepper-vertical-line:before {
     border-left-color: rgba(0, 0, 0, .12)
 }
 
-.mat-horizontal-stepper-header::after,
-.mat-horizontal-stepper-header::before,
+.mat-horizontal-stepper-header:after,
+.mat-horizontal-stepper-header:before,
 .mat-stepper-horizontal-line {
     border-top-color: rgba(0, 0, 0, .12)
 }
@@ -2626,7 +2919,7 @@ th.mat-header-cell {
 .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled {
-    color: rgba(255, 255, 255, .4)
+    color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-primary .mat-tab-header-pagination-chevron,
@@ -2636,12 +2929,12 @@ th.mat-header-cell {
 
 .mat-tab-group.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron,
 .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: rgba(255, 255, 255, .4)
+    border-color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-primary .mat-ripple-element,
 .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .12)
+    background-color: hsla(0, 0%, 100%, .12)
 }
 
 .mat-tab-group.mat-background-accent .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled),
@@ -2675,7 +2968,7 @@ th.mat-header-cell {
 .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {
-    color: rgba(255, 255, 255, .4)
+    color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-accent .mat-tab-header-pagination-chevron,
@@ -2685,12 +2978,12 @@ th.mat-header-cell {
 
 .mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron,
 .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: rgba(255, 255, 255, .4)
+    border-color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-accent .mat-ripple-element,
 .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .12)
+    background-color: hsla(0, 0%, 100%, .12)
 }
 
 .mat-tab-group.mat-background-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled),
@@ -2724,7 +3017,7 @@ th.mat-header-cell {
 .mat-tab-group.mat-background-warn .mat-tab-link.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-warn .mat-tab-label.mat-tab-disabled,
 .mat-tab-nav-bar.mat-background-warn .mat-tab-link.mat-tab-disabled {
-    color: rgba(255, 255, 255, .4)
+    color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-warn .mat-tab-header-pagination-chevron,
@@ -2734,12 +3027,12 @@ th.mat-header-cell {
 
 .mat-tab-group.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron,
 .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: rgba(255, 255, 255, .4)
+    border-color: hsla(0, 0%, 100%, .4)
 }
 
 .mat-tab-group.mat-background-warn .mat-ripple-element,
 .mat-tab-nav-bar.mat-background-warn .mat-ripple-element {
-    background-color: rgba(255, 255, 255, .12)
+    background-color: hsla(0, 0%, 100%, .12)
 }
 
 .mat-toolbar {
@@ -2794,11 +3087,452 @@ th.mat-header-cell {
 }
 
 .mat-snack-bar-container {
-    color     : rgba(255, 255, 255, .7);
+    color     : hsla(0, 0%, 100%, .7);
     background: #323232;
     box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12)
 }
 
 .mat-simple-snackbar-action {
     color: #ff4081
+}
+
+.docs-app-background {
+    background: #fafafa
+}
+
+.docs-primary-header {
+    background: #3f51b5
+}
+
+.docs-primary-header h1 {
+    color: #fff
+}
+
+.docs-footer {
+    background: #3f51b5;
+    color     : #fff
+}
+
+.is-next-version {
+    background: #b71c1c !important
+}
+
+.docs-component-category-list-card-summary,
+.docs-component-list-card-summary {
+    color: rgba(0, 0, 0, .54)
+}
+
+.docs-component-viewer-nav-content {
+    background: rgba(0, 0, 0, .03)
+}
+
+.docs-component-viewer-nav-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .26)
+}
+
+.docs-component-viewer-nav-content .docs-nav-content-btn {
+    color      : rgba(0, 0, 0, .7);
+    font-family: Roboto, Helvetica Neue, sans-serif
+}
+
+.docs-component-viewer-nav-content .docs-nav-content-btn:focus {
+    background: rgba(0, 0, 0, .08)
+}
+
+.docs-component-viewer-nav-content hr {
+    border    : none;
+    border-top: 1px solid rgba(0, 0, 0, .1)
+}
+
+.docs-component-viewer-nav-content a {
+    color: rgba(0, 0, 0, .54)
+}
+
+.docs-component-viewer-nav-content a.docs-component-viewer-sidenav-item-selected,
+.docs-component-viewer-nav-content a:hover {
+    color: #3f51b5
+}
+
+.docs-component-viewer-nav-content a.docs-component-viewer-sidenav-item-selected {
+    background: rgba(0, 0, 0, .08)
+}
+
+@media (max-width:959px) {
+    .docs-component-viewer-sidenav .docs-component-viewer-nav-content {
+        background: none
+    }
+
+    .mat-drawer::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, .26)
+    }
+}
+
+app-component-viewer,
+app-component-viewer .mat-tab-label:focus,
+guide-viewer,
+guide-viewer .mat-tab-label:focus {
+    color: rgba(0, 0, 0, .87)
+}
+
+.docs-api-h3 {
+    border-bottom: 1px solid rgba(0, 0, 0, .12)
+}
+
+.docs-api-method-name-cell {
+    color: #283593
+}
+
+.docs-api-method-parameter-type,
+.docs-api-method-returns-type {
+    color: #303f9f
+}
+
+.docs-api-async-method-marker {
+    background-color: #5c6bc0;
+    color           : #fff
+}
+
+.docs-api-h1 {
+    display: none !important
+}
+
+.docs-api>p {
+    word-break: break-word
+}
+
+.docs-api-class-export-name,
+.docs-api-class-name,
+.docs-api-class-selector-name,
+.docs-api-module-import {
+    background: rgba(0, 0, 0, .06)
+}
+
+.docs-markdown a {
+    color: #3f51b5
+}
+
+.docs-markdown pre {
+    background: rgba(0, 0, 0, .01);
+    border    : .5px solid rgba(0, 0, 0, .03)
+}
+
+.docs-markdown pre code {
+    background: transparent
+}
+
+.docs-markdown h3 .material-icons,
+.docs-markdown h4 .material-icons {
+    color: rgba(0, 0, 0, .54)
+}
+
+.docs-markdown code {
+    background: rgba(0, 0, 0, .03)
+}
+
+.docs-svg-primary-fill {
+    fill: #3f51b5
+}
+
+.docs-svg-primary-stroke {
+    stroke: #3f51b5
+}
+
+.docs-svg-primary-stop-color {
+    stop-color: #3f51b5
+}
+
+.docs-svg-accent-fill {
+    fill: #ff4081
+}
+
+.docs-svg-accent-stroke {
+    stroke: #ff4081
+}
+
+.docs-svg-accent-stop-color {
+    stop-color: #ff4081
+}
+
+.docs-svg-primary-dark-30-fill {
+    fill: #2c397f
+}
+
+.docs-svg-primary-dark-30-stroke {
+    stroke: #2c397f
+}
+
+.docs-svg-primary-dark-30-stop-color {
+    stop-color: #2c397f
+}
+
+.docs-svg-primary-dark-40-fill {
+    fill: #26316d
+}
+
+.docs-svg-primary-dark-40-stroke {
+    stroke: #26316d
+}
+
+.docs-svg-primary-dark-40-stop-color {
+    stop-color: #26316d
+}
+
+.docs-svg-primary-light-20-fill {
+    fill: #6171c8
+}
+
+.docs-svg-primary-light-20-stroke {
+    stroke: #6171c8
+}
+
+.docs-svg-primary-light-20-stop-color {
+    stop-color: #6171c8
+}
+
+.docs-svg-primary-light-30-fill {
+    fill: #7583cf
+}
+
+.docs-svg-primary-light-30-stroke {
+    stroke: #7583cf
+}
+
+.docs-svg-primary-light-30-stop-color {
+    stop-color: #7583cf
+}
+
+.docs-svg-primary-light-40-fill {
+    fill: #8994d6
+}
+
+.docs-svg-primary-light-40-stroke {
+    stroke: #8994d6
+}
+
+.docs-svg-primary-light-40-stop-color {
+    stop-color: #8994d6
+}
+
+.docs-svg-primary-light-60-fill {
+    fill: #b0b8e4
+}
+
+.docs-svg-primary-light-60-stroke {
+    stroke: #b0b8e4
+}
+
+.docs-svg-primary-light-60-stop-color {
+    stop-color: #b0b8e4
+}
+
+.docs-svg-primary-light-80-fill {
+    fill: #d8dbf1
+}
+
+.docs-svg-primary-light-80-stroke {
+    stroke: #d8dbf1
+}
+
+.docs-svg-primary-light-80-stop-color {
+    stop-color: #d8dbf1
+}
+
+.docs-svg-primary-light-85-fill {
+    fill: #e1e4f5
+}
+
+.docs-svg-primary-light-85-stroke {
+    stroke: #e1e4f5
+}
+
+.docs-svg-primary-light-85-stop-color {
+    stop-color: #e1e4f5
+}
+
+.docs-api table,
+.docs-markdown-table {
+    color: rgba(0, 0, 0, .87)
+}
+
+.docs-api th,
+.docs-markdown-th {
+    background: #f5f5f5
+}
+
+.docs-api td,
+.docs-markdown-td {
+    border: 1px solid rgba(0, 0, 0, .03)
+}
+
+example-viewer .docs-example-viewer-wrapper {
+    border    : 1px solid rgba(0, 0, 0, .03);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .24), 0 0 2px rgba(0, 0, 0, .12);
+    margin    : 4px
+}
+
+example-viewer .docs-example-viewer-title {
+    color     : rgba(0, 0, 0, .54);
+    background: rgba(0, 0, 0, .03)
+}
+
+example-viewer .docs-example-source-copy {
+    color: rgba(0, 0, 0, .38);
+    right: 8px
+}
+
+[dir=rtl] example-viewer .docs-example-source-copy {
+    right: auto;
+    left : 8px
+}
+
+example-viewer .docs-example-source {
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    overflow     : auto
+}
+
+app-footer .docs-footer-links a {
+    color: #fff
+}
+
+.docs-guide-list .docs-guide-item {
+    color: #3f51b5
+}
+
+app-homepage .docs-header-background {
+    background: #3f51b5
+}
+
+app-homepage .docs-header-headline {
+    color: #fff
+}
+
+app-homepage .docs-header-start {
+    color: #3f51b5
+}
+
+app-homepage .docs-homepage-row {
+    color: rgba(0, 0, 0, .54)
+}
+
+app-navbar {
+    color: #fff
+}
+
+app-navbar .docs-navbar,
+app-navbar .docs-navbar-header {
+    background: #3f51b5
+}
+
+.docs-toc-container {
+    border-left: 4px solid #3f51b5
+}
+
+.docs-toc-container .docs-link {
+    color             : rgba(0, 0, 0, .54);
+    -webkit-transition: color .1s;
+    transition        : color .1s
+}
+
+.docs-toc-container .docs-link.docs-active,
+.docs-toc-container .docs-link:hover {
+    color: #3f51b5
+}
+
+.hljs {
+    display                 : block;
+    overflow-x              : auto;
+    padding                 : 1em;
+    background              : #fafafa;
+    color                   : #37474f;
+    -webkit-font-smoothing  : antialiased;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust   : 100%;
+    -ms-text-size-adjust    : 100%;
+    text-size-adjust        : 100%;
+    font                    : 300 100%/1 Roboto Mono, monospace;
+    font-size               : 14px
+}
+
+.hljs>::-moz-selection {
+    background-color: #d6edea
+}
+
+.hljs-section,
+.hljs>::selection {
+    background-color: #d6edea
+}
+
+.hljs-comment {
+    color     : #616161;
+    font-style: italic
+}
+
+.hljs-meta,
+.hljs-regexp,
+.hljs-selector-tag,
+.hljs-tag {
+    color: #9c27b0
+}
+
+.hljs-string,
+.hljs-subst {
+    color: #0d904f
+}
+
+.hljs-number,
+.hljs-template-variable,
+.hljs-variable {
+    color: #80cbc4
+}
+
+.hljs-attribute,
+.hljs-keyword,
+.hljs-name,
+.hljs-type {
+    color: #3b78e7
+}
+
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-bullet,
+.hljs-function>.hljs-title,
+.hljs-link,
+.hljs-symbol,
+.hljs-title {
+    color: #6182b8
+}
+
+.hljs-params {
+    color: #d81b60
+}
+
+.hljs-addition {
+    color: #3b78e7
+}
+
+.hljs-addition,
+.hljs-deletion {
+    display: inline-block;
+    width  : 100%
+}
+
+.hljs-deletion {
+    color: #e53935
+}
+
+.hljs-selector-class,
+.hljs-selector-id {
+    color: #8796b0
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-strong {
+    font-weight: 700
+}
+
+.hljs-link {
+    text-decoration: underline
 }

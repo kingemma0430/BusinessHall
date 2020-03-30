@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+
+import { Router } from '@angular/router';
+
+import { MatMenu } from '@angular/material/menu';
 
 import * as Enumerable from 'linq';
 import { AppConsts } from '@shared/AppConsts';
@@ -13,6 +17,7 @@ import { MenuServiceService, AbpMenuDto, MenuItemNode } from '../../../shared/me
 })
 export class PageMenuComponent implements OnInit {
 
+  @ViewChild('subMenu', { static: true }) subMenu: any;
 
   @Input()
   abpMenuItems: AbpMenuDto[] = [];
@@ -26,17 +31,29 @@ export class PageMenuComponent implements OnInit {
 
   subSubMenuItems: AbpMenuDto[] = [];
 
-
-  constructor(private menuServiceService: MenuServiceService) { }
+  constructor(private menuServiceService: MenuServiceService, private _router: Router) { }
 
   ngOnInit() {
   }
 
   openSubMenu(menuItem: AbpMenuDto) {
+
+    this.subMenuItems = [];
+    this.subSubMenuItems = [];
+    // if (this.subMenu) {
+    //   this.subMenu["items"] = [];
+    // }
     this.subMenuItems = Enumerable.from(this.abpMenuItems).where(x => x.parentMenuId == menuItem.id).toArray();
+
   }
 
   openSubSubMenu(menuItem: AbpMenuDto) {
+    this.subSubMenuItems = [];
     this.subSubMenuItems = Enumerable.from(this.abpMenuItems).where(x => x.parentMenuId == menuItem.id).toArray();
+  }
+
+  transferToAnotherRouter(menuItem: AbpMenuDto) {
+    console.log("transferToAnotherRouter", menuItem);
+    this._router.navigateByUrl(menuItem.menuUrlRoute);
   }
 }

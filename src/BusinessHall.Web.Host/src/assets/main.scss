@@ -1,0 +1,47 @@
+@import './mainNavFooter.scss';
+$TopbarHeight   :64px;
+$MarginToTopbar :65px;
+
+.marginToTopBar {
+    margin-top: $MarginToTopbar;
+}
+
+.app-navbar {
+    position: fixed;
+    top     : 0;
+    left    : 0;
+    right   : 0;
+    z-index : 2;
+    height: $TopbarHeight;
+}
+
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.paddingTop25 {
+    padding-top: 25px;
+}
+
+.marginLeft5 {
+    margin-left: 5px;
+}
+
+.paddingTop50 {
+    padding-top: 25px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    display    : inline-block !important;//this is used to control Menu topbar
+    box-sizing : border-box;
+    width      : 100%;
+    align-items: center;
+    text-align : left;
+    white-space: nowrap;
+    position   : relative;
+    height     : 50px;
+    padding-top: 10px;
+}
